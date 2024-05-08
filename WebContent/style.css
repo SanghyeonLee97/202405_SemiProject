@@ -6,6 +6,13 @@ body{
 	border: 1px solid black;
 	margin: 0 auto;
 }
+
+body>main{
+	margin-top: 20px;
+	width: 100%;
+	border: 1px solid black;
+}
+
 body>header{
 	width: 100%; height: 120px;
 	border: 1px solid black;
@@ -13,10 +20,5 @@ body>header{
 body>footer{
 	width: 100%; height: 220px;
 	margin-top: 20px;
-	border: 1px solid black;
-}
-body>main{
-	margin-top: 20px;
-	width: 100%;
 	border: 1px solid black;
 }
