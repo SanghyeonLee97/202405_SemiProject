@@ -8,6 +8,7 @@ body{
 body>main{
 	margin-top: 20px;
 	width: 100%;
+	background-color: ghostwhite;
 }
 
 body>header{

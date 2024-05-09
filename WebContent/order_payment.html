@@ -10,6 +10,36 @@
 		background-color: #ddffdd;
 		position: relative;
 	}
+	main>section{
+		width: 100%;
+		margin-top:20px;
+		background-color: #ddddff;
+	}
+	main>section>section:nth-child(1) {
+		width: 780px;
+		background-color: #ffddff;
+		float: left;
+	}
+	main>section>section:nth-child(1)>article:nth-child(1){
+		width: 780px; height: 180px;
+		background-color: #ddffff;
+	}
+	main>section>section:nth-child(1)>article:nth-child(2){
+		width: 780px; height: 180px;
+		margin-top:40px;
+		background-color: #fdfdfd;
+	}
+	main>section>section:nth-child(1)>article:nth-child(3){
+		width: 780px; height: 180px;
+		margin-top:40px;
+		background-color: #dfdfdf;
+	}
+	main>section>section:nth-child(2) {
+		width: 380px; height: 360px;
+		margin-left:40px;
+		background-color: #ffffdd;
+		float: left;
+	}
 </style>
 </head>
 <body>
@@ -17,8 +47,13 @@
 	<main>
 		<header>main-header</header>
 		<section>
-			<section></section>
-			<section></section>
+			<section>
+				<article>article</article>
+				<article>article</article>
+				<article>article</article>
+			</section>
+			<section>section</section>
+			<div style="clear: both;"></div>
 		</section>
 	</main>
 	<footer>footer</footer>
