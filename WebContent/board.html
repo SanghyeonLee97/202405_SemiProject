@@ -9,17 +9,16 @@
 		padding: 20px 0;
 	}
 	main>section{
+		width: 1040px;
 		background-color: #ddffff;
-	}
-	#s1 {
 		margin-left: 80px;
-		width: 1040px; height: 40px;
-		
 	}
-	#s2 {
-		width: 1040px; height: 580px;
+	main>section:nth-child(1) {
+		 height: 40px;
+	}
+	main>section:nth-child(2) {
+		height: 580px;
 		margin-top: 20px;
-		margin-left: 80px;
 	}
 	button{
 		width: 100px; height: 40px;
@@ -27,25 +26,20 @@
 		background-color: black;
 		color: white;
 	}
-	#b1{
-		width: 100px; height: 40px;
+	main>section:nth-child(1)>button:nth-child(1){
 		margin-left: 0px;
 	}
-	#s3{
-		width: 1040px; height: 40px;
+	main>section:nth-child(3){
+		height: 40px;
 		margin-top: 20px;
-		margin-left: 80px;
 		position: relative;
 	}
-	#s3 p{
+	main>section:nth-child(3)>p{
 		width: 780px;
 		display: inline-block;
 		text-align: center;
 	}
-	#b5{
-		margin-left: 20px;
-	}
-	#b6{
+	main>section:nth-child(3)>button:nth-child(3){
 		position: absolute;
 		right: 20px;
 	}
@@ -57,21 +51,20 @@
 		header
 	</header>
 	<main>
-		<section id="s1">
-			<button id="b1" value="notice">공지</button>
-			<button id="b2" value="qna">문의</button>
-			<button id="b3" value="고객센터">고객센터</button>
-			<button id="b4" value="이벤트참여">이벤트참여</button>
+		<section>
+			<button value="notice">공지</button>
+			<button value="qna">문의</button>
+			<button value="고객센터">고객센터</button>
+			<button value="이벤트참여">이벤트참여</button>
 			section
 		</section>
-		<section id="s2">
+		<section>
 			section
 		</section>
-		<section id="s3">
-			<button id="b5" value="notice">쇼핑하기</button>
+		<section>
+			<button value="notice">쇼핑하기</button>
 			<p>section</p>
-			<button id="b6" value="notice">글쓰기</button>
-			
+			<button value="notice">글쓰기</button>
 		</section>
 	</main>
 	<footer>
