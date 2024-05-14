@@ -56,7 +56,7 @@
 		background-color: #ffdddd;
 	}
 	section>article{
-		width: 900px; height: 480px;
+		width: 900px; height: 440px;
 		margin-left:40px;
 		background-color: #ddffff;
 		border-top: 1px solid gray;
