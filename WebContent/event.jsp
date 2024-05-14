@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.7.1.js"></script>
 <script type="text/javascript"></script>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	section{
 		width: 1040px;

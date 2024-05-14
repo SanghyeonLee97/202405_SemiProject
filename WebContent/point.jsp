@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>header>h1{
 		position: absolute;
