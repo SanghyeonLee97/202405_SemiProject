@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -50,15 +50,15 @@
 		float: left;
 		border-left: 1px solid gray;
 	}
-	section>nav{
-		width: 940px; height: 100px;
-		margin-top:20px; margin-left:40px;
-		background-color: #dfdfdf;
+	section>header{
+		width: 940px; height: 40px;
+		margin-left:40px;
+		background-color: #ffdddd;
 	}
 	section>article{
-		width: 940px; height: 300px;
-		margin-top:20px; margin-left:40px;
-		background-color: #dfdfdf;
+		width: 900px; height: 580px;
+		margin-left:40px;
+		background-color: #ddffff;
 		border-top: 1px solid gray;
 	}
 </style>
@@ -77,7 +77,7 @@
 		<section>
 			<aside>aside</aside>
 			<section>
-				<nav>nav</nav>
+				<header>section-header</header>
 				<article>article</article>
 			</section>
 			<div style="clear: both;"></div>
