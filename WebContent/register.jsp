@@ -29,9 +29,9 @@
 	<header>header</header>
 	<main>
 		<section>
-			<header>main-section-header</header>
-			<article>article</article>
-			<nav>nav</nav>
+			<header>section-header</header>
+			<article>section-article</article>
+			<nav>section-nav</nav>
 		</section>
 	</main>
 	<footer>footer</footer>

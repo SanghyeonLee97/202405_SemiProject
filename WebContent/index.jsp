@@ -42,24 +42,24 @@
 	<header>header</header>
 	<main>
 		<section>
-			<article>article</article>
-			<article>article</article>
-			<article>article</article>
-			<article>article</article>
+			<article>section-article</article>
+			<article>section-article</article>
+			<article>section-article</article>
+			<article>section-article</article>
 			section
 		</section>
 		<section>
-			<article>article</article>
-			<article>article</article>
-			<article>article</article>
-			<article>article</article>
+			<article>section-article</article>
+			<article>section-article</article>
+			<article>section-article</article>
+			<article>section-article</article>
 			section
 		</section>
 		<section>
-			<article>article</article>
-			<article>article</article>
-			<article>article</article>
-			<article>article</article>
+			<article>section-article</article>
+			<article>section-article</article>
+			<article>section-article</article>
+			<article>section-article</article>
 			section
 		</section>
 	</main>

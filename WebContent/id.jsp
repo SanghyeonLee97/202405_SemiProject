@@ -35,8 +35,8 @@
 <header>header</header>
 <main>
 	<section>
-		<header>아이디찾기</header>
-		<article>
+		<header>section-header 아이디찾기</header>
+		<article>section-article
 		<p>이름</p>
 		<p>이메일<br>
 		본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.
@@ -46,7 +46,7 @@
 		<p>인증번호 받기</p>
 		
 		</article>
-		<nav>nav
+		<nav>section-nav
 		<p>로그인</p>
 		<p>비밀번호 찾기</p>
 		<p>회원가입</p>

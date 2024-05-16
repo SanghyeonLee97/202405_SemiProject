@@ -46,9 +46,9 @@
 	<main>
 		<nav>nav</nav>
 		<section>
-			<article>article</article>
-			<nav>nav</nav>
-			<article>article</article>
+			<article>section-article</article>
+			<nav>section-nav</nav>
+			<article>section-article</article>
 		</section>
 	</main>
 	<footer>footer</footer>

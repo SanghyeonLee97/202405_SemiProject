@@ -44,12 +44,12 @@
 		</nav>
 		<section>
 			<header>section-header</header>
-			<article>article</article>
+			<article>section-article</article>
 			<nav>
-			nav
+			section-nav
 			</nav>
 			<nav>
-			nav
+			section-nav
 			</nav>
 		</section>
 		

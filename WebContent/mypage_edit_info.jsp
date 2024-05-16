@@ -69,16 +69,16 @@
 	<main>
 		<header>
 			<h1>홍길동</h1>
-			<article>article</article>
-			<article>article</article>
-			<article>article</article>
-			<article>article</article>
+			<article>header-article</article>
+			<article>header-article</article>
+			<article>header-article</article>
+			<article>header-article</article>
 		</header>
 		<section>
-			<aside>aside</aside>
+			<aside>section-aside</aside>
 			<section>
-				<header>section-header</header>
-				<article>article</article>
+				<header>section-section-header</header>
+				<article>section-section-article</article>
 			</section>
 			<div style="clear: both;"></div>
 		</section>

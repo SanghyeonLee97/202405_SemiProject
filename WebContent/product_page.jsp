@@ -49,12 +49,12 @@
 	<header>header</header>
 	<main>
 		<section>
-			<header>main-section-header</header>
-			<aside>aside</aside>
+			<header>section-header</header>
+			<aside>section-aside</aside>
 			<section>
-				<article>article</article>
-				<article>article</article>
-				<article>article</article>
+				<article>section-section-article</article>
+				<article>section-section-article</article>
+				<article>section-section-article</article>
 			</section>
 			<div style="clear: both;"></div>
 		</section>
