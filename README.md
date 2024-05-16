@@ -1,4 +1,4 @@
-<p>MyInfo(배송지 관리)-delivery_address</p>
+<p>MyInfo(배송지 관리)-mypage_delivery_address</p>
 <p>MyInfo(쿠폰)-#</p>
 <p>MyInfo(회원정보 수정)-mypage_edit_info</p>
 <p>MyPage(Main)-mypage_main</p>
