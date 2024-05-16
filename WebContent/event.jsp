@@ -12,6 +12,10 @@
 	main{
 		padding-bottom: 40px;
 	}
+	section{
+		width: 100%;
+		background-color: #ffffdd;
+	}
 	section>header{
 		width: 100%; height: 80px;
 		background-color: #ddffff;
