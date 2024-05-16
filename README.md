@@ -1,7 +1,7 @@
 <h1>개발용브랜치</h1>
 <h3>목업PNG명 - JSP명</h3>
 <p>MyInfo(배송지 관리)-mypage_delivery_address</p>
-<p>MyInfo(쿠폰)-#</p>
+<p>MyInfo(쿠폰)-mypage_coupon</p>
 <p>MyInfo(회원정보 수정)-mypage_edit_info</p>
 <p>MyPage(Main)-mypage_main</p>
 <p>MyPage(문의)-product_inquiry</p>
