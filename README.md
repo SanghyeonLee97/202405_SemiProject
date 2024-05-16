@@ -4,9 +4,9 @@
 <p>MyInfo(쿠폰)-mypage_coupon</p>
 <p>MyInfo(회원정보 수정)-mypage_edit_info</p>
 <p>MyPage(Main)-mypage_main</p>
-<p>MyPage(문의)-product_inquiry</p>
-<p>MyPage(적립금)-#</p>
-<p>MyPage(최근 본 상품)-recently_viewed_items</p>
+<p>MyPage(문의)-mypage_product_inquiry</p>
+<p>MyPage(적립금)-mypage_reserve</p>
+<p>MyPage(최근 본 상품)-mypage_recently_viewed_items</p>
 <p>MyPage(취소,반품,교환)-mypage_cancel_refund</p>
 <p>MyPage(하트(찜))-mypage_dibs</p>
 <p>Payment_grid-mypage_order_payment</p>
