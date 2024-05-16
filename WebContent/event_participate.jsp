@@ -13,44 +13,39 @@
 	}
 	main>section{
 		width: 100%;
+		padding-top:120px;
 		background-color: #ffffdd;
 	}
-	main>section>section{
-		width: 100%; height: 780px;
-		margin-top:80px;
-		padding-top:40px;
-		background-color: #ddffdd;
-	}
-	main>section>section>article{
+	main>section>article{
 		width: 100%; height: 300px;
 		background-color: #ffddff;
 		position: relative;
 	}
-	main>section>section>article:nth-child(2){
+	main>section>article:nth-child(2){
 		margin-top: 100px;
 	}
-	main>section>section>article>div{
+	main>section>article>div{
 		width: 200px; height: 300px;
 		background-color: #ddddff;
 		position: absolute;
 	}
-	main>section>section>article>div:nth-child(1){
+	main>section>article>div:nth-child(1){
 		left: 50px;
 	}
-	main>section>section>article>div:nth-child(2){
+	main>section>article>div:nth-child(2){
 		left: 350px;
 	}
-	main>section>section>article>div:nth-child(3){
+	main>section>article>div:nth-child(3){
 		left: 650px;
 	}
-	main>section>section>article>div:nth-child(4){
+	main>section>article>div:nth-child(4){
 		left: 950px;
 	}
-	main>section>nav:nth-child(2){
+	main>section>nav:nth-child(3){
 		width: 100%; height: 80px;
 		background-color: #ddffff;
 	}
-	main>section>nav:nth-child(3){
+	main>section>nav:nth-child(4){
 		width: 100%; height: 40px;
 		margin-top:20px;
 		background-color: #ddffff;
@@ -66,21 +61,18 @@
 			nav
 		</nav>
 		<section>
-			section
-			<section>
-				<article>
-					<div>section-section-article-div</div>
-					<div>section-section-article-div</div>
-					<div>section-section-article-div</div>
-					<div>section-section-article-div</div>
-				</article>
-				<article>
-					<div>section-section-article-div</div>
-					<div>section-section-article-div</div>
-					<div>section-section-article-div</div>
-					<div>section-section-article-div</div>
-				</article>
-			</section>
+			<article>
+				<div>section-article-div</div>
+				<div>section-article-div</div>
+				<div>section-article-div</div>
+				<div>section-article-div</div>
+			</article>
+			<article>
+				<div>section-article-div</div>
+				<div>section-article-div</div>
+				<div>section-article-div</div>
+				<div>section-article-div</div>
+			</article>
 			<nav>
 			section-nav
 			</nav>
