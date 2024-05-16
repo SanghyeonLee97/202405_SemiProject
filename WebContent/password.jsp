@@ -10,15 +10,14 @@
 	main>section{
 		width: 800px;
 		margin-left: 200px;
-		padding-top: 50px;
-		padding-bottom: 50px;
+		padding-bottom: 60px;
 	}
 	main>section>header{
 		width:100%; height: 100px;
 		background-color: #ddffdd;
 	}
 	main>section>article{
-		width: 100%; height:560px;
+		width: 100%; height:500px;
 		background-color: #ddffff;
 	}
 	main>section>nav{
