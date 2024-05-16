@@ -70,7 +70,6 @@
 </head>
 <body>
 	<header>header</header>
-	
 	<main>
 		<header>
 			<h1>홍길동</h1>
