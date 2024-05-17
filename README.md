@@ -21,7 +21,7 @@
 <p>로그인페이지-login</p>
 <p>메인-index</p>
 <p>비밀번호찾기-password</p>
-<p>상품 리스트 페이지-#</p>
+<p>상품 리스트 페이지-product_list_page</p>
 <p>상품페이지1-product_page</p>
 <p>상품페이지2-product_page_2</p>
 <p>아이디찾기-id</p>
