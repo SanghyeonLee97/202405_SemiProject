@@ -13,7 +13,7 @@
 	}
 	main>section{
 		width: 100%;
-		padding-top:120px;
+		padding-top:80px;
 		background-color: #ffffdd;
 	}
 	main>section>article{

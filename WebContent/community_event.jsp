@@ -27,7 +27,7 @@
 		position: relative;
 	}
 	section>article:nth-child(2){
-		margin-top:20px;
+		margin-top:80px;
 	}
 	section>article>div{
 		width: 320px; height: 120px;
