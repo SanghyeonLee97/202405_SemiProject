@@ -1,20 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="style2.css" rel="stylesheet" type="text/css">
-<link href="mypage.css" rel="stylesheet" type="text/css">
+<link href="../css/style2.css" rel="stylesheet" type="text/css">
+<link href="../css/mypage.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	section>article{
-		height: 300px;
+		height: 540px;
 	}
 </style>
 </head>
 <body>
 	<header>header</header>
+	
 	<main>
 		<header>
 			<h1>홍길동</h1>
@@ -27,7 +28,6 @@
 			<aside>section-aside</aside>
 			<section>
 				<header>section-section-header</header>
-				<nav>section-section-nav</nav>
 				<article>section-section-article</article>
 			</section>
 			<div style="clear: both;"></div>
