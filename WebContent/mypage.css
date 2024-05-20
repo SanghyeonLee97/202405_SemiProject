@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+main>header>h1{
+		position: absolute;
+		left: 140px;
+		top: 60px;
+}
+main>header>article{
+		width: 80px; height: 120px;
+		background-color: #ddffff;
+		position: absolute;
+}
+main>header>article:nth-child(2){
+		left: 720px; top:20px;
+}
+main>header>article:nth-child(3){
+		left: 820px; top:20px;
+}
+main>header>article:nth-child(4){
+		left: 920px; top:20px;
+}
+main>header>article:nth-child(5){
+		left: 1020px; top:20px;
+}
+main>header{
+		width: 100%; height: 160px;
+		background-color: #ffffdd;
+		position: relative;
+}
+main>section{
+		width: 100%;
+		margin-top:20px;
+		background-color: #eeffdd;
+}
+section>aside{
+		width: 200px; height: 400px;
+		float: left;
+		background-color: #ddddff;
+}
+section>section{
+		width: 960px;
+		margin-left: 40px;
+		float: left;
+}
+section>section>header{
+		width: 100%; height: 40px;
+		background-color: #ffdddd;
+}
+section>section>article{
+		width: 100%;
+		background-color: #ddffff;
+		border-top: 1px solid gray;
+}
+section>section>nav{
+		width: 100%; height: 60px;
+		background-color: #dfdfdf;
+	}

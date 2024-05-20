@@ -9,7 +9,7 @@
 <style type="text/css">
 	main>section{
 		width: 540px;
-		margin-left: 300px;
+		margin-left: 330px;
 		padding-top: 100px;
 		padding-bottom: 140px;
 	}
