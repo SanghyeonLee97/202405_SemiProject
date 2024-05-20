@@ -14,7 +14,7 @@
 <p>[커뮤니티]QNA-community_QNA</p>
 <p>[커뮤니티]공지-community_notice</p>
 <p>[커뮤니티]글쓰기-community_QNA_write</p>
-<p>[커뮤니티]이벤트-event</p>
+<p>[커뮤니티]이벤트-community_event</p>
 <p>[커뮤니티]이벤트참여-community_event_participate</p>
 <p>[커뮤니티]이벤트참여글쓰기-community_event_participate_write</p>
 <p>회원가입-register</p>
