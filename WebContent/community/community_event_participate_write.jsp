@@ -1,27 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="style2.css" rel="stylesheet" type="text/css">
+<link href="../css/style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>nav{
 		width: 100%; height: 40px;
 		background-color: #ddffff;
 	}
 	main>section{
-		width: 100%; height: 780px;
+		width: 100%;
+		padding-top:80px;
 		background-color: #ffffdd;
 	}
-	main>section>header{
-		width: 100%; height: 80px;
-		background-color: #ffdddd;
-	}
 	main>section>article{
-		width: 100%; height: 620px;
-		background-color: #ddffdd;
+		width: 100%; height: 680px;
+		background-color: #ffddff;
+		position: relative;
 	}
 	main>section>nav{
 		width: 100%; height: 80px;
@@ -38,13 +36,11 @@
 			nav
 		</nav>
 		<section>
-			<header>section-header</header>
 			<article>section-article</article>
 			<nav>
 			section-nav
 			</nav>
 		</section>
-		
 	</main>
 	<footer>
 		footer

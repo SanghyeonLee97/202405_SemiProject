@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="style2.css" rel="stylesheet" type="text/css">
+<link href="../css/style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>nav{
 		width: 100%; height: 40px;
@@ -41,6 +41,7 @@
 			section-nav
 			</nav>
 		</section>
+		
 	</main>
 	<footer>
 		footer
