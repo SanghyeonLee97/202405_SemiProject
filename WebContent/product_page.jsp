@@ -14,7 +14,6 @@
 	main>section>header{
 		width: 100%; height: 120px;
 		background-color: #ddffff;
-		margin-bottom: 20px;
 	}
 	main>section>aside{
 		width: 360px; height: 360px;
@@ -24,7 +23,7 @@
 		float: left;
 	}
 	main>section>section{
-		width: 800px; height: 660px;
+		width: 800px;
 		background-color: #ddffdd;
 		float: left;
 	}
@@ -33,15 +32,15 @@
 		background-color: #ffddff;
 	}
 	main>section>section>article:nth-child(1){
-		height: 120px;
+		height: 100px;
 	}
 	main>section>section>article:nth-child(2){
 		height: 140px;
-		margin-top: 20px;
+		margin-top: 40px;
 	}
 	main>section>section>article:nth-child(3){
-		height: 270px;
-		margin-top: 10px;
+		height: 280px;
+		margin-top: 40px;
 	}
 </style>
 </head>

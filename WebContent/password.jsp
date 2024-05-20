@@ -10,7 +10,7 @@
 	main>section{
 		width: 800px;
 		margin-left: 200px;
-		padding-bottom: 60px;
+		padding-bottom: 40px;
 	}
 	main>section>header{
 		width:100%; height: 100px;

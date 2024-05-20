@@ -7,15 +7,11 @@
 <title>상품 리스트 페이지</title>
 <link href="style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	main{
-		padding-top: 30px;
-	}
 	main>nav{
 		width:100%; height:40px;
 		background-color: #ddffdd;
 	}
 	main>section{
-		margin-top: 10px;
 		background-color: #ddddff;
 	}
 	main>section>aside{
@@ -24,12 +20,12 @@
 		float: left;
 	}
 	main>section>aside>header{
-		width: 100%; height: 20px;
+		width: 100%; height: 40px;
 		background-color: #ffdddd;
 	}
 	main>section>section{
 		width:800px; height: 720px;
-		margin-top: 30px;
+		margin-top: 40px;
 		float: left;
 	}
 	main>section>section>article{
@@ -43,7 +39,7 @@
 	}
 	main>section>section>article>div{
 		width: 100px; height: 120px;
-		background-color: #ddffdd;
+		background-color: #ffddff;
 		position: absolute;
 	}
 	main>section>section>article>div:nth-child(1){
@@ -60,7 +56,7 @@
 	}
 	main>section>aside:nth-child(3) {
 		height: 700px;
-		margin-top: 30px;
+		margin-top: 40px;
 	}
 </style>
 </head>

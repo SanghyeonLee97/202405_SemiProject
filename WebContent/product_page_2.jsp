@@ -7,20 +7,14 @@
 <title>Insert title here</title>
 <link href="style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	main{
-		padding-top: 20px;
-		padding-bottom: 10px;
-	}
 	main>nav{
 		width: 100%; height: 70px;
 		background-color: #ddddff;
 	}
 	main>section{
 		width: 1120px;
-		margin-top:10px;
 		margin-left:40px;
 		background-color: #ddffff;
-		padding-bottom: 20px;
 	}
 	main>section>article{
 		width:100%;
@@ -31,12 +25,10 @@
 	}
 	main>section>nav{
 		width:100%; height:50px;
-		margin-top:10px;
 		background-color: #ffdddd;
 	}
 	main>section>article:nth-child(3) {
 		height: 820px;
-		margin-top:10px;
 		
 	}
 </style>
