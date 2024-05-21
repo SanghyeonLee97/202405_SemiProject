@@ -8,22 +8,14 @@
 <script type="text/javascript" src="js/jquery-3.7.1.js"></script>
 <script type="text/javascript"></script>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
+<link href="../css/community.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	main{
+	section{
 		padding-bottom: 40px;
 	}
-	section{
-		width: 100%;
-		background-color: #ffffdd;
-	}
-	section>header{
-		width: 100%; height: 80px;
-		background-color: #ddffff;
-	}
 	section>article{
-		width: 100%; height: 120px;
+		height: 120px;
 		margin-top:40px;
-		background-color: #ffddff;
 		position: relative;
 	}
 	section>article:nth-child(2){

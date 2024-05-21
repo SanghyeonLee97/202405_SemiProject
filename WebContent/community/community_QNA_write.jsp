@@ -6,24 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
+<link href="../css/community.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	main>nav{
-		width: 100%; height: 40px;
-		background-color: #ddffff;
-	}
 	main>section{
-		width: 100%;
 		padding-top:80px;
-		background-color: #ffffdd;
 	}
 	main>section>article{
-		width: 100%; height: 680px;
-		background-color: #ffddff;
+		height: 680px;
 		position: relative;
-	}
-	main>section>nav{
-		width: 100%; height: 80px;
-		background-color: #ddffff;
 	}
 </style>
 </head>

@@ -6,19 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
+<link href="../css/community.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	main>nav{
-		width: 100%; height: 40px;
-		background-color: #ddffff;
-	}
 	main>section{
-		width: 100%;
 		padding-top:80px;
-		background-color: #ffffdd;
 	}
 	main>section>article{
-		width: 100%; height: 300px;
-		background-color: #ffddff;
+		height: 300px;
 		position: relative;
 	}
 	main>section>article:nth-child(2){
@@ -41,14 +35,9 @@
 	main>section>article>div:nth-child(4){
 		left: 950px;
 	}
-	main>section>nav:nth-child(3){
-		width: 100%; height: 80px;
-		background-color: #ddffff;
-	}
 	main>section>nav:nth-child(4){
-		width: 100%; height: 40px;
+		height: 40px;
 		margin-top:20px;
-		background-color: #ddffff;
 	}
 </style>
 </head>

@@ -6,26 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
+<link href="../css/community.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	main>nav{
-		width: 100%; height: 40px;
-		background-color: #ddffff;
-	}
-	main>section{
-		width: 100%; height: 780px;
-		background-color: #ffffdd;
-	}
-	main>section>header{
-		width: 100%; height: 80px;
-		background-color: #ffdddd;
-	}
 	main>section>article{
-		width: 100%; height: 620px;
-		background-color: #ddffdd;
-	}
-	main>section>nav{
-		width: 100%; height: 80px;
-		background-color: #ddffff;
+		height: 620px;
 	}
 </style>
 </head>
