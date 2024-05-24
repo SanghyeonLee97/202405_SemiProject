@@ -53,7 +53,7 @@
 		<nav>
 			<button type="submit" form="idForm">아이디 찾기</button><br>
 			<a href="login.jsp">로그인</a>
-			<a href="password.jsp">비밀번호찾기</a>
+			<a href="password.jsp">비밀번호 찾기</a>
 			<a href="register.jsp">회원가입</a>
 		</nav>
 	</section>
