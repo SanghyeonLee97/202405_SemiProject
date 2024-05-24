@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <!-- 
- 	240524 차지민 비밀번호 표시,사라지는 기능 작업
+ 	240524 12:28차지민 비밀번호 표시,사라지는 기능 작업
   -->
 <!DOCTYPE html>
 <html>
@@ -62,7 +62,7 @@
 		<section>
 			<header>section-header</header>
 			<article>
-				<form action="">
+				<form action="#">
 					아이디 : <input type="text"><br>
 					비밀번호 : <input id="registerPwd" type="password">
 							<button type="button" onclick="registerTextPwdCK('registerPwd')">test</button><br>
@@ -85,7 +85,7 @@
 					<br><br>
 					반려동물 이름 : <input type="text"><br>
 					견종 : <input type="text"><br>
-					<button>취소</button>
+					<button>취소</button><!-- 뒤로가기 쓰면 될듯 -->
 					<button type="submit">회원가입</button>
 				</form>
 			</article>
