@@ -12,8 +12,8 @@
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 
-	//비밀번호,비밀번호확인 타입을 토글하는 함수
-	function registerTextPwdCK(registerPwdId) {
+	//input의 타입을 토글하는 함수 (password<-->text)
+	function registerTextPwdToggle(registerPwdId) {
 		let registerPwdId2 = document.getElementById(registerPwdId);
 		
 		//현재 text인가 password인가
@@ -23,6 +23,7 @@
 			registerPwdId2.type="password";
 		}
 	}
+	
 	//뒤로가기 함수
 	function registerGoBack() {
 		window.history.back();
@@ -58,9 +59,9 @@
 				<form id="registerForm"action="register_backend.jsp" method="post">
 					아이디 : <input type="text" name="id" required="required"><br>
 					비밀번호 : <input id="registerPwd" type="password" name="password" required="required">
-							<button type="button" onclick="registerTextPwdCK('registerPwd')">test</button><br>
+							<button type="button" onclick="registerTextPwdToggle('registerPwd')">test</button><br>
 					비밀번호 확인 : <input id="registerPwdVerify" type="password" name="passwordVerify" required="required">
-								<button type="button" onclick="registerTextPwdCK('registerPwdVerify')">test</button><br>
+								<button type="button" onclick="registerTextPwdToggle('registerPwdVerify')">test</button><br>
 					이름 : <input type="text" name="name" required="required"><br>
 					전화번호 : <input type="text" placeholder="-없이 입력하세요" name="tel"><br>
 						
