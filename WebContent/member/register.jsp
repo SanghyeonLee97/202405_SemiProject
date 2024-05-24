@@ -11,30 +11,16 @@
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-	let registerPwdSw = 0, registerPwdVerifySw = 0;
-	
+
 	//비밀번호,비밀번호확인 타입을 토글하는 함수
 	function registerTextPwdCK(registerPwdId) {
 		let registerPwdId2 = document.getElementById(registerPwdId);
-		//비밀번호인가 비밀번호 확인인가
-		if(registerPwdId=="registerPwd"){
-			//현재 text인가 password인가
-			if(registerPwdSw==0){
-				registerPwdId2.type="text";
-				registerPwdSw=1;
-			}else if(registerPwdSw==1){
-				registerPwdId2.type="password";
-				registerPwdSw=0;
-			}
-		}else if(registerPwdId=="registerPwdVerify"){
-			//현재 text인가 password인가
-			if(registerPwdVerifySw==0){
-				registerPwdId2.type="text";
-				registerPwdVerifySw=1;
-			}else if(registerPwdVerifySw==1){
-				registerPwdId2.type="password";
-				registerPwdVerifySw=0;
-			}
+		
+		//현재 text인가 password인가
+		if(registerPwdId2.type=="password"){
+			registerPwdId2.type="text";
+		}else if(registerPwdId2.type=="text"){
+			registerPwdId2.type="password";
 		}
 	}
 	//뒤로가기 함수
