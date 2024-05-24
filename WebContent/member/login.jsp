@@ -28,27 +28,25 @@
 </style>
 </head>
 <body>
-<header>header</header>
-<main>
-	<section>
-		<header>
-			<h1>로그인</h1>
-		</header>
-		<article>
-			<form id="loginForm" action="login_backend.jsp" method="post">
-				<input type="text" placeholder="아이디" name="id" required="required"><br>
-				<input type="password" placeholder="비밀번호" name="password" required="required"><br>
-				<input type="checkbox" name="idSave">아이디저장<br>
-			</form>
-		</article>
-		<nav>
-			<button type="submit" form="loginForm">로그인</button><br>
-			<a href="id.jsp">아이디 찾기</a>
-			<a href="password.jsp">비밀번호찾기</a>
-			<a href="register.jsp">회원가입</a>
-		</nav>
-	</section>
-</main>
-<footer>footer</footer>
+	<main>
+		<section>
+			<header>
+				<h1>로그인</h1>
+			</header>
+			<article>
+				<form id="loginForm" action="login_backend.jsp" method="post">
+					<input type="text" placeholder="아이디" name="id" required="required"><br>
+					<input type="password" placeholder="비밀번호" name="password" required="required"><br>
+					<input type="checkbox" name="idSave">아이디저장<br>
+				</form>
+			</article>
+			<nav>
+				<button type="submit" form="loginForm">로그인</button><br>
+				<a href="id.jsp">아이디 찾기</a>
+				<a href="password.jsp">비밀번호찾기</a>
+				<a href="register.jsp">회원가입</a>
+			</nav>
+		</section>
+	</main>
 </body>
 </html>

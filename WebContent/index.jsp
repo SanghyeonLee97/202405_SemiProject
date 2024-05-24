@@ -45,7 +45,6 @@
 </style>
 </head>
 <body>
-	<header>header</header>
 	<main>
 		<section>section</section>
 		<section>
@@ -72,6 +71,5 @@
 			</article>
 		</section>
 	</main>
-	<footer>footer</footer>
 </body>
 </html>
