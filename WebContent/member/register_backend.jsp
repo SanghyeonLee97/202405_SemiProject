@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>출력테스트</h1>
+	<h1>데이터 출력</h1>
 	id: <%=request.getParameter("id") %> <br>
 	password: <%=request.getParameter("password") %><br>
 	passwordVerify: <%=request.getParameter("passwordVerify") %><br>

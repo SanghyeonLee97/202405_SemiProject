@@ -63,23 +63,27 @@
 			<header>section-header</header>
 			<article>
 				<form action="register_backend.jsp" method="post">
-					아이디 : <input type="text" name="id"><br>
-					비밀번호 : <input id="registerPwd" type="password" name="password">
+					아이디 : <input type="text" name="id" required="required"><br>
+					비밀번호 : <input id="registerPwd" type="password" name="password" required="required">
 							<button type="button" onclick="registerTextPwdCK('registerPwd')">test</button><br>
-					비밀번호 확인 : <input id="registerPwdVerify" type="password" name="passwordVerify">
+					비밀번호 확인 : <input id="registerPwdVerify" type="password" name="passwordVerify" required="required">
 								<button type="button" onclick="registerTextPwdCK('registerPwdVerify')">test</button><br>
-					이름 : <input type="text" name="name"><br>
+					이름 : <input type="text" name="name" required="required"><br>
 					전화번호 : <input type="text" placeholder="-없이 입력하세요" name="tel"><br>
 					
 					<!-- addressAPI.js호출해서 사용 -->
 					주소 : 
-					<input type="text" id="addressPostcode" placeholder="우편번호" name="postcode">
+					<input type="text" id="addressPostcode" placeholder="우편번호" name="postcode" readonly="readonly">
 					<input type="button" onclick="addressExecDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" id="addressRoadAddress" placeholder="도로명주소" name="roadAddress">
-					<input type="text" id="addressJibunAddress" placeholder="지번주소" name="jibunAddress"><br>
+					<input type="text" id="addressRoadAddress" placeholder="도로명주소" 
+						name="roadAddress" readonly="readonly">
+					<input type="text" id="addressJibunAddress" placeholder="지번주소" 
+						name="jibunAddress" readonly="readonly"><br>
 					<span id="guide" style="color:#999;display:none"></span>
-					<input type="text" id="addressDetailAddress" placeholder="상세주소" name="detailAddress">
-					<input type="text" id="addressExtraAddress" placeholder="참고항목" name="extraAddress">
+					<input type="text" id="addressDetailAddress" placeholder="상세주소" 
+						name="detailAddress" >
+					<input type="text" id="addressExtraAddress" placeholder="참고항목" 
+						name="extraAddress" readonly="readonly">
 					<!-- addressAPI.js호출해서 사용 -->
 					
 					<br><br>
