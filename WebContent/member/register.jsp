@@ -36,6 +36,9 @@
 			}
 		}
 	}
+	function registerGoBack() {
+		window.history.back();
+	}
 </script>
 <style type="text/css">
 	main>section{
@@ -89,7 +92,7 @@
 					<br><br>
 					반려동물 이름 : <input type="text" name="petName"><br>
 					견종 : <input type="text" name="breed"><br>
-					<button>취소</button><!-- 뒤로가기 쓰면 될듯 -->
+					<button type="button" onclick="registerGoBack()">취소</button>
 					<button type="submit">회원가입</button>
 				</form>
 			</article>
