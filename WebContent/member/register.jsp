@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <!-- 
- 	240524 12:28차지민 비밀번호 표시,사라지는 기능 작업
+ 	240524 12:28 차지민 - html구현,비밀번호 표시+사라지는 기능 작업,뒤로가기 구현,데이터 전송구현
+ 	
   -->
 <!DOCTYPE html>
 <html>
@@ -36,6 +37,7 @@
 			}
 		}
 	}
+	//뒤로가기 함수
 	function registerGoBack() {
 		window.history.back();
 	}
@@ -65,7 +67,7 @@
 		<section>
 			<header>section-header</header>
 			<article>
-				<form action="register_backend.jsp" method="post">
+				<form id="registerForm"action="register_backend.jsp" method="post">
 					아이디 : <input type="text" name="id" required="required"><br>
 					비밀번호 : <input id="registerPwd" type="password" name="password" required="required">
 							<button type="button" onclick="registerTextPwdCK('registerPwd')">test</button><br>
@@ -73,30 +75,31 @@
 								<button type="button" onclick="registerTextPwdCK('registerPwdVerify')">test</button><br>
 					이름 : <input type="text" name="name" required="required"><br>
 					전화번호 : <input type="text" placeholder="-없이 입력하세요" name="tel"><br>
-					
+						
 					<!-- addressAPI.js호출해서 사용 -->
 					주소 : 
 					<input type="text" id="addressPostcode" placeholder="우편번호" name="postcode" readonly="readonly">
 					<input type="button" onclick="addressExecDaumPostcode()" value="우편번호 찾기"><br>
 					<input type="text" id="addressRoadAddress" placeholder="도로명주소" 
-						name="roadAddress" readonly="readonly">
+							name="roadAddress" readonly="readonly">
 					<input type="text" id="addressJibunAddress" placeholder="지번주소" 
-						name="jibunAddress" readonly="readonly"><br>
+							name="jibunAddress" readonly="readonly"><br>
 					<span id="guide" style="color:#999;display:none"></span>
 					<input type="text" id="addressDetailAddress" placeholder="상세주소" 
-						name="detailAddress" >
+							name="detailAddress" >
 					<input type="text" id="addressExtraAddress" placeholder="참고항목" 
-						name="extraAddress" readonly="readonly">
+							name="extraAddress" readonly="readonly">
 					<!-- addressAPI.js호출해서 사용 -->
-					
+						
 					<br><br>
 					반려동물 이름 : <input type="text" name="petName"><br>
 					견종 : <input type="text" name="breed"><br>
-					<button type="button" onclick="registerGoBack()">취소</button>
-					<button type="submit">회원가입</button>
 				</form>
 			</article>
-			<nav>section-nav</nav>
+			<nav>
+				<button type="button" onclick="registerGoBack()">취소</button>
+				<button type="submit" form="registerForm">회원가입</button>
+			</nav>
 		</section>
 	</main>
 	<footer>footer</footer>
