@@ -9,6 +9,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	let registerPwdSw = 0, registerPwdVerifySw = 0;
+	function registerTextPwdCK(registerPwdId) {
+		let registerPwdId2 = document.getElementById(registerPwdId);
+		if(registerPwdId=="registerPwd"){
+			if(registerPwdSw==0){
+				registerPwdId2.type="text";
+				registerPwdSw=1;
+			}else if(registerPwdSw==1){
+				registerPwdId2.type="password";
+				registerPwdSw=0;
+			}
+		}else if(registerPwdId=="registerPwdVerify"){
+			if(registerPwdVerifySw==0){
+				registerPwdId2.type="text";
+				registerPwdVerifySw=1;
+			}else if(registerPwdVerifySw==1){
+				registerPwdId2.type="password";
+				registerPwdVerifySw=0;
+			}
+		}
+	}
+					</script>
 <style type="text/css">
 	main>section{
 		width: 800px;
@@ -40,29 +63,7 @@
 							<button type="button" onclick="registerTextPwdCK('registerPwd')">test</button><br>
 					비밀번호 확인 : <input id="registerPwdVerify" type="password">
 								<button type="button" onclick="registerTextPwdCK('registerPwdVerify')">test</button><br>
-					<script type="text/javascript">
-						let registerPwdSw = 0, registerPwdVerifySw = 0;
-						function registerTextPwdCK(registerPwdId) {
-							let registerPwdId2 = document.getElementById(registerPwdId);
-							if(registerPwdId=="registerPwd"){
-								if(registerPwdSw==0){
-									registerPwdId2.type="text";
-									registerPwdSw=1;
-								}else if(registerPwdSw==1){
-									registerPwdId2.type="password";
-									registerPwdSw=0;
-								}
-							}else if(registerPwdId=="registerPwdVerify"){
-								if(registerPwdVerifySw==0){
-									registerPwdId2.type="text";
-									registerPwdVerifySw=1;
-								}else if(registerPwdVerifySw==1){
-									registerPwdId2.type="password";
-									registerPwdVerifySw=0;
-								}
-							}
-						}
-					</script>
+					
 					이름 : <input type="text"><br>
 					전화번호 : <input type="text" placeholder="-없이 입력하세요" ><br>
 					주소 : <input type="text"> <button onclick="">우편번호검색</button><br>
