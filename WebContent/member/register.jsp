@@ -65,7 +65,9 @@
 	<header>header</header>
 	<main>
 		<section>
-			<header>section-header</header>
+			<header>
+				<h1>회원가입</h1>
+			</header>
 			<article>
 				<form id="registerForm"action="register_backend.jsp" method="post">
 					아이디 : <input type="text" name="id" required="required"><br>
