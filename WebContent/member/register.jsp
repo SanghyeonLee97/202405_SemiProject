@@ -11,6 +11,8 @@
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	let registerPwdSw = 0, registerPwdVerifySw = 0;
+	
+	//비밀번호,비밀번호확인 타입을 토글하는 함수
 	function registerTextPwdCK(registerPwdId) {
 		let registerPwdId2 = document.getElementById(registerPwdId);
 		if(registerPwdId=="registerPwd"){
@@ -63,10 +65,20 @@
 							<button type="button" onclick="registerTextPwdCK('registerPwd')">test</button><br>
 					비밀번호 확인 : <input id="registerPwdVerify" type="password">
 								<button type="button" onclick="registerTextPwdCK('registerPwdVerify')">test</button><br>
-					
 					이름 : <input type="text"><br>
 					전화번호 : <input type="text" placeholder="-없이 입력하세요" ><br>
-					주소 : <input type="text"> <button onclick="">우편번호검색</button><br>
+					
+					<!-- addressAPI.js호출해서 사용 -->
+					주소 : 
+					<input type="text" id="addressPostcode" placeholder="우편번호">
+					<input type="button" onclick="addressExecDaumPostcode()" value="우편번호 찾기"><br>
+					<input type="text" id="addressRoadAddress" placeholder="도로명주소">
+					<input type="text" id="addressJibunAddress" placeholder="지번주소"><br>
+					<span id="guide" style="color:#999;display:none"></span>
+					<input type="text" id="addressDetailAddress" placeholder="상세주소">
+					<input type="text" id="addressExtraAddress" placeholder="참고항목">
+					<!-- addressAPI.js호출해서 사용 -->
+					
 					<br><br>
 					반려동물 이름 : <input type="text"><br>
 					견종 : <input type="text"><br>
@@ -78,5 +90,7 @@
 		</section>
 	</main>
 	<footer>footer</footer>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="addressAPI.js"></script>
 </body>
 </html>
