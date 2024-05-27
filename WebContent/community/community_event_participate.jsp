@@ -42,13 +42,8 @@
 </style>
 </head>
 <body>
-	<header>
-		header
-	</header>
 	<main>
-		<nav>
-			nav
-		</nav>
+		<%@ include file="main_nav.jsp" %>
 		<section>
 			<article>
 				<div>section-article-div</div>
@@ -71,8 +66,5 @@
 		</section>
 		
 	</main>
-	<footer>
-		footer
-	</footer>
 </body>
 </html>

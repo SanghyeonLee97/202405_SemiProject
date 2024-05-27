@@ -14,13 +14,8 @@
 </style>
 </head>
 <body>
-	<header>
-		header
-	</header>
 	<main>
-		<nav>
-			nav
-		</nav>
+		<%@ include file="main_nav.jsp" %>
 		<section>
 			<header>section-header</header>
 			<article>section-article</article>
@@ -28,10 +23,6 @@
 			section-nav
 			</nav>
 		</section>
-		
 	</main>
-	<footer>
-		footer
-	</footer>
 </body>
 </html>
