@@ -40,7 +40,9 @@
 <body>
 	<main>
 		<section>
-			<header>section-header</header>
+			<header>
+				<h1>이벤트</h1>
+			</header>
 			<article>
 				<div>section-article-div</div>
 				<div>section-article-div</div>
