@@ -18,27 +18,20 @@
 </style>
 </head>
 <body>
-	<header>
-		header
-	</header>
 	<main>
-		<nav>
-			nav
-		</nav>
+		<%@ include file="main_nav.jsp" %>
 		<section>
 			<header>section-header</header>
 			<article>section-article</article>
 			<nav>
-			section-nav
+				<button onclick="location.href='../product/product_list_page.jsp'">쇼핑하기</button>
+				<button onclick="location.href='community_QNA_write.jsp'">글쓰기</button>
 			</nav>
 			<nav>
-			section-nav
+				
 			</nav>
 		</section>
 		
 	</main>
-	<footer>
-		footer
-	</footer>
 </body>
 </html>
