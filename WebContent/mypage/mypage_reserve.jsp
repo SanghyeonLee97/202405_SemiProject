@@ -14,18 +14,10 @@
 </style>
 </head>
 <body>
-	<header>header</header>
-	
 	<main>
-		<header>
-			<h1>홍길동</h1>
-			<article>header-article</article>
-			<article>header-article</article>
-			<article>header-article</article>
-			<article>header-article</article>
-		</header>
+		<%@ include file="./mypage_module/mypage_header.jsp" %>
 		<section>
-			<aside>section-aside</aside>
+			<%@ include file="./mypage_module/mypage_menu_list.jsp" %>
 			<section>
 				<header>section-section-header</header>
 				<nav>section-section-nav</nav>
@@ -34,6 +26,5 @@
 			<div style="clear: both;"></div>
 		</section>
 	</main>
-	<footer>footer</footer>
 </body>
 </html>
