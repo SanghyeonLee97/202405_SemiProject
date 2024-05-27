@@ -21,7 +21,7 @@
 	<main>
 		<%@ include file="main_nav.jsp" %>
 		<section>
-			<header>section-header</header>
+			<%@ include file="main_section_header.jsp" %>
 			<article>section-article</article>
 			<nav>
 				<button onclick="location.href='../product/product_list_page.jsp'">쇼핑하기</button>
