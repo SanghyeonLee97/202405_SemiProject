@@ -38,7 +38,6 @@
 </style>
 </head>
 <body>
-	<header>header</header>
 	<main>
 		<section>
 			<header>section-header</header>
@@ -63,6 +62,5 @@
 			</article>
 		</section>
 	</main>
-	<footer>footer</footer>
 </body>
 </html>
