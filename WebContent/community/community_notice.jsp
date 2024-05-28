@@ -75,7 +75,6 @@
 			<%} %>
 			</nav>
 		</section>
-		
 	</main>
 </body>
 </html>
