@@ -9,8 +9,32 @@ create table notice(
     categoryNo int,
     title varchar(100),
     content text,
-    registrationDate date,
+     registrationDate timestamp,
     views int
 );
 select * from notice;
-insert into notice values(1,1,"테스트","글내용 테스트중입니다","2024-05-28",0);
+insert into notice values(1,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(2,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(3,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(4,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(5,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(6,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(7,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(8,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(9,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(10,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(11,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(12,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(13,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(14,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(15,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(16,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(17,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(18,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(19,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(20,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(21,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice values(22,1,"테스트","글내용 테스트중입니다",now(),0);
+desc notice;
+delete from notice where noticeNO=1;
+drop table notice;
