@@ -11,16 +11,16 @@ import DTO.NoticeDTO;
 public class NoticeDAO extends DAO{
 	
 	//전체notice글 불러오기
-		public ArrayList<NoticeDTO> getNoticeList() {
+		public ArrayList<NoticeDTO> getNoticeList(String input) {
 			ArrayList<NoticeDTO> res = new ArrayList<NoticeDTO>();
-			Statement stmt;
 			PreparedStatement pstm = null;
-			String query = "select * from notice;";
+			String query = "";
 			openConnection();
 			try {
-				stmt = (Statement) conn.createStatement();
-				ResultSet rs = stmt.executeQuery(query);
-				
+				query = "select * from notice where title like ?;";
+				pstm = (PreparedStatement)conn.prepareStatement(query);
+					pstm.setString(1, "%"+input+"%");
+				ResultSet rs = pstm.executeQuery();
 				while(rs.next()) {
 					NoticeDTO ndto = new NoticeDTO();
 					ndto.setNoticeNoticeNo(rs.getInt("noticeNo"));
@@ -40,5 +40,5 @@ public class NoticeDAO extends DAO{
 			return res;
 		}
 		
-		//검색된notice글 불러오기
+		//notice 제목 검색
 }
