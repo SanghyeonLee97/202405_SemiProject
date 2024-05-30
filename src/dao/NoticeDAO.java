@@ -11,16 +11,16 @@ import DTO.NoticeDTO;
 public class NoticeDAO extends DAO{
 	
 	//전체notice글 불러오기
-		public ArrayList<NoticeDTO> getNoticeList(String input) {
+		public ArrayList<NoticeDTO> getNoticeList(String select,String search) {
 			ArrayList<NoticeDTO> res = new ArrayList<NoticeDTO>();
-			PreparedStatement pstm = null;
+			Statement stmt = null;
 			String query = "";
 			openConnection();
 			try {
-				query = "select * from notice where title like ?;";
-				pstm = (PreparedStatement)conn.prepareStatement(query);
-					pstm.setString(1, "%"+input+"%");
-				ResultSet rs = pstm.executeQuery();
+				query = "select * from notice where "+select+" like '%"+search+"%';";
+				stmt = (Statement) conn.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
+				System.out.println(query);
 				while(rs.next()) {
 					NoticeDTO ndto = new NoticeDTO();
 					ndto.setNoticeNoticeNo(rs.getInt("noticeNo"));
