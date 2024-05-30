@@ -34,11 +34,14 @@
 	<%
 		NoticeDAO ndao = new NoticeDAO();
 		ArrayList<NoticeDTO> noticeArr = new ArrayList();
-		String search="";
-		if(request.getParameter("search")!=null){
-			search=request.getParameter("search");
+		
+		//검색어 변수
+		String search="";	//기본 검색어는 없음
+		if(request.getParameter("search")!=null){	//search파라미터가 있을시
+			search=request.getParameter("search");	//검색어 변수를 search파라미터로
 		}
-		noticeArr=ndao.getNoticeList(search);
+		noticeArr=ndao.getNoticeList(search);	//검색실행
+		
 		//현재페이지 위치 변수
 		int noticeIndex=1;	//기본 페이지 위치는 1
 		if(request.getParameter("index")!=null){	//index파라미터가 있을시
