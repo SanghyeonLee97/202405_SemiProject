@@ -35,6 +35,18 @@ insert into notice values(19,1,"테스트","글내용 테스트중입니다",now
 insert into notice values(20,1,"테스트","글내용 테스트중입니다",now(),0);
 insert into notice values(21,1,"테스트","글내용 테스트중입니다",now(),0);
 insert into notice values(22,1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice(categoryNo,title,content,registrationDate,views) values(1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice(categoryNo,title,content,registrationDate,views) values(1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice(categoryNo,title,content,registrationDate,views) values(1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice(categoryNo,title,content,registrationDate,views) values(1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice(categoryNo,title,content,registrationDate,views) values(1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice(categoryNo,title,content,registrationDate,views) values(1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice(categoryNo,title,content,registrationDate,views) values(1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice(categoryNo,title,content,registrationDate,views) values(1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice(categoryNo,title,content,registrationDate,views) values(1,"테스트","글내용 테스트중입니다",now(),0);
+insert into notice(categoryNo,title,content,registrationDate,views) values(1,"테스트","글내용 테스트중입니다",now(),0);
+
 desc notice;
-delete from notice where noticeNO=1;
+delete from notice where views=0;
 drop table notice;
+
