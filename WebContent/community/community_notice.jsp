@@ -43,7 +43,7 @@
 		int noticeBoardPosts = 10;
 		if(noticeIndex==noticePage){	//현재페이지가 총페이지랑 같을때
 			noticeBoardPosts=(noticeArr.size()-1)%10;	//출력될 포스트수는 배열사이즈에서 10을 나눈 나머지
-			noticeBoardLastNo=noticeBoardFirstNo-noticeBoardPosts;	//마지막글의 배열번호는 첫번째글 배열번호에서 췰력될 포스트수를 뺀값
+			noticeBoardLastNo=noticeBoardFirstNo-noticeBoardPosts;	//마지막글의 배열번호는 첫번째글 배열번호에서 출력될 포스트수를 뺀값
 		}
 		
 		

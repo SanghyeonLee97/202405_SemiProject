@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <!-- 
- 	240524 12:28 차지민 - html구현,비밀번호 표시+사라지는 기능 작업,뒤로가기 구현,데이터 전송구현
- 	
-  -->
 <!DOCTYPE html>
 <html>
 <head>
