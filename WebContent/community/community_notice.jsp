@@ -45,8 +45,6 @@
 			noticeBoardPosts=(noticeArr.size()-1)%10;	//출력될 포스트수는 배열사이즈에서 10을 나눈 나머지
 			noticeBoardLastNo=noticeBoardFirstNo-noticeBoardPosts;	//마지막글의 배열번호는 첫번째글 배열번호에서 출력될 포스트수를 뺀값
 		}
-		
-		
 	%>
 	<main>
 		<%@ include file="main_nav.jsp" %>
@@ -97,6 +95,7 @@
 					
 					if(noticeNavIndex!=1){	//네비게이션 인덱스가 1이 아니라면
 					%>
+				<a href="community_notice.jsp?index=<%=1%>&navindex=<%=1%>"><< </a>
 				<a href="community_notice.jsp?index=<%=(noticeNavIndex-2)*10+1%>&navindex=<%=noticeNavIndex-1%>">< </a>
 					<%
 					}
@@ -106,6 +105,7 @@
 					if(noticeNavIndex!=noticeNavMaxIndex){	//네비게이션 인덱스가 최대 네비게이션 인덱스와 같지 않다면
 					%>
 				<a href="community_notice.jsp?index=<%=noticeNavIndex*10+1%>&navindex=<%=noticeNavIndex+1%>"> ></a>
+				<a href="community_notice.jsp?index=<%=(noticeNavMaxIndex-1)*10+1%>&navindex=<%=noticeNavMaxIndex%>"> >></a>
 					<%} %>
 			</nav>
 		</section>
