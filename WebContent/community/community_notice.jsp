@@ -1,5 +1,6 @@
+<%@page import="dao.NoticeDAO"%>
 <%@page import="dao.DAO"%>
-<%@page import="DTO.noticeDTO"%>
+<%@page import="DTO.NoticeDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -13,16 +14,25 @@
 <style type="text/css">
 	main>section>article{
 		height: 620px;
+		padding: 40px;
 	}
-	tr:hover {
+	#title {
 		cursor: pointer;
-}
+	}
+	table{
+		border: 1px solid lightgray;
+		border-collapse: collapse;
+	}
+	tr,td{
+		padding:10px;
+		border: 1px solid lightgray;
+	}
 </style>
 </head>
 <body>
 	<%
-		DAO dao = new DAO();
-		ArrayList<noticeDTO> noticeArr = dao.test();
+		NoticeDAO ndao = new NoticeDAO();
+		ArrayList<NoticeDTO> noticeArr = ndao.getNoticeList();
 		
 		//현재페이지 위치 변수
 		int noticeIndex=1;	//기본 페이지 위치는 1
@@ -62,10 +72,10 @@
 					<%
 						for(int i=noticeBoardFirstNo;i>=noticeBoardLastNo;i--){	//첫번째글 번호부터 마지막글 번호까지 반복
 					%>
-					<tr onclick="location.href='community_notice_read.jsp?noticeNo=<%=noticeArr.get(i).getNoticeNoticeNo() %>'">
+					<tr>
 						<td><%=noticeArr.get(i).getNoticeNoticeNo() %></td>
 						<td><%=noticeArr.get(i).getNoticeCategoryNo() %></td>
-						<td><%=noticeArr.get(i).getNoticeTitle() %></td>
+						<td id="title" onclick="location.href='community_notice_read.jsp?noticeNo=<%=noticeArr.get(i).getNoticeNoticeNo() %>'"><%=noticeArr.get(i).getNoticeTitle() %></td>
 						<td><%=noticeArr.get(i).getNoticeRegistrationDate() %></td>
 						<td><%=noticeArr.get(i).getNoticeViews() %></td>
 					</tr>

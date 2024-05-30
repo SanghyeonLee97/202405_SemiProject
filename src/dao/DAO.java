@@ -8,7 +8,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
-import DTO.noticeDTO;
+import DTO.NoticeDTO;
 
 public class DAO {
 	Connection conn = null;
@@ -17,7 +17,7 @@ public class DAO {
 	String pass = "mysql";
 	
 	//연결 메소드
-	private Connection openConnection() {
+	protected Connection openConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = (Connection) DriverManager.getConnection(url,user,pass);
@@ -27,7 +27,7 @@ public class DAO {
 		return conn;
 	}
 	//닫기 메소드
-	private void closeConnection() {
+	protected void closeConnection() {
 		try {
 			if(conn != null) {
 				conn.close();
@@ -37,34 +37,5 @@ public class DAO {
 			e.printStackTrace();
 		}
 	}
-	//전체notice 불러오기
-	public ArrayList<noticeDTO> test() {
-		ArrayList<noticeDTO> res = new ArrayList<noticeDTO>();
-		Statement stmt;
-		PreparedStatement pstm = null;
-		String query = "select * from notice;";
-		openConnection();
-		try {
-			stmt = (Statement) conn.createStatement();
-			ResultSet rs = stmt.executeQuery(query);
-			
-			while(rs.next()) {
-				noticeDTO ndto = new noticeDTO();
-				ndto.setNoticeNoticeNo(rs.getInt("noticeNo"));
-				ndto.setNoticeCategoryNo(rs.getInt("categoryNo"));
-				ndto.setNoticeTitle(rs.getString("title"));
-				ndto.setNoticeContent(rs.getString("content"));
-				ndto.setNoticeRegistrationDate(rs.getTimestamp("registrationDate"));
-				ndto.setNoticeViews(rs.getInt("views"));
-				res.add(ndto);
-			}
-		}catch (Exception e) {
-			// TODO: handle exception
-		}finally {
-			closeConnection();
-		}
-		
-		
-		return res;
-	}
+	
 }
