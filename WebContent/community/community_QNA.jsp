@@ -18,6 +18,9 @@
 </style>
 </head>
 <body>
+	<%
+		String Communityboard="QNA";
+	%>
 	<main>
 		<%@ include file="main_nav.jsp" %>
 		<section>

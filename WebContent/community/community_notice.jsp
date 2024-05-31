@@ -35,21 +35,25 @@
 		NoticeDAO ndao = new NoticeDAO();
 		CommunitySearchDTO csdto = new CommunitySearchDTO();
 		ArrayList<CommunityNoticeDTO> noticeArr = new ArrayList();
-			
+		
+		//게시판 종류 변수
+		String Communityboard="notice";	//현재 notice게시판
+		csdto.setCommunitySearchDTOBoard(Communityboard);	//검색객체에 게시판종류 입력
+		
 		//검색 테이블속성 변수
 		String noticeSelect="title";	//기본속성은 title
-		if(request.getParameter("select")!=null){
-			noticeSelect=request.getParameter("select");
+		if(request.getParameter("select")!=null){	//select파라미터가 있을시
+			noticeSelect=request.getParameter("select");	//검색 테이블속성 변수를 select파라미터로
 		}
+		csdto.setCommunitySearchDTOSelect(noticeSelect);	//검색객체에 검색테이블 입력
+		
 		//검색어 변수
 		String noticeSearch="";	//기본 검색어는 없음
 		if(request.getParameter("search")!=null){	//search파라미터가 있을시
 			noticeSearch=request.getParameter("search");	//검색어 변수를 search파라미터로
 		}
+		csdto.setCommunitySearchDTOSearch(noticeSearch);	//검색객체에 검색어 입력
 		
-		csdto.setCommunitySearchDTOBoard("notice");
-		csdto.setCommunitySearchDTOSelect(noticeSelect);
-		csdto.setCommunitySearchDTOSearch(noticeSearch);
 		noticeArr=ndao.getNoticeList(csdto);	//검색실행
 			
 		//현재페이지 위치 변수
@@ -78,14 +82,7 @@
 		<%@ include file="main_nav.jsp" %>
 		<section>
 			<header>
-				<form action="/projectdengdeng/community/community_notice.jsp">
-					<select name="select">
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-					</select>
-					<input type="text" name="search" value="">
-					<button type="submit">검색</button>
-				</form>
+				<%@ include file="main_section_header.jsp" %>
 			</header>
 			<article>
 				<table>
