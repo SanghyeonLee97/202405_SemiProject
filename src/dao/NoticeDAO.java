@@ -23,7 +23,6 @@ public class NoticeDAO extends DAO{
 						" like '%"+csdto.getCommunitySearchDTOSearch()+"%';";
 				stmt = (Statement) conn.createStatement();
 				ResultSet rs = stmt.executeQuery(query);
-				System.out.println(query);
 				while(rs.next()) {
 					CommunityNoticeDTO ndto = new CommunityNoticeDTO();
 					ndto.setNoticeNoticeNo(rs.getInt("noticeNo"));
