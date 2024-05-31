@@ -1,6 +1,6 @@
 <%@page import="dao.NoticeDAO"%>
 <%@page import="dao.DAO"%>
-<%@page import="DTO.NoticeDTO"%>
+<%@page import="DTO.CommunityNoticeDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -32,41 +32,41 @@
 <body>
 	<%
 		NoticeDAO ndao = new NoticeDAO();
-		ArrayList<NoticeDTO> noticeArr = new ArrayList();
-		
-		//검색 테이블속성 변수
-		String noticeSelect="title";	//기본속성은 title
-		if(request.getParameter("select")!=null){
-			noticeSelect=request.getParameter("select");
-		}
-		//검색어 변수
-		String noticeSearch="";	//기본 검색어는 없음
-		if(request.getParameter("search")!=null){	//search파라미터가 있을시
-			noticeSearch=request.getParameter("search");	//검색어 변수를 search파라미터로
-		}
-		noticeArr=ndao.getNoticeList(noticeSelect,noticeSearch);	//검색실행
-		
-		//현재페이지 위치 변수
-		int noticeIndex=1;	//기본 페이지 위치는 1
-		if(request.getParameter("index")!=null){	//index파라미터가 있을시
-			noticeIndex=Integer.parseInt(request.getParameter("index"));	//현재페이지 변수를 index파라미터로
-		}
-		
-		//총 페이지 개수
-		int noticePage=(noticeArr.size()-1)/10+1;
-		
-		//현재페이지 게시판의 첫번째글의 ArrayList번호
-		int noticeBoardFirstNo=noticeArr.size()-(10*(noticeIndex-1))-1;
-		
-		//현재페이지 게시판의 마지막글의 ArrayList번호
-		int noticeBoardLastNo=noticeBoardFirstNo-9;
-		
-		//게시판에 출력될 글의 개수
-		int noticeBoardPosts = 10;
-		if(noticeIndex==noticePage){	//현재페이지가 총페이지랑 같을때
-			noticeBoardPosts=(noticeArr.size()-1)%10;
-			noticeBoardLastNo=noticeBoardFirstNo-noticeBoardPosts;
-		}
+			ArrayList<CommunityNoticeDTO> noticeArr = new ArrayList();
+			
+			//검색 테이블속성 변수
+			String noticeSelect="title";	//기본속성은 title
+			if(request.getParameter("select")!=null){
+		noticeSelect=request.getParameter("select");
+			}
+			//검색어 변수
+			String noticeSearch="";	//기본 검색어는 없음
+			if(request.getParameter("search")!=null){	//search파라미터가 있을시
+		noticeSearch=request.getParameter("search");	//검색어 변수를 search파라미터로
+			}
+			noticeArr=ndao.getNoticeList(noticeSelect,noticeSearch);	//검색실행
+			
+			//현재페이지 위치 변수
+			int noticeIndex=1;	//기본 페이지 위치는 1
+			if(request.getParameter("index")!=null){	//index파라미터가 있을시
+		noticeIndex=Integer.parseInt(request.getParameter("index"));	//현재페이지 변수를 index파라미터로
+			}
+			
+			//총 페이지 개수
+			int noticePage=(noticeArr.size()-1)/10+1;
+			
+			//현재페이지 게시판의 첫번째글의 ArrayList번호
+			int noticeBoardFirstNo=noticeArr.size()-(10*(noticeIndex-1))-1;
+			
+			//현재페이지 게시판의 마지막글의 ArrayList번호
+			int noticeBoardLastNo=noticeBoardFirstNo-9;
+			
+			//게시판에 출력될 글의 개수
+			int noticeBoardPosts = 10;
+			if(noticeIndex==noticePage){	//현재페이지가 총페이지랑 같을때
+		noticeBoardPosts=(noticeArr.size()-1)%10;
+		noticeBoardLastNo=noticeBoardFirstNo-noticeBoardPosts;
+			}
 	%>
 	<main>
 		<%@ include file="main_nav.jsp" %>

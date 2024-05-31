@@ -8,7 +8,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
-import DTO.NoticeDTO;
+import DTO.CommunityNoticeDTO;
 
 public class DAO {
 	Connection conn = null;

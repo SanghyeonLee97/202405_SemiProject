@@ -2,7 +2,7 @@ package DTO;
 
 import java.sql.Timestamp;
 
-public class NoticeDTO {
+public class CommunityNoticeDTO {
 	private int noticeNoticeNo;
     private int noticeCategoryNo;
     private String noticeTitle;
