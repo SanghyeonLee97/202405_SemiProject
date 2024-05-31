@@ -18,7 +18,9 @@ public class NoticeDAO extends DAO{
 			String query = "";
 			openConnection();
 			try {
-				query = "select * from "+csdto.getCommunitySearchDTOBoard()+" where "+csdto.getCommunitySearchDTOSelect()+" like '%"+csdto.getCommunitySearchDTOSearch()+"%';";
+				query = "select * from "+csdto.getCommunitySearchDTOBoard()+
+						" where "+csdto.getCommunitySearchDTOSelect()+
+						" like '%"+csdto.getCommunitySearchDTOSearch()+"%';";
 				stmt = (Statement) conn.createStatement();
 				ResultSet rs = stmt.executeQuery(query);
 				System.out.println(query);

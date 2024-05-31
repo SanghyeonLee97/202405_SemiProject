@@ -14,6 +14,9 @@
 </style>
 </head>
 <body>
+	<%
+		String Communityboard="FAQ";
+	%>
 	<main>
 		<%@ include file="main_nav.jsp" %>
 		<section>

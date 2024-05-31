@@ -1,6 +1,5 @@
 <%@page import="DTO.CommunitySearchDTO"%>
 <%@page import="dao.NoticeDAO"%>
-<%@page import="dao.DAO"%>
 <%@page import="DTO.CommunityNoticeDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
