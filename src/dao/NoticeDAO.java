@@ -7,17 +7,18 @@ import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
 import DTO.CommunityNoticeDTO;
+import DTO.CommunitySearchDTO;
 
 public class NoticeDAO extends DAO{
 	
 	//전체notice글 불러오기
-		public ArrayList<CommunityNoticeDTO> getNoticeList(String select,String search) {
+		public ArrayList<CommunityNoticeDTO> getNoticeList(CommunitySearchDTO csdto) {
 			ArrayList<CommunityNoticeDTO> res = new ArrayList<CommunityNoticeDTO>();
 			Statement stmt = null;
 			String query = "";
 			openConnection();
 			try {
-				query = "select * from notice where "+select+" like '%"+search+"%';";
+				query = "select * from "+csdto.getCommunitySearchDTOBoard()+" where "+csdto.getCommunitySearchDTOSelect()+" like '%"+csdto.getCommunitySearchDTOSearch()+"%';";
 				stmt = (Statement) conn.createStatement();
 				ResultSet rs = stmt.executeQuery(query);
 				System.out.println(query);

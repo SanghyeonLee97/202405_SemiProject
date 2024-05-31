@@ -1,3 +1,4 @@
+<%@page import="DTO.CommunitySearchDTO"%>
 <%@page import="dao.NoticeDAO"%>
 <%@page import="dao.DAO"%>
 <%@page import="DTO.CommunityNoticeDTO"%>
@@ -32,6 +33,7 @@
 <body>
 	<%
 		NoticeDAO ndao = new NoticeDAO();
+		CommunitySearchDTO csdto = new CommunitySearchDTO();
 		ArrayList<CommunityNoticeDTO> noticeArr = new ArrayList();
 			
 		//검색 테이블속성 변수
@@ -44,7 +46,11 @@
 		if(request.getParameter("search")!=null){	//search파라미터가 있을시
 			noticeSearch=request.getParameter("search");	//검색어 변수를 search파라미터로
 		}
-		noticeArr=ndao.getNoticeList(noticeSelect,noticeSearch);	//검색실행
+		
+		csdto.setCommunitySearchDTOBoard("notice");
+		csdto.setCommunitySearchDTOSelect(noticeSelect);
+		csdto.setCommunitySearchDTOSearch(noticeSearch);
+		noticeArr=ndao.getNoticeList(csdto);	//검색실행
 			
 		//현재페이지 위치 변수
 		int noticeIndex=1;	//기본 페이지 위치는 1
