@@ -3,23 +3,16 @@ package DTO;
 import java.sql.Timestamp;
 
 public class CommunityNoticeDTO {
-	private int noticeNoticeNo;
-    private int noticeCategoryNo;
-    private String noticeTitle;
-    private String noticeContent;
-    private Timestamp noticeRegistrationDate;
-    private int noticeViews;
-	public int getNoticeNoticeNo() {
-		return noticeNoticeNo;
+	int noticeNo;
+	String noticeTitle;
+	String noticeContent;
+	int noticeViews;
+	Timestamp noticeDate;
+	public int getNoticeNo() {
+		return noticeNo;
 	}
-	public void setNoticeNoticeNo(int noticeNoticeNo) {
-		this.noticeNoticeNo = noticeNoticeNo;
-	}
-	public int getNoticeCategoryNo() {
-		return noticeCategoryNo;
-	}
-	public void setNoticeCategoryNo(int noticeCategoryNo) {
-		this.noticeCategoryNo = noticeCategoryNo;
+	public void setNoticeNo(int noticeNo) {
+		this.noticeNo = noticeNo;
 	}
 	public String getNoticeTitle() {
 		return noticeTitle;
@@ -33,16 +26,16 @@ public class CommunityNoticeDTO {
 	public void setNoticeContent(String noticeContent) {
 		this.noticeContent = noticeContent;
 	}
-	public Timestamp getNoticeRegistrationDate() {
-		return noticeRegistrationDate;
-	}
-	public void setNoticeRegistrationDate(Timestamp noticeRegistrationDate) {
-		this.noticeRegistrationDate = noticeRegistrationDate;
-	}
 	public int getNoticeViews() {
 		return noticeViews;
 	}
 	public void setNoticeViews(int noticeViews) {
 		this.noticeViews = noticeViews;
+	}
+	public Timestamp getNoticeDate() {
+		return noticeDate;
+	}
+	public void setNoticeDate(Timestamp noticeDate) {
+		this.noticeDate = noticeDate;
 	}
 }
