@@ -21,7 +21,6 @@ public class CommunityDAO extends DAO{
 			query = "select * from notice where "+select+" like '%"+search+"%';";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			System.out.println(query);
 			while(rs.next()) {
 				CommunityNoticeDTO ndto = new CommunityNoticeDTO();
 				ndto.setNoticeNo((rs.getInt("notice_No")));
@@ -49,7 +48,6 @@ public class CommunityDAO extends DAO{
 			query = "select * from faq where "+select+" like '%"+search+"%';";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			System.out.println(query);
 			while(rs.next()) {
 				CommunityFAQDTO ndto = new CommunityFAQDTO();
 				ndto.setFaqNo((rs.getInt("faq_no")));
