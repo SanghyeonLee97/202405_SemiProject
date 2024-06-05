@@ -25,8 +25,8 @@ public class Command extends HttpServlet{
 		
 		
 		if("/community/notice.do".equals(servletPath)) {
-			processor = new NoticeIncreaseViews(req.getParameter("no"));
-			System.out.println("왔나?");
+			processor = new NoticeIncreaseViews(req.getParameter("no"),req.getParameter("board"));
+			System.out.println(req.getParameter("board"));
 		}
 		view=processor.process(req,resp);
 		

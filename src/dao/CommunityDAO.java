@@ -39,12 +39,12 @@ public class CommunityDAO extends DAO{
 	}
 	
 	//notice 조회수 상승
-	public void noticeIncreaseViews(String no) {
+	public void noticeIncreaseViews(String board,String no) {
 		Statement stmt = null;
 		String query = "";
 		openConnection();
 		try {
-			query = "update notice set notice_views=notice_views+1 where notice_No="+no+";";
+			query = "update notice set "+board+"_views="+board+"_views+1 where notice_No="+no+";";
 			stmt = (Statement) conn.createStatement();
 			stmt.executeUpdate(query);
 			System.out.println(query);
