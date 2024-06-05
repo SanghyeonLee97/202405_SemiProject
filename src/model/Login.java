@@ -15,7 +15,7 @@ public class Login implements CommandProsessor{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-		
+		req.setAttribute("id", loginId);
 		return "/member/test.jsp";
 	}
 

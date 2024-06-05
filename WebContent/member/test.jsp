@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>왔음</h1>
+	<%=request.getAttribute("id") %>
 </body>
 </html>

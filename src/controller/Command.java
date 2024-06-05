@@ -62,7 +62,7 @@ public class Command extends HttpServlet{
 			customer.setAddress_detail(req.getParameter("detailAddress"));
 			processor = new Register(customer);
 		}else if(servletPath.equals("/member/login.do")) {
-			processor = new Login();
+			processor = new Login(req.getParameter("id"),req.getParameter("password"));
 		}
 		view=processor.process(req,resp);
 		
