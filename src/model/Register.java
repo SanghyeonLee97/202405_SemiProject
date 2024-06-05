@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.CustomerDTO;
+import dao.MemberDAO;
 
 public class Register implements CommandProsessor{
 	
@@ -18,7 +19,8 @@ public class Register implements CommandProsessor{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-		
+		MemberDAO mdao = new MemberDAO();
+		mdao.customerRegister(cdto);
 		return "/member/test.jsp";
 	}
 
