@@ -8,7 +8,7 @@
 <link href="css/style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>section{
-		background-color: #ddffdd;
+		background-color: #ffEB5A;
 	}
 	main>section:first-child{
 		width: 100%; height: 360px;
@@ -17,31 +17,27 @@
 		margin-top: 40px;
 	}
 	main>section>article{
-		width: 100%; height: 160px;
-		margin-top: 20px;
-		background-color: #ddffff;
+		width: 100%; height: 250px;
+		margin-top: 20px;	
+		padding : 0px;
+		background-color:  #ffffb1;
 		position: relative;
+		text-align: center;
+		
 	}
 	main>section>article:first-child{
 		margin-top: 0px;
 	}
 	main>section>article>div{
-		width: 140px; height: 100px;
+		width:150px; height: 150px; 
 		background-color: #ddffdd;
-		position: absolute;
+		display:inline-block;
+		position: relative;
+		margin-right:100px;
+		left: 0;
+		
 	}
-	main>section>article>div:nth-child(1){
-		left: 220px;
-	}
-	main>section>article>div:nth-child(2){
-		left: 420px;
-	}
-	main>section>article>div:nth-child(3){
-		left: 620px;
-	}
-	main>section>article>div:nth-child(4){
-		left: 820px;
-	}
+	
 </style>
 </head>
 <body>
@@ -49,25 +45,27 @@
 		<section>section</section>
 		<section>
 			<article>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				section-article
+			<h3>사료추천</h3>
+					<div><img src="imagefile/image1.png" width="150px" height="150px" ><a href="">프리미엄사료<br>50900원</a></div>
+					<div><img src="imagefile/image3.png" width="150px" height="150px"><a href="">어덜트사료<br>32000원</a></div>
+					<div><img src="imagefile/image4.png" width="150px" height="150px"><a href="">소프트사료<br>20900원</a></div>
+					<div style="margin-right: 0"><img src="imagefile/image5.png" width="150px" height="150px"><a href="">소프트사료<br>20900원</a></div>
 			</article>
 			<article>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				section-article
+			<h3>간식추천</h3>
+				<div><img src="imagefile/image6.png" width="150px" height="150px"><a href="">간식<br>8000원</a></div>
+				<div><img src="imagefile/image7.png" width="150px" height="150px"><a href="">간식<br>8000원</a></div>
+				<div><img src="imagefile/image8.png" width="150px" height="150px"><a href="">간식<br>5900원</a></div>
+				<div style="margin-right: 0"><img src="imagefile/image10.png" width="150px" height="150px"><a href="">간식<br>7900원</a></div>
+				
 			</article>
 			<article>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				section-article
+			<h3>장난감추천</h3>
+				<div><img src="imagefile/image12.png" width="150px" height="150px"><a href="">장난감인형<br>8900원</a></div>
+				<div><img src="imagefile/image14.png" width="150px" height="150px"><a href="">장난감인형<br>8900원</a></div>
+				<div><img src="imagefile/image16.png" width="150px" height="150px"><a href="">나무장난감<br>20900원</a></div>
+				<div style="margin-right: 0"><img src="imagefile/image20.png" width="150px" height="150px"><a href="">브러쉬<br>9900원</a></div>
+				
 			</article>
 		</section>
 	</main>
