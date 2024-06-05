@@ -16,7 +16,7 @@ public class NoticeIncreaseViews implements CommandProsessor{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		CommunityDAO cdao = new CommunityDAO();
-		cdao.noticeIncreaseViews(communityBoard,communityNoticeNo);
+		cdao.communityIncreaseViews(communityBoard,communityNoticeNo);
 		return "/community/community_notice_read.jsp";
 	}
 

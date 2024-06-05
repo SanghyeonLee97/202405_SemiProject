@@ -38,8 +38,8 @@ public class CommunityDAO extends DAO{
 		return res;
 	}
 	
-	//notice 조회수 상승
-	public void noticeIncreaseViews(String board,String no) {
+	//조회수 상승
+	public void communityIncreaseViews(String board,String no) {
 		Statement stmt = null;
 		String query = "";
 		openConnection();
