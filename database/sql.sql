@@ -1,53 +1,57 @@
-create table testdb(
-	a int primary key,
-    b varchar(5)
-);
-select * from testdb;
-
 create table notice(
-	noticeNo int primary key,
-    categoryNo int,
-    title varchar(100),
-    content text,
-     registrationDate timestamp,
-    views int
+	notice_No bigint primary key,
+    notice_title varchar(100) not null,
+    notice_content text not null,
+    notice_views int not null,
+    notice_date timestamp not null
 );
-select * from notice;
-insert into notice values(1,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(2,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(3,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(4,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(5,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(6,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(7,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(8,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(9,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(10,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(11,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(12,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(13,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(14,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(15,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(16,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(17,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(18,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(19,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(20,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(21,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice values(22,1,"테스트","글내용 테스트중입니다",now(),0);
-insert into notice(categoryNo,title,content,registrationDate,views) values(1,"글제목 테스트중입니다","글내용 테스트중입니다",now(),0);
-insert into notice(categoryNo,title,content,registrationDate,views) values(1,"글제목 테스트중입니다","글내용 테스트중입니다",now(),0);
-insert into notice(categoryNo,title,content,registrationDate,views) values(1,"글제목 테스트중입니다","글내용 테스트중입니다",now(),0);
-insert into notice(categoryNo,title,content,registrationDate,views) values(1,"글제목 테스트중입니다","글내용 테스트중입니다",now(),0);
-insert into notice(categoryNo,title,content,registrationDate,views) values(1,"글제목 테스트중입니다","글내용 테스트중입니다",now(),0);
-insert into notice(categoryNo,title,content,registrationDate,views) values(1,"글제목 테스트중입니다","글내용 테스트중입니다",now(),0);
-insert into notice(categoryNo,title,content,registrationDate,views) values(1,"글제목 테스트중입니다","글내용 테스트중입니다",now(),0);
-insert into notice(categoryNo,title,content,registrationDate,views) values(1,"글제목 테스트중입니다","글내용 테스트중입니다",now(),0);
-insert into notice(categoryNo,title,content,registrationDate,views) values(1,"글제목 테스트중입니다","글내용 테스트중입니다",now(),0);
-insert into notice(categoryNo,title,content,registrationDate,views) values(1,"글제목 테스트중입니다","글내용 테스트중입니다",now(),0);
+create table faq(
+	faq_no bigint primary key,
+    faq_title varchar(100) not null,
+    notice_content text not null,
+    iqc_no int
+);
 
+insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
+insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
+insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
+insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
+insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
+insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
+insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
+insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
+
+insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
+insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
+insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
+insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
+insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
+insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
+insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
+insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
+insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
+insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
+
+
+select * from notice where notice_No=73;
 select * from notice;
-desc notice;
-delete from notice where views=0;
-drop table notice;
-select * from notice where title like "%트중%";
+update notice set notice_views=notice_views+1 where notice_No=1;
+select * from faq;
+select * from notice where notice_title like '%%';
+select * from notice where notice_title like '%%';
+
+create table qna(
+	qna_no bigint primary key,
+    notice_title varchar(100) not null,
+    notice_content text not null,
+    notice_views int not null,
+    notice_date timestamp not null
+);
+
+create table customer(
+	customer_no bigint primary key,
+    customer_id varchar(20) not null,
+    customer_pw varchar(20) not null,
+    customer_name varchar(20) not null,
+    customer_tel varchar(20)
+);
