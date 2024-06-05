@@ -10,7 +10,7 @@
 <link href="css/style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>section{
-		background-color: #ffEB5A;
+		
 	}
 	main>section:first-child{
 		width: 100%; height: 360px;
