@@ -38,7 +38,8 @@
 			}
 		});
 	});
-
+	
+	//ID중복체크함수
 	$(function(){
 		$('#registerId').on('focusout',function(){
 			let id = document.getElementById("registerId");
@@ -46,18 +47,23 @@
 		});
 	});
 	
+	//ID중복체크 팝업용함수1
 	function idchk0(){
 		let registerIdChkText = document.getElementById("registerIdChkText");
+		registerIdChkText.innerHTML = '<span> 중복된 ID입니다.</span>'
 		idchk=0;
 	}
 	
+	//ID중복체크 팝업용함수2
 	function idchk1(){
+		let registerIdChkText = document.getElementById("registerIdChkText");
+		registerIdChkText.innerHTML = '<span></span>'
 		idchk=1;
 	}
 	
+	//ID중복시 가입 막는 함수
 	function checkForm(){
 		if(idchk==0){
-			alert("중복된 id입니다");
 			return false;
 		}
 	}
@@ -90,6 +96,7 @@
 			<article>
 				<form id="registerForm" action="register.do" method="post" onsubmit="return checkForm()">
 					아이디 : <input type="text" id="registerId" name="id" required="required"><br>
+					<div id="registerIdChkText"></div>
 					비밀번호 : <input id="registerPwd" type="password" name="password" required="required">
 							<button type="button" onclick="registerTextPwdToggle('registerPwd')">test</button><br>
 					비밀번호 확인 : <input id="registerPwdVerify" type="password" name="passwordVerify" required="required">
