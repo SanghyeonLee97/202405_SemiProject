@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DTO.CustomerDTO;
 import model.CommandProsessor;
 import model.FAQRead;
 import model.NoticeRead;
@@ -47,7 +48,16 @@ public class Command extends HttpServlet{
 		String view = null;
 		
 		if("/member/register.do".equals(servletPath)) {
-			processor = new Register();
+			CustomerDTO customer = new CustomerDTO();
+			customer.setCustomer_id(req.getParameter("id"));
+			customer.setCustomer_pw(req.getParameter("password"));
+			customer.setCustomer_name(req.getParameter("name"));
+			customer.setCustomer_tel(req.getParameter("tel"));
+			customer.setCustomer_email(req.getParameter("email"));
+			customer.setPostal_code(req.getParameter("postcode"));
+			customer.setAddress_road(req.getParameter("roadAddress"));
+			customer.setAddress_detail(req.getParameter("detailAddress"));
+			processor = new Register(customer);
 		}
 		view=processor.process(req,resp);
 		

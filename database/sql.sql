@@ -50,8 +50,8 @@ create table qna(
 
 create table customer(
 	customer_no bigint primary key,
-    notice_title varchar(100) not null,
-    notice_content text not null,
-    notice_views int not null,
-    notice_date timestamp not null
+    customer_id varchar(20) not null,
+    customer_pw varchar(20) not null,
+    customer_name varchar(20) not null,
+    customer_tel varchar(20)
 );

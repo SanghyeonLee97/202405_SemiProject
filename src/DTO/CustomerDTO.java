@@ -2,13 +2,13 @@ package DTO;
 
 import java.sql.Date;
 
-public class Customer {
+public class CustomerDTO {
 	int customer_no;
 	String customer_id;
 	String customer_pw;
 	String customer_name;
 	String customer_tel;
-	int postal_code;
+	String postal_code;
 	String address_road;
 	String address_detail;
 	int admin;
@@ -46,10 +46,10 @@ public class Customer {
 	public void setCustomer_tel(String customer_tel) {
 		this.customer_tel = customer_tel;
 	}
-	public int getPostal_code() {
+	public String getPostal_code() {
 		return postal_code;
 	}
-	public void setPostal_code(int postal_code) {
+	public void setPostal_code(String postal_code) {
 		this.postal_code = postal_code;
 	}
 	public String getAddress_road() {
