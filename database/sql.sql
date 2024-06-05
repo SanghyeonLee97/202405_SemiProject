@@ -53,5 +53,16 @@ create table customer(
     customer_id varchar(20) not null,
     customer_pw varchar(20) not null,
     customer_name varchar(20) not null,
-    customer_tel varchar(20)
+    customer_tel varchar(20),
+    postal_code varchar(20),
+    address_road varchar(20),
+    address_detail varchar(20),
+    adminchk int,
+    customer_email varchar(45),
+    reg_date date,
+    quit_date date
 );
+desc customer;
+select * from customer;
+select customer_id from customer where customer_id='tldn0631';
+insert into customer(customer_id,customer_pw,customer_name,customer_tel,postal_code,address_road,address_detail,customer_email,reg_date) values('test','1324','홍길동','010-1111-2222','02233','서울시 구로구','코오롱','test@test.com',now());
