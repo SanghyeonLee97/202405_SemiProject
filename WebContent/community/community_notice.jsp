@@ -92,7 +92,7 @@
 					<tr>
 						<td><%=noticeArr.get(i).getNoticeNo() %></td>
 						<td id="title" 
-						onclick="location.href='/projectdengdeng/community/community_notice_read.jsp?noticeNo=<%=noticeArr.get(i).getNoticeNo() %>'">
+						onclick="location.href='notice.do?no=<%=noticeArr.get(i).getNoticeNo() %>'">
 						<%=noticeArr.get(i).getNoticeTitle() %></td>
 						<td><%=noticeArr.get(i).getNoticeDate() %></td>
 						<td><%=noticeArr.get(i).getNoticeViews() %></td>

@@ -37,6 +37,23 @@ public class CommunityDAO extends DAO{
 		}
 		return res;
 	}
+	
+	//notice 조회수 상승
+	public void noticeIncreaseViews(String no) {
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "update notice set notice_views=notice_views+1 where notice_No="+no+";";
+			stmt = (Statement) conn.createStatement();
+			stmt.executeUpdate(query);
+			System.out.println(query);
+		}catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			closeConnection();
+		}
+	}
 
 	//FAQ검색
 	public ArrayList<CommunityFAQDTO> getFAQList(String select,String search) {
@@ -63,4 +80,6 @@ public class CommunityDAO extends DAO{
 		}
 		return res;
 	}
+	
+	
 }
