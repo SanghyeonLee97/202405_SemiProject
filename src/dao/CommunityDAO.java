@@ -104,5 +104,28 @@ public class CommunityDAO extends DAO{
 		return res;
 	}
 	
+	//FAQ 특정글 검색
+		public CommunityFAQDTO getFAQPost(String no) {
+			CommunityFAQDTO res = new CommunityFAQDTO();
+			Statement stmt = null;
+			String query = "";
+			openConnection();
+			try {
+				query = "select * from faq where faq_no="+no+";";
+				stmt = (Statement) conn.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
+				
+				while(rs.next()) {
+					res.setFaqTitle(rs.getString("faq_title"));
+					res.setFaqContent(rs.getString("faq_content"));
+				}
+			}catch (Exception e) {
+				// TODO: handle exception
+			}finally {
+				closeConnection();
+			}
+			return res;
+		}
+	
 	
 }

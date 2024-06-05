@@ -20,9 +20,9 @@ public class NoticeRead implements CommandProsessor{
 		//조회수상승
 		cdao.communityIncreaseViews(communityBoard,communityNoticeNo);
 		//글제목,내용 객체생성
-		CommunityNoticeDTO ndto=cdao.getNoticePost(communityNoticeNo);
+		CommunityNoticeDTO cndto=cdao.getNoticePost(communityNoticeNo);
 		
-		req.setAttribute("read", ndto);
+		req.setAttribute("read", cndto);
 		return "/community/community_notice_read.jsp";
 	}
 

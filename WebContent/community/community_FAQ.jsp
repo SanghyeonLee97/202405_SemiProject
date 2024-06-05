@@ -92,7 +92,7 @@
 						<td><%=FAQArr.get(i).getFaqNo() %></td>
 						<td><%=FAQArr.get(i).getFaqIQCNo() %></td>
 						<td id="title" 
-						onclick="location.href='/projectdengdeng/community/community_FAQ_read.jsp?FAQNo=<%=FAQArr.get(i).getFaqNo() %>'">
+						onclick="location.href='FAQ.do?no=<%=FAQArr.get(i).getFaqNo() %>'">
 						<%=FAQArr.get(i).getFaqTitle() %></td>
 					</tr>
 					<%} %>

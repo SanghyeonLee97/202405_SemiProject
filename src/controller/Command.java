@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.CommandProsessor;
+import model.FAQRead;
 import model.NoticeRead;
 
 @WebServlet("*.do")
@@ -26,6 +27,9 @@ public class Command extends HttpServlet{
 		
 		if("/community/notice.do".equals(servletPath)) {
 			processor = new NoticeRead(req.getParameter("no"),req.getParameter("board"));
+		}else if("/community/FAQ.do".equals(servletPath)) {
+			processor = new FAQRead(req.getParameter("no"));
+			System.out.println("왔나?");
 		}
 		view=processor.process(req,resp);
 		
