@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
+<script src="js/bootstrap.bundle.min.js"></script>
 <link href="css/style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>section{
-		background-color: #ffEB5A;
+		
 	}
 	main>section:first-child{
 		width: 100%; height: 360px;
@@ -42,7 +44,43 @@
 </head>
 <body>
 	<main>
-		<section>section</section>
+		<section>
+			<div>
+				<div id="carouselExampleCaptions" class="carousel slide">
+			      <div class="carousel-indicators">
+			        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+			        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+			        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+			      </div>
+			      <div class="carousel-inner">
+			        <div class="carousel-item active">
+			          <img src="imagefile/배너1.jpg" class="d-block w-100" height="330px" width="100%">
+			          <div class="carousel-caption d-none d-md-block">
+			          </div>
+			        </div>
+			        <div class="carousel-item">
+			         <img src="imagefile/배너2.jpg" class="d-block w-100" height="330px" width="100%" >
+			          <div class="carousel-caption d-none d-md-block">
+			          </div>
+			        </div>
+			        <div class="carousel-item">
+			         <img src="imagefile/배너3.jpg" class="d-block w-100" height="330px" width="100%" >
+			          <div class="carousel-caption d-none d-md-block">
+			          </div>
+			        </div>
+			      </div>
+			      
+			      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+			        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			        <span class="visually-hidden">Previous</span>
+			      </button>
+			      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+			        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			        <span class="visually-hidden">Next</span>
+			      </button>
+    			</div>
+			</div>
+		</section>
 		<section>
 			<article>
 			<h3>사료추천</h3>
