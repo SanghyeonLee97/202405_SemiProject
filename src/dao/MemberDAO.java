@@ -6,16 +6,19 @@ import DTO.CustomerDTO;
 
 public class MemberDAO extends DAO{
 	//조회수 상승
-		public void communityIncreaseViews(CustomerDTO cdto) {
+		public void customerRegister(CustomerDTO cdto) {
 			Statement stmt = null;
 			String query = "";
 			openConnection();
 			try {
-				query = "insert into customer(customer_id,customer_pw,customer_name,customer_tel,postal_code,address_road,address_detail,customer_email,reg_date)"
-						+" values('test','1324','홍길동','010-1111-2222','02233','서울시 구로구','코오롱','test@test.com',now());";
+				query = "insert into customer(customer_id,customer_pw,customer_name,customer_tel,"+
+						"postal_code,address_road,address_detail,customer_email,reg_date)"+
+						" values('"+cdto.getCustomer_id()+"','"+cdto.getCustomer_pw()+"','"+cdto.getCustomer_name()+
+						"','"+cdto.getCustomer_tel()+"','"+cdto.getPostal_code()+"','"+cdto.getAddress_road()+
+						"','"+cdto.getAddress_detail()+"','"+cdto.getCustomer_email()+"',now());";
 				stmt = (Statement) conn.createStatement();
 				stmt.executeUpdate(query);
-				
+				System.out.println(query);
 			}catch (Exception e) {
 				// TODO: handle exception
 			}finally {
