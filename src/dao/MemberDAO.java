@@ -12,7 +12,7 @@ public class MemberDAO extends DAO{
 			openConnection();
 			try {
 				query = "insert into customer(customer_id,customer_pw,customer_name,customer_tel,postal_code,address_road,address_detail,customer_email,reg_date)"
-						+ values('test','1324','홍길동','010-1111-2222','02233','서울시 구로구','코오롱','test@test.com',now());";
+						+" values('test','1324','홍길동','010-1111-2222','02233','서울시 구로구','코오롱','test@test.com',now());";
 				stmt = (Statement) conn.createStatement();
 				stmt.executeUpdate(query);
 				
