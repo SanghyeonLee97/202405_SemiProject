@@ -27,7 +27,7 @@ public class MemberDAO extends DAO{
 		}
 	}
 	
-	public boolean test(String id) {
+	public boolean customerIdChk(String id) {
 		Statement stmt = null;
 		String query = "";
 		openConnection();

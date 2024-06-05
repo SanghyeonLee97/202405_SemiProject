@@ -14,7 +14,7 @@ public class Idchk implements CommandProsessor{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		MemberDAO mdao = new MemberDAO();
-		req.setAttribute("YN", mdao.test(registerId));
+		req.setAttribute("YN", mdao.customerIdChk(registerId));
 		return "/member/idchk.jsp";
 	}
 
