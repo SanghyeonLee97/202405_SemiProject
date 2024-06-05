@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.CommandProsessor;
-import model.NoticeIncreaseViews;
+import model.NoticeRead;
 
 @WebServlet("*.do")
 public class Command extends HttpServlet{
@@ -25,8 +25,7 @@ public class Command extends HttpServlet{
 		
 		
 		if("/community/notice.do".equals(servletPath)) {
-			processor = new NoticeIncreaseViews(req.getParameter("no"),req.getParameter("board"));
-			System.out.println(req.getParameter("board"));
+			processor = new NoticeRead(req.getParameter("no"),req.getParameter("board"));
 		}
 		view=processor.process(req,resp);
 		

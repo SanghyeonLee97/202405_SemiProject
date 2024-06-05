@@ -38,6 +38,29 @@ public class CommunityDAO extends DAO{
 		return res;
 	}
 	
+	//notice 특정글 검색
+	public CommunityNoticeDTO getNoticePost(String no) {
+		CommunityNoticeDTO res = new CommunityNoticeDTO();
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "select * from notice where notice_No="+no+";";
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while(rs.next()) {
+				res.setNoticeTitle(rs.getString("notice_title"));
+				res.setNoticeContent(rs.getString("notice_content"));
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
 	//조회수 상승
 	public void communityIncreaseViews(String board,String no) {
 		Statement stmt = null;
@@ -47,7 +70,7 @@ public class CommunityDAO extends DAO{
 			query = "update notice set "+board+"_views="+board+"_views+1 where notice_No="+no+";";
 			stmt = (Statement) conn.createStatement();
 			stmt.executeUpdate(query);
-			System.out.println(query);
+			
 		}catch (Exception e) {
 			// TODO: handle exception
 		}finally {
