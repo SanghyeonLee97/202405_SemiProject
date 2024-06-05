@@ -13,6 +13,7 @@ import DTO.CustomerDTO;
 import model.CommandProsessor;
 import model.FAQRead;
 import model.Idchk;
+import model.Login;
 import model.NoticeRead;
 import model.Register;
 
@@ -60,6 +61,8 @@ public class Command extends HttpServlet{
 			customer.setAddress_road(req.getParameter("roadAddress"));
 			customer.setAddress_detail(req.getParameter("detailAddress"));
 			processor = new Register(customer);
+		}else if(servletPath.equals("/member/login.do")) {
+			processor = new Login();
 		}
 		view=processor.process(req,resp);
 		

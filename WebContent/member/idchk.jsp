@@ -5,8 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+		let YN = <%=request.getAttribute("YN") %>;
+		if(YN==true){
+			opener.parent.idchk0();
+
+		}else{
+			opener.parent.idchk1();
+		}
+		window.close()
+</script>
 </head>
 <body>
-	<h1>왔음</h1>
+	
 </body>
 </html>

@@ -15,7 +15,7 @@ public class Idchk implements CommandProsessor{
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		MemberDAO mdao = new MemberDAO();
 		req.setAttribute("YN", mdao.test(registerId));
-		return "/member/test.jsp";
+		return "/member/idchk.jsp";
 	}
 
 }
