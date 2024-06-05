@@ -8,7 +8,8 @@
 <script type="text/javascript" src="../js/jquery-3.7.1.js"></script>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-
+	let idchk=0;
+	
 	//input의 타입을 토글하는 함수 (password<-->text)
 	function registerTextPwdToggle(registerPwdId) {
 		let registerPwdId2 = document.getElementById(registerPwdId);
@@ -37,6 +38,29 @@
 			}
 		});
 	});
+
+	$(function(){
+		$('#registerId').on('focusout',function(){
+			let id = document.getElementById("registerId");
+			window.open("idchk.do?id="+id.value, "_blank", "width=1, height=1, top=100000, left=100000");
+		});
+	});
+	
+	function idchk0(){
+		let registerIdChkText = document.getElementById("registerIdChkText");
+		idchk=0;
+	}
+	
+	function idchk1(){
+		idchk=1;
+	}
+	
+	function checkForm(){
+		if(idchk==0){
+			alert("중복된 id입니다");
+			return false;
+		}
+	}
 </script>
 <style type="text/css">
 	main>section{
@@ -64,8 +88,8 @@
 				<h1>회원가입</h1>
 			</header>
 			<article>
-				<form id="registerForm"action="register.do" method="post">
-					아이디 : <input type="text" name="id" required="required"><br>
+				<form id="registerForm" action="register.do" method="post" onsubmit="return checkForm()">
+					아이디 : <input type="text" id="registerId" name="id" required="required"><br>
 					비밀번호 : <input id="registerPwd" type="password" name="password" required="required">
 							<button type="button" onclick="registerTextPwdToggle('registerPwd')">test</button><br>
 					비밀번호 확인 : <input id="registerPwdVerify" type="password" name="passwordVerify" required="required">

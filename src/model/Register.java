@@ -21,7 +21,7 @@ public class Register implements CommandProsessor{
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		MemberDAO mdao = new MemberDAO();
 		mdao.customerRegister(cdto);
-		return "/member/test.jsp";
+		return "/member/register_success.jsp";
 	}
 
 }

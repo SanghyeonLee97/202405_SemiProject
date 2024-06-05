@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import DTO.CustomerDTO;
 import model.CommandProsessor;
 import model.FAQRead;
+import model.Idchk;
 import model.NoticeRead;
 import model.Register;
 
@@ -26,11 +27,12 @@ public class Command extends HttpServlet{
 		CommandProsessor processor = null;		
 		String view = null;
 		
-		
-		if("/community/notice.do".equals(servletPath)) {
+		if(servletPath.equals("/community/notice.do")) {
 			processor = new NoticeRead(req.getParameter("no"),req.getParameter("board"));
-		}else if("/community/FAQ.do".equals(servletPath)) {
+		}else if(servletPath.equals("/community/FAQ.do")) {
 			processor = new FAQRead(req.getParameter("no"));
+		}else if(servletPath.equals("/member/idchk.do")) {
+			processor = new Idchk(req.getParameter("id"));
 		}
 		view=processor.process(req,resp);
 		
