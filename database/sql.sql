@@ -33,9 +33,25 @@ insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입�
 insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
 
 
-
+select * from notice where notice_No=73;
 select * from notice;
-update notice set 
+update notice set notice_views=notice_views+1 where notice_No=1;
 select * from faq;
 select * from notice where notice_title like '%%';
 select * from notice where notice_title like '%%';
+
+create table qna(
+	qna_no bigint primary key,
+    notice_title varchar(100) not null,
+    notice_content text not null,
+    notice_views int not null,
+    notice_date timestamp not null
+);
+
+create table customer(
+	customer_no bigint primary key,
+    notice_title varchar(100) not null,
+    notice_content text not null,
+    notice_views int not null,
+    notice_date timestamp not null
+);
