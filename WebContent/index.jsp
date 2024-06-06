@@ -7,7 +7,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
 <script src="js/bootstrap.bundle.min.js"></script>
-<link href="css/style2.css" rel="stylesheet" type="text/css">
+<link href="css/style2.css?after" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>section{
 		
@@ -16,13 +16,12 @@
 		width: 100%; height: 360px;
 	}
 	main>section:last-child{
-		margin-top: 40px;
+		margin-top: 20px;
 	}
 	main>section>article{
 		width: 100%; height: 250px;
 		margin-top: 20px;	
 		padding : 0px;
-		background-color:  #ffffb1;
 		position: relative;
 		text-align: center;
 		
@@ -32,7 +31,6 @@
 	}
 	main>section>article>div{
 		width:150px; height: 150px; 
-		background-color: #ddffdd;
 		display:inline-block;
 		position: relative;
 		margin-right:100px;
@@ -83,14 +81,14 @@
 		</section>
 		<section>
 			<article>
-			<h3>사료추천</h3>
+			<h4>사료추천</h4>
 					<div><img src="imagefile/image1.png" width="150px" height="150px" ><a href="">프리미엄사료<br>50900원</a></div>
 					<div><img src="imagefile/image3.png" width="150px" height="150px"><a href="">어덜트사료<br>32000원</a></div>
 					<div><img src="imagefile/image4.png" width="150px" height="150px"><a href="">소프트사료<br>20900원</a></div>
 					<div style="margin-right: 0"><img src="imagefile/image5.png" width="150px" height="150px"><a href="">소프트사료<br>20900원</a></div>
 			</article>
 			<article>
-			<h3>간식추천</h3>
+			<h4>간식추천</h4>
 				<div><img src="imagefile/image6.png" width="150px" height="150px"><a href="">간식<br>8000원</a></div>
 				<div><img src="imagefile/image7.png" width="150px" height="150px"><a href="">간식<br>8000원</a></div>
 				<div><img src="imagefile/image8.png" width="150px" height="150px"><a href="">간식<br>5900원</a></div>
@@ -98,7 +96,7 @@
 				
 			</article>
 			<article>
-			<h3>장난감추천</h3>
+			<h4>장난감추천</h4>
 				<div><img src="imagefile/image12.png" width="150px" height="150px"><a href="">장난감인형<br>8900원</a></div>
 				<div><img src="imagefile/image14.png" width="150px" height="150px"><a href="">장난감인형<br>8900원</a></div>
 				<div><img src="imagefile/image16.png" width="150px" height="150px"><a href="">나무장난감<br>20900원</a></div>

@@ -8,15 +8,14 @@ body{
 body>main{
 	margin-top: 20px;
 	width: 100%;
-	background-color: ghostwhite;
+
 }
 
 body>header{
 	width: 100%; height: 120px;
-	background-color: #ffdddd;
+
 }
 body>footer{
 	width: 100%; height: 220px;
-	background-color: #ffdddd;
 	margin-top: 20px;
 }
