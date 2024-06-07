@@ -27,6 +27,22 @@
 		border: 1px solid lightgray;
 	}
 </style>
+<script type="text/javascript">
+	function QNAwrite() {
+		<%
+			if(session.getAttribute("id")==null){
+		%>
+		alert("로그인이 필요합니다");
+		location.href="/projectdengdeng/member/login.jsp";
+		<%
+			}else{
+		%>
+		location.href="/projectdengdeng/community/community_QNA_write.jsp";
+		<%
+			}
+		%>
+	}
+</script>
 </head>
 <body>
 	<%
@@ -51,25 +67,25 @@
 		QNAArr=dao.getQNAList(communitySelect,communitySearch);	//검색실행
 		
 		//현재페이지 위치 변수
-		int FAQIndex=1;	//기본 페이지 위치는 1
+		int QNAIndex=1;	//기본 페이지 위치는 1
 		if(request.getParameter("index")!=null){	//index파라미터가 있을시
-			FAQIndex=Integer.parseInt(request.getParameter("index"));	//현재페이지 변수를 index파라미터로
+			QNAIndex=Integer.parseInt(request.getParameter("index"));	//현재페이지 변수를 index파라미터로
 		}
 		
 		//총 페이지 개수
 		int communityPage=(QNAArr.size()-1)/10+1;
 		
 		//현재페이지 게시판의 첫번째글의 ArrayList번호
-		int FAQBoardFirstNo=QNAArr.size()-(10*(FAQIndex-1))-1;
+		int QNABoardFirstNo=QNAArr.size()-(10*(QNAIndex-1))-1;
 		
 		//현재페이지 게시판의 마지막글의 ArrayList번호
-		int FAQBoardLastNo=FAQBoardFirstNo-9;
+		int QNABoardLastNo=QNABoardFirstNo-9;
 		
 		//게시판에 출력될 글의 개수
-		int FAQBoardPosts = 10;
-		if(FAQIndex==communityPage){	//현재페이지가 총페이지랑 같을때
-			FAQBoardPosts=(QNAArr.size()-1)%10;
-			FAQBoardLastNo=FAQBoardFirstNo-FAQBoardPosts;
+		int QNABoardPosts = 10;
+		if(QNAIndex==communityPage){	//현재페이지가 총페이지랑 같을때
+			QNABoardPosts=(QNAArr.size()-1)%10;
+			QNABoardLastNo=QNABoardFirstNo-QNABoardPosts;
 		}
 	%>
 	<main>
@@ -89,7 +105,7 @@
 						<td>답변여부</td>
 					</tr>
 					<%
-						for(int i=FAQBoardFirstNo;i>=FAQBoardLastNo;i--){	//첫번째글 번호부터 마지막글 번호까지 반복
+						for(int i=QNABoardFirstNo;i>=QNABoardLastNo;i--){	//첫번째글 번호부터 마지막글 번호까지 반복
 					%>
 					<tr>
 						<td><%=QNAArr.get(i).getQna_no() %></td>
@@ -115,6 +131,7 @@
 			<nav>
 				<button onclick="location.href='/projectdengdeng/product/product_list_page.jsp'">쇼핑하기</button>
 				<%@ include file="main_section_nav.jsp" %>
+				<button type="button" onclick="QNAwrite()">글쓰기</button>
 			</nav>
 		</section>
 	</main>

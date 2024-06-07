@@ -28,6 +28,5 @@
 		</section>
 		
 	</main>
-
 </body>
 </html>

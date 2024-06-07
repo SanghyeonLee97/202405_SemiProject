@@ -8,17 +8,15 @@ import dao.CommunityDAO;
 
 public class NoticeRead implements CommandProsessor{
 	String communityNoticeNo;
-	String communityBoard;
 	
 	public NoticeRead(String communityNoticeNo,String communityBoard) {
 		this.communityNoticeNo=communityNoticeNo;
-		this.communityBoard=communityBoard;
 	}
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		CommunityDAO cdao = new CommunityDAO();
 		//조회수상승
-		cdao.communityIncreaseViews(communityBoard,communityNoticeNo);
+		cdao.communityIncreaseViews(communityNoticeNo);
 		//글제목,내용 객체생성
 		CommunityNoticeDTO cndto=cdao.getNoticePost(communityNoticeNo);
 		

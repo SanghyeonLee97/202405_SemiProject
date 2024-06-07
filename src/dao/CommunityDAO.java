@@ -63,12 +63,12 @@ public class CommunityDAO extends DAO{
 	}
 	
 	//조회수 상승
-	public void communityIncreaseViews(String board,String no) {
+	public void communityIncreaseViews(String no) {
 		Statement stmt = null;
 		String query = "";
 		openConnection();
 		try {
-			query = "update notice set "+board+"_views="+board+"_views+1 where notice_No="+no+";";
+			query = "update notice set notice_views=notice_views+1 where notice_No="+no+";";
 			stmt = (Statement) conn.createStatement();
 			stmt.executeUpdate(query);
 			
@@ -135,7 +135,9 @@ public class CommunityDAO extends DAO{
 		String query = "";
 		openConnection();
 		try {
-			query = "select qna.qna_no,qna.qna_title,qna.qna_date,qna.qna_answer,customer.customer_id,qna.iqc_no from qna inner join customer on qna.customer_no=customer.customer_no where "+select+" like '%"+search+"%';";
+			query = "select qna.qna_no,qna.qna_title,qna.qna_date,qna.qna_answer,customer.customer_id,qna.iqc_no "+
+					"from qna inner join customer on qna.customer_no=customer.customer_no "+
+					"where "+select+" like '%"+search+"%';";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
@@ -150,6 +152,34 @@ public class CommunityDAO extends DAO{
 			}
 		}catch (Exception e) {
 			System.out.println("QNA 검색 오류발생");
+		}finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
+	//QNA 특정글 검색
+	public CommunityQNADTO getQNAPost(String no) {
+		CommunityQNADTO res = new CommunityQNADTO();
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "select qna.qna_title,qna.qna_content,qna.qna_date,qna.qna_answer,customer.customer_id "+
+					"from qna inner join customer on qna.customer_no=customer.customer_no "+
+					"where qna_no="+no+";";
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+					
+			while(rs.next()) {
+				res.setQna_title(rs.getString("qna_title"));
+				res.setQna_content(rs.getString("qna_content"));
+				res.setQna_date(rs.getTimestamp("qna_date"));
+				res.setCustomer_id(rs.getString("customer_id"));
+				res.setQna_answer(rs.getString("qna_answer"));
+			}
+		}catch (Exception e) {
+			System.out.println("QNA 특정글 검색 오류발생");
 		}finally {
 			closeConnection();
 		}

@@ -16,6 +16,7 @@ import model.IdChk;
 import model.LoginChk;
 import model.Logout;
 import model.NoticeRead;
+import model.QNARead;
 import model.Register;
 
 @WebServlet("*.do")
@@ -37,7 +38,7 @@ public class Command extends HttpServlet{
 		}else if(servletPath.contains("/logout.do")) {
 			processor = new Logout();
 		}else if(servletPath.equals("/community/QNA.do")) {
-			System.out.println("왔나?");
+			processor = new QNARead(req.getParameter("no"));
 		}
 		view=processor.process(req,resp);
 		
@@ -65,7 +66,7 @@ public class Command extends HttpServlet{
 			customer.setAddress_road(req.getParameter("roadAddress"));
 			customer.setAddress_detail(req.getParameter("detailAddress"));
 			processor = new Register(customer);
-		}else if(servletPath.equals("/member/login.do")) {
+		}else if(servletPath.contains("/login.do")) {
 			processor = new LoginChk(req.getParameter("id"),req.getParameter("password"));
 		}
 		view=processor.process(req,resp);

@@ -5,10 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="../css/style2.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function test() {
 		alert("아이디나 비밀번호를 확인해주세요");
-		location.href="login.jsp";
+		location.href="/projectdengdeng/member/login.jsp";
 	}
 </script>
 </head>
