@@ -52,8 +52,12 @@ window.onload = function () {
 		background-color: #f7f7f7;
 	}
 	
+	form{
+		text-align: center;
+	}
+	
 	ul>li{
-		list-style: none;
+		list-style: none;
 	}
 	
 	a{
