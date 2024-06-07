@@ -94,7 +94,9 @@
 					<tr>
 						<td><%=QNAArr.get(i).getQna_no() %></td>
 						<td><%=QNAArr.get(i).getIqc_no() %></td>
-						<td><%=QNAArr.get(i).getQna_title() %></td>
+						<td id="title" 
+						onclick="location.href='QNA.do?no=<%=QNAArr.get(i).getQna_no() %>'">
+						<%=QNAArr.get(i).getQna_title() %></td>
 						<td><%=QNAArr.get(i).getQna_date() %></td>
 						<td><%=QNAArr.get(i).getCustomer_id() %></td>
 						<td>

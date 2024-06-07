@@ -36,6 +36,8 @@ public class Command extends HttpServlet{
 			processor = new IdChk(req.getParameter("id"));
 		}else if(servletPath.contains("/logout.do")) {
 			processor = new Logout();
+		}else if(servletPath.equals("/community/QNA.do")) {
+			System.out.println("왔나?");
 		}
 		view=processor.process(req,resp);
 		
