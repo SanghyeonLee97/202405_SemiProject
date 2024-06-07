@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DTO.CommunityNoticeDTO;
 import DTO.CommunityQNADTO;
 import DTO.CustomerDTO;
 import model.CommandProsessor;
@@ -18,6 +19,7 @@ import model.IdChk;
 import model.LoginChk;
 import model.Logout;
 import model.NoticeRead;
+import model.NoticeWrite;
 import model.QNARead;
 import model.QNAWrite;
 import model.Register;
@@ -31,7 +33,7 @@ public class Command extends HttpServlet{
 		String servletPath = req.getServletPath();
 		CommandProsessor processor = null;		
 		String view = null;
-		
+		System.out.println(servletPath);
 		if(servletPath.equals("/community/notice.do")) {
 			processor = new NoticeRead(req.getParameter("no"),req.getParameter("board"));
 		}else if(servletPath.equals("/community/FAQ.do")) {
@@ -48,6 +50,11 @@ public class Command extends HttpServlet{
 			cqdto.setQna_content(req.getParameter("content"));
 			cqdto.setIqc_no(Integer.parseInt(req.getParameter("category")));
 			processor = new QNAWrite(cqdto);
+		}else if(servletPath.equals("/noticeWrite.do")) {
+			CommunityNoticeDTO cndto = new CommunityNoticeDTO();
+			cndto.setNoticeTitle(req.getParameter("noticeTitle"));
+			cndto.setNoticeContent(req.getParameter("noticeContent"));
+			processor = new NoticeWrite(cndto);
 		}
 		view=processor.process(req,resp);
 		

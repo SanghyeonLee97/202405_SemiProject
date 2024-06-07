@@ -12,6 +12,23 @@ import DTO.CommunityQNADTO;
 
 public class CommunityDAO extends DAO{
 	
+	//notice 등록
+		public void noticeWrite(CommunityNoticeDTO cndto) {
+			Statement stmt = null;
+			String query = "";
+			openConnection();
+			try {
+				query = "insert into notice(notice_title,notice_content,notice_views,notice_date) "+
+						"values('"+cndto.getNoticeTitle()+"','"+cndto.getNoticeContent()+"',0,now());";
+				stmt = (Statement) conn.createStatement();
+				stmt.executeUpdate(query);
+			}catch (Exception e) {
+				System.out.println("notice 등록 오류발생");
+			}finally {
+				closeConnection();
+			}
+		}
+	
 	//notice 검색
 	public ArrayList<CommunityNoticeDTO> getNoticeList(String select,String search) {
 		ArrayList<CommunityNoticeDTO> res = new ArrayList<CommunityNoticeDTO>();
@@ -225,4 +242,6 @@ public class CommunityDAO extends DAO{
 			closeConnection();
 		}
 	}
+	
+	
 }
