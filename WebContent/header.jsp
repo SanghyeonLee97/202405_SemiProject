@@ -56,11 +56,8 @@
 				<a href="/projectdengdeng/mypage/mypage_main.jsp" style="color: black;">
 					<img src="/projectdengdeng/imagefile/login2.png">마이페이지
 				</a>
-<<<<<<< HEAD
 				로그아웃
-=======
 				<a href="logout.do">로그아웃</a>
->>>>>>> 7c653ddca11d66207b1e75b13a90a0d0c5036575
 			</div>
 		<%
 			}
