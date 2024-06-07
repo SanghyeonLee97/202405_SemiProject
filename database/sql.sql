@@ -88,5 +88,6 @@ insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer
 
 select * from qna where qna_no=1;
 select * from customer;
+select customer_no from customer where customer_id='test2';
 
 select qna.qna_no,qna.qna_title,qna.qna_date,qna.qna_answer,customer.customer_no,customer.customer_id,qna.iqc_no from qna inner join customer on qna.customer_no=customer.customer_no where qna_no=1;
