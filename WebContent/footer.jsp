@@ -1,3 +1,4 @@
+<%@page import="dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,14 +18,14 @@
 </style>
 </head>
 <body>
-		<footer>
+	<footer>
 		<nav>
-          	<hr>
-            &nbsp; <a href=''>쇼핑몰소개</a>
-             <a href=''>이용약관</a>
-             <a href=''>개인정보처리방침</a>
-             <a href=''>이용안내</a>
-             <a href=''>제휴문의</a>
+			<hr>
+			&nbsp; <a href=''>쇼핑몰소개</a>
+			<a href=''>이용약관</a>
+			<a href=''>개인정보처리방침</a>
+			<a href=''>이용안내</a>
+			<a href=''>제휴문의</a>
             <hr>
 		</nav>
           <p>

@@ -41,6 +41,17 @@
 </style>
 </head>
 <body>
+	<%
+		MemberDAO mdao = new MemberDAO();
+		if(session.getAttribute("id")!=null){
+			String id = (String)session.getAttribute("id");
+			if(mdao.adminChk(id)==true){
+	%>
+	<a href='/projectdengdeng/admin.jsp'>관리자페이지</a>
+	<%
+			}
+		}
+	%>
 	<main>
 		<section>
 			<div>
