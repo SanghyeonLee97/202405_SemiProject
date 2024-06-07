@@ -58,7 +58,6 @@ public class MemberDAO extends DAO{
 			query = "select * from customer where customer_id='"+id+"' && customer_pw='"+pw+"';";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			System.out.println(query);
 			if(rs.next()) {
 				return true;
 			}else {
