@@ -138,7 +138,6 @@ public class CommunityDAO extends DAO{
 			query = "select qna.qna_no,qna.qna_title,qna.qna_date,qna.qna_answer,customer.customer_id,qna.iqc_no from qna inner join customer on qna.customer_no=customer.customer_no where "+select+" like '%"+search+"%';";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			System.out.println(query);
 			while(rs.next()) {
 				CommunityQNADTO cqdto = new CommunityQNADTO();
 				cqdto.setQna_no(rs.getInt("qna_no"));

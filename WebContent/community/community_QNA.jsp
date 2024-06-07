@@ -97,7 +97,15 @@
 						<td><%=QNAArr.get(i).getQna_title() %></td>
 						<td><%=QNAArr.get(i).getQna_date() %></td>
 						<td><%=QNAArr.get(i).getCustomer_id() %></td>
-						<td>답변완료</td>
+						<td>
+							<%
+								if(QNAArr.get(i).getQna_answer()=="" || QNAArr.get(i).getQna_answer()==null){
+							%>
+							미답변
+							<% }else{ %>
+							답변완료
+							<% } %>
+						</td>
 					</tr>
 					<%} %>
 				</table>

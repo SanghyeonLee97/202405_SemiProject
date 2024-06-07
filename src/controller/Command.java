@@ -25,7 +25,6 @@ public class Command extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		String cmd = req.getParameter("cmd");
 		String servletPath = req.getServletPath();
-		System.out.println(servletPath);
 		CommandProsessor processor = null;		
 		String view = null;
 		

@@ -82,6 +82,10 @@ create table qna(
 );
 
 insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer,customer_no,iqc_no) values('글제목 테스트','글내용 테스트','','',now(),'답변 테스트',1,1);
+insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer,customer_no,iqc_no) values('글제목 테스트2','글내용 테스트2','','',now(),'답변 테스트2',2,1);
+insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer,customer_no,iqc_no) values('글제목 테스트3','글내용 테스트3','','',now(),'',3,1);
+insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer,customer_no,iqc_no) values('글제목 테스트4','글내용 테스트4','','',now(),null,4,1);
+
 select * from qna where qna_no=1;
 select * from customer;
 
