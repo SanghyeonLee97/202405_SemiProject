@@ -19,12 +19,11 @@ public class LoginChk implements CommandProsessor{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		MemberDAO mdao = new MemberDAO();
-		HttpSession session = req.getSession();
-		session.removeAttribute("id");
 		if(mdao.customerLoginChk(loginId, loginPassword)==true) {
+			HttpSession session = req.getSession();
 			session.setAttribute("id", loginId);
 		}
-		return "/member/login_success.jsp.jsp";
+		return "/member/login_success.jsp";
 	}
 
 }
