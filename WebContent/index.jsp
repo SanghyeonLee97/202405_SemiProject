@@ -85,14 +85,14 @@
 					<div><img src="/projectdengdeng/imagefile/image1.png" width="150px" height="150px" ><a href="">프리미엄사료<br>50900원</a></div>
 					<div><img src="/projectdengdeng/imagefile/image3.png" width="150px" height="150px"><a href="">어덜트사료<br>32000원</a></div>
 					<div><img src="/projectdengdeng/imagefile/image4.png" width="150px" height="150px"><a href="">소프트사료<br>20900원</a></div>
-					<div style="margin-right: 0"><img src="imagefile/image5.png" width="150px" height="150px"><a href="">소프트사료<br>20900원</a></div>
+					<div style="margin-right: 0"><img src="/projectdengdeng/imagefile/image5.png" width="150px" height="150px"><a href="">소프트사료<br>20900원</a></div>
 			</article>
 			<article>
 			<h4>간식추천</h4>
 				<div><img src="/projectdengdeng/imagefile/image6.png" width="150px" height="150px"><a href="">간식<br>8000원</a></div>
 				<div><img src="/projectdengdeng/imagefile/image7.png" width="150px" height="150px"><a href="">간식<br>8000원</a></div>
 				<div><img src="/projectdengdeng/imagefile/image8.png" width="150px" height="150px"><a href="">간식<br>5900원</a></div>
-				<div style="margin-right: 0"><img src="imagefile/image10.png" width="150px" height="150px"><a href="">간식<br>7900원</a></div>
+				<div style="margin-right: 0"><img src="/projectdengdeng/imagefile/image10.png" width="150px" height="150px"><a href="">간식<br>7900원</a></div>
 				
 			</article>
 			<article>
@@ -100,7 +100,7 @@
 				<div><img src="/projectdengdeng/imagefile/image12.png" width="150px" height="150px"><a href="">장난감인형<br>8900원</a></div>
 				<div><img src="/projectdengdeng/imagefile/image14.png" width="150px" height="150px"><a href="">장난감인형<br>8900원</a></div>
 				<div><img src="/projectdengdeng/imagefile/image16.png" width="150px" height="150px"><a href="">나무장난감<br>20900원</a></div>
-				<div style="margin-right: 0"><img src="imagefile/image20.png" width="150px" height="150px"><a href="">브러쉬<br>9900원</a></div>
+				<div style="margin-right: 0"><img src="/projectdengdeng/imagefile/image20.png" width="150px" height="150px"><a href="">브러쉬<br>9900원</a></div>
 				
 			</article>
 		</section>
