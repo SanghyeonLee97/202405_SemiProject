@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/projectdengdeng/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
 <script src="js/bootstrap.bundle.min.js"></script>
-<link href="css/style2.css?after" rel="stylesheet" type="text/css">
+<link href="/projectdengdeng/css/style2.css?after" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>section{
 		
@@ -52,17 +52,17 @@
 			      </div>
 			      <div class="carousel-inner">
 			        <div class="carousel-item active">
-			          <img src="imagefile/배너1.jpg" class="d-block w-100" height="330px" width="100%">
+			          <img src="/projectdengdeng/imagefile/배너1.jpg" class="d-block w-100" height="330px" width="100%">
 			          <div class="carousel-caption d-none d-md-block">
 			          </div>
 			        </div>
 			        <div class="carousel-item">
-			         <img src="imagefile/배너2.jpg" class="d-block w-100" height="330px" width="100%" >
+			         <img src="/projectdengdeng/imagefile/배너2.jpg" class="d-block w-100" height="330px" width="100%" >
 			          <div class="carousel-caption d-none d-md-block">
 			          </div>
 			        </div>
 			        <div class="carousel-item">
-			         <img src="imagefile/배너3.jpg" class="d-block w-100" height="330px" width="100%" >
+			         <img src="/projectdengdeng/imagefile/배너3.jpg" class="d-block w-100" height="330px" width="100%" >
 			          <div class="carousel-caption d-none d-md-block">
 			          </div>
 			        </div>

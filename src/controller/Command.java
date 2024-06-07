@@ -14,6 +14,7 @@ import model.CommandProsessor;
 import model.FAQRead;
 import model.IdChk;
 import model.LoginChk;
+import model.Logout;
 import model.NoticeRead;
 import model.Register;
 
@@ -24,7 +25,7 @@ public class Command extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		String cmd = req.getParameter("cmd");
 		String servletPath = req.getServletPath();
-		
+		System.out.println(servletPath);
 		CommandProsessor processor = null;		
 		String view = null;
 		
@@ -34,6 +35,8 @@ public class Command extends HttpServlet{
 			processor = new FAQRead(req.getParameter("no"));
 		}else if(servletPath.equals("/member/idchk.do")) {	//회원가입 중복체크
 			processor = new IdChk(req.getParameter("id"));
+		}else if(servletPath.contains("/logout.do")) {
+			processor = new Logout();
 		}
 		view=processor.process(req,resp);
 		
