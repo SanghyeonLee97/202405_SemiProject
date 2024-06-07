@@ -9,15 +9,14 @@
 <style type="text/css">
 
 	.wrapper{
-	    width: 100%;
+	    width: 640px;
 	    padding: 40px;
-	    box-sizing: border-box;
 	    text-align: center;
 	    background: white;
-	    border: 2px solid #D3D3D3;
+	    margin: auto;
 	}
 	.img{
-		left : 130px;
+		left : 0px;
 		bottom : 0px;
 		position: absolute;
 	}
