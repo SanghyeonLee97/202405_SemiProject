@@ -70,9 +70,19 @@ insert into customer(customer_id,customer_pw,customer_name,customer_tel,postal_c
 select * from customer where customer_id='test' && customer_pw='1324';
 
 create table qna(
-	qna_no bigint primary key,
-    qna_title varchar(100),
-    qna_content text,
+	qna_no bigint primary key not null,
+    qna_title varchar(100) not null,
+    qna_content text not null,
     qna_fileurl varchar(100),
-    qna_imgurl
+    qna_imgurl varchar(100),
+    qna_date timestamp not null,
+    qna_answer Text,
+    customer_no bigint not null,
+    iqc_no int not null
 );
+
+insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer,customer_no,iqc_no) values('글제목 테스트','글내용 테스트','','',now(),'답변 테스트',1,1);
+select * from qna where qna_no=1;
+select * from customer;
+
+select qna.qna_no,qna.qna_title,qna.qna_date,qna.qna_answer,customer.customer_no,customer.customer_id,qna.iqc_no from qna inner join customer on qna.customer_no=customer.customer_no where qna_no=1;

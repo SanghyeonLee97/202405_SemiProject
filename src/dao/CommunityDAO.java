@@ -8,6 +8,7 @@ import com.mysql.jdbc.Statement;
 
 import DTO.CommunityFAQDTO;
 import DTO.CommunityNoticeDTO;
+import DTO.CommunityQNADTO;
 
 public class CommunityDAO extends DAO{
 	
@@ -105,27 +106,54 @@ public class CommunityDAO extends DAO{
 	}
 	
 	//FAQ 특정글 검색
-		public CommunityFAQDTO getFAQPost(String no) {
-			CommunityFAQDTO res = new CommunityFAQDTO();
-			Statement stmt = null;
-			String query = "";
-			openConnection();
-			try {
-				query = "select * from faq where faq_no="+no+";";
-				stmt = (Statement) conn.createStatement();
-				ResultSet rs = stmt.executeQuery(query);
+	public CommunityFAQDTO getFAQPost(String no) {
+		CommunityFAQDTO res = new CommunityFAQDTO();
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "select * from faq where faq_no="+no+";";
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
 				
-				while(rs.next()) {
-					res.setFaqTitle(rs.getString("faq_title"));
-					res.setFaqContent(rs.getString("faq_content"));
-				}
-			}catch (Exception e) {
-				System.out.println("FAQ 특정글 검색 오류발생");
-			}finally {
-				closeConnection();
+			while(rs.next()) {
+				res.setFaqTitle(rs.getString("faq_title"));
+				res.setFaqContent(rs.getString("faq_content"));
 			}
-			return res;
+		}catch (Exception e) {
+			System.out.println("FAQ 특정글 검색 오류발생");
+		}finally {
+			closeConnection();
 		}
+		return res;
+	}
 	
-	
+	//QNA 검색
+	public ArrayList<CommunityQNADTO> getQNAList(String select,String search) {
+		ArrayList<CommunityQNADTO> res = new ArrayList<CommunityQNADTO>();
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "select qna.qna_no,qna.qna_title,qna.qna_date,qna.qna_answer,customer.customer_id,qna.iqc_no from qna inner join customer on qna.customer_no=customer.customer_no where "+select+" like '%"+search+"%';";
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			System.out.println(query);
+			while(rs.next()) {
+				CommunityQNADTO cqdto = new CommunityQNADTO();
+				cqdto.setQna_no(rs.getInt("qna_no"));
+				cqdto.setQna_title(rs.getString("qna_title"));
+				cqdto.setQna_date(rs.getTimestamp("qna_date"));
+				cqdto.setQna_answer(rs.getString("qna_answer"));
+				cqdto.setCustomer_id(rs.getString("customer_id"));
+				cqdto.setIqc_no(rs.getInt("iqc_no"));
+				res.add(cqdto);
+			}
+		}catch (Exception e) {
+			System.out.println("QNA 검색 오류발생");
+		}finally {
+			closeConnection();
+		}
+		return res;
+	}
 }

@@ -11,6 +11,7 @@ public class CommunityQNADTO {
 	private Timestamp qna_date;
 	private String qna_answer;
 	private int customer_no;
+	private String customer_id;
 	private int iqc_no;
 	public int getQna_no() {
 		return qna_no;
@@ -65,5 +66,11 @@ public class CommunityQNADTO {
 	}
 	public void setIqc_no(int iqc_no) {
 		this.iqc_no = iqc_no;
+	}
+	public String getCustomer_id() {
+		return customer_id;
+	}
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
 	}
 }
