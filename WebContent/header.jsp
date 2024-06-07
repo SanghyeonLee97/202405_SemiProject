@@ -26,7 +26,7 @@
 	}
 	#login{
 		position: absolute;
-		left : 900px;
+		left : 800px;
 		top : 90px;
 		
 	}
