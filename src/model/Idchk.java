@@ -5,10 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.MemberDAO;
 
-public class Idchk implements CommandProsessor{
+public class IdChk implements CommandProsessor{
 	String registerId;
 	
-	public Idchk(String registerId) {
+	public IdChk(String registerId) {
 		this.registerId=registerId;
 	}
 	@Override

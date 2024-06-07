@@ -8,15 +8,19 @@ body{
 body>main{
 	margin-top: 20px;
 	width: 100%;
-	background-color: ghostwhite;
+
 }
 
 body>header{
 	width: 100%; height: 120px;
-	background-color: #ffdddd;
+
 }
 body>footer{
+<<<<<<< HEAD
 	width: 100%; height: 500px;
 	background-color: #FFF56E;
+=======
+	width: 100%; height: 220px;
+>>>>>>> f09cf702c5c6a73ee2206fd286a666c9ff40dc14
 	margin-top: 20px;
 }
