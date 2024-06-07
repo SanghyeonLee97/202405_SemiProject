@@ -8,6 +8,6 @@
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h1>왔음</h1>
+	<h1>159487</h1>
 </body>
 </html>
