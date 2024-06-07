@@ -11,10 +11,10 @@ import com.mysql.jdbc.Statement;
 import DTO.CommunityNoticeDTO;
 
 public class DAO {
-	Connection conn = null;
-	String url = "jdbc:mysql://localhost:3306/projectdb";
-	String user = "root";
-	String pass = "mysql";
+	protected Connection conn = null;
+	private String url = "jdbc:mysql://localhost:3306/projectdb";
+	private String user = "root";
+	private String pass = "mysql";
 	
 	//연결 메소드
 	protected Connection openConnection() {
