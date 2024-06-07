@@ -31,7 +31,7 @@ public class CommunityDAO extends DAO{
 				res.add(ndto);
 			}
 		}catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("notice 검색 오류발생");
 		}finally {
 			closeConnection();
 		}
@@ -54,7 +54,7 @@ public class CommunityDAO extends DAO{
 				res.setNoticeContent(rs.getString("notice_content"));
 			}
 		}catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("notice 특정글 검색 오류발생");
 		}finally {
 			closeConnection();
 		}
@@ -72,7 +72,7 @@ public class CommunityDAO extends DAO{
 			stmt.executeUpdate(query);
 			
 		}catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("조회수 상승 오류발생");
 		}finally {
 			closeConnection();
 		}
@@ -97,7 +97,7 @@ public class CommunityDAO extends DAO{
 				res.add(ndto);
 			}
 		}catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("FAQ검색 오류발생");
 		}finally {
 			closeConnection();
 		}
@@ -120,7 +120,7 @@ public class CommunityDAO extends DAO{
 					res.setFaqContent(rs.getString("faq_content"));
 				}
 			}catch (Exception e) {
-				// TODO: handle exception
+				System.out.println("FAQ 특정글 검색 오류발생");
 			}finally {
 				closeConnection();
 			}
