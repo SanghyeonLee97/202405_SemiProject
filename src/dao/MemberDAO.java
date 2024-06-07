@@ -70,4 +70,26 @@ public class MemberDAO extends DAO{
 		}
 		return false;
 	}
+	
+	//어드민체크
+	public boolean adminChk(String id) {
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "select * from customer where customer_id='"+id+"' && adminchk=1;";
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			if(rs.next()) {
+				return true;
+			}else {
+				return false;
+			}
+		}catch (Exception e) {
+			System.out.println("어드민체크 오류발생");
+		}finally {
+			closeConnection();
+		}
+		return false;
+	}
 }
