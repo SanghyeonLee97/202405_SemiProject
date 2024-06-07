@@ -20,7 +20,7 @@
 	}
 	main>section>article{
 		width: 100%; height: 250px;
-		margin-top: 20px;	
+		margin-top: 20px;
 		padding : 0px;
 		position: relative;
 		text-align: center;
