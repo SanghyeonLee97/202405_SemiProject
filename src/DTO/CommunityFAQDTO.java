@@ -1,10 +1,10 @@
 package DTO;
 
 public class CommunityFAQDTO {
-	int faqNo;
-	String faqTitle;
-	String faqContent;
-	int faqIQCNo;
+	private int faqNo;
+	private String faqTitle;
+	private String faqContent;
+	private int faqIQCNo;
 	public int getFaqNo() {
 		return faqNo;
 	}

@@ -66,3 +66,13 @@ desc customer;
 select * from customer;
 select customer_id from customer where customer_id='tldn0631';
 insert into customer(customer_id,customer_pw,customer_name,customer_tel,postal_code,address_road,address_detail,customer_email,reg_date) values('test','1324','홍길동','010-1111-2222','02233','서울시 구로구','코오롱','test@test.com',now());
+
+select * from customer where customer_id='test' && customer_pw='1324';
+
+create table qna(
+	qna_no bigint primary key,
+    qna_title varchar(100),
+    qna_content text,
+    qna_fileurl varchar(100),
+    qna_imgurl
+);

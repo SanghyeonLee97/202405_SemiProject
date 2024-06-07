@@ -3,18 +3,18 @@ package DTO;
 import java.sql.Date;
 
 public class CustomerDTO {
-	int customer_no;
-	String customer_id;
-	String customer_pw;
-	String customer_name;
-	String customer_tel;
-	String postal_code;
-	String address_road;
-	String address_detail;
-	int admin;
-	String customer_email;
-	Date reg_date;
-	Date quit_date;
+	private int customer_no;
+	private String customer_id;
+	private String customer_pw;
+	private String customer_name;
+	private String customer_tel;
+	private String postal_code;
+	private String address_road;
+	private String address_detail;
+	private int admin;
+	private String customer_email;
+	private Date reg_date;
+	private Date quit_date;
 	
 	public int getCustomer_no() {
 		return customer_no;

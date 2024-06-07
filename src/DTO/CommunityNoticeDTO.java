@@ -3,11 +3,11 @@ package DTO;
 import java.sql.Timestamp;
 
 public class CommunityNoticeDTO {
-	int noticeNo;
-	String noticeTitle;
-	String noticeContent;
-	int noticeViews;
-	Timestamp noticeDate;
+	private int noticeNo;
+	private String noticeTitle;
+	private String noticeContent;
+	private int noticeViews;
+	private Timestamp noticeDate;
 	public int getNoticeNo() {
 		return noticeNo;
 	}
