@@ -11,6 +11,9 @@
 	body{
 		height: 200px;
 	}
+	header{
+		position: relative;
+	}
 	body>article{
 		background-color: #ffEB5A;
 		
@@ -23,7 +26,7 @@
 	}
 	#login{
 		position: absolute;
-		left : 1400px;
+		left : 900px;
 		top : 90px;
 		
 	}
@@ -34,15 +37,30 @@
 	<header>
 		<section>
 			<div onclick ="location.href='/projectdengdeng/index.jsp';">
-			<img src="imagefile/Logo3.png" width="180px;" height="180px"></div>
+			<img src="/projectdengdeng/imagefile/Logo3.png" width="180px;" height="180px"></div>
 		</section>
 		<section id= "login">
-			 <div><a href="/projectdengdeng/member/login.jsp" style="color: black;">로그인</a>|
+		<%
+			//id세션이 존재한다면
+			if(session.getAttribute("id")==null){
+		%>
+			<div><a href="/projectdengdeng/member/login.jsp" style="color: black;">로그인</a>|
 			<a href="/projectdengdeng/member/register.jsp" style="color: black;">회원가입</a></div> 
+		<%
+			//존재하지 않는다면
+			}else{
+		%>
 			
-			<!--  로그인 &회원가입을 했다는 가정하에 밑에 마이페이지 생성 -->
-			
-			<!-- <div><a href="/projectdengdeng/mypage/mypage_main.jsp" style="color: black;"><img src="imagefile/login2.png">마이페이지</a></div> -->
+			<div>
+				<%=session.getAttribute("id") %>님 환영함
+				<a href="/projectdengdeng/mypage/mypage_main.jsp" style="color: black;">
+					<img src="/projectdengdeng/imagefile/login2.png">마이페이지
+				</a>
+				로그아웃
+			</div>
+		<%
+			}
+		%>
 		</section>
 	</header>
 	
