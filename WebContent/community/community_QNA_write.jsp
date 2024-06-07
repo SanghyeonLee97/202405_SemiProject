@@ -15,12 +15,15 @@
 	}
 </script>
 <style type="text/css">
-	main>section{
-		padding-top:80px;
-	}
 	main>section>article{
 		height: 680px;
 		position: relative;
+	}
+	input{
+		width: 100%;
+	}
+	textarea {
+		width: 100%; height: 500px;
 	}
 </style>
 </head>
@@ -28,10 +31,26 @@
 	<main>
 		<%@ include file="main_nav.jsp" %>
 		<section>
-			<article>section-article</article>
+			<article>
+				<form id="QNAForm" action="QNAWrite.do">
+					카테고리 
+					<select name="category">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+					<br>
+					제목 <input type="text" name="title"><br>
+					내용 <br><textarea name="content"></textarea>
+					이미지첨부-구현후순위<br>
+					파일첨부-구현후순위
+				</form>
+			</article>
 			<nav>
 				<button type="button" onclick="communityGoBack()">이전</button>
-				<button type="submit">등록</button>
+				<button type="submit" form="QNAForm">등록</button>
 			</nav>
 		</section>
 		

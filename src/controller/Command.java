@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import DTO.CommunityQNADTO;
 import DTO.CustomerDTO;
 import model.CommandProsessor;
 import model.FAQRead;
@@ -17,6 +19,7 @@ import model.LoginChk;
 import model.Logout;
 import model.NoticeRead;
 import model.QNARead;
+import model.QNAWrite;
 import model.Register;
 
 @WebServlet("*.do")
@@ -39,6 +42,12 @@ public class Command extends HttpServlet{
 			processor = new Logout();
 		}else if(servletPath.equals("/community/QNA.do")) {
 			processor = new QNARead(req.getParameter("no"));
+		}else if(servletPath.equals("/community/QNAWrite.do")) {
+			CommunityQNADTO cqdto = new CommunityQNADTO();
+			cqdto.setQna_title(req.getParameter("title"));
+			cqdto.setQna_content(req.getParameter("content"));
+			cqdto.setIqc_no(Integer.parseInt(req.getParameter("category")));
+			processor = new QNAWrite(cqdto);
 		}
 		view=processor.process(req,resp);
 		

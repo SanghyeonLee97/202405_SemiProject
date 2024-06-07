@@ -185,4 +185,44 @@ public class CommunityDAO extends DAO{
 		}
 		return res;
 	}
+	
+	//고객id>no변환
+	public int getCustomerNo(String customerId) {
+		int customerNo=0;
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "select customer_no from customer where customer_id='"+customerId+"';";
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while(rs.next()) {
+				customerNo=rs.getInt("customer_no");
+			}
+		}catch (Exception e) {
+			System.out.println("고객id>no변환 오류발생");
+		}finally {
+			closeConnection();
+		}
+		return customerNo;
+	}
+	
+	//QNA글 등록
+	public void QNAWrite(CommunityQNADTO cqdto) {
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer,customer_no,iqc_no) "+
+					"values('"+cqdto.getQna_title()+"','"+cqdto.getQna_content()+"','','',now(),null,"+
+					cqdto.getCustomer_no()+","+cqdto.getIqc_no()+");";
+			stmt = (Statement) conn.createStatement();
+			stmt.executeUpdate(query);
+		}catch (Exception e) {
+			System.out.println("QNA글 등록 오류발생");
+		}finally {
+			closeConnection();
+		}
+	}
 }
