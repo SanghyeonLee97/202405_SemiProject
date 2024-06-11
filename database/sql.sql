@@ -34,11 +34,12 @@ create table customer(
     admin int not null default 0,
     customer_email varchar(45),
     reg_date date not null,
-    quit_date date
+    quit_date date,
+    customer_point bigint not null default(0)
 );
 insert into customer(customer_id,customer_pw,customer_name,customer_tel,postal_code,address_road,address_detail,customer_email,reg_date)
 		value('아이디테스트','비번테스트','이름테스트','01011112222','12345','주소테스트','상세주소테스트','이메일테스트',now());
-
+        
 create table qna(
 	qna_no bigint primary key auto_increment,
     qna_title varchar(100) not null,
@@ -64,13 +65,6 @@ create table sns_event(
 );
 insert into sns_event(se_imgurl,se_url,se_date,customer_no) values('','https://www.naver.com',now(),1);
 
-create table delivery_address(
-	da_no bigint primary key auto_increment,
-    customer_no bigint not null,
-    foreign key(customer_no) references customer(customer_no)
-);
-insert into delivery_address(customer_no) value(1);
-
 create table product_category(
 	pc_no int primary key auto_increment,
     pc_name varchar(30) not null,
@@ -78,8 +72,8 @@ create table product_category(
     pc_parent_no int,
     foreign key(pc_parent_no) references product_category(pc_no)
 );
-insert into product_category(pc_name,pc_level) values('이름테스트부모',1);
-insert into product_category(pc_name,pc_level,pc_parent_no) values('이름테스트자식',2,1);
+insert into product_category(pc_name,pc_level) values('부모',1);
+insert into product_category(pc_name,pc_level,pc_parent_no) values('자식',2,1);
 
 create table product(
 	product_no bigint primary key auto_increment,
@@ -151,7 +145,52 @@ create table cart(
 	cart_no bigint primary key auto_increment,
     customer_no bigint not null,
     product_no bigint not null,
+    product_quantity bigint not null,
     foreign key(customer_no) references customer(customer_no),
     foreign key(product_no) references product(product_no)
 );
-insert into cart(customer_no,product_no) values(1,1);
+insert into cart(customer_no,product_no,product_quantity) values(1,1,5);
+
+create table point(
+	point_no bigint primary key auto_increment,
+    point_amount int not null,
+    point_detail varchar(100),
+    customer_no bigint not null,
+    product_no bigint not null,
+    foreign key(customer_no) references customer(customer_no),
+    foreign key(product_no) references product(product_no)
+);
+insert into point(point_amount,point_detail,customer_no,product_no) values(3000,'상세정보',1,1);
+
+create table coupon(
+	coupon_no bigint primary key auto_increment,
+    coupon_name varchar(100) not null,
+    coupon_limit varchar(100),
+    coupon_discount int not null,
+    product_no bigint,
+    foreign key(product_no) references product(product_no)
+);
+insert into coupon(coupon_name,coupon_limit,coupon_discount,product_no) values('쿠폰이름','제한사항',3000,1);
+
+create table customercoupon(
+	customer_no bigint not null,
+    coupon_no bigint not null,
+    quantity bigint not null,
+    coupon_duedate date,
+    foreign key(customer_no) references customer(customer_no),
+    foreign key(coupon_no) references coupon(coupon_no),
+    primary key(customer_no,coupon_no)
+);
+insert into customercoupon(customer_no,coupon_no,Quantity,coupon_duedate) values(1,1,2,'2222-2-22');
+
+create table orderproduct(
+	customer_no bigint,
+    product_no bigint,
+    coupon_no bigint,
+    order_quantity bigint not null,
+    foreign key(customer_no) references customer(customer_no),
+    foreign key(product_no) references product(product_no),
+    foreign key(coupon_no) references coupon(coupon_no),
+    primary key(customer_no,product_no)
+);
+insert into orderproduct values(1,1,1,2);
