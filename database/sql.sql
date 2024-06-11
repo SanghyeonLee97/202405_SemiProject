@@ -48,68 +48,110 @@ create table qna(
     qna_date date not null,
     qna_answer text,
     customer_no bigint not null,
-    iqc_no int not null
-    
+    iqc_no int not null,
+    foreign key(iqc_no) references inquiry_category(iqc_no),
+    foreign key(customer_no) references customer(customer_no)
 );
+insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,customer_no,iqc_no) values('제목테스트','내용테스트','','',now(),1,1);
 
-
-
-select * from notice where notice_No=73;
-select * from notice;
-update notice set notice_views=notice_views+1 where notice_No=1;
-select * from faq;
-select * from notice where notice_title like '%%';
-select * from notice where notice_title like '%%';
-
-create table qna(
-	qna_no bigint primary key,
-    notice_title varchar(100) not null,
-    notice_content text not null,
-    notice_views int not null,
-    notice_date timestamp not null
+create table sns_event(
+	se_no bigint primary key auto_increment,
+    se_imgurl varchar(100),
+    se_url varchar(100) not null,
+    se_date date not null,
+    customer_no bigint,
+    foreign key(customer_no) references customer(customer_no)
 );
+insert into sns_event(se_imgurl,se_url,se_date,customer_no) values('','https://www.naver.com',now(),1);
 
-create table customer(
-	customer_no bigint primary key,
-    customer_id varchar(20) not null,
-    customer_pw varchar(20) not null,
-    customer_name varchar(20) not null,
-    customer_tel varchar(20),
-    postal_code varchar(20),
-    address_road varchar(20),
-    address_detail varchar(20),
-    adminchk int,
-    customer_email varchar(45),
-    reg_date date,
-    quit_date date
-);
-desc customer;
-select * from customer;
-select customer_id from customer where customer_id='tldn0631';
-select * from customer where customer_id='admin' && adminchk=1;
-insert into customer(customer_id,customer_pw,customer_name,customer_tel,postal_code,address_road,address_detail,customer_email,reg_date) values('test','1324','홍길동','010-1111-2222','02233','서울시 구로구','코오롱','test@test.com',now());
-
-select * from customer where customer_id='test' && customer_pw='1324';
-
-create table qna(
-	qna_no bigint primary key not null,
-    qna_title varchar(100) not null,
-    qna_content text not null,
-    qna_fileurl varchar(100),
-    qna_imgurl varchar(100),
-    qna_date timestamp not null,
-    qna_answer Text,
+create table delivery_address(
+	da_no bigint primary key auto_increment,
     customer_no bigint not null,
-    iqc_no int not null
+    foreign key(customer_no) references customer(customer_no)
 );
+insert into delivery_address(customer_no) value(1);
 
-insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer,customer_no,iqc_no) values('글제목 테스트','글내용 테스트','','',now(),'답변 테스트',1,1);
-insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer,customer_no,iqc_no) values('글제목 테스트2','글내용 테스트2','','',now(),'답변 테스트2',2,1);
-insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer,customer_no,iqc_no) values('글제목 테스트3','글내용 테스트3','','',now(),'',3,1);
-insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer,customer_no,iqc_no) values('글제목 테스트4','글내용 테스트4','','',now(),null,4,1);
+create table product_category(
+	pc_no int primary key auto_increment,
+    pc_name varchar(30) not null,
+    pc_level int not null,
+    pc_parent_no int,
+    foreign key(pc_parent_no) references product_category(pc_no)
+);
+insert into product_category(pc_name,pc_level) values('이름테스트부모',1);
+insert into product_category(pc_name,pc_level,pc_parent_no) values('이름테스트자식',2,1);
 
-select * from qna where qna_no=1;
-select * from customer;
-select customer_no from customer where customer_id='test2';
+create table product(
+	product_no bigint primary key auto_increment,
+    product_name varchar(100) not null,
+    product_imgurl varchar(100),
+    product_price int not null,
+    product_stock int not null,
+    product_detail text,
+    sold_count int not null default(0),
+    product_size varchar(45),
+    product_color varchar(20),
+    maker varchar(100),
+    product_mfd date,
+    product_poo varchar(100),
+    product_epd date,
+    pc_no int not null,
+    foreign key(pc_no) references product_category(pc_no)
+);
+insert into product(product_name,product_imgurl,product_price,product_stock,product_detail,product_size,product_color,maker,product_mfd,product_poo,product_epd,pc_no) values('제품이름','',3000,50,'제품디테일','사이즈','색상','메이커','2000-01-01','','2000-01-01',2);
+        
+create table discount(
+	product_no bigint primary key,
+	discount_rate int not null,
+    discount_amount int not null,
+    foreign key(product_no) references product(product_no)
+);
+insert into discount values(1,50,2000);
 
-select qna.qna_no,qna.qna_title,qna.qna_date,qna.qna_answer,customer.customer_no,customer.customer_id,qna.iqc_no from qna inner join customer on qna.customer_no=customer.customer_no where qna_no=1;
+create table product_inquiry(
+	pi_no bigint primary key auto_increment,
+    pi_title varchar(100) not null,
+    pi_content text not null,
+    pi_date timestamp not null,
+    pi_status int not null default(0),
+    product_no bigint,
+    foreign key(product_no) references product(product_no)
+);
+insert into product_inquiry(pi_title,pi_content,pi_date,product_no) values('제목테스트','내용테스트',now(),1);
+
+create table review(
+	review_no bigint primary key auto_increment,
+    purchase_date date not null,
+    review_title varchar(100) not null,
+    review_content text not null,
+    review_rating int not null,
+    product_no bigint not null,
+	foreign key(product_no) references product(product_no)
+);
+insert into review(purchase_date,review_title,review_content,review_rating,product_no) values('2000-01-01','제목테스트','내용테스트',4,1);
+
+create table event(
+	event_no bigint primary key auto_increment,
+    event_url varchar(100) not null,
+    event_start_date date not null,
+    event_end_date date
+);
+insert into event(event_url,event_start_date,event_end_date) values('https://www.naver.com',now(),'2222-2-22');
+
+create table dibs(
+	customer_no bigint,
+    product_no bigint,
+    foreign key(customer_no) references customer(customer_no),
+    foreign key(product_no) references product(product_no),
+    primary key(customer_no,product_no)
+);
+insert into dibs(customer_no,product_no) values(1,1);
+
+create table cart(
+	cart_no bigint primary key auto_increment,
+    customer_no bigint not null,
+    product_no bigint not null,
+    foreign key(customer_no) references customer(customer_no),
+    foreign key(product_no) references product(product_no)
+);
+insert into cart(customer_no,product_no) values(1,1);

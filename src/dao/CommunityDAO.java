@@ -231,9 +231,9 @@ public class CommunityDAO extends DAO{
 		String query = "";
 		openConnection();
 		try {
-			query = "insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,qna_answer,customer_no,iqc_no) "+
-					"values('"+cqdto.getQna_title()+"','"+cqdto.getQna_content()+"','','',now(),null,"+
-					cqdto.getCustomer_no()+","+cqdto.getIqc_no()+");";
+			query = "insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,customer_no,iqc_no) "+
+					"values('"+cqdto.getQna_title()+"','"+cqdto.getQna_content()+
+					"','','',now(),"+cqdto.getCustomer_no()+","+cqdto.getIqc_no()+");";
 			stmt = (Statement) conn.createStatement();
 			stmt.executeUpdate(query);
 		}catch (Exception e) {
