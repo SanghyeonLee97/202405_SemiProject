@@ -1,36 +1,57 @@
 create table notice(
-	notice_No bigint primary key,
+	notice_No bigint primary key auto_increment,
     notice_title varchar(100) not null,
     notice_content text not null,
-    notice_views int not null,
-    notice_date timestamp not null
+    notice_views int not null default 0,
+    notice_date timestamp not null default now()
 );
+insert into notice(notice_title,notice_content) values('글제목 테스트','글내용 테스트');
+
+create table inquiry_category(
+	iqc_no int primary key,
+    iqc_name varchar(45) not null
+);
+insert into inquiry_category values(1,'카테고리테스트');
+
 create table faq(
-	faq_no bigint primary key,
+	faq_no bigint primary key auto_increment,
     faq_title varchar(100) not null,
-    notice_content text not null,
-    iqc_no int
+    faq_content text not null,
+    iqc_no int not null,
+    foreign key(iqc_no) references inquiry_category(iqc_no)
+);
+insert into faq(faq_title,faq_content,iqc_no) values('글제목 테스트','글내용 테스트',1);
+
+create table customer(
+	customer_no bigint primary key auto_increment,
+    customer_id varchar(20) not null,
+    customer_pw varchar(20) not null,
+    customer_name varchar(20) not null,
+    customer_tel varchar(20) not null,
+    postal_code int,
+    address_road varchar(100),
+    address_detail varchar(150),
+    admin int not null default 0,
+    customer_email varchar(45),
+    reg_date date not null,
+    quit_date date
+);
+insert into customer(customer_id,customer_pw,customer_name,customer_tel,postal_code,address_road,address_detail,customer_email,reg_date)
+		value('아이디테스트','비번테스트','이름테스트','01011112222','12345','주소테스트','상세주소테스트','이메일테스트',now());
+
+create table qna(
+	qna_no bigint primary key auto_increment,
+    qna_title varchar(100) not null,
+    qna_content text not null,
+    qna_fileurl varchar(100),
+    qna_imgurl varchar(100),
+    qna_date date not null,
+    qna_answer text,
+    customer_no bigint not null,
+    iqc_no int not null
+    
 );
 
-insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
-insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
-insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
-insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
-insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
-insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
-insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
-insert into notice(notice_title,notice_content,notice_views,notice_date) values("글내용 테스트중입니다","집에가고싶다",0,now());
-
-insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
-insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
-insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
-insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
-insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
-insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
-insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
-insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
-insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
-insert into faq(faq_title,faq_content,iqc_no) values("글내용 테스트중입니다","집에가고싶다",1);
 
 
 select * from notice where notice_No=73;
