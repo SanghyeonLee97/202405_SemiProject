@@ -77,7 +77,7 @@ public class MemberDAO extends DAO{
 		String query = "";
 		openConnection();
 		try {
-			query = "select * from customer where customer_id='"+id+"' && adminchk=1;";
+			query = "select * from customer where customer_id='"+id+"' && admin=1;";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()) {
