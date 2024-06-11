@@ -15,11 +15,6 @@
 	    background: white;
 	    margin: auto;
 	}
-	.img{
-		left : 0px;
-		bottom : 0px;
-		position: absolute;
-	}
 	
 	h1{
 	  color:#6A24FE;
@@ -91,8 +86,7 @@
 	<main class="wrapper">
 		<section>
 			<header>
-				<img src="../imagefile/Logo3.png" height="180px" width="200px" class="img">
-				<h1>뎅뎅몰</h1>
+				<h1>로그인</h1>
 			</header>
 			<article>
 				<form id="loginForm" action="login.do" method="post">
