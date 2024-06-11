@@ -200,13 +200,14 @@ public class CommunityDAO extends DAO{
 		String query = "";
 		openConnection();
 		try {
-			query = "select qna.qna_title,qna.qna_content,qna.qna_date,qna.qna_answer,customer.customer_id "+
+			query = "select qna.qna_no,qna.qna_title,qna.qna_content,qna.qna_date,qna.qna_answer,customer.customer_id "+
 					"from qna inner join customer on qna.customer_no=customer.customer_no "+
 					"where qna_no="+no+";";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 					
 			while(rs.next()) {
+				res.setQna_no(rs.getInt("qna_no"));
 				res.setQna_title(rs.getString("qna_title"));
 				res.setQna_content(rs.getString("qna_content"));
 				res.setQna_date(rs.getTimestamp("qna_date"));
@@ -256,6 +257,22 @@ public class CommunityDAO extends DAO{
 			stmt.executeUpdate(query);
 		}catch (Exception e) {
 			System.out.println("QNA글 등록 오류발생");
+		}finally {
+			closeConnection();
+		}
+	}
+	
+	//QNA글 삭제
+	public void QNADelete(int QNANo) {
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "delete from qna where qna_no="+QNANo+";";
+			stmt = (Statement) conn.createStatement();
+			stmt.executeUpdate(query);
+		}catch (Exception e) {
+			System.out.println("QNA글 삭제 오류발생");
 		}finally {
 			closeConnection();
 		}

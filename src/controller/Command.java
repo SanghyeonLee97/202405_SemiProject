@@ -22,6 +22,7 @@ import model.LoginChk;
 import model.Logout;
 import model.NoticeRead;
 import model.NoticeWrite;
+import model.QNADelete;
 import model.QNARead;
 import model.QNAWrite;
 import model.Register;
@@ -64,6 +65,8 @@ public class Command extends HttpServlet{
 			cfdto.setFaqContent(req.getParameter("content"));
 			cfdto.setFaqIQCNo(Integer.parseInt(req.getParameter("category")));
 			processor = new FAQWrite(cfdto);
+		}else if(servletPath.equals("/community/QNADelete.do")) {
+			processor = new QNADelete(Integer.parseInt(req.getParameter("no")));
 		}
 		
 		view=processor.process(req,resp);

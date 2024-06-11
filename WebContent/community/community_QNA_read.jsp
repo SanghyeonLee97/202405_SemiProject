@@ -12,6 +12,10 @@
 <body>
 <%
 	CommunityQNADTO cfdto = (CommunityQNADTO)request.getAttribute("read");
+	String sid="";
+	if(session.getAttribute("id")!=null){
+		sid=(String)session.getAttribute("id");
+	}
 %>
 	<main>
 		<%@ include file="main_nav.jsp" %>
@@ -33,6 +37,11 @@
 			</article>
 			<nav>
 				<button onclick="location.href='community_QNA.jsp'">목록으로</button>
+				<%
+					if(sid.equals(cfdto.getCustomer_id())){
+				%>
+				<button onclick="location.href='QNADelete.do?no=<%=cfdto.getQna_no() %>'">삭제하기</button>
+				<% } %>
 			</nav>
 		</section>
 		
