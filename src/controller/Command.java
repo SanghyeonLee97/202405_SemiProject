@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DTO.CommunityFAQDTO;
 import DTO.CommunityNoticeDTO;
 import DTO.CommunityQNADTO;
 import DTO.CustomerDTO;
 import model.CommandProsessor;
 import model.FAQRead;
+import model.FAQWrite;
 import model.IdChk;
 import model.LoginChk;
 import model.Logout;
@@ -34,6 +36,7 @@ public class Command extends HttpServlet{
 		CommandProsessor processor = null;		
 		String view = null;
 		System.out.println(servletPath);
+		
 		if(servletPath.equals("/community/notice.do")) {
 			processor = new NoticeRead(req.getParameter("no"),req.getParameter("board"));
 		}else if(servletPath.equals("/community/FAQ.do")) {
@@ -55,7 +58,14 @@ public class Command extends HttpServlet{
 			cndto.setNoticeTitle(req.getParameter("noticeTitle"));
 			cndto.setNoticeContent(req.getParameter("noticeContent"));
 			processor = new NoticeWrite(cndto);
+		}else if(servletPath.equals("/faqWrite.do")) {
+			CommunityFAQDTO cfdto = new CommunityFAQDTO();
+			cfdto.setFaqTitle(req.getParameter("title"));
+			cfdto.setFaqContent(req.getParameter("content"));
+			cfdto.setFaqIQCNo(Integer.parseInt(req.getParameter("category")));
+			processor = new FAQWrite(cfdto);
 		}
+		
 		view=processor.process(req,resp);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher(view);

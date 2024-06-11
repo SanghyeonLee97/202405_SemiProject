@@ -50,10 +50,18 @@
 		<br>
 		<form action="faqWrite.do">
 			<h3>faq 등록</h3><br>
+			카테고리<br>
+			<select name="category">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select><br>
 			제목<br>
-			<input><br>
+			<input name="title"><br>
 			내용<br>
-			<textarea rows="10" cols="100"></textarea><br>
+			<textarea name="content" rows="10" cols="100"></textarea><br>
 			<button type="submit">확인</button><br>
 		</form>
 		회원 강제탈퇴

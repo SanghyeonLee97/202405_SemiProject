@@ -95,6 +95,24 @@ public class CommunityDAO extends DAO{
 			closeConnection();
 		}
 	}
+	
+	//FAQ 등록
+	public void faqWrite(CommunityFAQDTO cfdto) {
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "insert into faq(faq_title,faq_content,iqc_no) "+
+					"values('"+cfdto.getFaqTitle()+"','"+cfdto.getFaqContent()+"',"+cfdto.getFaqIQCNo()+");";
+			System.out.println(query);
+			stmt = (Statement) conn.createStatement();
+			stmt.executeUpdate(query);
+		}catch (Exception e) {
+			System.out.println("faq 등록 오류발생");
+		}finally {
+			closeConnection();
+		}
+	}
 
 	//FAQ검색
 	public ArrayList<CommunityFAQDTO> getFAQList(String select,String search) {
