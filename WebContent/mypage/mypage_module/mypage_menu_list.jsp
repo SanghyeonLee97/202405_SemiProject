@@ -7,6 +7,8 @@
 <title>mypage menuList module</title>
 </head>
 <body>
-	<aside>section-aside</aside>
+	<aside>
+		<a href="updateInfo.do">회원정보 수정</a>
+	</aside>
 </body>
 </html>
