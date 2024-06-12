@@ -20,10 +20,10 @@ chk()
 	<%} %>
 ">
 	<%
-		String id = (String)session.getAttribute("id");
+		String sessionid = (String)session.getAttribute("id");
 	%>
 	<header>
-        <h1><%=id %>님</h1>
+        <h1><%=sessionid %>님</h1>
         <article>header-article</article>
         <article>header-article</article>
         <article>header-article</article>
