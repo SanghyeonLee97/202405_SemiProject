@@ -25,7 +25,9 @@ import model.NoticeWrite;
 import model.QNADelete;
 import model.QNARead;
 import model.QNAWrite;
+import model.QuitUser;
 import model.Register;
+import model.UpdateInfo;
 
 @WebServlet("*.do")
 public class Command extends HttpServlet{
@@ -67,6 +69,10 @@ public class Command extends HttpServlet{
 			processor = new FAQWrite(cfdto);
 		}else if(servletPath.equals("/community/QNADelete.do")) {
 			processor = new QNADelete(Integer.parseInt(req.getParameter("no")));
+		}else if(servletPath.equals("/kickUser.do")) {
+			processor = new QuitUser(req.getParameter("id"),0);
+		}else if(servletPath.equals("/mypage/updateInfo.do")) {
+			processor = new UpdateInfo();
 		}
 		
 		view=processor.process(req,resp);
@@ -97,6 +103,19 @@ public class Command extends HttpServlet{
 			processor = new Register(customer);
 		}else if(servletPath.contains("/login.do")) {
 			processor = new LoginChk(req.getParameter("id"),req.getParameter("password"));
+		}else if(servletPath.equals("/mypage/updateInfo.do")) {
+			System.out.println(req.getParameter("postcode"));
+			CustomerDTO customer = new CustomerDTO();
+			customer.setCustomer_id(req.getParameter("id"));
+			customer.setCustomer_pw(req.getParameter("password"));
+			customer.setCustomer_name(req.getParameter("name"));
+			customer.setCustomer_tel(req.getParameter("tel"));
+			customer.setPostal_code(req.getParameter("postcode"));
+			System.out.println(customer.getPostal_code());
+			customer.setAddress_road(req.getParameter("roadAddress"));
+			customer.setAddress_detail(req.getParameter("detailAddress"));
+			req.setAttribute("customer", customer);
+			processor = new UpdateInfo();
 		}
 		view=processor.process(req,resp);
 		

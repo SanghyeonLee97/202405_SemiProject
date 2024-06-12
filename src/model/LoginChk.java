@@ -19,6 +19,14 @@ public class LoginChk implements CommandProsessor{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		MemberDAO mdao = new MemberDAO();
+		
+		//탈퇴회원이라면
+		if(mdao.customerQuitChk(loginId)) {
+			return "/member/login_success.jsp?quit=1";
+		}
+		
+		
+		//로그인 확인이 true라면
 		if(mdao.customerLoginChk(loginId, loginPassword)==true) {
 			HttpSession session = req.getSession();
 			session.setAttribute("id", loginId);

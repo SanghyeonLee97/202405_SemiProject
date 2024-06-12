@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	function chk() {
+		alert("비정상적인 접근");
+		location.href="/projectdengdeng/index.jsp";
+	}
+</script>
 <style type="text/css">
 
 	.wrapper{
@@ -82,7 +88,15 @@
 	
 </style>
 </head>
-<body>
+<body onload="
+	<%
+		if(session.getAttribute("id")!=null){
+	%>
+chk()
+	<%
+		}
+	%>
+">
 	<main class="wrapper">
 		<section>
 			<header>
