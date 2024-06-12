@@ -64,7 +64,11 @@
 			<textarea name="content" rows="10" cols="100"></textarea><br>
 			<button type="submit">확인</button><br>
 		</form>
-		회원 강제탈퇴
+		<h3>회원 강제탈퇴</h3><br>
+		<form action="kickUser.do">
+			탈퇴시킬 id<input name="id">
+			<button type="submit">확인</button>
+		</form>
 	</main>
 </body>
 </html>

@@ -27,7 +27,24 @@ public class MemberDAO extends DAO{
 		}
 	}
 	
-	//회원가입 중복체크
+	//회원탈퇴
+	public void quitCustomer(String id) {
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "update customer set quit_date=now() where customer_id='"+id+"';";
+			System.out.println(query);
+			stmt = (Statement) conn.createStatement();
+			stmt.executeUpdate(query);
+		}catch (Exception e) {
+			System.out.println("회원탈퇴 오류발생");
+		}finally {
+			closeConnection();
+		}
+	}
+	
+	//존재하는 회원인지 체크
 	public boolean customerIdChk(String id) {
 		Statement stmt = null;
 		String query = "";
@@ -42,7 +59,29 @@ public class MemberDAO extends DAO{
 				return false;
 			}
 	    }catch (Exception e) {
-			System.out.println("회원가입 중복체크 오류발생");
+			System.out.println("존재하는 회원인지 체크 오류발생");
+		}finally {
+			closeConnection();
+		}
+		return false;
+	}
+	
+	//탈퇴회원 체크
+	public boolean customerQuitChk(String id) {
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "select * from customer where customer_id='"+id+"' && quit_date is not null;";
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			if(rs.next()) {
+				return true;
+			}else {
+				return false;
+			}
+		}catch (Exception e) {
+			   System.out.println("탈퇴회원체크 오류발생");
 		}finally {
 			closeConnection();
 		}

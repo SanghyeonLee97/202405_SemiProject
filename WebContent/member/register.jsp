@@ -168,6 +168,6 @@
 		</section>
 	</main>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript" src="addressAPI.js"></script>
+	<script type="text/javascript" src="/projectdengdeng/js/addressAPI.js"></script>
 </body>
 </html>

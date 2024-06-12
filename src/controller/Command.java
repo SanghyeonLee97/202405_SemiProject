@@ -25,7 +25,9 @@ import model.NoticeWrite;
 import model.QNADelete;
 import model.QNARead;
 import model.QNAWrite;
+import model.QuitUser;
 import model.Register;
+import model.UpdateInfo;
 
 @WebServlet("*.do")
 public class Command extends HttpServlet{
@@ -67,6 +69,10 @@ public class Command extends HttpServlet{
 			processor = new FAQWrite(cfdto);
 		}else if(servletPath.equals("/community/QNADelete.do")) {
 			processor = new QNADelete(Integer.parseInt(req.getParameter("no")));
+		}else if(servletPath.equals("/kickUser.do")) {
+			processor = new QuitUser(req.getParameter("id"),0);
+		}else if(servletPath.equals("/mypage/updateInfo.do")) {
+			processor = new UpdateInfo();
 		}
 		
 		view=processor.process(req,resp);
