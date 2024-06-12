@@ -7,8 +7,12 @@
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-	function test() {
+	function gologin() {
 		alert("아이디나 비밀번호를 확인해주세요");
+		location.href="/projectdengdeng/member/login.jsp";
+	}
+	function quituser() {
+		alert("탈퇴한 회원입니다");
 		location.href="/projectdengdeng/member/login.jsp";
 	}
 </script>
@@ -16,9 +20,14 @@
 <body 
 <% 
 	//id세션이 존재하지 않는다면 페이지 로드할때 gologin스크립트를 실행
+	if(request.getParameter("quit")!=null){
+%>
+onload="quituser()">
+<%
+	}
 	if(session.getAttribute("id")==null){
 %>
-onload="test()">
+onload="gologin()">
 <%
 	//id세션이 존재한다면 페이지 로드
 	}else{ 
