@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
-<link href="../css/community.css" rel="stylesheet" type="text/css">
+<link href="../css/community.css?after" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>section>article{
 		height: 620px;

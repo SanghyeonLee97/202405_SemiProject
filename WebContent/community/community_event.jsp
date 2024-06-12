@@ -8,13 +8,13 @@
 <script type="text/javascript" src="js/jquery-3.7.1.js"></script>
 <script type="text/javascript"></script>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
-<link href="../css/community.css" rel="stylesheet" type="text/css">
+<link href="../css/community.css?after" rel="stylesheet" type="text/css">
 <style type="text/css">
 	section{
 		padding-bottom: 40px;
 	}
 	section>article{
-		height: 300px;
+		height: 400px;
 		margin-top:40px;
 		position: relative;
 	}
@@ -22,7 +22,7 @@
 		margin-top:80px;
 	}
 	section>article>div{
-		width: 200px; height: 300px;
+		width: 220px; height: 350px;
 		background-color: #ddddff;
 		position: absolute;
 	}
@@ -36,31 +36,37 @@
 		left: 800px;
 	}
 	#img{
-		height: 300px;
-		width: 200px;
+		height: 350px;
+		width: 220px;
 	}
+
+	#eventheader{
+		text-align: center;
+		margin-top: 60px;
+		
+	}	
 </style>
 </head>
 <body>
 	<main>
 		<section>
 			<header>
-				<h1>이벤트</h1>
+				<h1 id=eventheader>이벤트 목록</h1>
 			</header>
 			<article>
+				<div><img id= img src="/projectdengdeng/imagefile/EventImg10.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/EventImg11.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/EventImg12.png"></div>
+			</article>
+			<article>
 				<div><img id= img src="/projectdengdeng/imagefile/EventImg1.png"></div>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
+				<div><img id= img src="/projectdengdeng/imagefile/EventImg2.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/EventImg3.png"></div>
 			</article>
 			<article>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-			</article>
-			<article>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
+				<div><img id= img src="/projectdengdeng/imagefile/EventImg6.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/EventImg7.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/EventImg8.png"></div>
 			</article>
 			
 		</section>
