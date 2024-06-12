@@ -14,7 +14,7 @@
 		padding-bottom: 40px;
 	}
 	section>article{
-		height: 120px;
+		height: 300px;
 		margin-top:40px;
 		position: relative;
 	}
@@ -22,18 +22,22 @@
 		margin-top:80px;
 	}
 	section>article>div{
-		width: 320px; height: 120px;
+		width: 200px; height: 300px;
 		background-color: #ddddff;
 		position: absolute;
 	}
 	section>article>div:nth-child(1) {
-		left: 80px;
+		left: 130px;
 	}
 	section>article>div:nth-child(2) {
 		left: 440px;
 	}
 	section>article>div:nth-child(3) {
 		left: 800px;
+	}
+	#img{
+		height: 300px;
+		width: 200px;
 	}
 </style>
 </head>
@@ -44,12 +48,7 @@
 				<h1>이벤트</h1>
 			</header>
 			<article>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-				<div>section-article-div</div>
-			</article>
-			<article>
-				<div>section-article-div</div>
+				<div><img id= img src="/projectdengdeng/imagefile/EventImg1.png"></div>
 				<div>section-article-div</div>
 				<div>section-article-div</div>
 			</article>
@@ -61,7 +60,9 @@
 			<article>
 				<div>section-article-div</div>
 				<div>section-article-div</div>
+				<div>section-article-div</div>
 			</article>
+			
 		</section>
 	</main>
 </body>

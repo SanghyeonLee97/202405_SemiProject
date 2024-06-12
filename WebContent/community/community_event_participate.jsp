@@ -39,6 +39,10 @@
 		height: 40px;
 		margin-top:20px;
 	}
+	#img{
+		height: 280px;
+		width: 180px;
+	}
 </style>
 </head>
 <body>
@@ -46,7 +50,7 @@
 		<%@ include file="main_nav.jsp" %>
 		<section>
 			<article>
-				<div>section-article-div</div>
+				<div><img id= img src="/projectdengdeng/imagefile/EventImg1.png"></div>
 				<div>section-article-div</div>
 				<div>section-article-div</div>
 				<div>section-article-div</div>
