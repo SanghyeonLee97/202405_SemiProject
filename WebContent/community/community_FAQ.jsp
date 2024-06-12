@@ -21,10 +21,20 @@
 	table{
 		border: 1px solid lightgray;
 		border-collapse: collapse;
+		margin-left: 100px;		
 	}
 	tr,td{
 		padding:10px;
 		border: 1px solid lightgray;
+		width:300px;
+		height: 30px;
+		
+	}
+	#bts{
+		width: 100px;
+		height: 40px;
+		text-align: center;
+	
 	}
 </style>
 </head>
@@ -99,7 +109,7 @@
 				</table>
 			</article>
 			<nav>
-				<button onclick="location.href='/projectdengdeng/product/product_list_page.jsp'">쇼핑하기</button>
+				<button id=bts onclick="location.href='/projectdengdeng/product/product_list_page.jsp'">쇼핑하기</button>
 				<%@ include file="main_section_nav.jsp" %>
 			</nav>
 		</section>
