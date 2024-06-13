@@ -195,7 +195,10 @@ create table orderproduct(
 );
 insert into orderproduct values(1,1,1,2);
 
+
 ALTER TABLE `projectdb`.`customer` 
 CHANGE COLUMN `customer_tel` `customer_tel` VARCHAR(20) NULL ,
 CHANGE COLUMN `postal_code` `postal_code` INT NOT NULL ,
 CHANGE COLUMN `address_road` `address_road` VARCHAR(100) NOT NULL ;
+ALTER TABLE `projectdb`.`customer` 
+CHANGE COLUMN `postal_code` `postal_code` VARCHAR(6) NOT NULL ;

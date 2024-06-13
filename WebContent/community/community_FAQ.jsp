@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
-<link href="../css/community.css" rel="stylesheet" type="text/css">
+<link href="../css/community.css?after" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>section>article{
 		height: 620px;
@@ -21,21 +21,24 @@
 	table{
 		border: 1px solid lightgray;
 		border-collapse: collapse;
-		margin-left: 100px;		
+		margin-left: 100px;	
+			
 	}
 	tr,td{
 		padding:10px;
 		border: 1px solid lightgray;
-		width:300px;
-		height: 30px;
+		
 		
 	}
 	#bts{
 		width: 100px;
 		height: 40px;
 		text-align: center;
+		margin-left: 100px;
+		margin-top: 20px;
 	
 	}
+	
 </style>
 </head>
 <body>
@@ -92,8 +95,8 @@
 				<table>
 					<tr>
 						<td>글번호</td>
-						<td>카테고리</td>
-						<td>제목</td>
+						<td >카테고리</td>
+						<td >제목</td>
 					</tr>
 					<%
 						for(int i=FAQBoardFirstNo;i>=FAQBoardLastNo;i--){	//첫번째글 번호부터 마지막글 번호까지 반복
