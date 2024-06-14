@@ -8,73 +8,41 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import DTO.CommunityFAQDTO;
-import DTO.CommunityNoticeDTO;
-import DTO.CommunityQNADTO;
-import DTO.CustomerDTO;
+import controller.controller_module.Command_Common;
+import controller.controller_module.Command_Community;
+import controller.controller_module.Command_Etc;
+import controller.controller_module.Command_Member;
+import controller.controller_module.Command_MyPage;
+import controller.controller_module.Command_Parents;
 import model.CommandProsessor;
-import model.FAQRead;
-import model.FAQWrite;
-import model.IdChk;
-import model.LoginChk;
-import model.Logout;
-import model.NoticeRead;
-import model.NoticeWrite;
-import model.QNADelete;
-import model.QNARead;
-import model.QNAWrite;
-import model.QuitUser;
-import model.Register;
-import model.UpdateInfo;
+
 
 @WebServlet("*.do")
 public class Command extends HttpServlet{
+	Command_Parents command = null;
+	CommandProsessor processor = null;		
+	String view = null;
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String cmd = req.getParameter("cmd");
 		String servletPath = req.getServletPath();
-		CommandProsessor processor = null;		
-		String view = null;
 		System.out.println(servletPath);
 		
-		if(servletPath.equals("/community/notice.do")) {
-			processor = new NoticeRead(req.getParameter("no"),req.getParameter("board"));
-		}else if(servletPath.equals("/community/FAQ.do")) {
-			processor = new FAQRead(req.getParameter("no"));
-		}else if(servletPath.equals("/member/idchk.do")) {	//회원가입 중복체크
-			processor = new IdChk(req.getParameter("id"));
-		}else if(servletPath.contains("/logout.do")) {
-			processor = new Logout();
-		}else if(servletPath.equals("/community/QNA.do")) {
-			processor = new QNARead(req.getParameter("no"));
-		}else if(servletPath.equals("/community/QNAWrite.do")) {
-			CommunityQNADTO cqdto = new CommunityQNADTO();
-			cqdto.setQna_title(req.getParameter("title"));
-			cqdto.setQna_content(req.getParameter("content"));
-			cqdto.setIqc_no(Integer.parseInt(req.getParameter("category")));
-			processor = new QNAWrite(cqdto);
-		}else if(servletPath.equals("/noticeWrite.do")) {
-			CommunityNoticeDTO cndto = new CommunityNoticeDTO();
-			cndto.setNoticeTitle(req.getParameter("noticeTitle"));
-			cndto.setNoticeContent(req.getParameter("noticeContent"));
-			processor = new NoticeWrite(cndto);
-		}else if(servletPath.equals("/faqWrite.do")) {
-			CommunityFAQDTO cfdto = new CommunityFAQDTO();
-			cfdto.setFaqTitle(req.getParameter("title"));
-			cfdto.setFaqContent(req.getParameter("content"));
-			cfdto.setFaqIQCNo(Integer.parseInt(req.getParameter("category")));
-			processor = new FAQWrite(cfdto);
-		}else if(servletPath.equals("/community/QNADelete.do")) {
-			processor = new QNADelete(Integer.parseInt(req.getParameter("no")));
-		}else if(servletPath.equals("/kickUser.do")) {
-			processor = new QuitUser(req.getParameter("id"),0);
-		}else if(servletPath.equals("/mypage/updateInfo.do")) {
-			processor = new UpdateInfo();
+		command = new Command_Common(); //부모에 업캐스팅 기본은 common객체
+		if(command.command_Operate(req, resp, servletPath)==null) { //common의 리턴값이 존재하지 않으면
+			if(servletPath.contains("/community/")) { //경로에 community가 포함되어 있다면
+				command = new Command_Community(); //community 객체생성
+			}else if(servletPath.contains("/member/")) { //경로에 member가 포함되어 있다면
+				command = new Command_Member(); //member 객체생성
+			}else if(servletPath.contains("/mypage/")) { //경로에 mypage가 포함되어 있다면
+				command = new Command_MyPage(); //mypage 객체생성
+			}else { //다 아니라면
+				command = new Command_Etc(); //etc객체생성
+			}
 		}
-		
+		processor = command.command_Operate(req, resp, servletPath); //업캐스팅된 객체의 command_operate실행
 		view=processor.process(req,resp);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
@@ -84,39 +52,17 @@ public class Command extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String cmd = req.getParameter("cmd");
 		String servletPath = req.getServletPath();
 		
-		CommandProsessor processor = null;		
-		String view = null;
-		
-		if("/member/register.do".equals(servletPath)) {
-			CustomerDTO customer = new CustomerDTO();
-			customer.setCustomer_id(req.getParameter("id"));
-			customer.setCustomer_pw(req.getParameter("password"));
-			customer.setCustomer_name(req.getParameter("name"));
-			customer.setCustomer_tel(req.getParameter("tel"));
-			customer.setCustomer_email(req.getParameter("email"));
-			customer.setPostal_code(req.getParameter("postcode"));
-			customer.setAddress_road(req.getParameter("roadAddress"));
-			customer.setAddress_detail(req.getParameter("detailAddress"));
-			processor = new Register(customer);
-		}else if(servletPath.contains("/login.do")) {
-			processor = new LoginChk(req.getParameter("id"),req.getParameter("password"));
-		}else if(servletPath.equals("/mypage/updateInfo.do")) {
-			System.out.println(req.getParameter("postcode"));
-			CustomerDTO customer = new CustomerDTO();
-			customer.setCustomer_id(req.getParameter("id"));
-			customer.setCustomer_pw(req.getParameter("password"));
-			customer.setCustomer_name(req.getParameter("name"));
-			customer.setCustomer_tel(req.getParameter("tel"));
-			customer.setPostal_code(req.getParameter("postcode"));
-			System.out.println(customer.getPostal_code());
-			customer.setAddress_road(req.getParameter("roadAddress"));
-			customer.setAddress_detail(req.getParameter("detailAddress"));
-			req.setAttribute("customer", customer);
-			processor = new UpdateInfo();
+		command = new Command_Common();
+		if(command.command_Operate(req, resp, servletPath)==null) {
+			if(servletPath.contains("/member/")) {
+				command = new Command_Member();
+			}else if(servletPath.contains("/mypage/")) {
+				command = new Command_MyPage();
+			}
 		}
+		processor = command.command_Operate(req, resp, servletPath);
 		view=processor.process(req,resp);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher(view);

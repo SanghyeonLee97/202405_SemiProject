@@ -67,19 +67,24 @@
 	<article>
 		<ul class="nav justify-content-center">
 		  <li class="nav-item">
-		    <a class="nav-link active" aria-current="page" href="#" style="color: black;">사료</a>
+		    <a class="nav-link active" aria-current="page" 
+		    href="productList.pdo?pc_parent_no=1" style="color: black;">사료</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#" style="color: black;">간식</a>
+		    <a class="nav-link" 
+		    href="productList.pdo?pc_parent_no=2" style="color: black;">간식</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#" style="color: black;">장난감</a>
+		    <a class="nav-link" 
+		    href="productList.pdo?pc_parent_no=3" style="color: black;">장난감</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#" style="color: black;">미용용품</a>
+		    <a class="nav-link" 
+		    href="productList.pdo?pc_parent_no=4" style="color: black;">미용용품</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#" style="color: black;">배변용품</a>
+		    <a class="nav-link" 
+		    href="productList.pdo?pc_parent_no=5" style="color: black;">위생용품</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="/projectdengdeng/community/community_event.jsp" style="color: black;">이벤트</a>

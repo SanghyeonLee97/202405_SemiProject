@@ -14,10 +14,10 @@ public class UpdateInfo implements CommandProsessor{
 		if(req.getAttribute("customer")!=null) {
 			MemberDAO mdao = new MemberDAO();
 			CustomerDTO customer = (CustomerDTO)req.getAttribute("customer");
-			System.out.println(customer.getPostal_code());
 			mdao.customerUpdateInfo(customer);
 		}
 		return "/mypage/mypage_edit_info.jsp";
+		
 		
 	}
 
