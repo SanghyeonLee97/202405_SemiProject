@@ -15,6 +15,7 @@ import controller.controller_module.Command_Etc;
 import controller.controller_module.Command_Member;
 import controller.controller_module.Command_MyPage;
 import controller.controller_module.Command_Parents;
+import controller.controller_module.Command_Product;
 import model.CommandProsessor;
 
 
@@ -38,6 +39,8 @@ public class Command extends HttpServlet{
 				command = new Command_Member(); //member 객체생성
 			}else if(servletPath.contains("/mypage/")) { //경로에 mypage가 포함되어 있다면
 				command = new Command_MyPage(); //mypage 객체생성
+			}else if(servletPath.contains("/product/")){ //경로에 product가 포함되어 있다면
+				command = new Command_Product();
 			}else { //다 아니라면
 				command = new Command_Etc(); //etc객체생성
 			}
@@ -53,13 +56,15 @@ public class Command extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String servletPath = req.getServletPath();
-		
+		System.out.println(servletPath);
 		command = new Command_Common();
 		if(command.command_Operate(req, resp, servletPath)==null) {
 			if(servletPath.contains("/member/")) {
 				command = new Command_Member();
 			}else if(servletPath.contains("/mypage/")) {
 				command = new Command_MyPage();
+			}else if(servletPath.contains("/product/")){ //경로에 product가 포함되어 있다면
+				command = new Command_Product();
 			}
 		}
 		processor = command.command_Operate(req, resp, servletPath);
