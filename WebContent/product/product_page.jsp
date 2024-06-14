@@ -42,10 +42,32 @@
 		height: 280px;
 		margin-top: 40px;
 	}
+	.detail-nav{
+		width: 100%; height: 70px;
+		background-color: #ddddff;
+	}
+	.detail-section{
+		width: 1120px;
+		margin-left:40px;
+		background-color: #ddffff;
+	}
+	.detail-section > article{
+		width:100%;
+		background-color: #ddffdd;
+	}
+	.detail-section > article:nth-child(1){
+		height: 200px;
+	}
+	.detail-section > article:nth-child(3){
+		height: 820px;
+	}
+	.detail-section > nav{
+		width:100%; height:50px;
+		background-color: #ffdddd;
+	}
 </style>
 </head>
 <body>
-	<header>header</header>
 	<main>
 		<section>
 			<header>section-header</header>
@@ -57,7 +79,12 @@
 			</section>
 			<div style="clear: both;"></div>
 		</section>
+		<nav class="detail-nav">nav</nav>
+		<section class="detail-section">
+			<article>section-article</article>
+			<nav>section-nav</nav>
+			<article>section-article</article>
+		</section>
 	</main>
-	<footer>footer</footer>
 </body>
 </html>
