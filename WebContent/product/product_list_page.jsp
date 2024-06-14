@@ -90,7 +90,7 @@
                         for (CategoryDTO category : subCategoryList) {
                 %>
                     <div>
-                        <a href="productList.pdo?pc_no=<%= category.getPc_no() %>"><%= category.getPc_name() %></a>
+                        <a href="list.do?pc_no=<%= category.getPc_no() %>"><%= category.getPc_name() %></a>
                     </div>
                 <%
                         }
