@@ -24,38 +24,31 @@ import model.UpdateInfo;
 
 @WebServlet("*.do")
 public class Command extends HttpServlet{
+	CommandProsessor processor = null;		
+	String view = null;
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String servletPath = req.getServletPath();
-		CommandProsessor processor = null;		
-		String view = null;
 		System.out.println(servletPath);
 		
 		if(servletPath.contains("/community/")) {
 			Command_Community cc = new Command_Community();
 			processor = cc.commandCommunity(req, resp, servletPath);
+		}else if(servletPath.contains("/member/")) {
+			Command_Member cm = new Command_Member();
+			processor = cm.commandMember(req, resp, servletPath);
+		}else if(servletPath.contains("/mypage/")) {
+			Command_MyPage cmp = new Command_MyPage();
+			processor = cmp.commandMyPage(req, resp, servletPath);
+		}else {
+			Command_Etc ce = new Command_Etc();
+			processor = ce.commandEtc(req, resp, servletPath);
 		}
-		
-		if(servletPath.equals("/member/idchk.do")) {	//회원가입 중복체크
-			processor = new IdChk(req.getParameter("id"));
-		}else if(servletPath.contains("/logout.do")) {
-			processor = new Logout();
-		}else if(servletPath.equals("/noticeWrite.do")) {
-			CommunityNoticeDTO cndto = new CommunityNoticeDTO();
-			cndto.setNoticeTitle(req.getParameter("noticeTitle"));
-			cndto.setNoticeContent(req.getParameter("noticeContent"));
-			processor = new NoticeWrite(cndto);
-		}else if(servletPath.equals("/faqWrite.do")) {
-			CommunityFAQDTO cfdto = new CommunityFAQDTO();
-			cfdto.setFaqTitle(req.getParameter("title"));
-			cfdto.setFaqContent(req.getParameter("content"));
-			cfdto.setFaqIQCNo(Integer.parseInt(req.getParameter("category")));
-			processor = new FAQWrite(cfdto);
-		}else if(servletPath.equals("/kickUser.do")) {
-			processor = new QuitUser(req.getParameter("id"),0);
-		}else if(servletPath.equals("/mypage/updateInfo.do")) {
-			processor = new UpdateInfo();
+		Command_Common ccm = new Command_Common();
+		if(ccm.commandCommon(req, resp, servletPath)!=null) {
+			processor = ccm.commandCommon(req, resp, servletPath);
 		}
 		
 		view=processor.process(req,resp);
@@ -69,36 +62,18 @@ public class Command extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		String servletPath = req.getServletPath();
 		
-		CommandProsessor processor = null;		
-		String view = null;
-		
-		if("/member/register.do".equals(servletPath)) {
-			CustomerDTO customer = new CustomerDTO();
-			customer.setCustomer_id(req.getParameter("id"));
-			customer.setCustomer_pw(req.getParameter("password"));
-			customer.setCustomer_name(req.getParameter("name"));
-			customer.setCustomer_tel(req.getParameter("tel"));
-			customer.setCustomer_email(req.getParameter("email"));
-			customer.setPostal_code(req.getParameter("postcode"));
-			customer.setAddress_road(req.getParameter("roadAddress"));
-			customer.setAddress_detail(req.getParameter("detailAddress"));
-			processor = new Register(customer);
-		}else if(servletPath.contains("/login.do")) {
-			processor = new LoginChk(req.getParameter("id"),req.getParameter("password"));
-		}else if(servletPath.equals("/mypage/updateInfo.do")) {
-			System.out.println(req.getParameter("postcode"));
-			CustomerDTO customer = new CustomerDTO();
-			customer.setCustomer_id(req.getParameter("id"));
-			customer.setCustomer_pw(req.getParameter("password"));
-			customer.setCustomer_name(req.getParameter("name"));
-			customer.setCustomer_tel(req.getParameter("tel"));
-			customer.setPostal_code(req.getParameter("postcode"));
-			System.out.println(customer.getPostal_code());
-			customer.setAddress_road(req.getParameter("roadAddress"));
-			customer.setAddress_detail(req.getParameter("detailAddress"));
-			req.setAttribute("customer", customer);
-			processor = new UpdateInfo();
+		if(servletPath.contains("/member/")) {
+			Command_Member cm = new Command_Member();
+			processor = cm.commandMember(req, resp, servletPath);
+		}else if(servletPath.contains("/mypage/")) {
+			Command_MyPage cmp = new Command_MyPage();
+			processor = cmp.commandMyPage(req, resp, servletPath);
 		}
+		Command_Common ccm = new Command_Common();
+		if(ccm.commandCommon(req, resp, servletPath)!=null) {
+			processor = ccm.commandCommon(req, resp, servletPath);
+		}
+		
 		view=processor.process(req,resp);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
