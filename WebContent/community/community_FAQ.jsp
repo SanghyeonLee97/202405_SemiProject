@@ -34,7 +34,7 @@
 		width: 100px;
 		height: 40px;
 		text-align: center;
-		margin-left: 100px;
+		margin-left: 150px;
 		margin-top: 20px;
 	
 	}
@@ -94,9 +94,9 @@
 			<article>
 				<table>
 					<tr>
-						<td>글번호</td>
-						<td >카테고리</td>
-						<td >제목</td>
+						<td width="80px;">글번호</td>
+						<td width="150px;" >카테고리</td>
+						<td width="600px;">제목</td>
 					</tr>
 					<%
 						for(int i=FAQBoardFirstNo;i>=FAQBoardLastNo;i--){	//첫번째글 번호부터 마지막글 번호까지 반복
