@@ -24,6 +24,12 @@
 			</article>
 			<nav>
 				<button onclick="location.href='community_FAQ.jsp'">목록으로</button>
+				<%
+					MemberDAO mdao = new MemberDAO();
+					if(mdao.adminChk((String)session.getAttribute("id"))){
+				%>
+				<button onclick="">삭제하기</button>
+				<% } %>
 			</nav>
 		</section>
 		

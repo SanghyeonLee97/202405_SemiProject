@@ -32,7 +32,7 @@ public class Command_Community extends Command_Parents{
 			processor = new QNAWrite(cqdto);
 		}
 		if(servletPath.equals("/community/QNADelete.do")) {
-			processor = new QNADelete(Integer.parseInt(req.getParameter("no")));
+			processor = new QNADelete("qna",Integer.parseInt(req.getParameter("no")));
 		}
 		return processor;
 	}

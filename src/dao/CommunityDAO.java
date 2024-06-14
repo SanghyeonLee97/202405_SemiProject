@@ -263,17 +263,19 @@ public class CommunityDAO extends DAO{
 		}
 	}
 	
-	//QNA글 삭제
-	public void QNADelete(int QNANo) {
+	//글 삭제
+	public void QNADelete(String board,int QNANo) {
 		Statement stmt = null;
 		String query = "";
 		openConnection();
 		try {
-			query = "delete from qna where qna_no="+QNANo+";";
+			query = "delete from "+board+" where qna_no="+QNANo+";";
+			System.out.println(query);
 			stmt = (Statement) conn.createStatement();
 			stmt.executeUpdate(query);
 		}catch (Exception e) {
-			System.out.println("QNA글 삭제 오류발생");
+			System.out.println("글 삭제 오류발생");
+			e.printStackTrace();
 		}finally {
 			closeConnection();
 		}
