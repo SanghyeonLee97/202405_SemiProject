@@ -22,22 +22,22 @@
 		margin-top:80px;
 	}
 	section>article>div{
-		width: 220px; height: 350px;
+		width: 250px; height: 350px;
 		background-color: #ddddff;
 		position: absolute;
 	}
 	section>article>div:nth-child(1) {
-		left: 130px;
+		left: 170px;
 	}
 	section>article>div:nth-child(2) {
-		left: 440px;
+		left: 490px;
 	}
 	section>article>div:nth-child(3) {
-		left: 800px;
+		left: 810px;
 	}
 	#img{
 		height: 350px;
-		width: 220px;
+		width: 250px;
 	}
 
 	#eventheader{
@@ -54,19 +54,22 @@
 				<h1 id=eventheader>이벤트 목록</h1>
 			</header>
 			<article>
-				<div><img id= img src="/projectdengdeng/imagefile/EventImg10.png"></div>
-				<div><img id= img src="/projectdengdeng/imagefile/EventImg11.png"></div>
-				<div><img id= img src="/projectdengdeng/imagefile/EventImg12.png"></div>
+				<div><a href="/projectdengdeng/community/community_event_page.jsp">
+					<img id= img src="/projectdengdeng/imagefile/PhotoEvent1.png">
+					</a></div>
+				
+				<div><img id= img src="/projectdengdeng/imagefile/MainEvent2.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/MainEvent3.png"></div>
 			</article>
 			<article>
-				<div><img id= img src="/projectdengdeng/imagefile/EventImg1.png"></div>
-				<div><img id= img src="/projectdengdeng/imagefile/EventImg2.png"></div>
-				<div><img id= img src="/projectdengdeng/imagefile/EventImg3.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/MainEvent1.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/EndEvent1.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/EndEvent2.png"></div>
 			</article>
 			<article>
-				<div><img id= img src="/projectdengdeng/imagefile/EventImg6.png"></div>
-				<div><img id= img src="/projectdengdeng/imagefile/EventImg7.png"></div>
-				<div><img id= img src="/projectdengdeng/imagefile/EventImg8.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/EndEvent3.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/EndEvent4.png"></div>
+				<div><img id= img src="/projectdengdeng/imagefile/EndEvent5.png"></div>
 			</article>
 			
 		</section>
