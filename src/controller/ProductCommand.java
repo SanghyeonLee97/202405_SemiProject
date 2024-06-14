@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.CommandProsessor;
-import model.NoticeRead;
 import model.product.ProductList;
 
 @WebServlet("*.pdo")
