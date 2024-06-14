@@ -36,7 +36,7 @@ public class Command extends HttpServlet{
 				command = new Command_Etc(); //etc객체생성
 			}
 		}
-		processor = command.command_Operate(req, resp, servletPath); //객체의 command_operate실행
+		processor = command.command_Operate(req, resp, servletPath); //업캐스팅된 객체의 command_operate실행
 		view=processor.process(req,resp);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
