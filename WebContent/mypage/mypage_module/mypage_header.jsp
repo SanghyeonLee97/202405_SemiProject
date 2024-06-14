@@ -1,3 +1,5 @@
+<%@page import="DTO.MyPageHeaderDTO"%>
+<%@page import="dao.MyPageDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,13 +23,29 @@ chk()
 ">
 	<%
 		String sessionid = (String)session.getAttribute("id");
+		String sessionno = (String)session.getAttribute("no");
+		System.out.print(sessionno);
+		MyPageDAO mdao = new MyPageDAO();
+		MyPageHeaderDTO mdto = mdao.getMyPageHeader(sessionno);
 	%>
 	<header>
         <h1><%=sessionid %>님</h1>
-        <article>header-article</article>
-        <article>header-article</article>
-        <article>header-article</article>
-        <article>header-article</article>
+        <article>
+        	주문/배송<br>
+        	<%=mdto.getOrder_count() %>
+        </article>
+        <article>
+        	리뷰<br>
+        	<%=mdto.getReview_count() %>
+        </article>
+        <article>
+        	적립금<br>
+        	<%=mdto.getCustomer_point() %>
+        </article>
+        <article>
+        	쿠폰<br>
+        	<%=mdto.getCoupon_count() %>
+        </article>
     </header>
 </body>
 </html>

@@ -257,6 +257,7 @@ public class CommunityDAO extends DAO{
 			stmt.executeUpdate(query);
 		}catch (Exception e) {
 			System.out.println("QNA글 등록 오류발생");
+			e.printStackTrace();
 		}finally {
 			closeConnection();
 		}

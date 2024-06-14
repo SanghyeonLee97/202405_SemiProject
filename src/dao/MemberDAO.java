@@ -27,26 +27,6 @@ public class MemberDAO extends DAO{
 		}
 	}
 	
-	//회원정보수정
-	public void customerUpdateInfo(CustomerDTO cdto) {
-		Statement stmt = null;
-		String query = "";
-		openConnection();
-		try {
-			query = "update customer set customer_pw='"+cdto.getCustomer_pw()+"',customer_name='"+cdto.getCustomer_name()+
-					"',customer_tel='"+cdto.getCustomer_tel()+"',postal_code="+cdto.getPostal_code()+
-					",address_road='"+cdto.getAddress_road()+"',address_detail='"+cdto.getAddress_detail()+
-					"' where customer_id='"+cdto.getCustomer_id()+"';";
-			System.out.println(query);
-			stmt = (Statement) conn.createStatement();
-			stmt.executeUpdate(query);
-		}catch (Exception e) {
-			System.out.println("회원정보수정 오류발생");
-		}finally {
-			closeConnection();
-		}
-	}
-	
 	//회원탈퇴
 	public void quitCustomer(String id) {
 		Statement stmt = null;

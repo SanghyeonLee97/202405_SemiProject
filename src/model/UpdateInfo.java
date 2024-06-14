@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.CustomerDTO;
-import dao.MemberDAO;
+import dao.MyPageDAO;
 
 
 public class UpdateInfo implements CommandProsessor{
@@ -12,7 +12,7 @@ public class UpdateInfo implements CommandProsessor{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		if(req.getAttribute("customer")!=null) {
-			MemberDAO mdao = new MemberDAO();
+			MyPageDAO mdao = new MyPageDAO();
 			CustomerDTO customer = (CustomerDTO)req.getAttribute("customer");
 			mdao.customerUpdateInfo(customer);
 		}

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CommunityDAO;
 import dao.MemberDAO;
 
 public class LoginChk implements CommandProsessor{
@@ -19,6 +20,7 @@ public class LoginChk implements CommandProsessor{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		MemberDAO mdao = new MemberDAO();
+		CommunityDAO cdao = new CommunityDAO();
 		
 		//탈퇴회원이라면
 		if(mdao.customerQuitChk(loginId)) {
@@ -30,6 +32,7 @@ public class LoginChk implements CommandProsessor{
 		if(mdao.customerLoginChk(loginId, loginPassword)==true) {
 			HttpSession session = req.getSession();
 			session.setAttribute("id", loginId);
+			session.setAttribute("no", Integer.toString(cdao.getCustomerNo(loginId)));
 		}
 		return "/member/login_success.jsp";
 	}
