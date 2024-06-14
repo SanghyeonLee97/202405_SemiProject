@@ -8,23 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import DTO.CommunityFAQDTO;
 import DTO.CommunityNoticeDTO;
-import DTO.CommunityQNADTO;
 import DTO.CustomerDTO;
 import model.CommandProsessor;
-import model.FAQRead;
 import model.FAQWrite;
 import model.IdChk;
 import model.LoginChk;
 import model.Logout;
-import model.NoticeRead;
 import model.NoticeWrite;
-import model.QNADelete;
-import model.QNARead;
-import model.QNAWrite;
 import model.QuitUser;
 import model.Register;
 import model.UpdateInfo;
@@ -34,28 +27,20 @@ public class Command extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String cmd = req.getParameter("cmd");
 		String servletPath = req.getServletPath();
 		CommandProsessor processor = null;		
 		String view = null;
 		System.out.println(servletPath);
 		
-		if(servletPath.equals("/community/notice.do")) {
-			processor = new NoticeRead(req.getParameter("no"),req.getParameter("board"));
-		}else if(servletPath.equals("/community/FAQ.do")) {
-			processor = new FAQRead(req.getParameter("no"));
-		}else if(servletPath.equals("/member/idchk.do")) {	//회원가입 중복체크
+		if(servletPath.contains("/community/")) {
+			Command_Community cc = new Command_Community();
+			processor = cc.commandCommunity(req, resp, servletPath);
+		}
+		
+		if(servletPath.equals("/member/idchk.do")) {	//회원가입 중복체크
 			processor = new IdChk(req.getParameter("id"));
 		}else if(servletPath.contains("/logout.do")) {
 			processor = new Logout();
-		}else if(servletPath.equals("/community/QNA.do")) {
-			processor = new QNARead(req.getParameter("no"));
-		}else if(servletPath.equals("/community/QNAWrite.do")) {
-			CommunityQNADTO cqdto = new CommunityQNADTO();
-			cqdto.setQna_title(req.getParameter("title"));
-			cqdto.setQna_content(req.getParameter("content"));
-			cqdto.setIqc_no(Integer.parseInt(req.getParameter("category")));
-			processor = new QNAWrite(cqdto);
 		}else if(servletPath.equals("/noticeWrite.do")) {
 			CommunityNoticeDTO cndto = new CommunityNoticeDTO();
 			cndto.setNoticeTitle(req.getParameter("noticeTitle"));
@@ -67,8 +52,6 @@ public class Command extends HttpServlet{
 			cfdto.setFaqContent(req.getParameter("content"));
 			cfdto.setFaqIQCNo(Integer.parseInt(req.getParameter("category")));
 			processor = new FAQWrite(cfdto);
-		}else if(servletPath.equals("/community/QNADelete.do")) {
-			processor = new QNADelete(Integer.parseInt(req.getParameter("no")));
 		}else if(servletPath.equals("/kickUser.do")) {
 			processor = new QuitUser(req.getParameter("id"),0);
 		}else if(servletPath.equals("/mypage/updateInfo.do")) {
@@ -84,7 +67,6 @@ public class Command extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String cmd = req.getParameter("cmd");
 		String servletPath = req.getServletPath();
 		
 		CommandProsessor processor = null;		
