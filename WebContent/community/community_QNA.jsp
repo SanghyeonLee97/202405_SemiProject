@@ -26,6 +26,24 @@
 		padding:10px;
 		border: 1px solid lightgray;
 	}
+	#bts{
+		width: 100px;
+		height: 40px;
+		text-align: center;
+		margin-left: 150px;
+		margin-top: 20px;
+	
+	}
+	#bts2{
+		width: 150px;
+		height: 50px;
+		text-align: center;
+		margin-left: 250px;
+		margin-top: 20px;
+		background: yellow;
+	
+	}
+	
 </style>
 <script type="text/javascript">
 	function QNAwrite() {
@@ -97,12 +115,12 @@
 			<article>
 				<table>
 					<tr>
-						<td>글번호</td>
-						<td>카테고리</td>
-						<td>제목</td>
-						<td>작성시간</td>
-						<td>id</td>
-						<td>답변여부</td>
+						<td width="80px;">글번호</td>
+						<td width="120px;">카테고리</td>
+						<td width="450px;">제목</td>
+						<td width="150px;">작성시간</td>
+						<td width="120px;">id</td>
+						<td width="120px;">답변여부</td>
 					</tr>
 					<%
 						for(int i=QNABoardFirstNo;i>=QNABoardLastNo;i--){	//첫번째글 번호부터 마지막글 번호까지 반복
@@ -129,9 +147,9 @@
 				</table>
 			</article>
 			<nav>
-				<button onclick="location.href='/projectdengdeng/product/product_list_page.jsp'">쇼핑하기</button>
+				<button id=bts onclick="location.href='/projectdengdeng/product/product_list_page.jsp'">쇼핑하기</button>
 				<%@ include file="main_section_nav.jsp" %>
-				<button type="button" onclick="QNAwrite()">글쓰기</button>
+				<button id=bts2 type="button" onclick="QNAwrite()">글쓰기</button>
 			</nav>
 		</section>
 	</main>

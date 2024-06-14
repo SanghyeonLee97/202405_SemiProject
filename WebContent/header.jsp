@@ -87,7 +87,7 @@
 		    href="productList.pdo?pc_parent_no=5" style="color: black;">위생용품</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#" style="color: black;">이벤트</a>
+		    <a class="nav-link" href="/projectdengdeng/community/community_event.jsp" style="color: black;">이벤트</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="/projectdengdeng/community/community_QNA.jsp" style="color: black;">고객문의</a>

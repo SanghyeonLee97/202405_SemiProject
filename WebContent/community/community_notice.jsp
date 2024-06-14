@@ -26,6 +26,14 @@
 		padding:10px;
 		border: 1px solid lightgray;
 	}
+	#bts{
+		width: 100px;
+		height: 40px;
+		text-align: center;
+		margin-left: 150px;
+		margin-top: 20px;
+	
+	}
 </style>
 </head>
 <body>
@@ -81,10 +89,10 @@
 			<article>
 				<table>
 					<tr>
-						<td>글번호</td>
-						<td>제목</td>
-						<td>작성시간</td>
-						<td>조회수</td>
+						<td width="80px;">글번호</td>
+						<td width="550px;">제목</td>
+						<td width="150px;">작성시간</td>
+						<td width="100px;">조회수</td>
 					</tr>
 					<%
 						for(int i=noticeBoardFirstNo;i>=noticeBoardLastNo;i--){	//첫번째글 번호부터 마지막글 번호까지 반복
@@ -101,7 +109,7 @@
 				</table>
 			</article>
 			<nav>
-				<button onclick="location.href='/projectdengdeng/product/product_list_page.jsp'">쇼핑하기</button>
+				<button id=bts onclick="location.href='/projectdengdeng/product/product_list_page.jsp'">쇼핑하기</button>
 				<%@ include file="main_section_nav.jsp" %>
 			</nav>
 		</section>
