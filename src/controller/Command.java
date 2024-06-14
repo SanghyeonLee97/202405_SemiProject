@@ -24,19 +24,19 @@ public class Command extends HttpServlet{
 		String servletPath = req.getServletPath();
 		System.out.println(servletPath);
 		
-		command = new Command_Common();
-		if(command.command_Operate(req, resp, servletPath)==null) {
-			if(servletPath.contains("/community/")) {
-				command = new Command_Community();
-			}else if(servletPath.contains("/member/")) {
-				command = new Command_Member();
-			}else if(servletPath.contains("/mypage/")) {
-				command = new Command_MyPage();
-			}else {
-				command = new Command_Etc();
+		command = new Command_Common(); //기본은 common객체
+		if(command.command_Operate(req, resp, servletPath)==null) { //common의 리턴값이 존재하지 않으면
+			if(servletPath.contains("/community/")) { //경로에 community가 포함되어 있다면
+				command = new Command_Community(); //community 객체생성
+			}else if(servletPath.contains("/member/")) { //경로에 member가 포함되어 있다면
+				command = new Command_Member(); //member 객체생성
+			}else if(servletPath.contains("/mypage/")) { //경로에 mypage가 포함되어 있다면
+				command = new Command_MyPage(); //mypage 객체생성
+			}else { //다 아니라면
+				command = new Command_Etc(); //etc객체생성
 			}
 		}
-		processor = command.command_Operate(req, resp, servletPath);
+		processor = command.command_Operate(req, resp, servletPath); //객체의 command_operate실행
 		view=processor.process(req,resp);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
