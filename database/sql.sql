@@ -27,8 +27,8 @@ create table customer(
     customer_id varchar(20) not null,
     customer_pw varchar(20) not null,
     customer_name varchar(20) not null,
-    customer_tel varchar(20) not null,
-    postal_code int,
+    customer_tel varchar(20),
+    postal_code varchar(5) not null,
     address_road varchar(100),
     address_detail varchar(150),
     admin int not null default 0,
@@ -120,9 +120,11 @@ create table review(
     review_content text not null,
     review_rating int not null,
     product_no bigint not null,
-	foreign key(product_no) references product(product_no)
+    customer_no bigint not null,
+	foreign key(product_no) references product(product_no),
+    foreign key(customer_no) references customer(customer_no)
 );
-insert into review(purchase_date,review_title,review_content,review_rating,product_no) values('2000-01-01','제목테스트','내용테스트',4,1);
+insert into review(purchase_date,review_title,review_content,review_rating,product_no,customer_no) values('2000-01-01','제목테스트','내용테스트',4,1,1);
 
 create table event(
 	event_no bigint primary key auto_increment,
@@ -194,11 +196,3 @@ create table orderproduct(
     primary key(customer_no,product_no)
 );
 insert into orderproduct values(1,1,1,2);
-
-
-ALTER TABLE `projectdb`.`customer` 
-CHANGE COLUMN `customer_tel` `customer_tel` VARCHAR(20) NULL ,
-CHANGE COLUMN `postal_code` `postal_code` INT NOT NULL ,
-CHANGE COLUMN `address_road` `address_road` VARCHAR(100) NOT NULL ;
-ALTER TABLE `projectdb`.`customer` 
-CHANGE COLUMN `postal_code` `postal_code` VARCHAR(6) NOT NULL ;
