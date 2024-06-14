@@ -24,7 +24,7 @@ public class Command extends HttpServlet{
 		String servletPath = req.getServletPath();
 		System.out.println(servletPath);
 		
-		command = new Command_Common(); //기본은 common객체
+		command = new Command_Common(); //부모에 업캐스팅 기본은 common객체
 		if(command.command_Operate(req, resp, servletPath)==null) { //common의 리턴값이 존재하지 않으면
 			if(servletPath.contains("/community/")) { //경로에 community가 포함되어 있다면
 				command = new Command_Community(); //community 객체생성
