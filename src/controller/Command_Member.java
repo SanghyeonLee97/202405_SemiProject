@@ -8,10 +8,10 @@ import model.CommandProsessor;
 import model.IdChk;
 import model.Register;
 
-public class Command_Member {
-	CommandProsessor processor = null;	
-	
-	public CommandProsessor commandMember(HttpServletRequest req, HttpServletResponse resp,String servletPath){
+public class Command_Member extends Command_Parents{
+
+	@Override
+	public CommandProsessor command_Operate(HttpServletRequest req, HttpServletResponse resp, String servletPath) {
 		if(servletPath.equals("/member/idchk.do")) {	//회원가입 중복체크
 			processor = new IdChk(req.getParameter("id"));
 		}

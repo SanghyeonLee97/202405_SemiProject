@@ -11,10 +11,10 @@ import model.QNADelete;
 import model.QNARead;
 import model.QNAWrite;
 
-public class Command_Community{
-	CommandProsessor processor = null;	
+public class Command_Community extends Command_Parents{
 	
-	public CommandProsessor commandCommunity(HttpServletRequest req, HttpServletResponse resp,String servletPath){
+	@Override
+	public CommandProsessor command_Operate(HttpServletRequest req, HttpServletResponse resp, String servletPath) {
 		if(servletPath.equals("/community/notice.do")) {
 			processor = new NoticeRead(req.getParameter("no"),req.getParameter("board"));
 		}

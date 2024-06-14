@@ -12,11 +12,10 @@ import model.NoticeWrite;
 import model.QuitUser;
 import model.UpdateInfo;
 
-public class Command_Etc {
-	CommandProsessor processor = null;	
-	
-	public CommandProsessor commandEtc(HttpServletRequest req, HttpServletResponse resp,String servletPath){
-		
+public class Command_Etc extends Command_Parents{
+
+	@Override
+	public CommandProsessor command_Operate(HttpServletRequest req, HttpServletResponse resp, String servletPath) {
 		if(servletPath.equals("/noticeWrite.do")) {
 			CommunityNoticeDTO cndto = new CommunityNoticeDTO();
 			cndto.setNoticeTitle(req.getParameter("noticeTitle"));

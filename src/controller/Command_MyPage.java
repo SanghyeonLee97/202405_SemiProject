@@ -7,10 +7,10 @@ import DTO.CustomerDTO;
 import model.CommandProsessor;
 import model.UpdateInfo;
 
-public class Command_MyPage {
-	CommandProsessor processor = null;	
+public class Command_MyPage extends Command_Parents{
 	
-	public CommandProsessor commandMyPage(HttpServletRequest req, HttpServletResponse resp,String servletPath){
+	@Override
+	public CommandProsessor command_Operate(HttpServletRequest req, HttpServletResponse resp, String servletPath) {
 		if(servletPath.equals("/mypage/updateInfo.do")) {
 			if(req.getParameter("id")!=null) {
 				System.out.println(req.getParameter("postcode"));

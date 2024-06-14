@@ -7,10 +7,10 @@ import model.CommandProsessor;
 import model.LoginChk;
 import model.Logout;
 
-public class Command_Common {
-	CommandProsessor processor = null;	
-	
-	public CommandProsessor commandCommon(HttpServletRequest req, HttpServletResponse resp,String servletPath){
+public class Command_Common extends Command_Parents{
+
+	@Override
+	public CommandProsessor command_Operate(HttpServletRequest req, HttpServletResponse resp, String servletPath) {
 		if(servletPath.contains("/login.do")) {
 			processor = new LoginChk(req.getParameter("id"),req.getParameter("password"));
 		}
