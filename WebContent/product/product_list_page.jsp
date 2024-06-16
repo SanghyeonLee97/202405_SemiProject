@@ -115,9 +115,11 @@
 							ProductDTO product = productList.get(i);
 					%>
 				<div class="product-card">
-					<img src="<%= product.getProduct_imgurl() %>">
-					<h5><%= product.getProduct_name() %></h5>
-					<p><%= product.getProduct_price() %>원</p>
+					<a href="details.do?product_no=<%= product.getProduct_no() %>">
+						<img src="<%= product.getProduct_imgurl() %>">
+						<h5><%= product.getProduct_name() %></h5>
+						<p><%= product.getProduct_price() %>원</p>
+					</a>
 				</div>
 					<%
 							}
