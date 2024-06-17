@@ -19,9 +19,9 @@
 		
 	}
 	header>section{
-		position: relative;
+		position: absolute;
 		left : 500px;
-		bottom : 30px;
+		top : 0px;
 		
 	}
 	#login{
@@ -36,8 +36,7 @@
 <body>
 	<header>
 		<section>
-			<div onclick ="location.href='/projectdengdeng/index.jsp';">
-			<img src="/projectdengdeng/imagefile/Logo3.png" style=" width: 150px; height: 150px ; margin-top: 10px; "></div>
+			<img src="/projectdengdeng/imagefile/newlogo.png" onclick ="location.href='/projectdengdeng/index.jsp'" style=" width: 120px; height: 120px ; "></div>
 		</section>
 		<section id= "login">
 		<%

@@ -10,9 +10,6 @@
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <link href="../css/community.css?after" rel="stylesheet" type="text/css">
 <style type="text/css">
-	section{
-		padding-bottom: 40px;
-	}
 	section>article{
 		height: 400px;
 		margin-top:40px;
