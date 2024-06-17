@@ -1,7 +1,13 @@
+<%@page import="DTO.ReviewDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="DTO.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% ProductDTO product = (ProductDTO)request.getAttribute("product"); %>
+<% 
+	ProductDTO product = (ProductDTO)request.getAttribute("product");
+	float avgRating = (float)request.getAttribute("avgRating");
+	List<ReviewDTO> reviewList = (List<ReviewDTO>)request.getAttribute("reviewList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,102 +15,159 @@
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	
-	main>section{
-		background-color: #ddddff;
-	}
-	main>section>header{
-		width: 100%; height: 120px;
-		background-color: #ddffff;
-	}
-	main>section>aside{
-		width: 360px; height: 360px;
-		margin-left:40px;
-		margin-top:60px;
-		background-color: #ffffdd;
-		float: left;
-	}
-	main>section>section{
-		width: 800px;
-		background-color: #ddffdd;
-		float: left;
-	}
-	main>section>section>article{
-		width:100%;
-		background-color: #ffddff;
-	}
+main>section {
+	background-color: #ddddff;
+}
 
-	main>section>section>article:nth-child(1){
-		height: 100px;
-	}
-	main>section>section>article:nth-child(2){
-		height: 140px;
-		margin-top: 40px;
-	}
-	main>section>section>article:nth-child(3){
-		height: 280px;
-		margin-top: 40px;
-	}
-	.detail-nav{
-		width: 100%; height: 70px;
-		background-color: #ddddff;
-	}
-	.detail-nav a{
-		margin: 0 15px;
-		cursor: pointer;
-		text-decoration: none;
-		color: inherit;
-	}
-	.detail-section{
-		width: 1200px;
-		background-color: #ddffff;
-	}
-	.detail-section > article{
-		display: none;
-	}
-	.detail-section > article.active{
-		display: block;
-	}
-	.detail-section > nav{
-		width:100%; height:50px;
-		background-color: #ffdddd;
-	}.detail-section > nav a{
-		margin: 0 15px;
-		cursor: pointer;
-		text-decoration: none;
-		color: inherit;
-	}
-	.quantity-selector{
-		display: flex;
-		align-items: center;
-	}
-	.quantity-selector button{
-		width: 30px; height: 30px;
-		font-size: 18px;
-		margin: 0 5px;
-	}
-	.quantity-selector input{
-		width: 50px;
-		text-align: center;
-	}
-	.product-details table{
-		width: 80%;
-		border-collapse: collapse;
-		margin: 0 auto;
-	}
-	.product-details table, .product-details th, .product-details td{
-		border: 1px solid #000;
-	}
-	.product-details th{
-		width: 20%;
-	}
-	.product-details td{
-		width: 30%;
-	}
-	.product-details th, .product-details td{
-		padding: 8px;
-		text-align: left;
-	}
+main>section>header {
+	width: 100%;
+	height: 120px;
+	background-color: #ddffff;
+}
+
+main>section>aside {
+	width: 360px;
+	height: 360px;
+	margin-left: 40px;
+	margin-top: 60px;
+	background-color: #ffffdd;
+	float: left;
+}
+
+main>section>section {
+	width: 800px;
+	background-color: #ddffdd;
+	float: left;
+}
+
+main>section>section>article {
+	width: 100%;
+	background-color: #ffddff;
+}
+
+main>section>section>article:nth-child(1) {
+	height: 100px;
+}
+
+main>section>section>article:nth-child(2) {
+	height: 140px;
+	margin-top: 40px;
+}
+
+main>section>section>article:nth-child(3) {
+	height: 280px;
+	margin-top: 40px;
+}
+
+.detail-nav {
+	width: 100%;
+	height: 70px;
+	background-color: #ddddff;
+}
+
+.detail-nav a {
+	margin: 0 15px;
+	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
+}
+
+.detail-section {
+	width: 1200px;
+	background-color: #ddffff;
+}
+
+.detail-section>article {
+	display: none;
+}
+
+.detail-section>article.active {
+	display: block;
+}
+
+.detail-section>article>nav {
+	width: 100%;
+	height: 50px;
+	background-color: #ffdddd;
+}
+
+.detail-section>article>nav a {
+	margin: 0 15px;
+	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
+}
+
+.quantity-selector {
+	display: flex;
+	align-items: center;
+}
+
+.quantity-selector button {
+	width: 30px;
+	height: 30px;
+	font-size: 18px;
+	margin: 0 5px;
+}
+
+.quantity-selector input {
+	width: 50px;
+	text-align: center;
+}
+
+.product-details table {
+	width: 80%;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+.product-details table, .product-details th, .product-details td {
+	border: 1px solid #000;
+}
+
+.product-details th {
+	width: 20%;
+}
+
+.product-details td {
+	width: 30%;
+}
+
+.product-details th, .product-details td {
+	padding: 8px;
+	text-align: left;
+}
+
+.review-container {
+	width: 80%;
+	margin: 0 auto;
+	background-color: #f9f9f9;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.review-item {
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.review-item h4 {
+	margin: 0 0 5px 0;
+	font-size: 18px;
+}
+
+.review-item p {
+	margin: 0;
+	font-size: 14px;
+}
+
+.review-item .review-meta {
+	margin-top: 10px;
+	color: #666;
+	font-size: 12px;
+}
 </style>
 </head>
 <body>
@@ -168,14 +231,29 @@
 			</article>
 			<article id="review">
 				<h3>상품후기</h3>
-				<p>이 공간에는 평점의 평균을 출력할 예정</p>
+				<p>평점: <%=avgRating %></p>
+				<nav>
+					<a href="#">전체보기</a>
+
+				</nav>
+				<article>
+					<% if (reviewList != null && !reviewList.isEmpty()){ %>
+						<div class="review-container">
+							<% for (ReviewDTO review : reviewList){ %>
+							<div class="review-item">
+								<h4><%= review.getReview_title() %></h4>
+								<p>평점: <%= review.getReview_rating() %></p>
+								<p><%= review.getReview_content() %></p>
+								<p class="review-meta">작성자: <%= review.getCustomer_name() %>&nbsp;&nbsp; 
+								구매일: <%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(review.getPurchase_date()) %></p>
+							</div>
+							<%} %>
+						</div>
+					<% }else{ %>
+						<p>리뷰가 없습니다</p>
+					<% } %>
+				</article>
 			</article>
-			<nav>
-				<a onclick="showReviewSection('all')">전체보기</a>
-				<a onclick="showReviewSection('photo')">포토/동영상 후기</a>
-				<a onclick="showReviewSection('general')">일반후기</a>
-			</nav>
-			<article>위 nav에 해당하는 내용 출력</article>
 			<article id="qna">
 				<h3>QNA</h3>
 				<p>QNA 출력 예정</p>
@@ -212,9 +290,7 @@
 		});
 		document.getElementById(sectionId).classList.add('active');
 	}
-	function showReviewSection(reviewType) {
-		//리뷰 타입에 따라 내용을 바꿔주는 로직 추가
-	}
+
 </script>
 </body>
 </html>
