@@ -9,6 +9,7 @@ import java.util.List;
 
 import DTO.CategoryDTO;
 import DTO.ProductDTO;
+import DTO.ReviewDTO;
 
 public class ProductDAO extends DAO{
 
@@ -24,6 +25,11 @@ public class ProductDAO extends DAO{
 	private final String GET_PRODUCT =
 			"select product_name, product_imgurl, product_price, product_detail, product_size, "
 			+ "product_color, maker, product_mfd, product_poo, product_epd from product where product_no = ?;";
+	private final String REVIEW_AVG = 
+			"select avg(review_rating) from review where product_no=?";
+	private final String REVIEW_LIST =
+			"select r.review_title, r.review_content, r.review_rating, r.purchase_date, c.customer_name "
+			+ "from review r join customer c on r.customer_no = c.customer_no where c.customer_no = ?;";
 	
 	//상품리스트 검색 by 부모번호
 	public List<ProductDTO> getProductListByParentNo(int pc_parent_no){
@@ -74,6 +80,7 @@ public class ProductDAO extends DAO{
 		return subCategoryList;
 	}
 	
+	
 	//상품정보 가져오기
 	public ProductDTO getProduct(int product_no) {
 		ProductDTO product = null;
@@ -106,4 +113,55 @@ public class ProductDAO extends DAO{
 	}
 	
 	
+	//리뷰평점
+	public float getProductRating(long product_no) {
+		float rating = 0;
+		
+		try {
+			openConnection();
+			pstmt = conn.prepareStatement(REVIEW_AVG);
+			pstmt.setLong(1, product_no);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				rating = rs.getLong(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return rating;
+	}
+	
+	
+	//리뷰목록
+	public List<ReviewDTO> getReviewList(long product_no){
+		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+		//"select r.review_title, r.review_content, r.review_rating, r.purchase_date, c.customer_name "
+		//+ "from review r join customer c on r.customer_no = c.customer_no where c.customer_no = ?;";
+		try {
+			openConnection();
+			pstmt = conn.prepareStatement(REVIEW_LIST);
+			pstmt.setLong(1, product_no);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ReviewDTO review = new ReviewDTO();
+				review.setReview_title(rs.getString("review_title"));
+				review.setReview_content(rs.getString("review_content"));
+				review.setReview_rating(rs.getInt("review_rating"));
+				review.setPurchase_date(rs.getDate("purchase_date"));
+				review.setCustomer_name(rs.getString("customer_name"));
+				
+				reviewList.add(review);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return reviewList;
+	}
 }
