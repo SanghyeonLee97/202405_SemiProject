@@ -37,7 +37,7 @@
 	<header>
 		<section>
 			<div onclick ="location.href='/projectdengdeng/index.jsp';">
-			<img src="/projectdengdeng/imagefile/Logo3.png" width="180px;" height="180px"></div>
+			<img src="/projectdengdeng/imagefile/Logo3.png" style=" width: 150px; height: 150px ; margin-top: 10px; "></div>
 		</section>
 		<section id= "login">
 		<%

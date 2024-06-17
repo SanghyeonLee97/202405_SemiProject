@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	
+
+
+</style>
 <link href="/projectdengdeng/css/style2.css" rel="stylesheet" type="text/css">
 <link href="/projectdengdeng/css/community.css" rel="stylesheet" type="text/css">
 </head>
@@ -17,7 +22,7 @@
 		<%@ include file="main_nav.jsp" %>
 		<section>
 			<article>
-				<table>
+				<table border="1">
 					<tr>
 						<td>제목</td><td><%=ndto.getNoticeTitle() %></td>
 					</tr>
@@ -25,11 +30,11 @@
 						<td>작성자</td><td>댕댕</td>
 						<%=ndto.getNoticeNo() %>
 					</tr>
+						</article>
+						<article>
+							<tr><td colspan="2"><p><%=ndto.getNoticeContent() %></p></td></tr>
+						</article>
 				</table>
-			</article>
-			<article>
-				<p><%=ndto.getNoticeContent() %></p>
-			</article>
 			<nav>
 				<button onclick="location.href='community_notice.jsp'">목록으로</button>
 				<%
