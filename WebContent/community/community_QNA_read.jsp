@@ -10,13 +10,21 @@
 <link href="../css/community.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	table{
-		width:100%;
+		text-align: center;
+		margin-left: 250px;
+		margin-top: 100px;
+		margin-bottom: 100px;
 		border: 1px solid black;
 		border-collapse: collapse;
 	}
 	tr,td{
 	border: 1px solid black;
 	}
+	#qnawriter {
+		
+	
+	}
+	
 </style>
 </head>
 <body>
@@ -33,7 +41,7 @@
 		<section>
 			<article>
 				<table>
-					<tr>
+					<tr id="qnawriter">
 						<td>글쓴이</td>
 						<td><%=cfdto.getCustomer_id() %></td>
 					</tr>

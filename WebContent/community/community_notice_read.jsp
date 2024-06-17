@@ -7,8 +7,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+	table{
+		width: 700px;
+		height: 500px;
+		text-align: center;
+		margin-left: 250px;
+		margin-top: 100px;
+		margin-bottom: 100px;
+	}
+	#notitle {
+		height: 50px;
 	
-
+	}
+	#nowriter{
+		height: 50px;
+	}
+	#nolist{
+		height: 50px;
+		width:  100px;
+		margin-left: 550px;
+		background: yellow;
+	
+	}
 
 </style>
 <link href="/projectdengdeng/css/style2.css" rel="stylesheet" type="text/css">
@@ -24,10 +44,10 @@
 			<article>
 				<table border="1">
 					<tr>
-						<td>제목</td><td><%=ndto.getNoticeTitle() %></td>
+						<td id=notitle>제목</td><td><%=ndto.getNoticeTitle() %></td>
 					</tr>
 					<tr>
-						<td>작성자</td><td>댕댕</td>
+						<td id=nowriter>작성자</td><td>댕댕</td>
 						<%=ndto.getNoticeNo() %>
 					</tr>
 						</article>
@@ -36,7 +56,7 @@
 						</article>
 				</table>
 			<nav>
-				<button onclick="location.href='community_notice.jsp'">목록으로</button>
+				<button id=nolist onclick="location.href='community_notice.jsp'">목록으로</button>
 				<%
 					MemberDAO mdao = new MemberDAO();
 					if(mdao.adminChk((String)session.getAttribute("id"))){

@@ -21,6 +21,7 @@
 	table{
 		border: 1px solid lightgray;
 		border-collapse: collapse;
+		margin-left:100px;
 	}
 	tr,td{
 		padding:10px;
