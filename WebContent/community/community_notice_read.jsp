@@ -23,6 +23,7 @@
 					</tr>
 					<tr>
 						<td>작성자</td><td>댕댕</td>
+						<%=ndto.getNoticeNo() %>
 					</tr>
 				</table>
 			</article>
@@ -31,6 +32,12 @@
 			</article>
 			<nav>
 				<button onclick="location.href='community_notice.jsp'">목록으로</button>
+				<%
+					MemberDAO mdao = new MemberDAO();
+					if(mdao.adminChk((String)session.getAttribute("id"))){
+				%>
+				<button onclick="location.href='QNADelete.do?board=notice&no=<%=ndto.getNoticeNo() %>'">삭제하기</button>
+				<% } %>
 			</nav>
 		</section>
 		

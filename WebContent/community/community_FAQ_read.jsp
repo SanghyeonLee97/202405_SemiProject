@@ -28,7 +28,7 @@
 					MemberDAO mdao = new MemberDAO();
 					if(mdao.adminChk((String)session.getAttribute("id"))){
 				%>
-				<button onclick="">삭제하기</button>
+				<button onclick="location.href='QNADelete.do?board=faq&no=<%=cfdto.getFaqNo() %>'">삭제하기</button>
 				<% } %>
 			</nav>
 		</section>

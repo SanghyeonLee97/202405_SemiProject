@@ -7,7 +7,8 @@ import DTO.CommunityQNADTO;
 import model.CommandProsessor;
 import model.FAQRead;
 import model.NoticeRead;
-import model.QNADelete;
+import model.QNAAnswer;
+import model.CommunityDelete;
 import model.QNARead;
 import model.QNAWrite;
 
@@ -32,7 +33,10 @@ public class Command_Community extends Command_Parents{
 			processor = new QNAWrite(cqdto);
 		}
 		if(servletPath.equals("/community/QNADelete.do")) {
-			processor = new QNADelete("qna",Integer.parseInt(req.getParameter("no")));
+			processor = new CommunityDelete(req.getParameter("board"),Integer.parseInt(req.getParameter("no")));
+		}
+		if(servletPath.equals("/community/QNAAnswer.do")) {
+			processor = new QNAAnswer(Integer.parseInt(req.getParameter("no")),req.getParameter("answer") );
 		}
 		return processor;
 	}

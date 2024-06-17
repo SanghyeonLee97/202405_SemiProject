@@ -68,6 +68,7 @@ public class CommunityDAO extends DAO{
 			ResultSet rs = stmt.executeQuery(query);
 			
 			while(rs.next()) {
+				res.setNoticeNo(rs.getInt("notice_No"));
 				res.setNoticeTitle(rs.getString("notice_title"));
 				res.setNoticeContent(rs.getString("notice_content"));
 			}
@@ -152,6 +153,7 @@ public class CommunityDAO extends DAO{
 			ResultSet rs = stmt.executeQuery(query);
 				
 			while(rs.next()) {
+				res.setFaqNo(rs.getInt("faq_no"));
 				res.setFaqTitle(rs.getString("faq_title"));
 				res.setFaqContent(rs.getString("faq_content"));
 			}
@@ -222,6 +224,23 @@ public class CommunityDAO extends DAO{
 		return res;
 	}
 	
+	//QNA 답변 등록
+	public void qnaAnswerWrite(int no,String answer) {
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "update qna set qna_answer='"+answer+"' where qna_no="+no+";";
+			System.out.println(query);
+			stmt = (Statement) conn.createStatement();
+			stmt.executeUpdate(query);
+		}catch (Exception e) {
+			System.out.println("QNA 답변 등록 오류발생");
+		}finally {
+			closeConnection();
+		}
+	}
+	
 	//고객id>no변환
 	public int getCustomerNo(String customerId) {
 		int customerNo=0;
@@ -264,12 +283,12 @@ public class CommunityDAO extends DAO{
 	}
 	
 	//글 삭제
-	public void QNADelete(String board,int QNANo) {
+	public void communityDelete(String board,int QNANo) {
 		Statement stmt = null;
 		String query = "";
 		openConnection();
 		try {
-			query = "delete from "+board+" where qna_no="+QNANo+";";
+			query = "delete from "+board+" where "+board+"_no="+QNANo+";";
 			System.out.println(query);
 			stmt = (Statement) conn.createStatement();
 			stmt.executeUpdate(query);
