@@ -73,11 +73,13 @@
 				<%
 					if(mdao.adminChk(sid)){
 				%>
+				<!-- 운영자 답변 디자인X -->
 				<form action="QNAAnswer.do">
 					<input type="hidden" name="no" value="<%=cfdto.getQna_no()%>">
 					<textarea name="answer" rows="10" cols="100"></textarea><br>
 					<button type="submit">답변하기</button>
 				</form>
+				<!-- 운영자 답변 -->
 				<%} %>
 			</article>
 			<nav>
