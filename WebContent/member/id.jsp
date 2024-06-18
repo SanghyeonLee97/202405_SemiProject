@@ -73,15 +73,10 @@
 			</header>
 			<article>
 				<form id="idForm" action="id.jsp">
-					<input type="text" name="id" placeholder="이름을 입력해주세요" required="required">
+				<!--  -->
+					<input type="text" name="id" placeholder="이메일을 입력해주세요" required="required">
 					<br><br>
-					<input type="text" name="email" placeholder="이메일을 입력해주세요" required="required"> 
-					<button id="button1" type="button">인증번호받기</button><br><br>
-					<h6>본인확인 이메일 주소와 이메일 주소가 같아야  인증번호를 받을 수 있습니다.</h6><br><br>
-					<h4>인증번호 입력</h4><br><br>
-					<input type="text" name="authenticationNumber" placeholder="인증번호를 입력해주세요" required="required">
-					<input type="button" name="checkEmail" value="확인" id="button1"><br><br>
-					<input type="text" name="returnId" readonly="readonly">
+					<input type="submit" name="returnId" readonly="readonly">
 				</form>
 			</article>
 			<nav>
