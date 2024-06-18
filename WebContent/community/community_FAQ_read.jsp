@@ -16,12 +16,16 @@
 		margin-top: 100px;
 		margin-bottom: 100px;
 		border-collapse: collapse;
+		border: 1px solid lightgray;
 	}
-	#faqtitle {
-		height: 70px;
+	#faqlist{
+		height: 50px;
+		width:  100px;
+		margin-left: 550px;
+		background: yellow;
+	
 	
 	}
-
 
 </style>
 <link href="/projectdengdeng/css/style2.css" rel="stylesheet" type="text/css">
@@ -36,14 +40,14 @@
 		<section>
 			<table border="1">
 				<article>
-					<tr><td id="faqtitle"><%=cfdto.getFaqTitle() %></td></tr>
+					<tr><td height="100px;"><%=cfdto.getFaqTitle() %></td></tr>
 				</article>
 				<article>
 					<tr><td><%=cfdto.getFaqContent() %></td></tr>
 				</article>
 			</table>
 			<nav>
-				<button onclick="location.href='community_FAQ.jsp'">목록으로</button>
+				<button id="faqlist" onclick="location.href='community_FAQ.jsp'">목록으로</button>
 				<%
 					MemberDAO mdao = new MemberDAO();
 					if(mdao.adminChk((String)session.getAttribute("id"))){

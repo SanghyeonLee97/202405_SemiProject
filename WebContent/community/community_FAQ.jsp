@@ -112,7 +112,7 @@
 				</table>
 			</article>
 			<nav>
-				<button id=bts onclick="location.href='/projectdengdeng/product/product_list_page.jsp'">쇼핑하기</button>
+				<button id="bts" onclick="location.href='/projectdengdeng/product/product_list_page.jsp'">쇼핑하기</button>
 				<%@ include file="main_section_nav.jsp" %>
 			</nav>
 		</section>

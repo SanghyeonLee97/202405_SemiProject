@@ -14,6 +14,7 @@
 		margin-left: 250px;
 		margin-top: 100px;
 		margin-bottom: 100px;
+		border: 1px solid lightgray;
 	}
 	#notitle {
 		height: 50px;
@@ -44,10 +45,10 @@
 			<article>
 				<table border="1">
 					<tr>
-						<td id=notitle>제목</td><td><%=ndto.getNoticeTitle() %></td>
+						<td id="notitle">제목</td><td><%=ndto.getNoticeTitle() %></td>
 					</tr>
 					<tr>
-						<td id=nowriter>작성자</td><td>댕댕</td>
+						<td id="nowriter">작성자</td><td>댕댕</td>
 						<%=ndto.getNoticeNo() %>
 					</tr>
 						</article>
@@ -56,7 +57,7 @@
 						</article>
 				</table>
 			<nav>
-				<button id=nolist onclick="location.href='community_notice.jsp'">목록으로</button>
+				<button id="nolist" onclick="location.href='community_notice.jsp'">목록으로</button>
 				<%
 					MemberDAO mdao = new MemberDAO();
 					if(mdao.adminChk((String)session.getAttribute("id"))){

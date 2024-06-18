@@ -14,16 +14,24 @@
 		margin-left: 250px;
 		margin-top: 100px;
 		margin-bottom: 100px;
-		border: 1px solid black;
+		border: 1px solid lightgray;
 		border-collapse: collapse;
+		width: 700px;
+		
 	}
 	tr,td{
-	border: 1px solid black;
+	border: 1px solid lightgray;
 	}
-	#qnawriter {
+	
+	#qnalist{
 		
+		height: 50px;
+		width:  100px;
+		margin-left: 550px;
+		background: yellow;
 	
 	}
+	
 	
 </style>
 </head>
@@ -41,20 +49,20 @@
 		<section>
 			<article>
 				<table>
-					<tr id="qnawriter">
-						<td>글쓴이</td>
+					<tr>
+						<td height="30px;">글쓴이</td>
 						<td><%=cfdto.getCustomer_id() %></td>
 					</tr>
 					<tr>
-						<td>작성시간</td>
+						<td height="30px;">작성시간</td>
 						<td><%=cfdto.getQna_date() %></td>
 					</tr>
 					<tr>
-						<td>글제목</td>
+						<td height="50px;">글제목</td>
 						<td><%=cfdto.getQna_title() %></td>
 					</tr>
 					<tr>
-						<td>글내용</td>
+						<td height="400px;">글내용</td>
 						<td><%=cfdto.getQna_content() %></td>
 					</tr>
 				</table>
@@ -62,10 +70,10 @@
 			<article>
 				<table>
 					<tr>
-						<td>답변내용</td>
+						<td height="50px;">답변내용</td>
 					</tr>
 					<tr>
-						<td>
+						<td height="150px;">
 						<%
 							if(cfdto.getQna_answer()==null){
 						%>
@@ -91,7 +99,7 @@
 				<%} %>
 			</article>
 			<nav>
-				<button onclick="location.href='community_QNA.jsp'">목록으로</button>
+				<button id="qnalist" onclick="location.href='community_QNA.jsp'">목록으로</button>
 				<%
 					if(sid.equals(cfdto.getCustomer_id())){
 				%>
