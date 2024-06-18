@@ -196,3 +196,18 @@ create table orderproduct(
     primary key(customer_no,product_no)
 );
 insert into orderproduct values(1,1,1,2);
+
+CREATE TABLE point (
+  `point_no` INT NOT NULL auto_increment,
+  `point_status` boolean NOT NULL,
+  `point_amount` INT NOT NULL,
+  `orderproduct_customer_no` BIGINT NOT NULL,
+  `orderproduct_product_no` BIGINT NOT NULL,
+  PRIMARY KEY (`point_no`),
+  INDEX `fk_point_orderproduct_idx` (`orderproduct_customer_no` ASC, `orderproduct_product_no` ASC),
+  CONSTRAINT `fk_point_orderproduct`
+    FOREIGN KEY (`orderproduct_customer_no` , `orderproduct_product_no`)
+    REFERENCES `projectdb`.`orderproduct` (`customer_no` , `product_no`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+insert into point(point_status,point_amount,orderproduct_customer_no,orderproduct_product_no) values(0,3000,1,1);
