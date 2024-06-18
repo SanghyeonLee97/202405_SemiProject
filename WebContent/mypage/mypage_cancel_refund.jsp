@@ -8,9 +8,6 @@
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <link href="../css/mypage.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	section>article{
-		height: 180px;
-	}
 </style>
 </head>
 <body>
@@ -20,8 +17,13 @@
 		<section>
 			<%@ include file="./mypage_module/mypage_menu_list.jsp" %>
 			<section>
-				<header>section-section-header</header>
-				<article>section-section-article</article>
+				<header>취소/반품/교환</header>
+				<article>
+					상품이름<br>
+					72000원<br>
+					구매일<br>
+					<button onclick="location.href='cancelrefund.do'">구매 취소</button>
+				</article>
 			</section>
 			<div style="clear: both;"></div>
 		</section>

@@ -153,17 +153,6 @@ create table cart(
 );
 insert into cart(customer_no,product_no,product_quantity) values(1,1,5);
 
-create table point(
-	point_no bigint primary key auto_increment,
-    point_amount int not null,
-    point_detail varchar(100),
-    customer_no bigint not null,
-    product_no bigint not null,
-    foreign key(customer_no) references customer(customer_no),
-    foreign key(product_no) references product(product_no)
-);
-insert into point(point_amount,point_detail,customer_no,product_no) values(3000,'상세정보',1,1);
-
 create table coupon(
 	coupon_no bigint primary key auto_increment,
     coupon_name varchar(100) not null,
@@ -190,12 +179,13 @@ create table orderproduct(
     product_no bigint,
     coupon_no bigint,
     order_quantity bigint not null,
+    delivery_complete int default(0),
     foreign key(customer_no) references customer(customer_no),
     foreign key(product_no) references product(product_no),
     foreign key(coupon_no) references coupon(coupon_no),
     primary key(customer_no,product_no)
 );
-insert into orderproduct values(1,1,1,2);
+insert into orderproduct(customer_no,product_no,coupon_no,order_quantity) values(1,1,1,2);
 
 CREATE TABLE point (
   `point_no` INT NOT NULL auto_increment,
