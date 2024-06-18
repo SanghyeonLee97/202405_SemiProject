@@ -35,10 +35,10 @@
 		background-color: #ffdddd;
 	}
 	main>section>section{
-		width:66.66%; height: 900px;
-		margin-top: 40px;
+		width:66.66%;	height: auto;
+		margin: 40px 10px;
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		gap: 20px;
 	}
 	
@@ -46,16 +46,24 @@
 		background-color: white;
 		border: 1px solid #ddd;
 		padding: 10px;
-		height: 200px;
+		height: 300px;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.product-card img {
 		width: 100%;
 		height: auto;
+		flex-shrink: 0;
 	}
 	.product-card h5, .product-card p {
 		margin: 10px 0;
+		flex-shrink: 0;
+	}
+	.product-card h5{
+		font-size: 18px;
 	}
 	.pagination {
 		display: flex;
@@ -104,12 +112,14 @@
 			<section>
 				<%
 					List<ProductDTO> productList = (List<ProductDTO>)request.getAttribute("productList");
-					int maxProductsPerPage = 15;
+					int maxProductsPerPage = 16;
 					int productCount = productList != null ? productList.size() : 0;
 					int currentPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
 					int start = (currentPage - 1) * maxProductsPerPage;
 					int end = Math.min(start + maxProductsPerPage, productCount);
-				
+					String pcParentNo = request.getParameter("pc_parent_no");
+					String pcNo = request.getParameter("pc_no");
+					
 					if(productList != null && !productList.isEmpty()){
 						for (int i=start; i<end; i++){
 							ProductDTO product = productList.get(i);
@@ -137,7 +147,11 @@
 							for(int i=1; i<= totalPages; i++){	
 						%>
 						<li class="page-item <%=(i == currentPage) ? "active" : "" %>">
-							<a class="page-link" href="?page=<%=i %>"><%=i %></a>
+							<a class="page-link" href="?page=<%=i %>
+							<% if (pcParentNo != null) { %>&pc_parent_no=<%= pcParentNo %><% } %>
+							<% if (pcNo != null) { %>&pc_no=<%= pcNo %><% } %>">
+							<%=i %>
+							</a>
 						</li>
 						<%
 							}
