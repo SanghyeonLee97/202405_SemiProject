@@ -46,7 +46,7 @@ create table qna(
     qna_content text not null,
     qna_fileurl varchar(100),
     qna_imgurl varchar(100),
-    qna_date date not null,
+    qna_date timestamp not null,
     qna_answer text,
     customer_no bigint not null,
     iqc_no int not null,
