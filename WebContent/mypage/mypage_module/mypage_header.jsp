@@ -39,8 +39,10 @@ chk()
         	<%=mdto.getReview_count() %>
         </article>
         <article>
-        	적립금<br>
-        	<%=mdto.getCustomer_point() %>
+        	<a href="reserve.do">
+	        	적립금<br>
+	        	<%=mdto.getCustomer_point() %>
+        	</a>
         </article>
         <article>
         	쿠폰<br>

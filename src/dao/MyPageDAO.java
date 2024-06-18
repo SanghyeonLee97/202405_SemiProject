@@ -1,11 +1,14 @@
 package dao;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
 
+import DTO.CommunityNoticeDTO;
 import DTO.CustomerDTO;
 import DTO.MyPageHeaderDTO;
+import DTO.MyPageReserveDTO;
 
 public class MyPageDAO extends DAO{
 	
@@ -43,8 +46,6 @@ public class MyPageDAO extends DAO{
 					"FROM customer c WHERE c.customer_no = "+no+";";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-				
-			System.out.println(query);
 			while(rs.next()) {
 				res.setCustomer_point(rs.getInt("customer_point"));
 				res.setReview_count(rs.getInt("review_count"));
@@ -53,6 +54,36 @@ public class MyPageDAO extends DAO{
 			}
 		}catch (Exception e) {
 			System.out.println("마이페이지 헤더 정보 오류발생");
+			e.printStackTrace();
+		}finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
+	//mypage 적립금 조회
+	public ArrayList<MyPageReserveDTO> getMypageReserve(int customer_no,String point_status) {
+		ArrayList<MyPageReserveDTO> res = new ArrayList<MyPageReserveDTO>();
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "select point.point_status,point.point_amount,product.product_name from point inner join product on point.orderproduct_product_no=product.product_no where orderproduct_customer_no="+customer_no;
+			if(!point_status.equals("")) {
+				query+=" && point_status="+point_status;
+			}
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			System.out.println(query);
+			while(rs.next()) {
+				MyPageReserveDTO mdto = new MyPageReserveDTO();
+				mdto.setPoint_status(rs.getInt("point_status"));
+				mdto.setPoint_amount(rs.getInt("point_amount"));
+				mdto.setProduct_name(rs.getString("product_name"));
+				res.add(mdto);
+			}
+		}catch (Exception e) {
+			System.out.println("mypage 적립금 조회");
 			e.printStackTrace();
 		}finally {
 			closeConnection();
