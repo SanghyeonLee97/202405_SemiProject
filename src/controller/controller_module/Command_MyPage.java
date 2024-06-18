@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import DTO.CustomerDTO;
 import model.CommandProsessor;
 import model.UpdateInfo;
+import model.mypage.Cancelrefund;
 import model.mypage.MypageReserve;
 
 public class Command_MyPage extends Command_Parents{
@@ -34,6 +35,9 @@ public class Command_MyPage extends Command_Parents{
 				req.setAttribute("status", req.getParameter("status"));
 			}
 			processor = new MypageReserve();
+		}
+		if(servletPath.equals("/mypage/cancelrefund.do")) {
+			processor = new Cancelrefund();
 		}
 		return processor;
 	}
