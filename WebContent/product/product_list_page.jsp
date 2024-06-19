@@ -1,4 +1,3 @@
-
 <%@page import="DTO.ProductDTO"%>
 <%@page import="DTO.CategoryDTO"%>
 <%@page import="java.util.List"%>
@@ -137,7 +136,27 @@
 					%>
 				
 			</section>
-			<aside>section-aside(최근 본 상품)</aside>
+			<aside>
+                <h4>최근 본 상품</h4>
+                <%
+                	List<ProductDTO> recentlyViewedProducts = (List<ProductDTO>) request.getAttribute("recentlyViewedProducts");
+                	if (recentlyViewedProducts != null && !recentlyViewedProducts.isEmpty()) {
+                		for (ProductDTO product : recentlyViewedProducts) {
+                %>
+                <div class="recent-product">
+                    <a href="details.do?product_no=<%= product.getProduct_no() %>">
+                        <img src="<%= product.getProduct_imgurl() %>" alt="Product Img" width="180px">
+                    </a>
+                </div>
+                <%
+                        }
+                    } else {
+                %>
+                <p>최근 본 상품이 없습니다.</p>
+                <%
+                    }
+                %>
+            </aside>
 		</section>
 	</main>
 	<nav>
