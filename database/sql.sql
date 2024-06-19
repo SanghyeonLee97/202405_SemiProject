@@ -199,7 +199,7 @@ create table product_inquiry(
     pi_title varchar(100) not null,
     pi_content text not null,
     pi_date timestamp not null,
-    pi_status int not null default(0),
+    pi_answer text,
     order_no bigint,
     category_no int not null,
     foreign key(category_no) references product_inquiry_category(category_no),
