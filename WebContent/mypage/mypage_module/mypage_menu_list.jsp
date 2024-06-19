@@ -8,7 +8,7 @@
 </head>
 <body>
 	<aside>
-		<a href="cancelrefund.do">회원정보 수정</a><br>
+		<a href="cancelrefund.do">주문 취소</a><br>
 		my정보<br>
 		<a href="updateInfo.do">회원정보 수정</a>
 	</aside>

@@ -175,29 +175,24 @@ create table customercoupon(
 insert into customercoupon(customer_no,coupon_no,Quantity,coupon_duedate) values(1,1,2,'2222-2-22');
 
 create table orderproduct(
+	order_no bigint primary key auto_increment,
 	customer_no bigint,
     product_no bigint,
     coupon_no bigint,
     order_quantity bigint not null,
     delivery_complete int default(0),
+    order_date date default(now()),
     foreign key(customer_no) references customer(customer_no),
     foreign key(product_no) references product(product_no),
-    foreign key(coupon_no) references coupon(coupon_no),
-    primary key(customer_no,product_no)
+    foreign key(coupon_no) references coupon(coupon_no)
 );
 insert into orderproduct(customer_no,product_no,coupon_no,order_quantity) values(1,1,1,2);
 
-CREATE TABLE point (
-  `point_no` INT NOT NULL auto_increment,
-  `point_status` boolean NOT NULL,
-  `point_amount` INT NOT NULL,
-  `orderproduct_customer_no` BIGINT NOT NULL,
-  `orderproduct_product_no` BIGINT NOT NULL,
-  PRIMARY KEY (`point_no`),
-  INDEX `fk_point_orderproduct_idx` (`orderproduct_customer_no` ASC, `orderproduct_product_no` ASC),
-  CONSTRAINT `fk_point_orderproduct`
-    FOREIGN KEY (`orderproduct_customer_no` , `orderproduct_product_no`)
-    REFERENCES `projectdb`.`orderproduct` (`customer_no` , `product_no`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-insert into point(point_status,point_amount,orderproduct_customer_no,orderproduct_product_no) values(0,3000,1,1);
+create table point(
+	point_no int primary key auto_increment,
+    point_status boolean not null,
+    point_amount int not null,
+    order_no bigint not null,
+	foreign key(order_no) references orderproduct(order_no)
+);
+insert into point(point_status,point_amount,order_no) values(0,3000,1);

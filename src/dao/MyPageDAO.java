@@ -7,6 +7,7 @@ import com.mysql.jdbc.Statement;
 
 import DTO.CommunityNoticeDTO;
 import DTO.CustomerDTO;
+import DTO.MyPageCancelDTO;
 import DTO.MyPageHeaderDTO;
 import DTO.MyPageReserveDTO;
 
@@ -68,27 +69,79 @@ public class MyPageDAO extends DAO{
 		String query = "";
 		openConnection();
 		try {
-			query = "select point.point_status,point.point_amount,product.product_name from point inner join product on point.orderproduct_product_no=product.product_no where orderproduct_customer_no="+customer_no;
+			query = "select point_status,point_amount,product.product_name,orderproduct.order_no "+
+					"from point inner join orderproduct on point.order_no=orderproduct.order_no "+
+					"inner join product on orderproduct.product_no=product.product_no "+
+					"where orderproduct.customer_no="+customer_no;
 			if(!point_status.equals("")) {
 				query+=" && point_status="+point_status;
 			}
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			System.out.println(query);
 			while(rs.next()) {
 				MyPageReserveDTO mdto = new MyPageReserveDTO();
 				mdto.setPoint_status(rs.getInt("point_status"));
 				mdto.setPoint_amount(rs.getInt("point_amount"));
 				mdto.setProduct_name(rs.getString("product_name"));
+				mdto.setOrder_no(rs.getInt("order_no"));
 				res.add(mdto);
 			}
 		}catch (Exception e) {
-			System.out.println("mypage 적립금 조회");
+			System.out.println("mypage 적립금 조회에러");
 			e.printStackTrace();
 		}finally {
 			closeConnection();
 		}
 		return res;
+	}
+	//취소페이지 조회
+	public ArrayList<MyPageCancelDTO> getMypageCancel(int customer_no) {
+		ArrayList<MyPageCancelDTO> res = new ArrayList<MyPageCancelDTO>();
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "select product.product_imgurl,product.product_name,product.product_price,"+
+					"orderproduct.order_date,orderproduct.order_quantity,orderproduct.order_no,"+
+					"orderproduct.status from orderproduct "+
+					"inner join product on orderproduct.product_no = product.product_no "+
+					"where customer_no="+customer_no+";";
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				MyPageCancelDTO mdto = new MyPageCancelDTO();
+				mdto.setProduct_imgurl(rs.getString("product_imgurl"));
+				mdto.setProduct_name(rs.getString("product_name"));
+				mdto.setProduct_price(rs.getInt("product_price"));
+				mdto.setOrder_date(rs.getDate("order_date"));
+				mdto.setOrder_quantity(rs.getInt("order_quantity"));
+				mdto.setOrder_no(rs.getInt("order_no"));
+				mdto.setStatus(rs.getInt("status"));
+				res.add(mdto);
+			}
+		}catch (Exception e) {
+			System.out.println("취소페이지 조회에러");
+			e.printStackTrace();
+		}finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
+	//주문 취소
+	public void cancelOrder(String order_no) {
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "update orderproduct set status=1 where order_no="+order_no;
+			stmt = (Statement) conn.createStatement();
+			stmt.executeUpdate(query);
+		}catch (Exception e) {
+			System.out.println("주문 취소");
+		}finally {
+			closeConnection();
+		}
 	}
 
 }

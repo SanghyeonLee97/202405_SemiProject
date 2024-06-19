@@ -37,6 +37,7 @@
 							<td>상태</td>
 							<td>적립금</td>
 							<td>적립 내용</td>
+							<td>주문 번호</td>
 						</tr>
 						<%
 							ArrayList<MyPageReserveDTO> msdtoarr = 
@@ -59,6 +60,7 @@
 							</td>
 							<td><%=msdtoarr.get(i).getPoint_amount() %></td>
 							<td><%=msdtoarr.get(i).getProduct_name() %></td>
+							<td><%=msdtoarr.get(i).getOrder_no() %></td>
 						</tr>
 						<%} %>
 					</table>
