@@ -108,6 +108,7 @@ create table product_inquiry_category(
 );
 insert into product_inquiry_category values(1,'반품');
 insert into product_inquiry_category values(2,'교환');
+insert into product_inquiry_category values(3,'문의');
 
 create table review(
 	review_no bigint primary key auto_increment,

@@ -16,7 +16,7 @@ public class Cancelrefund implements CommandProsessor{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		MyPageDAO mdao = new MyPageDAO();
-		if(req.getAttribute("order_no")!=null) {
+		if(req.getAttribute("order_no")!=null && req.getParameter("category")==null) {
 			String order_no = (String)req.getAttribute("order_no");
 			mdao.cancelOrder(order_no);
 		}

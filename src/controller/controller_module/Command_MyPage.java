@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.CustomerDTO;
+import DTO.ProductInquiryDTO;
 import model.CommandProsessor;
 import model.UpdateInfo;
 import model.mypage.Cancelrefund;
@@ -42,11 +43,17 @@ public class Command_MyPage extends Command_Parents{
 			processor = new Cancelrefund();
 		}
 		if(servletPath.equals("/mypage/productinquiry.do")) {
+			System.out.println(req.getParameter("order_no"));
 			if(req.getParameter("order_no")!=null) {
 				req.setAttribute("order_no", req.getParameter("order_no"));
 			}
 			if(req.getParameter("category")!=null) {
-				
+				ProductInquiryDTO pdto = new ProductInquiryDTO();
+				pdto.setCategory_no(Integer.parseInt(req.getParameter("category")));
+				pdto.setOrder_no(Integer.parseInt(req.getParameter("order_no")));
+				pdto.setPi_title(req.getParameter("title"));
+				pdto.setPi_content(req.getParameter("content"));
+				req.setAttribute("pdto", pdto);
 			}
 			processor = new ProductInquiry();
 		}

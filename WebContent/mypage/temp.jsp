@@ -9,8 +9,9 @@
 <body>
 	<form action="productinquiry.do">
 		<select name="category">
-			<option value="refund">환불</option>
-			<option value="return">반품</option>
+			<option value="1">환불</option>
+			<option value="2">반품</option>
+			<option value="3">문의</option>
 		</select>
 		<br>
 		<input type="text" name="order_no" value="<%=request.getAttribute("order_no") %>"><br>

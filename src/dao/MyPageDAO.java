@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
 
-import DTO.CommunityNoticeDTO;
 import DTO.CustomerDTO;
 import DTO.MyPageCancelDTO;
 import DTO.MyPageHeaderDTO;
 import DTO.MyPageReserveDTO;
+import DTO.ProductInquiryDTO;
 
 public class MyPageDAO extends DAO{
 	
@@ -138,7 +138,26 @@ public class MyPageDAO extends DAO{
 			stmt = (Statement) conn.createStatement();
 			stmt.executeUpdate(query);
 		}catch (Exception e) {
-			System.out.println("주문 취소");
+			System.out.println("주문 취소 오류발생");
+		}finally {
+			closeConnection();
+		}
+	}
+	
+	//상품문의 등록
+	public void insertProductInquiry(ProductInquiryDTO pidto) {
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "insert into product_inquiry(pi_title,pi_content,pi_date,order_no,category_no) "+
+					"values('"+pidto.getPi_title()+"','"+pidto.getPi_content()+
+					"',now(),"+pidto.getOrder_no()+","+pidto.getCategory_no()+");";
+			System.out.println(query);
+			stmt = (Statement) conn.createStatement();
+			stmt.executeUpdate(query);
+		}catch (Exception e) {
+			System.out.println("상품문의 등록 오류발생");
 		}finally {
 			closeConnection();
 		}
