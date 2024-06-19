@@ -102,16 +102,12 @@ create table discount(
 );
 insert into discount values(1,50,2000);
 
-create table product_inquiry(
-	pi_no bigint primary key auto_increment,
-    pi_title varchar(100) not null,
-    pi_content text not null,
-    pi_date timestamp not null,
-    pi_status int not null default(0),
-    product_no bigint,
-    foreign key(product_no) references product(product_no)
+create table product_inquiry_category(
+	category_no int primary key,
+    category_name varchar(10) not null
 );
-insert into product_inquiry(pi_title,pi_content,pi_date,product_no) values('제목테스트','내용테스트',now(),1);
+insert into product_inquiry_category values(1,'반품');
+insert into product_inquiry_category values(2,'교환');
 
 create table review(
 	review_no bigint primary key auto_increment,
@@ -196,3 +192,16 @@ create table point(
 	foreign key(order_no) references orderproduct(order_no)
 );
 insert into point(point_status,point_amount,order_no) values(0,3000,1);
+
+create table product_inquiry(
+	pi_no bigint primary key auto_increment,
+    pi_title varchar(100) not null,
+    pi_content text not null,
+    pi_date timestamp not null,
+    pi_status int not null default(0),
+    order_no bigint,
+    category_no int not null,
+    foreign key(category_no) references product_inquiry_category(category_no),
+    foreign key(order_no) references orderproduct(order_no)
+);
+insert into product_inquiry(pi_title,pi_content,pi_date,order_no,category_no) values('제목테스트','내용테스트',now(),1,1);

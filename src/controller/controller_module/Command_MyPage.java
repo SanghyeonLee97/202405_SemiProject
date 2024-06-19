@@ -45,6 +45,9 @@ public class Command_MyPage extends Command_Parents{
 			if(req.getParameter("order_no")!=null) {
 				req.setAttribute("order_no", req.getParameter("order_no"));
 			}
+			if(req.getParameter("category")!=null) {
+				
+			}
 			processor = new ProductInquiry();
 		}
 		return processor;
