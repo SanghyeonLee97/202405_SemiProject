@@ -72,12 +72,15 @@
 			</header>
 			<article>
 				<form id="passwordForm" action="password.jsp">
-					<input type="text" name="name" placeholder="이름을 입력해주세요" required="required">
+				
+											<!-- 아이디를 입력하고 -->
 					<input type="text" name="id" placeholder="아이디를 입력해주세요" required="required">
-					<input type="text" name="email" placeholder="이메일을 입력해주세요" required="required">
-						<button type="button" id="button1">이메일 발송</button><br><br>
-					<p>입력하신 이메일로 임시 비밀번호를 받으실 수 있습니다.<br>
-					임시 비밀번호로 로그인 하신 후 꼭 비밀번호를 변경 해 주세요.</p><br><br>
+											<!-- 확인 버튼을 누르면 -->
+					<input type="submit" value="확인">
+											<!-- 아이디와 일치하는 비밀번호가 출력
+												(출력은 여기다 해도 상관 없고 새로운 페이지를 만들어도 상관X)
+											 -->
+					
 				</form>
 			</article>
 			<nav>

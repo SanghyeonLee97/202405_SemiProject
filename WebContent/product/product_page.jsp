@@ -16,60 +16,64 @@
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 main>section {
-	background-color: #ddddff;
+	/* background-color: #ddddff; */
 }
 
 main>section>header {
 	width: 100%;
 	height: 120px;
-	background-color: #ddffff;
+	/* background-color: #ddffff; */
 }
 
 main>section>aside {
-	width: 360px;
-	height: 360px;
-	margin-left: 40px;
-	margin-top: 60px;
-	background-color: #ffffdd;
+	width: 460px;
+	height: 460px;
+	/* background-color: #ffffdd; */
 	float: left;
 }
 
 main>section>section {
-	width: 800px;
-	background-color: #ddffdd;
+	width: 740px;
+	/* background-color: #ddffdd; */
 	float: left;
 }
 
 main>section>section>article {
 	width: 100%;
-	background-color: #ffddff;
+	/* background-color: #ffddff; */
+	
 }
 
 main>section>section>article:nth-child(1) {
 	height: 100px;
+	
 }
 
 main>section>section>article:nth-child(2) {
 	height: 140px;
 	margin-top: 40px;
+	text-align: center;
 }
 
 main>section>section>article:nth-child(3) {
 	height: 280px;
 	margin-top: 40px;
+	text-align: center;
 }
 
 .detail-nav {
 	width: 100%;
 	height: 70px;
-	background-color: #ddddff;
+	
+
 }
 
 .detail-nav a {
 	margin: 0 15px;
 	cursor: pointer;
-	text-decoration: none;
+	text-decoration: underline;
 	color: inherit;
+	margin-left: 200px;
 }
 
 .detail-section {
@@ -94,13 +98,16 @@ main>section>section>article:nth-child(3) {
 .detail-section>article>nav a {
 	margin: 0 15px;
 	cursor: pointer;
-	text-decoration: none;
 	color: inherit;
 }
 
 .quantity-selector {
 	display: flex;
 	align-items: center;
+	margin-left: 250px;
+	position: relative;
+	bottom: 5px;
+	
 }
 
 .quantity-selector button {
@@ -108,6 +115,7 @@ main>section>section>article:nth-child(3) {
 	height: 30px;
 	font-size: 18px;
 	margin: 0 5px;
+	
 }
 
 .quantity-selector input {
@@ -168,41 +176,102 @@ main>section>section>article:nth-child(3) {
 	color: #666;
 	font-size: 12px;
 }
+ #productimg{
+
+	width: 460px;
+	height: 460px;
+	
+}
+#pricewon {
+	margin-left: 450px;
+}
+#productbt{
+	width: 60px;
+	height: 30px;
+	background: yellow;
+	border: none;
+	
+	
+	
+}
+ #productbtb {
+	width: 150px;
+	height: 50px;
+	background: yellow;
+	position: relative;
+	top: 150px;
+	left: 100px;
+	border: none;
+	margin-left: 10px;
+} 
+#pricep{
+	position: relative;
+	left:120px; 
+	
+}
+ #pricenumber{
+	position: relative;
+	right: 50px;
+	top: 40px;
+}
+#pricesection{
+	
+	width: 400px;
+	height: 150px;
+	background: #FAFAD2;
+	position: relative;
+	left: 250px;
+	top:70px;
+	
+
+}
+#detaila{
+	font-size: 35px;
+	text-decoration: underline;
+
+
+}
+
+
 </style>
 </head>
 <body>
 	<main>
 		<section>
-			<header>section-header</header>
+			<header></header>
 			<aside>
-				<img src="<%= product.getProduct_imgurl() %>" alt="상품 이미지" width="360" height="360">
+				<img id="productimg" src="<%= product.getProduct_imgurl() %>" alt="상품 이미지" >
 			</aside>
 			<section>
 				<article>
-					<h2><%= product.getProduct_name() %></h2>
-					 <p>가격: <%= product.getProduct_price() %>원</p>
+					<h2 style="text-align: center;"><%= product.getProduct_name() %></h2><br>
+					 <p><h3 id="pricewon">가격: <%= product.getProduct_price() %>원</h3></p>
+					 <hr>
 				</article>
 				<article>
-					<p><%= product.getProduct_name() %></p>
-					<p>수량선택:</p>
-					<div class="quantity-selector">
-						<button onclick="changeQuantity(-1)">-</button>
-						<input id="quantity" type="text" value="1" readonly>
-						<button onclick="changeQuantity(+1)">+</button>
+					 <div id="pricesection">
+						<p><h5><%= product.getProduct_name() %></h5></p> 
+						<p><h4 id="pricenumber">구매수량선택:</h4></p>
+						<div class="quantity-selector">
+							<button id="productbt" onclick="changeQuantity(-1)">-</button>
+							<input id="quantity" type="text" value="1" readonly>
+							<button id="productbt" onclick="changeQuantity(+1)">+</button>
+						</div>
+						<br><br>
+						<div id="pricep"><p><h4>총 상품 금액 </h4><h5><span id="totalPrice"><%= product.getProduct_price() %>원</span></h5></p></div>
 					</div>
-					<p>선택한 수량에 따른 가격: <span id="totalPrice"><%= product.getProduct_price() %>원</span></p>
 				</article>
 				<article>
-					<button onclick="addToCart()">장바구니</button>
-					<button onclick="buyNow()">구매하기</button>
+					<button id="productbtb" onclick="addToCart()">장바구니</button>
+					<button id="productbtb" onclick="buyNow()">구매하기</button>
 				</article>
 			</section>
 			<div style="clear: both;"></div>
 		</section>
 		<nav class="detail-nav">
-			<a onclick="showSection('detail')">상세정보</a>
-			<a onclick="showSection('review')">리뷰</a>
-			<a onclick="showSection('qna')">QNA</a>
+			<a id="detaila" onclick="showSection('detail')" >상세정보</a>
+			<a id="detaila" onclick="showSection('review')"  >리뷰</a>
+			<a id="detaila" onclick="showSection('qna')"  >QNA</a>
 		</nav>
 		<section class="detail-section">
 			<article id="detail" class="active">

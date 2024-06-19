@@ -102,6 +102,7 @@
 			</article>
 			<article>
 			<h4>간식추천</h4>
+			
 				<div><img src="/projectdengdeng/imagefile/image6.png" width="150px" height="150px"><a href="">간식<br>8000원</a></div>
 				<div><img src="/projectdengdeng/imagefile/image7.png" width="150px" height="150px"><a href="">간식<br>8000원</a></div>
 				<div><img src="/projectdengdeng/imagefile/image8.png" width="150px" height="150px"><a href="">간식<br>5900원</a></div>
