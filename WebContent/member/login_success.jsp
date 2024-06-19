@@ -16,6 +16,19 @@
 		location.href="/projectdengdeng/member/login.jsp";
 	}
 </script>
+<style type="text/css">
+	.login_success{
+		text-align: center;
+		width: 100%;
+	}
+	#maingo{
+		background : lightgray;
+		color : black;
+		border: none;
+		width: 125px;
+		height: 50px;
+	}
+</style>
 </head>
 <body 
 <% 
@@ -33,8 +46,15 @@ onload="gologin()">
 	}else{ 
 %>
 >
-	<h1>로그인 성공</h1>
-	세션에 저장된 id: <%=session.getAttribute("id") %>
+	<div class="login_success">
+		<img src="../imagefile/checkmark.png" style="width:70px; height: 70px;">
+		<h1>로그인 성공</h1>
+		<h4>더 좋은 서비스로 찾아뵙겠습니다 즐거운 쇼핑되세요</h4>
+		<%-- 세션에 저장된 id: <%=session.getAttribute("id") %> --%>
+		<hr>
+		<br>
+		<button onclick="location.href='../index.jsp'" id="maingo">메인</button>
+	</div>
 </body>
 <%} %>
 </html>
