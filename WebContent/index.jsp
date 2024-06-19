@@ -111,7 +111,7 @@
 			</article>
 			<article>
 			<h4>장난감추천</h4>
-				<div><img src="/projectdengdeng/imagefile/image12.png" width="150px" height="150px"><a href="">장난감인형<br>8900원</a></div>
+				<div><img src="/projectdengdeng/imagefile/image12.npng" width="150px" height="150px"><a href="">장난감인형<br>8900원</a></div>
 				<div><img src="/projectdengdeng/imagefile/image14.png" width="150px" height="150px"><a href="">장난감인형<br>8900원</a></div>
 				<div><img src="/projectdengdeng/imagefile/image16.png" width="150px" height="150px"><a href="">나무장난감<br>20900원</a></div>
 				<div style="margin-right: 0"><img src="/projectdengdeng/imagefile/image20.png" width="150px" height="150px"><a href="">브러쉬<br>9900원</a></div>

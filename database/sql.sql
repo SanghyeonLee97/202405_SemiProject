@@ -102,16 +102,13 @@ create table discount(
 );
 insert into discount values(1,50,2000);
 
-create table product_inquiry(
-	pi_no bigint primary key auto_increment,
-    pi_title varchar(100) not null,
-    pi_content text not null,
-    pi_date timestamp not null,
-    pi_status int not null default(0),
-    product_no bigint,
-    foreign key(product_no) references product(product_no)
+create table product_inquiry_category(
+	category_no int primary key,
+    category_name varchar(10) not null
 );
-insert into product_inquiry(pi_title,pi_content,pi_date,product_no) values('제목테스트','내용테스트',now(),1);
+insert into product_inquiry_category values(1,'반품');
+insert into product_inquiry_category values(2,'교환');
+insert into product_inquiry_category values(3,'문의');
 
 create table review(
 	review_no bigint primary key auto_increment,
@@ -175,29 +172,37 @@ create table customercoupon(
 insert into customercoupon(customer_no,coupon_no,Quantity,coupon_duedate) values(1,1,2,'2222-2-22');
 
 create table orderproduct(
+	order_no bigint primary key auto_increment,
 	customer_no bigint,
     product_no bigint,
     coupon_no bigint,
     order_quantity bigint not null,
-    delivery_complete int default(0),
+    status int default(0),
+    order_date date default(now()),
     foreign key(customer_no) references customer(customer_no),
     foreign key(product_no) references product(product_no),
-    foreign key(coupon_no) references coupon(coupon_no),
-    primary key(customer_no,product_no)
+    foreign key(coupon_no) references coupon(coupon_no)
 );
 insert into orderproduct(customer_no,product_no,coupon_no,order_quantity) values(1,1,1,2);
 
-CREATE TABLE point (
-  `point_no` INT NOT NULL auto_increment,
-  `point_status` boolean NOT NULL,
-  `point_amount` INT NOT NULL,
-  `orderproduct_customer_no` BIGINT NOT NULL,
-  `orderproduct_product_no` BIGINT NOT NULL,
-  PRIMARY KEY (`point_no`),
-  INDEX `fk_point_orderproduct_idx` (`orderproduct_customer_no` ASC, `orderproduct_product_no` ASC),
-  CONSTRAINT `fk_point_orderproduct`
-    FOREIGN KEY (`orderproduct_customer_no` , `orderproduct_product_no`)
-    REFERENCES `projectdb`.`orderproduct` (`customer_no` , `product_no`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-insert into point(point_status,point_amount,orderproduct_customer_no,orderproduct_product_no) values(0,3000,1,1);
+create table point(
+	point_no int primary key auto_increment,
+    point_status boolean not null,
+    point_amount int not null,
+    order_no bigint not null,
+	foreign key(order_no) references orderproduct(order_no)
+);
+insert into point(point_status,point_amount,order_no) values(0,3000,1);
+
+create table product_inquiry(
+	pi_no bigint primary key auto_increment,
+    pi_title varchar(100) not null,
+    pi_content text not null,
+    pi_date timestamp not null,
+    pi_answer text,
+    order_no bigint,
+    category_no int not null,
+    foreign key(category_no) references product_inquiry_category(category_no),
+    foreign key(order_no) references orderproduct(order_no)
+);
+insert into product_inquiry(pi_title,pi_content,pi_date,order_no,category_no) values('제목테스트','내용테스트',now(),1,1);

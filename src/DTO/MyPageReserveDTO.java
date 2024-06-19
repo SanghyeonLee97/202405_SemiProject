@@ -1,6 +1,7 @@
 package DTO;
 
 public class MyPageReserveDTO {
+	int order_no;
 	int point_no;
 	int point_status;
 	int point_amount;
@@ -42,6 +43,12 @@ public class MyPageReserveDTO {
 	}
 	public void setPoint_status(int point_status) {
 		this.point_status = point_status;
+	}
+	public int getOrder_no() {
+		return order_no;
+	}
+	public void setOrder_no(int order_no) {
+		this.order_no = order_no;
 	}
 	
 }
