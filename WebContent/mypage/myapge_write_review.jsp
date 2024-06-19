@@ -42,7 +42,7 @@
 	  width: 400px;
 	  box-sizing: border-box;
 	  display:flex;
-	  margin: 15px 0;
+	  margin: 15px auto;
 	  background: #F3F4F8;
 	  border: 0;
 	  border-radius: 10px;
@@ -60,11 +60,13 @@
 	  border-radius: 10px;
 	  max-height: 50px;
 	  padding: 15px 0;
+	  margin: 15px auto;
 	  font-size: 1.1em;
 	  background:bisque;
 	  cursor: pointer;
 	  
 	}
+}
 </style>
 </head>
 <body>
@@ -83,10 +85,8 @@
 			<input type="radio" name="reviewStar" value="1" id="rate5" checked="checked"><label
 				for="rate5">★</label>
 		</fieldset>
-		<div id="reviewbox">
-			<textarea class="col-auto form-control" type="text" id="reviewContents" placeholder="리뷰 내용을 작성해주세요." ></textarea>
-		</div>
-			<input type="submit" class="btn02" value="리뷰 등록"/>
+		<textarea type="text" id="reviewContents" placeholder="리뷰 내용을 작성해주세요." ></textarea>
+		<input type="submit" class="btn02" value="리뷰 등록"/>
 	</form>	
 </body>
 </html>
