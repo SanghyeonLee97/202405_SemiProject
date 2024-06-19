@@ -38,7 +38,7 @@
 							case 0:
 					%>
 					<button onclick="location.href='cancelrefund.do?order_no=<%=mcdtoArr.get(i).getOrder_no() %>'">
-					
+					주문 취소</button><br>
 					<%			break;
 							case 1:
 					%>
@@ -47,7 +47,7 @@
 							case 2:
 					%>
 					배송완료<br>
-					<button onclick="location.href='cancelrefund.do?order_no=<%=mcdtoArr.get(i).getOrder_no() %>'">
+					<button onclick="location.href='productinquiry.do?order_no=<%=mcdtoArr.get(i).getOrder_no() %>'">
 					상품 문의</button><br>
 					<%			break;
 							}%>

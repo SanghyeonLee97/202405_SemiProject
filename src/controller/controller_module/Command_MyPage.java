@@ -8,6 +8,7 @@ import model.CommandProsessor;
 import model.UpdateInfo;
 import model.mypage.Cancelrefund;
 import model.mypage.MypageReserve;
+import model.mypage.ProductInquiry;
 
 public class Command_MyPage extends Command_Parents{
 	
@@ -39,6 +40,12 @@ public class Command_MyPage extends Command_Parents{
 				req.setAttribute("order_no", req.getParameter("order_no"));
 			}
 			processor = new Cancelrefund();
+		}
+		if(servletPath.equals("/mypage/productinquiry.do")) {
+			if(req.getParameter("order_no")!=null) {
+				req.setAttribute("order_no", req.getParameter("order_no"));
+			}
+			processor = new ProductInquiry();
 		}
 		return processor;
 	}
