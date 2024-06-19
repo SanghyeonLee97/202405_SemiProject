@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <style type="text/css">
+
 	main>section{
 		width: 800px;
 		margin-left: 200px;
@@ -48,11 +49,11 @@
 	#button2 {
 		margin-top: 50px;
 		margin-right : 10px;
-		 width: 300px; 
-		 height: 50px; 
-		 background-color:#ffEB5A; 
-		 border-color: yellow; 
-		 border-collapse: collapse;
+		width: 300px; 
+		height: 50px; 
+		background-color:#ffEB5A; 
+		border-color: yellow; 
+		border-collapse: collapse;
 	
 	
 	}

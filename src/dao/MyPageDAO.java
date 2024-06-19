@@ -176,6 +176,7 @@ public class MyPageDAO extends DAO{
 					"from product_inquiry inner join orderproduct "+
 					"on product_inquiry.order_no=orderproduct.order_no "+
 					"where orderproduct.customer_no="+customerNo;
+			System.out.println(query);
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
@@ -188,6 +189,7 @@ public class MyPageDAO extends DAO{
 			}
 		}catch (Exception e) {
 			System.out.println("1:1문의 검색 오류발생");
+			e.printStackTrace();
 		}finally {
 			closeConnection();
 		}
