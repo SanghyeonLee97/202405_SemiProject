@@ -180,7 +180,7 @@ create table orderproduct(
     product_no bigint,
     coupon_no bigint,
     order_quantity bigint not null,
-    delivery_complete int default(0),
+    status int default(0),
     order_date date default(now()),
     foreign key(customer_no) references customer(customer_no),
     foreign key(product_no) references product(product_no),
