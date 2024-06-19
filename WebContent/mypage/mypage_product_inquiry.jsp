@@ -8,8 +8,12 @@
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <link href="../css/mypage.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	section>article{
-		height: 80px;
+	table{
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	tr,td{
+		border: 1px solid black;
 	}
 </style>
 </head>
@@ -19,9 +23,24 @@
 		<section>
 			<%@ include file="./mypage_module/mypage_menu_list.jsp" %>
 			<section>
-				<header>section-section-header</header>
+				<header>1:1 문의</header>
 				<nav>section-section-nav</nav>
-				<article>section-section-article</article>
+				<article>
+					<table>
+						<tr>
+							<td>주문 번호</td>
+							<td>문의 제목</td>
+							<td>작성일</td>
+							<td>처리 상태</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>ㅁㄴㅇ</td>
+							<td>123</td>
+							<td>미</td>
+						</tr>
+					</table>
+				</article>
 			</section>
 			<div style="clear: both;"></div>
 		</section>

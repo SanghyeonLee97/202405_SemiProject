@@ -6,9 +6,9 @@ public class ProductInquiryDTO {
 	String pi_title;
 	String pi_content;
 	Date pi_date;
-	int pi_status;
 	int order_no;
 	int category_no;
+	String pi_answer;
 	public String getPi_title() {
 		return pi_title;
 	}
@@ -27,12 +27,6 @@ public class ProductInquiryDTO {
 	public void setPi_date(Date pi_date) {
 		this.pi_date = pi_date;
 	}
-	public int getPi_status() {
-		return pi_status;
-	}
-	public void setPi_status(int pi_status) {
-		this.pi_status = pi_status;
-	}
 	public int getOrder_no() {
 		return order_no;
 	}
@@ -44,5 +38,11 @@ public class ProductInquiryDTO {
 	}
 	public void setCategory_no(int category_no) {
 		this.category_no = category_no;
+	}
+	public String getPi_answer() {
+		return pi_answer;
+	}
+	public void setPi_answer(String pi_answer) {
+		this.pi_answer = pi_answer;
 	}
 }

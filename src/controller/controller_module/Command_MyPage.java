@@ -10,6 +10,7 @@ import model.UpdateInfo;
 import model.mypage.Cancelrefund;
 import model.mypage.MypageReserve;
 import model.mypage.ProductInquiry;
+import model.mypage.ProductInquiryList;
 
 public class Command_MyPage extends Command_Parents{
 	
@@ -56,6 +57,10 @@ public class Command_MyPage extends Command_Parents{
 				req.setAttribute("pdto", pdto);
 			}
 			processor = new ProductInquiry();
+		}
+		if(servletPath.equals("/mypage/productinquirylist.do")) {
+			processor = new ProductInquiryList();
+			
 		}
 		return processor;
 	}
