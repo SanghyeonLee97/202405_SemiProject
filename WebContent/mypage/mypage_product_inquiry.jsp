@@ -44,7 +44,17 @@
 							<td><%=pidtoArr.get(i).getOrder_no() %></td>
 							<td><%=pidtoArr.get(i).getPi_title() %></td>
 							<td><%=pidtoArr.get(i).getPi_date() %></td>
-							<td><%=pidtoArr.get(i).getPi_answer() %></td>
+							<td>
+								<%
+									if(pidtoArr.get(i).getPi_answer()=="" || pidtoArr.get(i).getPi_answer()==null){
+								%>
+								<a>
+								미답변
+								</a>
+								<% }else{ %>
+								답변완료
+								<% } %>
+							</td>
 						</tr>
 						<%} %>
 					</table>
