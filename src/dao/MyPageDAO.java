@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
 
+import DTO.CommunityQNADTO;
 import DTO.CustomerDTO;
 import DTO.MyPageCancelDTO;
 import DTO.MyPageHeaderDTO;
@@ -161,6 +162,36 @@ public class MyPageDAO extends DAO{
 		}finally {
 			closeConnection();
 		}
+	}
+	
+	//1:1문의
+	public ArrayList<ProductInquiryDTO> getInquiryList(int customerNo) {
+		ArrayList<ProductInquiryDTO> res = new ArrayList<ProductInquiryDTO>();
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "select orderproduct.order_no,product_inquiry.pi_title,"+
+					"product_inquiry.pi_date,product_inquiry.pi_answer "+
+					"from product_inquiry inner join orderproduct "+
+					"on product_inquiry.order_no=orderproduct.order_no "+
+					"where orderproduct.customer_no="+customerNo;
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				ProductInquiryDTO pidto = new ProductInquiryDTO();
+				pidto.setOrder_no(rs.getInt("order_no"));
+				pidto.setPi_title(rs.getString("pi_title"));
+				pidto.setPi_date(rs.getTimestamp("pi_date"));
+				pidto.setPi_answer(rs.getString("pi_answer"));
+				res.add(pidto);
+			}
+		}catch (Exception e) {
+			System.out.println("1:1문의 검색 오류발생");
+		}finally {
+			closeConnection();
+		}
+		return res;
 	}
 
 }

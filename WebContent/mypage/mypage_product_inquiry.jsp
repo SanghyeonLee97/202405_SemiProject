@@ -1,3 +1,5 @@
+<%@page import="DTO.ProductInquiryDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,12 +35,18 @@
 							<td>작성일</td>
 							<td>처리 상태</td>
 						</tr>
+						<%
+							ArrayList<ProductInquiryDTO> pidtoArr = 
+							(ArrayList<ProductInquiryDTO>)request.getAttribute("pidtoArr");
+							for(int i=0;i<pidtoArr.size();i++){
+						%>
 						<tr>
-							<td>1</td>
-							<td>ㅁㄴㅇ</td>
-							<td>123</td>
-							<td>미</td>
+							<td><%=pidtoArr.get(i).getOrder_no() %></td>
+							<td><%=pidtoArr.get(i).getPi_title() %></td>
+							<td><%=pidtoArr.get(i).getPi_date() %></td>
+							<td><%=pidtoArr.get(i).getPi_answer() %></td>
 						</tr>
+						<%} %>
 					</table>
 				</article>
 			</section>

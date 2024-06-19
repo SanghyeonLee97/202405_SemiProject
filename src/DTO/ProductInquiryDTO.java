@@ -1,11 +1,12 @@
 package DTO;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class ProductInquiryDTO {
 	String pi_title;
 	String pi_content;
-	Date pi_date;
+	Timestamp pi_date;
 	int order_no;
 	int category_no;
 	String pi_answer;
@@ -21,10 +22,10 @@ public class ProductInquiryDTO {
 	public void setPi_content(String pi_content) {
 		this.pi_content = pi_content;
 	}
-	public Date getPi_date() {
+	public Timestamp getPi_date() {
 		return pi_date;
 	}
-	public void setPi_date(Date pi_date) {
+	public void setPi_date(Timestamp pi_date) {
 		this.pi_date = pi_date;
 	}
 	public int getOrder_no() {
