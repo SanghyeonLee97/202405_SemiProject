@@ -46,7 +46,8 @@
 								break;
 								case 2:
 					%>
-					<button type="button" onclick="location.href='mypagewritereview.do'">리뷰작성</button>
+					<button type="button" onclick="location.href='mypagewritereview.do?order_no=<%=mmdtoArr.get(i).getOrder_no() %>'">
+					리뷰작성</button>
 					<%
 								break;
 							}
