@@ -12,7 +12,6 @@ public class ProductInquiry extends MyPage{
 		if(req.getAttribute("pdto")!=null) {
 			ProductInquiryDTO pdto = (ProductInquiryDTO)req.getAttribute("pdto");
 			mdao.insertProductInquiry(pdto);
-			
 			return "cancelrefund.do";
 		}else {
 			return "/mypage/temp.jsp";

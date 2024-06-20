@@ -1,11 +1,7 @@
 package model.mypage;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import DTO.MyPageCancelDTO;
 
 public class Cancelrefund extends MyPage{
 
@@ -19,8 +15,7 @@ public class Cancelrefund extends MyPage{
 			mdao.cancelOrder(order_no);
 		}
 		
-		ArrayList<MyPageCancelDTO> mcdtoArr = mdao.getMypageCancel(userNo);
-		req.setAttribute("cancel", mcdtoArr);
+		req.setAttribute("cancel", mdao.getMypageCancel(userNo));
 		return "/mypage/mypage_cancel_refund.jsp";
 	}
 

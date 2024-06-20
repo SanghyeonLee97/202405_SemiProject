@@ -1,12 +1,9 @@
-package model;
+package model.community;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.CommunityFAQDTO;
-import dao.CommunityDAO;
-
-public class FAQRead implements CommandProsessor{
+public class FAQRead extends Community{
 	
 	String communityFAQNo;
 	
@@ -16,9 +13,7 @@ public class FAQRead implements CommandProsessor{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-		CommunityDAO cdao = new CommunityDAO();
-		CommunityFAQDTO cfdto = cdao.getFAQPost(communityFAQNo);
-		req.setAttribute("read", cfdto);
+		req.setAttribute("read", cdao.getFAQPost(communityFAQNo));
 		return "/community/community_FAQ_read.jsp";
 	}
 

@@ -1,11 +1,9 @@
-package model;
+package model.community;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CommunityDAO;
-
-public class CommunityDelete implements CommandProsessor{
+public class CommunityDelete extends Community{
 	
 	String board;
 	int QNANo;
@@ -17,7 +15,6 @@ public class CommunityDelete implements CommandProsessor{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-		CommunityDAO cdao = new CommunityDAO();
 		cdao.communityDelete(board,QNANo);
 		if(board.equals("qna")) {
 			return "/community/community_QNA.jsp";

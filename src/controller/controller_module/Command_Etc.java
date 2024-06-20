@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import DTO.CommunityFAQDTO;
 import DTO.CommunityNoticeDTO;
 import model.CommandProsessor;
-import model.FAQWrite;
-import model.NoticeWrite;
+import model.community.FAQWrite;
+import model.community.NoticeWrite;
 import model.member.QuitUser;
 import model.mypage.UpdateInfo;
 

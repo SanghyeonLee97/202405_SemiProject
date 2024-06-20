@@ -1,11 +1,9 @@
-package model;
+package model.community;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CommunityDAO;
-
-public class QNAAnswer implements CommandProsessor{
+public class QNAAnswer extends Community{
 	
 	int QNANO;
 	String answer;
@@ -17,7 +15,6 @@ public class QNAAnswer implements CommandProsessor{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-		CommunityDAO cdao = new CommunityDAO();
 		cdao.qnaAnswerWrite(QNANO, answer);
 		req.setAttribute("read", cdao.getQNAPost(Integer.toString(QNANO)));
 		return "/community/community_QNA_read.jsp";

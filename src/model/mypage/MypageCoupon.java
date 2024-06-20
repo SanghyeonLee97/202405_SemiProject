@@ -1,11 +1,7 @@
 package model.mypage;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import DTO.MyPageCouponDTO;
 
 public class MypageCoupon extends MyPage{
 
@@ -14,8 +10,7 @@ public class MypageCoupon extends MyPage{
 		session = req.getSession();
 		userNo = cdao.getCustomerNo((String)session.getAttribute("id"));
 		
-		ArrayList<MyPageCouponDTO> mcdtoArr = mdao.getMypageCoupon(userNo);
-		req.setAttribute("mcdtoArr", mcdtoArr);
+		req.setAttribute("mcdtoArr", mdao.getMypageCoupon(userNo));
 		return "/mypage/mypage_coupon.jsp";
 	}
 

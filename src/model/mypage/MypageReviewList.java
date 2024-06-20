@@ -1,11 +1,7 @@
 package model.mypage;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import DTO.MyPageReviewDTO;
 
 public class MypageReviewList extends MyPage{
 
@@ -14,9 +10,7 @@ public class MypageReviewList extends MyPage{
 		session = req.getSession();
 		userNo = cdao.getCustomerNo((String)session.getAttribute("id"));
 		
-		ArrayList<MyPageReviewDTO> mrdtoArr = mdao.getMypageReview(userNo);
-		req.setAttribute("mrdtoArr", mrdtoArr);
-		
+		req.setAttribute("mrdtoArr", mdao.getMypageReview(userNo));
 		return "/mypage/mypage_review.jsp";
 	}
 

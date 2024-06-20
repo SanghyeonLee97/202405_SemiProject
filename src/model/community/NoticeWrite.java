@@ -1,12 +1,11 @@
-package model;
+package model.community;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.CommunityNoticeDTO;
-import dao.CommunityDAO;
 
-public class NoticeWrite implements CommandProsessor{
+public class NoticeWrite extends Community{
 	
 	CommunityNoticeDTO cndto = new CommunityNoticeDTO();
 	
@@ -16,7 +15,6 @@ public class NoticeWrite implements CommandProsessor{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-		CommunityDAO cdao = new CommunityDAO();
 		cdao.noticeWrite(cndto);
 		return "/admin.jsp";
 	}
