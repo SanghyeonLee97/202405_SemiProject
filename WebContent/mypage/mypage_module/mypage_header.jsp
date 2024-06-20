@@ -24,7 +24,6 @@ chk()
 	<%
 		String sessionid = (String)session.getAttribute("id");
 		String sessionno = (String)session.getAttribute("no");
-		System.out.print(sessionno);
 		MyPageDAO mdao = new MyPageDAO();
 		MyPageHeaderDTO mdto = mdao.getMyPageHeader(sessionno);
 	%>

@@ -16,9 +16,12 @@ public class MypageWriteReview implements CommandProsessor{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-		
-		
-		
+		if(req.getAttribute("rdto")!=null) {
+			MyPageDAO mdao = new MyPageDAO();
+			ReviewDTO rdto = (ReviewDTO)req.getAttribute("rdto");
+			mdao.insertProductReview(rdto);
+			return "reviewlist.do";
+		}
 		
 		return "/mypage/mypage_write_review.jsp";
 	}

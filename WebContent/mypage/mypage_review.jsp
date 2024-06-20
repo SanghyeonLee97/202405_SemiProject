@@ -9,11 +9,6 @@
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <link href="../css/mypage.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-	section>article{
-		height: 300px;
-	}
-</style>
 </head>
 <body>
 	<main>

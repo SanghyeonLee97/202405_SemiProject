@@ -14,6 +14,7 @@ import DTO.MyPageMainDTO;
 import DTO.MyPageReserveDTO;
 import DTO.MyPageReviewDTO;
 import DTO.ProductInquiryDTO;
+import DTO.ReviewDTO;
 
 public class MyPageDAO extends DAO{
 	
@@ -296,6 +297,24 @@ public class MyPageDAO extends DAO{
 			closeConnection();
 		}
 		return res;
+	}
+	
+	//리뷰 등록
+	public void insertProductReview(ReviewDTO rdto) {
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "insert into review(review_title,review_content,review_rating,review_date,order_no) "+
+					"values('"+rdto.getReview_title()+"','"+rdto.getReview_content()+
+					"',"+rdto.getReview_rating()+",now(),"+rdto.getOrder_no()+");";
+			stmt = (Statement) conn.createStatement();
+			stmt.executeUpdate(query);
+		}catch (Exception e) {
+			System.out.println("리뷰 등록 오류발생");
+		}finally {
+			closeConnection();
+		}
 	}
 	
 }
