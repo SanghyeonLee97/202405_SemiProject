@@ -61,13 +61,15 @@ public class ProductList implements CommandProsessor{
 						String cookieValue = URLDecoder.decode(cookie.getValue(), "utf-8");
 						for (String productInfo : cookieValue.split(",")) {
 							String[] productDetails = productInfo.split("\\|");
-							if (productDetails.length == 2) {
+							if (productDetails.length == 3) {
 								int productNo = Integer.parseInt(productDetails[0]);
                                 String productImgUrl = productDetails[1];
+                                String productName = productDetails[2];
 								
                                 ProductDTO product = new ProductDTO();
                                 product.setProduct_no(productNo);
                                 product.setProduct_imgurl(productImgUrl);
+                                product.setProduct_name(productName);
 								
                                 recentlyViewedProducts.add(product);
 							}

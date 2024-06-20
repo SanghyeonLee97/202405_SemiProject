@@ -30,6 +30,7 @@ public class ProductDetail implements CommandProsessor{
 		ProductDTO cookieProduct = new ProductDTO();
 		cookieProduct.setProduct_no(product_no);
 		cookieProduct.setProduct_imgurl(product.getProduct_imgurl());
+		cookieProduct.setProduct_name(product.getProduct_name());
 		
 		//리뷰평점 조회
 		float avgRating = productDAO.getProductRating(product_no);
@@ -50,7 +51,7 @@ public class ProductDetail implements CommandProsessor{
 	
 	private void saveProductToCookie(HttpServletRequest req, HttpServletResponse resp, ProductDTO product) {
 		String cookieName = "recentlyViewedProducts";
-		String productInfo = product.getProduct_no() + "|" + product.getProduct_imgurl();
+		String productInfo = product.getProduct_no() + "|" + product.getProduct_imgurl() + "|" + product.getProduct_name();
 		System.out.println("상품의정보확인: "+productInfo);
 		Queue<String> productQueue = new LinkedList<>();
 		
