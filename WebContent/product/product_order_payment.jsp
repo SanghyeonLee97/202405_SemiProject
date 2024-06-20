@@ -1,5 +1,8 @@
+<%@page import="DTO.ProductDTO"%>
+<%@page import="DTO.CustomerDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,9 +88,13 @@ main>section {
 			<div class="payment-main">
 				<article class="payment-article">
 					<h3>회원정보</h3><hr>
-					<p>홍길동</p>
-					<p>전화번호</p>
-					<p>주소</p>
+					<p><%= ((CustomerDTO)request.getAttribute("customer")).getCustomer_name() %></p>
+					<p><%= ((CustomerDTO)request.getAttribute("customer")).getCustomer_tel() %></p>
+					<p>
+						<%= ((CustomerDTO)request.getAttribute("customer")).getAddress_road() %>&nbsp;
+						<%= ((CustomerDTO)request.getAttribute("customer")).getAddress_detail() %>
+						(<%= ((CustomerDTO)request.getAttribute("customer")).getPostal_code() %>)
+					</p>
 				</article>
 				<article class="payment-article">
 					<h3>할인 및 적립금 사용</h3><hr>
@@ -97,9 +104,10 @@ main>section {
 						<span>
 							<select name="couponName">
 								<option>쿠폰사용</option>
-								<option>쿠폰1</option>
-								<option>쿠폰2</option>
-								<option>쿠폰3</option>
+								<!-- 쿠폰정보 동적추가 -->
+								<c:forEach var="coupon" items="${coupon }">
+									<option value="${coupon.coupon_no }">${coupon.coupon_name }</option>
+								</c:forEach>
 							</select>
 						</span>
 					</p>
@@ -109,7 +117,8 @@ main>section {
 						<span><button>전액사용</button></span>
 					</p>
 					<p>
-						<span>보유잔액</span><span>12000원</span>
+						<span>보유잔액</span>
+						<span><%= request.getAttribute("customerPoint") %>원</span>
 					</p>
 				</article>
 				<article class="payment-article">
@@ -123,16 +132,17 @@ main>section {
 			<aside class="payment-aside">
 				<h3>주문상품</h3><hr>
 				<div>
-					<img src="#" alt="주문상품-이미지">
-					<p>상품명</p>
-					<p>가격</p>
+					<img src="<%= ((ProductDTO)request.getAttribute("product")).getProduct_imgurl() %>" alt="주문상품-이미지">
+					<p>상품명: <%= ((ProductDTO)request.getAttribute("product")).getProduct_name() %></p>
+					<p>상품수량: <%= request.getAttribute("productQuantity") %></p>
+					<p>가격: <%= ((ProductDTO)request.getAttribute("product")).getProduct_price() %></p>
 				</div><hr>
 				<div>
-					<p>상품금액</p>
-					<p>할인금액</p><hr>
-					<p>총 결재금액</p>
+					<p>상품금액: <%= ((ProductDTO) request.getAttribute("product")).getProduct_price() * (int) request.getAttribute("productQuantity") %>원</p>
+					<p>할인금액: 8000원</p><hr>
+					<p>총 결제금액: <%= ((ProductDTO) request.getAttribute("product")).getProduct_price() * (int) request.getAttribute("productQuantity") - 8000 %>원</p>
 				</div>
-				<button>취소</button>
+				<button onclick="window.history.back()">취소</button>
 				<button>결제</button>
 			</aside>
 		</section>
