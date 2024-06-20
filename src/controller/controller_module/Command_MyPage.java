@@ -8,6 +8,7 @@ import DTO.ProductInquiryDTO;
 import model.CommandProsessor;
 import model.UpdateInfo;
 import model.mypage.Cancelrefund;
+import model.mypage.MypageCoupon;
 import model.mypage.MypageReserve;
 import model.mypage.ProductInquiry;
 import model.mypage.ProductInquiryList;
@@ -44,7 +45,6 @@ public class Command_MyPage extends Command_Parents{
 			processor = new Cancelrefund();
 		}
 		if(servletPath.equals("/mypage/productinquiry.do")) {
-			System.out.println(req.getParameter("order_no"));
 			if(req.getParameter("order_no")!=null) {
 				req.setAttribute("order_no", req.getParameter("order_no"));
 			}
@@ -60,6 +60,10 @@ public class Command_MyPage extends Command_Parents{
 		}
 		if(servletPath.equals("/mypage/productinquirylist.do")) {
 			processor = new ProductInquiryList();
+			
+		}
+		if(servletPath.equals("/mypage/coupon.do")) {
+			processor = new MypageCoupon();
 			
 		}
 		return processor;
