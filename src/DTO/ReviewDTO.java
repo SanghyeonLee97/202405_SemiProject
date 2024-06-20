@@ -1,29 +1,23 @@
 package DTO;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class ReviewDTO {
 	private long review_no;
-	private Date purchase_date;
 	private String review_title;
 	private String review_content;
-	private float review_rating;
-	private long product_no;
+	private int review_rating;
+	private Timestamp review_date;
+	private long order_no;
 	private long customer_no;
 	private String customer_name;
-	
 	
 	public long getReview_no() {
 		return review_no;
 	}
 	public void setReview_no(long review_no) {
 		this.review_no = review_no;
-	}
-	public Date getPurchase_date() {
-		return purchase_date;
-	}
-	public void setPurchase_date(Date purchase_date) {
-		this.purchase_date = purchase_date;
 	}
 	public String getReview_title() {
 		return review_title;
@@ -37,17 +31,23 @@ public class ReviewDTO {
 	public void setReview_content(String review_content) {
 		this.review_content = review_content;
 	}
-	public float getReview_rating() {
+	public int getReview_rating() {
 		return review_rating;
 	}
-	public void setReview_rating(float review_rating) {
+	public void setReview_rating(int review_rating) {
 		this.review_rating = review_rating;
 	}
-	public long getProduct_no() {
-		return product_no;
+	public Timestamp getReview_date() {
+		return review_date;
 	}
-	public void setProduct_no(long product_no) {
-		this.product_no = product_no;
+	public void setReview_date(Timestamp review_date) {
+		this.review_date = review_date;
+	}
+	public long getOrder_no() {
+		return order_no;
+	}
+	public void setOrder_no(long order_no) {
+		this.order_no = order_no;
 	}
 	public long getCustomer_no() {
 		return customer_no;
@@ -61,6 +61,6 @@ public class ReviewDTO {
 	public void setCustomer_name(String customer_name) {
 		this.customer_name = customer_name;
 	}
-	
+
 	
 }
