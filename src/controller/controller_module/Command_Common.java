@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.CommandProsessor;
 import model.LoginChk;
 import model.Logout;
-import model.mypage.MypageMain;
+import model.mypage.MypageWriteReview;
 
 public class Command_Common extends Command_Parents{
 
@@ -17,9 +17,6 @@ public class Command_Common extends Command_Parents{
 		}
 		if(servletPath.contains("/logout.do")) {
 			processor = new Logout();
-		}
-		if(servletPath.contains("/mypage_main.do")) {
-			processor = new MypageMain();
 		}
 		return processor;
 	}

@@ -11,11 +11,6 @@
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <link href="../css/mypage.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-	section>article{
-		height: 180px;
-	}
-</style>
 </head>
 <body>
 	<main>
@@ -37,6 +32,25 @@
 					<%=mmdtoArr.get(i).getProduct_price()*mmdtoArr.get(i).getOrder_quantity() %>원<br>
 					수량: <%=mmdtoArr.get(i).getOrder_quantity() %><br>
 					주문번호: <%=mmdtoArr.get(i).getOrder_no() %><br>
+					<%
+							switch(mmdtoArr.get(i).getStatus()){
+								case 0:
+					%>
+					<button type="button">배송조회</button>
+					<%
+								break;
+								case 1:
+					%>
+					주문취소
+					<% 
+								break;
+								case 2:
+					%>
+					<button type="button" onclick="location.href='mypagewritereview.do'">리뷰작성</button>
+					<%
+								break;
+							}
+					%>
 					<br>
 					<%} %>
 				</article>

@@ -171,6 +171,7 @@ create table orderproduct(
     foreign key(coupon_no) references coupon(coupon_no)
 );
 insert into orderproduct(customer_no,product_no,coupon_no,order_quantity) values(1,1,1,2);
+insert into orderproduct(customer_no,product_no,coupon_no,order_quantity,status) values(1,1,1,2,2);
 
 create table point(
 	point_no int primary key auto_increment,
