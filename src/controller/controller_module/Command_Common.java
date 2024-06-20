@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.CommandProsessor;
-import model.LoginChk;
-import model.Logout;
+import model.member.LoginChk;
+import model.member.Logout;
 import model.mypage.MypageWriteReview;
 
 public class Command_Common extends Command_Parents{

@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import DTO.CustomerDTO;
 import model.CommandProsessor;
-import model.IdChk;
-import model.Register;
+import model.member.IdChk;
+import model.member.Register;
 
 public class Command_Member extends Command_Parents{
 
