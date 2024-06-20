@@ -7,7 +7,6 @@ import DTO.CustomerDTO;
 import DTO.ProductInquiryDTO;
 import DTO.ReviewDTO;
 import model.CommandProsessor;
-import model.UpdateInfo;
 import model.mypage.Cancelrefund;
 import model.mypage.MypageCoupon;
 import model.mypage.MypageReserve;
@@ -15,6 +14,7 @@ import model.mypage.MypageReviewList;
 import model.mypage.MypageWriteReview;
 import model.mypage.ProductInquiry;
 import model.mypage.ProductInquiryList;
+import model.mypage.UpdateInfo;
 
 public class Command_MyPage extends Command_Parents{
 	

@@ -9,7 +9,7 @@ import model.CommandProsessor;
 import model.FAQWrite;
 import model.NoticeWrite;
 import model.QuitUser;
-import model.UpdateInfo;
+import model.mypage.UpdateInfo;
 
 public class Command_Etc extends Command_Parents{
 
