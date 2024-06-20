@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import DTO.CommunityQNADTO;
 import model.CommandProsessor;
-import model.FAQRead;
-import model.NoticeRead;
-import model.QNAAnswer;
-import model.CommunityDelete;
-import model.QNARead;
-import model.QNAWrite;
+import model.community.CommunityDelete;
+import model.community.FAQRead;
+import model.community.NoticeRead;
+import model.community.QNAAnswer;
+import model.community.QNARead;
+import model.community.QNAWrite;
 
 public class Command_Community extends Command_Parents{
 	

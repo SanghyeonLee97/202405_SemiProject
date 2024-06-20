@@ -1,13 +1,11 @@
-package model;
+package model.community;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import DTO.CommunityQNADTO;
-import dao.CommunityDAO;
 
-public class QNAWrite implements CommandProsessor{
+public class QNAWrite extends Community{
 	
 	CommunityQNADTO cqdto = new CommunityQNADTO();
 	
@@ -17,8 +15,7 @@ public class QNAWrite implements CommandProsessor{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-		CommunityDAO cdao = new CommunityDAO();
-		HttpSession session = req.getSession();
+		session = req.getSession();
 		String customerId = (String) session.getAttribute("id");
 		cqdto.setCustomer_no(cdao.getCustomerNo(customerId));
 		cdao.QNAWrite(cqdto);
