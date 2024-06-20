@@ -10,6 +10,7 @@ import DTO.CustomerDTO;
 import DTO.MyPageCancelDTO;
 import DTO.MyPageCouponDTO;
 import DTO.MyPageHeaderDTO;
+import DTO.MyPageMainDTO;
 import DTO.MyPageReserveDTO;
 import DTO.MyPageReviewDTO;
 import DTO.ProductInquiryDTO;
@@ -258,6 +259,38 @@ public class MyPageDAO extends DAO{
 			}
 		}catch (Exception e) {
 			System.out.println("mypage 리뷰 조회");
+			e.printStackTrace();
+		}finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
+	//mypage 메인조회,주문배송 조회
+	public ArrayList<MyPageMainDTO> getMypageMain(int customer_no) {
+		ArrayList<MyPageMainDTO> res = new ArrayList<MyPageMainDTO>();
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+		try {
+			query = "select product.product_imgurl,product.product_name,product.product_price,"+
+					"orderproduct.order_quantity,orderproduct.order_no,orderproduct.status "+
+					"from orderproduct inner join product on orderproduct.product_no=product.product_no "+
+					"where orderproduct.customer_no="+customer_no;
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				MyPageMainDTO mmdto = new MyPageMainDTO();
+				mmdto.setProduct_imgurl(rs.getString("product_imgurl"));
+				mmdto.setProduct_name(rs.getString("product_name"));
+				mmdto.setProduct_price(rs.getInt("product_price"));
+				mmdto.setOrder_quantity(rs.getInt("order_quantity"));
+				mmdto.setOrder_no(rs.getInt("order_no"));
+				mmdto.setStatus(rs.getInt("status"));
+				res.add(mmdto);
+			}
+		}catch (Exception e) {
+			System.out.println("mypage 메인조회,주문배송 조회");
 			e.printStackTrace();
 		}finally {
 			closeConnection();

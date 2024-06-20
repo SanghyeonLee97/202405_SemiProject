@@ -71,7 +71,7 @@
 </head>
 <body>
 	<h2>리뷰작성</h2>
-	<form class="mb-3" name="myform" id="myform" method="post">
+	<form class="mb-3" name="myform" id="myform" method="get" action="">
 		<fieldset>
 			<span class="text-bold">별점을 선택해주세요</span>
 			<input type="radio" name="reviewStar" value="5" id="rate1"><label

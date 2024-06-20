@@ -31,8 +31,10 @@ chk()
 	<header>
         <h1><%=sessionid %>님</h1>
         <article>
-        	주문/배송<br>
-        	<%=mdto.getOrder_count() %>
+        	<a href="/projectdengdeng/mypage/mypage_main.jsp">
+	        	주문/배송<br>
+	        	<%=mdto.getOrder_count() %>
+        	</a>
         </article>
         <article>
         	<a href="reviewlist.do">
