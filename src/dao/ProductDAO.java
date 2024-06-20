@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DTO.CategoryDTO;
+import DTO.CouponDTO;
+import DTO.CustomerDTO;
 import DTO.ProductDTO;
 import DTO.ReviewDTO;
 
@@ -24,13 +26,25 @@ public class ProductDAO extends DAO{
 	private final String PC_NO_LIST =
 			"select product_no, product_imgurl, product_name, product_price from product where pc_no=?";
 	private final String GET_PRODUCT =
-			"select product_name, product_imgurl, product_price, product_detail, product_size, "
+			"select product_no, product_name, product_imgurl, product_price, product_detail, product_size, "
 			+ "product_color, maker, product_mfd, product_poo, product_epd from product where product_no = ?;";
 	private final String REVIEW_AVG = 
-			"select avg(review_rating) from review where product_no=?";
+			"select avg(r.review_rating) from review r "
+			+ "join orderproduct o on r.order_no = o.order_no where o.product_no=?;";
 	private final String REVIEW_LIST =
-			"select r.review_title, r.review_content, r.review_rating, r.purchase_date, c.customer_name "
-			+ "from review r join customer c on r.customer_no = c.customer_no where c.customer_no = ?;";
+			"select r.review_title, r.review_content, r.review_rating, r.review_date, c.customer_name "
+			+ "from review r join orderproduct o on r.order_no = o.order_no "
+			+ "join customer c on o.customer_no = c.customer_no where o.customer_no = ?";
+	private final String INSERT_CART =
+			"insert into cart(customer_no, product_no, product_quantity) value(?, ?, ?)";
+	private final String GET_COUPON =
+			"select cc.coupon_no, cc.quantity, cc.coupon_duedate, c.coupon_name, c.coupon_discount "
+			+ "from customercoupon cc join coupon c on cc.coupon_no = c.coupon_no "
+			+ "where cc.customer_no= ? ;";
+	private final String GET_CUSTOMER = 
+			"select customer_name, customer_tel, postal_code, address_road, address_detail "
+			+ "from customer where customer_no=?;";
+	
 	
 	//상품리스트 검색 by 부모번호
 	public List<ProductDTO> getProductListByParentNo(int pc_parent_no){
@@ -122,6 +136,7 @@ public class ProductDAO extends DAO{
 			
 			if(rs.next()) {
 				product = new ProductDTO();
+				product.setProduct_no(rs.getLong("product_no"));
 				product.setProduct_name(rs.getString("product_name"));
 				product.setProduct_imgurl(rs.getString("product_imgurl"));
 				product.setProduct_price(rs.getInt("product_price"));
@@ -167,7 +182,7 @@ public class ProductDAO extends DAO{
 	//리뷰목록
 	public List<ReviewDTO> getReviewList(long product_no){
 		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
-		//"select r.review_title, r.review_content, r.review_rating, r.purchase_date, c.customer_name "
+		//"select r.review_title, r.review_content, r.review_rating, r.review_date, c.customer_name "
 		//+ "from review r join customer c on r.customer_no = c.customer_no where c.customer_no = ?;";
 		try {
 			openConnection();
@@ -181,7 +196,7 @@ public class ProductDAO extends DAO{
 				review.setReview_title(rs.getString("review_title"));
 				review.setReview_content(rs.getString("review_content"));
 				review.setReview_rating(rs.getInt("review_rating"));
-				review.setPurchase_date(rs.getDate("purchase_date"));
+				review.setReview_date(rs.getTimestamp("review_date"));
 				review.setCustomer_name(rs.getString("customer_name"));
 				
 				reviewList.add(review);
@@ -192,5 +207,84 @@ public class ProductDAO extends DAO{
 			closeConnection();
 		}
 		return reviewList;
+	}
+	
+	//장바구니에 추가
+	public boolean addToCart(int customer_no, int product_no, int product_quantity) {
+		boolean isInserted = false;
+		System.out.println("회원번호: "+customer_no);
+		System.out.println("상품번호: "+product_no);
+		System.out.println("상품수량: "+product_quantity);
+		try {
+			openConnection();
+			pstmt = conn.prepareStatement(INSERT_CART);
+			//"insert into cart(customer_no, product_no, product_quantity) value(?, ?, ?)";
+			pstmt.setInt(1, customer_no);
+			pstmt.setInt(2, product_no);
+			pstmt.setInt(3, product_quantity);
+			
+			int result = pstmt.executeUpdate();
+			if (result > 0) {
+				isInserted = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return isInserted;
+	}
+	
+	//회원의 쿠폰정보 불러오기
+	public List<CouponDTO> getCouponList(int customerNo) {
+		List<CouponDTO> couponList = new ArrayList<CouponDTO>();
+		CouponDTO coupon = null;
+		
+		try {
+			openConnection();
+			pstmt = conn.prepareStatement(GET_COUPON);
+			pstmt.setInt(1, customerNo);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				coupon = new CouponDTO();
+				coupon.setCoupon_no(rs.getLong("coupon_no"));
+				coupon.setQuantity(rs.getLong("quantity"));
+				coupon.setCoupon_duedate(rs.getDate("coupon_duedate"));
+				coupon.setCoupon_name(rs.getString("coupon_name"));
+				coupon.setCoupon_discount(rs.getInt("coupon_discount"));
+				couponList.add(coupon);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return couponList;
+	}
+	//회원의 정보 불러오기
+	public CustomerDTO getCustomer(int customerNo) {
+		CustomerDTO customer = null;
+		
+		try {
+			openConnection();
+			pstmt = conn.prepareStatement(GET_CUSTOMER);
+			pstmt.setInt(1, customerNo);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				customer = new CustomerDTO();
+				customer.setCustomer_name(rs.getString("customer_name"));
+				customer.setCustomer_tel(rs.getString("customer_tel"));
+				customer.setPostal_code(rs.getString("postal_code"));
+				customer.setAddress_road(rs.getString("address_road"));
+				customer.setAddress_detail(rs.getString("address_detail"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return customer;
 	}
 }
