@@ -72,6 +72,12 @@ public class Command_MyPage extends Command_Parents{
 			processor = new MypageReviewList();
 		}
 		if(servletPath.equals("/mypage/mypagewritereview.do")) {
+			if(req.getParameter("order_no")!=null && req.getParameter("reviewStar")==null) {
+				req.setAttribute("order_no", req.getParameter("order_no"));
+			}
+			if(req.getParameter("reviewStar")!=null) {
+				
+			}
 			processor = new MypageWriteReview();
 		}
 		return processor;
