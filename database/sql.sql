@@ -110,19 +110,6 @@ insert into product_inquiry_category values(1,'반품');
 insert into product_inquiry_category values(2,'교환');
 insert into product_inquiry_category values(3,'문의');
 
-create table review(
-	review_no bigint primary key auto_increment,
-    purchase_date date not null,
-    review_title varchar(100) not null,
-    review_content text not null,
-    review_rating int not null,
-    product_no bigint not null,
-    customer_no bigint not null,
-	foreign key(product_no) references product(product_no),
-    foreign key(customer_no) references customer(customer_no)
-);
-insert into review(purchase_date,review_title,review_content,review_rating,product_no,customer_no) values('2000-01-01','제목테스트','내용테스트',4,1,1);
-
 create table event(
 	event_no bigint primary key auto_increment,
     event_url varchar(100) not null,
@@ -206,3 +193,14 @@ create table product_inquiry(
     foreign key(order_no) references orderproduct(order_no)
 );
 insert into product_inquiry(pi_title,pi_content,pi_date,order_no,category_no) values('제목테스트','내용테스트',now(),1,1);
+
+create table review(
+	review_no bigint primary key auto_increment,
+    purchase_date date not null,
+    review_title varchar(100) not null,
+    review_content text not null,
+    review_rating int not null,
+    order_no bigint not null,
+    foreign key(order_no) references orderproduct(order_no)
+);
+insert into review(purchase_date,review_title,review_content,review_rating,order_no) values('2000-01-01','제목테스트','내용테스트',4,1);

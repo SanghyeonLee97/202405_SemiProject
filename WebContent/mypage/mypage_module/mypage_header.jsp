@@ -45,8 +45,10 @@ chk()
         	</a>
         </article>
         <article>
-        	쿠폰<br>
-        	<%=mdto.getCoupon_count() %>
+        	<a href="coupon.do">
+	        	쿠폰<br>
+	        	<%=mdto.getCoupon_count() %>
+        	</a>
         </article>
     </header>
 </body>

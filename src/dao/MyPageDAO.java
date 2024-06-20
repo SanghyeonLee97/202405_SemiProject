@@ -8,6 +8,7 @@ import com.mysql.jdbc.Statement;
 import DTO.CommunityQNADTO;
 import DTO.CustomerDTO;
 import DTO.MyPageCancelDTO;
+import DTO.MyPageCouponDTO;
 import DTO.MyPageHeaderDTO;
 import DTO.MyPageReserveDTO;
 import DTO.ProductInquiryDTO;
@@ -195,5 +196,35 @@ public class MyPageDAO extends DAO{
 		}
 		return res;
 	}
-
+	
+	//mypage 쿠폰 조회
+	public ArrayList<MyPageCouponDTO> getMypageCoupon(int customer_no) {
+		ArrayList<MyPageCouponDTO> res = new ArrayList<MyPageCouponDTO>();
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+			try {
+			query = "select coupon.coupon_name,coupon.coupon_discount,coupon.coupon_limit,"+
+					"customercoupon.coupon_duedate from customercoupon "+
+					"inner join coupon on customercoupon.coupon_no=coupon.coupon_no "+
+					"where customercoupon.customer_no="+customer_no;
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				MyPageCouponDTO mcdto = new MyPageCouponDTO();
+				mcdto.setCoupon_name(rs.getString("coupon_name"));
+				mcdto.setCoupon_discount(rs.getInt("coupon_discount"));
+				mcdto.setCoupon_limit(rs.getString("coupon_limit"));
+				mcdto.setCoupon_duedate(rs.getDate("coupon_duedate"));
+				res.add(mcdto);
+			}
+		}catch (Exception e) {
+			System.out.println("mypage 쿠폰 조회");
+			e.printStackTrace();
+		}finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
 }
