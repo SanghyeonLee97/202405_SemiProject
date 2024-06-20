@@ -11,19 +11,19 @@ import dao.CommunityDAO;
 import dao.MyPageDAO;
 import model.CommandProsessor;
 
-public class Cancelrefund implements CommandProsessor{
+public class Cancelrefund extends MyPage{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-		MyPageDAO mdao = new MyPageDAO();
+		session = req.getSession();
+		userNo = cdao.getCustomerNo((String)session.getAttribute("id"));
+		
 		if(req.getAttribute("order_no")!=null && req.getParameter("category")==null) {
 			String order_no = (String)req.getAttribute("order_no");
 			mdao.cancelOrder(order_no);
 		}
-		CommunityDAO cdao = new CommunityDAO();
-		HttpSession session = req.getSession();
-		String customerId = (String)session.getAttribute("id");
-		ArrayList<MyPageCancelDTO> mcdtoArr = mdao.getMypageCancel(cdao.getCustomerNo(customerId));
+		
+		ArrayList<MyPageCancelDTO> mcdtoArr = mdao.getMypageCancel(userNo);
 		req.setAttribute("cancel", mcdtoArr);
 		return "/mypage/mypage_cancel_refund.jsp";
 	}
