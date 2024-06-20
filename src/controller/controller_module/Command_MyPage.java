@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DTO.CustomerDTO;
 import DTO.ProductInquiryDTO;
+import DTO.ReviewDTO;
 import model.CommandProsessor;
 import model.UpdateInfo;
 import model.mypage.Cancelrefund;
@@ -76,7 +77,12 @@ public class Command_MyPage extends Command_Parents{
 				req.setAttribute("order_no", req.getParameter("order_no"));
 			}
 			if(req.getParameter("reviewStar")!=null) {
-				
+				ReviewDTO rdto = new ReviewDTO();
+				rdto.setOrder_no(Integer.parseInt(req.getParameter("order_no")));
+				rdto.setReview_title(req.getParameter("title"));
+				rdto.setReview_content(req.getParameter("content"));
+				rdto.setReview_rating(Integer.parseInt(req.getParameter("reviewStar")));
+				req.setAttribute("rdto", rdto);
 			}
 			processor = new MypageWriteReview();
 		}
