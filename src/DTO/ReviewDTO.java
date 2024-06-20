@@ -1,7 +1,6 @@
 package DTO;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class ReviewDTO {
 	private long review_no;
