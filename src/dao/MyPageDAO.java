@@ -11,6 +11,7 @@ import DTO.MyPageCancelDTO;
 import DTO.MyPageCouponDTO;
 import DTO.MyPageHeaderDTO;
 import DTO.MyPageReserveDTO;
+import DTO.MyPageReviewDTO;
 import DTO.ProductInquiryDTO;
 
 public class MyPageDAO extends DAO{
@@ -220,6 +221,43 @@ public class MyPageDAO extends DAO{
 			}
 		}catch (Exception e) {
 			System.out.println("mypage 쿠폰 조회");
+			e.printStackTrace();
+		}finally {
+			closeConnection();
+		}
+		return res;
+	}
+	
+	//mypage 리뷰 조회
+	public ArrayList<MyPageReviewDTO> getMypageReview(int customer_no) {
+		ArrayList<MyPageReviewDTO> res = new ArrayList<MyPageReviewDTO>();
+		Statement stmt = null;
+		String query = "";
+		openConnection();
+			try {
+			query = "select product.product_imgurl,product.product_name,product.product_price,"+
+					"orderproduct.order_quantity,orderproduct.order_no,review.review_rating,"+
+					"review.review_title,review.review_content,review.review_date "+
+					"from review inner join orderproduct on review.order_no=orderproduct.order_no "+
+					"inner join product on orderproduct.product_no=product.product_no "+
+					"where orderproduct.product_no="+customer_no;
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				MyPageReviewDTO mrdto = new MyPageReviewDTO();
+				mrdto.setProduct_imgurl(rs.getString("product_imgurl"));
+				mrdto.setProduct_name(rs.getString("product_name"));
+				mrdto.setProduct_price(rs.getInt("product_price"));
+				mrdto.setOrder_quantity(rs.getInt("order_quantity"));
+				mrdto.setOrder_no(rs.getInt("order_no"));
+				mrdto.setReview_rating(rs.getInt("review_rating"));
+				mrdto.setReview_title(rs.getString("review_title"));
+				mrdto.setReview_content(rs.getString("review_content"));
+				mrdto.setReview_date(rs.getTimestamp("review_date"));
+				res.add(mrdto);
+			}
+		}catch (Exception e) {
+			System.out.println("mypage 리뷰 조회");
 			e.printStackTrace();
 		}finally {
 			closeConnection();

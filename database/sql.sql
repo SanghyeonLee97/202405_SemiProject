@@ -196,11 +196,11 @@ insert into product_inquiry(pi_title,pi_content,pi_date,order_no,category_no) va
 
 create table review(
 	review_no bigint primary key auto_increment,
-    purchase_date date not null,
     review_title varchar(100) not null,
     review_content text not null,
     review_rating int not null,
+    review_date timestamp not null,
     order_no bigint not null,
     foreign key(order_no) references orderproduct(order_no)
 );
-insert into review(purchase_date,review_title,review_content,review_rating,order_no) values('2000-01-01','제목테스트','내용테스트',4,1);
+insert into review(review_title,review_content,review_rating,review_date,order_no) values('제목테스트','내용테스트',4,now(),1);

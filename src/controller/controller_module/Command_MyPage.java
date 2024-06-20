@@ -10,6 +10,7 @@ import model.UpdateInfo;
 import model.mypage.Cancelrefund;
 import model.mypage.MypageCoupon;
 import model.mypage.MypageReserve;
+import model.mypage.MypageReviewList;
 import model.mypage.ProductInquiry;
 import model.mypage.ProductInquiryList;
 
@@ -65,6 +66,9 @@ public class Command_MyPage extends Command_Parents{
 		if(servletPath.equals("/mypage/coupon.do")) {
 			processor = new MypageCoupon();
 			
+		}
+		if(servletPath.equals("/mypage/reviewlist.do")) {
+			processor = new MypageReviewList();
 		}
 		return processor;
 	}

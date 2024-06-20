@@ -35,8 +35,10 @@ chk()
         	<%=mdto.getOrder_count() %>
         </article>
         <article>
-        	리뷰<br>
-        	<%=mdto.getReview_count() %>
+        	<a href="reviewlist.do">
+	        	리뷰<br>
+	        	<%=mdto.getReview_count() %>
+        	</a>
         </article>
         <article>
         	<a href="reserve.do">
