@@ -2,17 +2,15 @@ package model.product;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.ProductDAO;
-import model.CommandProsessor;
 
-public class InsertToCart implements CommandProsessor{
+public class InsertToCart extends Product{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		//세션 확인
-		HttpSession session = req.getSession();
+		session = req.getSession();
 		String id = (String)session.getAttribute("id");
 		String customerNo = (String)session.getAttribute("no");
 		
@@ -25,7 +23,7 @@ public class InsertToCart implements CommandProsessor{
 		int productQuantity = Integer.parseInt(req.getParameter("product_quantity"));
 		
 		//장바구니에 추가
-		ProductDAO productDAO = new ProductDAO();
+		productDAO = new ProductDAO();
 		boolean isSuccess = productDAO.addToCart(Integer.parseInt(customerNo), productNo, productQuantity);
 		
 		if(isSuccess) {

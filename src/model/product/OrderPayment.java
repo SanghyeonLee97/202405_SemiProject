@@ -4,28 +4,27 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 import DTO.CouponDTO;
 import DTO.CustomerDTO;
 import DTO.ProductDTO;
 import dao.OrderDAO;
 import dao.ProductDAO;
-import model.CommandProsessor;
 
-public class OrderPayment implements CommandProsessor{
+public class OrderPayment extends Product{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		//세션확인
-		HttpSession session = req.getSession();
+		session = req.getSession();
 		String id = (String)session.getAttribute("id");
 		String customerNo = (String)session.getAttribute("no");
 		
 		if (id == null && customerNo == null) {
 			return "/member/login.jsp";
 		}
-		ProductDAO productDAO = new ProductDAO();
+		productDAO = new ProductDAO();
 		
 		//회원정보 불러오기
 		CustomerDTO customer = productDAO.getCustomer(Integer.parseInt(customerNo));
@@ -38,8 +37,8 @@ public class OrderPayment implements CommandProsessor{
 		
 		
 		//적립금 불러오기
-		OrderDAO order = new OrderDAO();
-		int customerPoint = order.getCustomerPoint(Integer.parseInt(customerNo));
+		orderDAO = new OrderDAO();
+		int customerPoint = orderDAO.getCustomerPoint(Integer.parseInt(customerNo));
 		req.setAttribute("customerPoint", customerPoint);
 		
 		//상품정보 불러오기
