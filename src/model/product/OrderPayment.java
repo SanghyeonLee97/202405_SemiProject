@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DTO.CouponDTO;
 import DTO.CustomerDTO;
-import DTO.ProductDTO;
+import DTO.product.ProductDTO;
 import dao.OrderDAO;
 import dao.ProductDAO;
 

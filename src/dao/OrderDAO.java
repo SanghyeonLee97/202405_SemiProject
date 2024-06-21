@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import DTO.OrderDTO;
+import DTO.product.OrderDTO;
 
 public class OrderDAO extends DAO{
 	PreparedStatement pstmt = null;

@@ -1,6 +1,6 @@
 <%@page import="DTO.ReviewDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="DTO.ProductDTO"%>
+<%@page import="DTO.product.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 

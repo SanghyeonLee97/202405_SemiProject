@@ -11,8 +11,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.ProductDTO;
 import DTO.ReviewDTO;
+import DTO.product.ProductDTO;
+import DTO.product.ProductQnaDTO;
 import dao.ProductDAO;
 
 public class ProductDetail extends Product{
@@ -37,6 +38,8 @@ public class ProductDetail extends Product{
 		//리뷰리스트 조회
 		List<ReviewDTO> reviewList = productDAO.getReviewList(product_no);
 		
+		//QNA 목록조회
+		List<ProductQnaDTO> qnaList = productDAO.getQNAList(product_no);
 		
 		//지금 클릭하여 조회하는 상품을 최근 본 상품에 추가해야함
 		saveProductToCookie(req, resp, cookieProduct);
@@ -44,7 +47,7 @@ public class ProductDetail extends Product{
 		req.setAttribute("product", product);
 		req.setAttribute("avgRating", avgRating);
 		req.setAttribute("reviewList", reviewList);
-		
+		req.setAttribute("qnaList", qnaList);
 		return "/product/product_page.jsp";
 	}
 	

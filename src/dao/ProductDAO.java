@@ -8,8 +8,9 @@ import java.util.List;
 import DTO.CategoryDTO;
 import DTO.CouponDTO;
 import DTO.CustomerDTO;
-import DTO.ProductDTO;
 import DTO.ReviewDTO;
+import DTO.product.ProductDTO;
+import DTO.product.ProductQnaDTO;
 
 public class ProductDAO extends DAO{
 
@@ -43,7 +44,12 @@ public class ProductDAO extends DAO{
 	private final String GET_CUSTOMER = 
 			"select customer_name, customer_tel, postal_code, address_road, address_detail "
 			+ "from customer where customer_no=?;";
-	
+	private final String GET_QNA =
+			"select c.customer_name, pi.pi_title, pi.pi_content, pi.pi_date, pi.pi_answer, pi.category_no "
+			+ "from product_inquiry pi "
+			+ "join orderproduct o on pi.order_no = o.order_no "
+			+ "join customer c on o.customer_no = c.customer_no "
+			+ "where o.product_no = ?";
 	
 	//상품리스트 검색 by 부모번호
 	public List<ProductDTO> getProductListByParentNo(int pc_parent_no){
@@ -285,5 +291,36 @@ public class ProductDAO extends DAO{
 			closeConnection();
 		}
 		return customer;
+	}
+	
+	//QNA목록 불러오기
+	public List<ProductQnaDTO> getQNAList(long product_no){
+		List<ProductQnaDTO> qnaList = new ArrayList<ProductQnaDTO>();
+		
+		try {
+			openConnection();
+			
+			pstmt = conn.prepareStatement(GET_QNA);
+			pstmt.setLong(1, product_no);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductQnaDTO qna = new ProductQnaDTO();
+				qna.setCustomer_name(rs.getString("customer_name"));
+				qna.setPi_title(rs.getString("pi_title"));
+				qna.setPi_content(rs.getString("pi_content"));
+				qna.setPi_date(rs.getTimestamp("pi_date"));
+				qna.setPi_answer(rs.getString("pi_answer"));
+				qna.setCategory_no(rs.getInt("category_no"));
+				
+				qnaList.add(qna);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return qnaList;
 	}
 }

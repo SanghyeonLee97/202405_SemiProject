@@ -1,6 +1,7 @@
+<%@page import="DTO.product.ProductQnaDTO"%>
 <%@page import="DTO.ReviewDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="DTO.ProductDTO"%>
+<%@page import="DTO.product.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
@@ -176,7 +177,7 @@ main>section>section>article:nth-child(3) {
 	color: #666;
 	font-size: 12px;
 }
- #productimg{
+#productimg{
 
 	width: 460px;
 	height: 460px;
@@ -209,7 +210,7 @@ main>section>section>article:nth-child(3) {
 	left:120px; 
 	
 }
- #pricenumber{
+#pricenumber{
 	position: relative;
 	right: 50px;
 	top: 40px;
@@ -325,7 +326,7 @@ main>section>section>article:nth-child(3) {
 			</article>
 			<article id="qna">
 				<h3>QNA</h3>
-				<p>QNA 출력 예정</p>
+				<%@ include file="product_module/product_inquiry_list.jsp" %>
 			</article>
 		</section>
 	</main>

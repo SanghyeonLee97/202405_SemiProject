@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.CategoryDTO;
-import DTO.ProductDTO;
+import DTO.product.ProductDTO;
 import dao.ProductDAO;
 
 public class ProductList extends Product{
