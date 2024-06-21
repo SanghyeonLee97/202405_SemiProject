@@ -8,6 +8,7 @@ import dao.CommunityDAO;
 import dao.MemberDAO;
 import model.CommandProsessor;
 
+//모든 멤버 모델의 부모가되는 클래스 
 public abstract class Member implements CommandProsessor{
 	MemberDAO mdao = new MemberDAO();
 	CommunityDAO cdao = new CommunityDAO();

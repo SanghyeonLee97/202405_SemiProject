@@ -7,7 +7,6 @@ import com.mysql.jdbc.Statement;
 
 import DTO.CustomerDTO;
 import DTO.ReviewDTO;
-import DTO.community.CommunityQNADTO;
 import DTO.mypage.MyPageCancelDTO;
 import DTO.mypage.MyPageCouponDTO;
 import DTO.mypage.MyPageHeaderDTO;
@@ -72,6 +71,7 @@ public class MyPageDAO extends DAO{
 					"from point inner join orderproduct on point.order_no=orderproduct.order_no "+
 					"inner join product on orderproduct.product_no=product.product_no "+
 					"where orderproduct.customer_no="+customer_no;
+			//status가 존재한다면 조건에 status도 일치하는가를 추가
 			if(!point_status.equals("")) {
 				query+=" && point_status="+point_status;
 			}
