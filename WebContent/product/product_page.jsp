@@ -1,257 +1,36 @@
-<%@page import="DTO.product.ProductQnaDTO"%>
-<%@page import="DTO.ReviewDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="DTO.product.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% 
-	ProductDTO product = (ProductDTO)request.getAttribute("product");
-	float avgRating = (float)request.getAttribute("avgRating");
-	List<ReviewDTO> reviewList = (List<ReviewDTO>)request.getAttribute("reviewList");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-main>section {
-	/* background-color: #ddddff; */
-}
-
-main>section>header {
-	width: 100%;
-	height: 120px;
-	/* background-color: #ddffff; */
-}
-
-main>section>aside {
-	width: 460px;
-	height: 460px;
-	/* background-color: #ffffdd; */
-	float: left;
-}
-
-main>section>section {
-	width: 740px;
-	/* background-color: #ddffdd; */
-	float: left;
-}
-
-main>section>section>article {
-	width: 100%;
-	/* background-color: #ffddff; */
-	
-}
-
-main>section>section>article:nth-child(1) {
-	height: 100px;
-	
-}
-
-main>section>section>article:nth-child(2) {
-	height: 140px;
-	margin-top: 40px;
-	text-align: center;
-}
-
-main>section>section>article:nth-child(3) {
-	height: 280px;
-	margin-top: 40px;
-	text-align: center;
-}
-
-.detail-nav {
-	width: 100%;
-	height: 70px;
-	
-
-}
-
-.detail-nav a {
-	margin: 0 15px;
-	cursor: pointer;
-	text-decoration: underline;
-	color: inherit;
-	margin-left: 200px;
-}
-
-.detail-section {
-	width: 1200px;
-	background-color: #ddffff;
-}
-
-.detail-section>article {
-	display: none;
-}
-
-.detail-section>article.active {
-	display: block;
-}
-
-.detail-section>article>nav {
-	width: 100%;
-	height: 50px;
-	background-color: #ffdddd;
-}
-
-.detail-section>article>nav a {
-	margin: 0 15px;
-	cursor: pointer;
-	color: inherit;
-}
-
-.quantity-selector {
-	display: flex;
-	align-items: center;
-	margin-left: 250px;
-	position: relative;
-	bottom: 5px;
-	
-}
-
-.quantity-selector button {
-	width: 30px;
-	height: 30px;
-	font-size: 18px;
-	margin: 0 5px;
-	
-}
-
-.quantity-selector input {
-	width: 50px;
-	text-align: center;
-}
-
-.product-details table {
-	width: 80%;
-	border-collapse: collapse;
-	margin: 0 auto;
-}
-
-.product-details table, .product-details th, .product-details td {
-	border: 1px solid #000;
-}
-
-.product-details th {
-	width: 20%;
-}
-
-.product-details td {
-	width: 30%;
-}
-
-.product-details th, .product-details td {
-	padding: 8px;
-	text-align: left;
-}
-
-.review-container {
-	width: 80%;
-	margin: 0 auto;
-	background-color: #f9f9f9;
-	padding: 20px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-}
-
-.review-item {
-	margin-bottom: 20px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #ddd;
-}
-
-.review-item h4 {
-	margin: 0 0 5px 0;
-	font-size: 18px;
-}
-
-.review-item p {
-	margin: 0;
-	font-size: 14px;
-}
-
-.review-item .review-meta {
-	margin-top: 10px;
-	color: #666;
-	font-size: 12px;
-}
-#productimg{
-
-	width: 460px;
-	height: 460px;
-	
-}
-#pricewon {
-	margin-left: 450px;
-}
-#productbt{
-	width: 60px;
-	height: 30px;
-	background: yellow;
-	border: none;
-	
-	
-	
-}
- #productbtb {
-	width: 150px;
-	height: 50px;
-	background: yellow;
-	position: relative;
-	top: 150px;
-	left: 100px;
-	border: none;
-	margin-left: 10px;
-} 
-#pricep{
-	position: relative;
-	left:120px; 
-	
-}
-#pricenumber{
-	position: relative;
-	right: 50px;
-	top: 40px;
-}
-#pricesection{
-	
-	width: 400px;
-	height: 150px;
-	background: #FAFAD2;
-	position: relative;
-	left: 250px;
-	top:70px;
-	
-
-}
-#detaila{
-	font-size: 35px;
-	text-decoration: underline;
-
-
-}
-
-
-</style>
+<link href="../css/product_css/product_page.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	let productPrice = ${product.product_price};
+	let productNo = ${product.product_no};
+</script>
+<script src="./product_js/product_page.js"></script>
 </head>
 <body>
 	<main>
 		<section>
 			<header></header>
 			<aside>
-				<img id="productimg" src="<%= product.getProduct_imgurl() %>" alt="상품 이미지" >
+				<img id="productimg" src="${product.product_imgurl}" alt="상품 이미지">
 			</aside>
 			<section>
 				<article>
-					<h2 style="text-align: center;"><%= product.getProduct_name() %></h2><br>
-					 <p><h3 id="pricewon">가격: <%= product.getProduct_price() %>원</h3></p>
+					<h2 style="text-align: center;">${product.product_name}</h2><br>
+					 <p><h3 id="pricewon">가격: ${product.product_price}원</h3></p>
 					 <hr>
 				</article>
 				<article>
 					 <div id="pricesection">
-						<p><h5><%= product.getProduct_name() %></h5></p> 
+						<p><h5>${product.product_name}</h5></p>
 						<p><h4 id="pricenumber">구매수량선택:</h4></p>
 						<div class="quantity-selector">
 							<button id="productbt" onclick="changeQuantity(-1)">-</button>
@@ -259,7 +38,9 @@ main>section>section>article:nth-child(3) {
 							<button id="productbt" onclick="changeQuantity(+1)">+</button>
 						</div>
 						<br><br>
-						<div id="pricep"><p><h4>총 상품 금액 </h4><h5><span id="totalPrice"><%= product.getProduct_price() %>원</span></h5></p></div>
+						<div id="pricep">
+							<p><h4>총 상품 금액</h4><h5><span id="totalPrice">${product.product_price}원</span></h5></p>
+						</div>
 					</div>
 				</article>
 				<article>
@@ -277,103 +58,101 @@ main>section>section>article:nth-child(3) {
 		<section class="detail-section">
 			<article id="detail" class="active">
 				<h3>상세정보</h3>
-				<p><%=product.getProduct_detail() %></p>
+				<p>${product.product_detail}</p>
 				<div class="product-details">
 					<table>
 						<tr>
-							<th>상품번호</th><td><%= product.getProduct_no() %></td>
-							<th>사이즈</th><td><%= product.getProduct_size() %></td>
+							<th>상품번호</th><td>${product.product_no}</td>
+							<th>사이즈</th><td>${product.product_size}</td>
 						</tr>
 						<tr>
-							<th>제조사</th><td><%= product.getMaker() %></td>
-							<th>제조일자</th><td><%= product.getProduct_mfd() %></td>
+							<th>제조사</th><td>${product.maker}</td>
+							<th>제조일자</th><td><fmt:formatDate value="${product.product_mfd}" pattern="yyyy-MM-dd"/></td>
 						</tr>
 						<tr>
-							<th>상품명</th><td><%= product.getProduct_name() %></td>
-							<th>소비기한</th><td><%= product.getProduct_epd() %></td>
+							<th>상품명</th><td>${product.product_name}</td>
+							<th>소비기한</th><td><fmt:formatDate value="${product.product_epd}" pattern="yyyy-MM-dd"/></td>
 						</tr>
 						<tr>
-							<th>색상</th><td><%= product.getProduct_color() %></td>
-							<th>제조국</th><td><%= product.getProduct_poo() %></td>
+							<th>색상</th><td>${product.product_color}</td>
+							<th>제조국</th><td>${product.product_poo}</td>
 						</tr>
 					</table>
 				</div>
 			</article>
 			<article id="review">
 				<h3>상품후기</h3>
-				<p>평점: <%=avgRating %></p>
+				<p>평점: ${avgRating}</p>
 				<nav>
 					<a href="#">전체보기</a>
-
 				</nav>
 				<article>
-					<% if (reviewList != null && !reviewList.isEmpty()){ %>
-						<div class="review-container">
-							<% for (ReviewDTO review : reviewList){ %>
-							<div class="review-item">
-								<h4><%= review.getReview_title() %></h4>
-								<p>평점: <%= review.getReview_rating() %></p>
-								<p><%= review.getReview_content() %></p>
-								<p class="review-meta">작성자: <%= review.getCustomer_name() %>&nbsp;&nbsp; 
-								작성일: <%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(review.getReview_date()) %></p>
+					<c:choose>
+						<c:when test="${!empty reviewList}">
+							<div class="review-container">
+								<c:forEach var="review" items="${reviewList}">
+									<div class="review-item">
+										<h4>${review.review_title}</h4>
+										<p>평점: ${review.review_rating}</p>
+										<p>${review.review_content}</p>
+										<p class="review-meta">
+											작성자: ${review.customer_name}&nbsp;&nbsp;
+											작성일: <fmt:formatDate value="${review.review_date}" pattern="yyyy-MM-dd"/>
+										</p>
+									</div>
+								</c:forEach>
 							</div>
-							<%} %>
-						</div>
-					<% }else{ %>
-						<p>리뷰가 없습니다</p>
-					<% } %>
+						</c:when>
+						<c:otherwise>
+							<p>리뷰가 없습니다</p>
+						</c:otherwise>
+					</c:choose>
 				</article>
 			</article>
 			<article id="qna">
 				<h3>QNA</h3>
-				<%@ include file="product_module/product_inquiry_list.jsp" %>
+				<div class="qna-container">
+					<table class="qna-table">
+						<tr>
+							<th>답변상태</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성일</th>
+						</tr>
+						<c:forEach var="qna" items="${qnaList}" varStatus="status">
+							<tr>
+								<td>
+									<c:choose>
+										<c:when test="${not empty qna.pi_answer}">답변완료</c:when>
+										<c:otherwise>미답변</c:otherwise>
+									</c:choose>
+								</td>
+								<td class="qna-title" onclick="toggleContent(${status.index})">${qna.pi_title}</td>
+								<td>${qna.customer_name}</td>
+								<td><fmt:formatDate value="${qna.pi_date}" pattern="yyyy-MM-dd"/></td>
+							</tr>
+							<tr id="content-${status.index}" style="display: none;">
+								<td colspan="4">
+									<div>
+										<p><strong>질문 내용:</strong></p>
+										<p>${qna.pi_content}</p>
+										<c:if test="${not empty qna.pi_answer}">
+											<p><strong>답변 내용:</strong></p>
+											<p>${qna.pi_answer}</p>
+										</c:if>
+									</div>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+					<div class="pagination">
+						<c:forEach begin="1" end="${pageCount}" var="pageNum">
+							<a href="?pageNum=${pageNum}">${pageNum}</a>
+						</c:forEach>
+					</div>
+				</div>
 			</article>
 		</section>
 	</main>
-	<script type="text/javascript">
-	function updateTotalPrice() {
-		let price = <%= product.getProduct_price() %>;
-		let quantity = parseInt(document.getElementById("quantity").value);
-		let totalPrice = price * quantity;
-		document.getElementById("totalPrice").innerText = totalPrice + "원";
-	}
-	function changeQuantity(delta) {
-		let quantityInput = document.getElementById("quantity");
-		let currentQuantity = parseInt(quantityInput.value);
-		let newQuantity = currentQuantity + delta;
-		if (newQuantity < 1){
-			newQuantity = 1;
-		}
-		quantityInput.value = newQuantity;
-		updateTotalPrice();
-	}
-	function addToCart() {
-		let productNo = <%= product.getProduct_no() %>;
-		let quantity = document.getElementById("quantity").value;
-		
-		let xhr = new XMLHttpRequest();
-		xhr.open("post", "insertCart.do", true);
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhr.onreadystatechange = function (){
-			if (xhr.readyState == 4 && xhr.status == 200){
-				alert("장바구니에 추가되었습니다.");
-			}
-		};
-		xhr.send("product_no="+ productNo + "&product_quantity=" + quantity);
-	}
-	function buyNow(){
-		let productNo = <%= product.getProduct_no() %>;
-        let quantity = document.getElementById("quantity").value;
-        window.location.href = "orderPayment.do?product_no="+productNo+"&product_quantity="+quantity;
-	}
-	function showSection(sectionId) {
-		let sections = document.querySelectorAll(".detail-section > article");
-		sections.forEach(section =>{
-			section.classList.remove('active');
-		});
-		document.getElementById(sectionId).classList.add('active');
-	}
-
-</script>
 </body>
 </html>
