@@ -46,10 +46,11 @@ public class MyPageDAO extends DAO{
 		openConnection();
 		try {
 			query = "SELECT c.customer_point,"+
-					"(SELECT count(*) FROM review WHERE customer_no = c.customer_no) AS review_count,"+
-					"(SELECT count(*) FROM orderproduct WHERE customer_no = c.customer_no) AS order_count,"+
-					"(SELECT count(*) FROM customercoupon WHERE customer_no = c.customer_no) AS coupon_count "+
-					"FROM customer c WHERE c.customer_no = "+no+";";
+					"(SELECT count(*) FROM review inner join orderproduct on review.order_no=orderproduct.order_no "+
+					"WHERE orderproduct.customer_no = "+no+") AS review_count,"+
+					"(SELECT count(*) FROM orderproduct WHERE customer_no = "+no+") AS order_count,"+
+					"(SELECT count(*) FROM customercoupon WHERE customer_no = "+no+") AS coupon_count "+
+					"FROM customer c WHERE c.customer_no = "+no;
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
@@ -242,7 +243,7 @@ public class MyPageDAO extends DAO{
 					"review.review_title,review.review_content,review.review_date "+
 					"from review inner join orderproduct on review.order_no=orderproduct.order_no "+
 					"inner join product on orderproduct.product_no=product.product_no "+
-					"where orderproduct.product_no="+customer_no;
+					"where orderproduct.customer_no="+customer_no;
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
