@@ -3,7 +3,7 @@ package model.community;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.CommunityQNADTO;
+import DTO.community.CommunityQNADTO;
 
 public class QNAWrite extends Community{
 	

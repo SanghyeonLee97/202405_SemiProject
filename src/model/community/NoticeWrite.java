@@ -3,7 +3,7 @@ package model.community;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.CommunityNoticeDTO;
+import DTO.community.CommunityNoticeDTO;
 
 public class NoticeWrite extends Community{
 	

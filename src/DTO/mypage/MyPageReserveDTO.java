@@ -1,4 +1,4 @@
-package DTO;
+package DTO.mypage;
 
 public class MyPageReserveDTO {
 	int order_no;

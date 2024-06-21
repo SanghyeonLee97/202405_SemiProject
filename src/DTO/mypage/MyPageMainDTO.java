@@ -1,17 +1,12 @@
-package DTO;
+package DTO.mypage;
 
-import java.sql.Timestamp;
-
-public class MyPageReviewDTO{
+public class MyPageMainDTO {
 	String product_imgurl;
 	String product_name;
 	int product_price;
 	int order_quantity;
 	int order_no;
-	int review_rating;
-	String review_title;
-	String review_content;
-	Timestamp review_date;
+	int status;
 	public String getProduct_imgurl() {
 		return product_imgurl;
 	}
@@ -42,28 +37,11 @@ public class MyPageReviewDTO{
 	public void setOrder_no(int order_no) {
 		this.order_no = order_no;
 	}
-	public int getReview_rating() {
-		return review_rating;
+	public int getStatus() {
+		return status;
 	}
-	public void setReview_rating(int review_rating) {
-		this.review_rating = review_rating;
+	public void setStatus(int status) {
+		this.status = status;
 	}
-	public String getReview_title() {
-		return review_title;
-	}
-	public void setReview_title(String review_title) {
-		this.review_title = review_title;
-	}
-	public String getReview_content() {
-		return review_content;
-	}
-	public void setReview_content(String review_content) {
-		this.review_content = review_content;
-	}
-	public Timestamp getReview_date() {
-		return review_date;
-	}
-	public void setReview_date(Timestamp review_date) {
-		this.review_date = review_date;
-	}
+	
 }

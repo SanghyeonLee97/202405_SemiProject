@@ -1,4 +1,4 @@
-<%@page import="DTO.CommunityQNADTO"%>
+<%@page import="DTO.community.CommunityQNADTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.CommunityDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

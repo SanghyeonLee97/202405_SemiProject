@@ -1,12 +1,35 @@
-package DTO;
+package DTO.mypage;
 
-public class MyPageMainDTO {
-	String product_imgurl;
-	String product_name;
-	int product_price;
-	int order_quantity;
-	int order_no;
-	int status;
+import java.sql.Date;
+
+public class MyPageCancelDTO{
+	int customer_no;
+    int product_no;
+    int status;
+    Date order_date;
+    String product_imgurl;
+    String product_name;
+    int product_price;
+    int order_quantity;
+    int order_no;
+	public int getCustomer_no() {
+		return customer_no;
+	}
+	public void setCustomer_no(int customer_no) {
+		this.customer_no = customer_no;
+	}
+	public int getProduct_no() {
+		return product_no;
+	}
+	public void setProduct_no(int product_no) {
+		this.product_no = product_no;
+	}
+	public Date getOrder_date() {
+		return order_date;
+	}
+	public void setOrder_date(Date order_date) {
+		this.order_date = order_date;
+	}
 	public String getProduct_imgurl() {
 		return product_imgurl;
 	}
@@ -43,5 +66,4 @@ public class MyPageMainDTO {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
 }

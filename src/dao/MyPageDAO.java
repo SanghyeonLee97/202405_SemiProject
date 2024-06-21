@@ -5,30 +5,27 @@ import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
 
-import DTO.CommunityQNADTO;
 import DTO.CustomerDTO;
-import DTO.MyPageCancelDTO;
-import DTO.MyPageCouponDTO;
-import DTO.MyPageHeaderDTO;
-import DTO.MyPageMainDTO;
-import DTO.MyPageReserveDTO;
-import DTO.MyPageReviewDTO;
-import DTO.ProductInquiryDTO;
 import DTO.ReviewDTO;
+import DTO.community.CommunityQNADTO;
+import DTO.mypage.MyPageCancelDTO;
+import DTO.mypage.MyPageCouponDTO;
+import DTO.mypage.MyPageHeaderDTO;
+import DTO.mypage.MyPageMainDTO;
+import DTO.mypage.MyPageReserveDTO;
+import DTO.mypage.MyPageReviewDTO;
+import DTO.mypage.ProductInquiryDTO;
 
 public class MyPageDAO extends DAO{
 	
 	//회원정보수정
 	public void customerUpdateInfo(CustomerDTO cdto) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "update customer set customer_pw='"+cdto.getCustomer_pw()+"',customer_name='"+cdto.getCustomer_name()+
 					"',customer_tel='"+cdto.getCustomer_tel()+"',postal_code="+cdto.getPostal_code()+
 					",address_road='"+cdto.getAddress_road()+"',address_detail='"+cdto.getAddress_detail()+
 					"' where customer_id='"+cdto.getCustomer_id()+"';";
-			System.out.println(query);
 			stmt = (Statement) conn.createStatement();
 			stmt.executeUpdate(query);
 		}catch (Exception e) {
@@ -41,8 +38,6 @@ public class MyPageDAO extends DAO{
 	//마이페이지 헤더 정보
 	public MyPageHeaderDTO getMyPageHeader(String no) {
 		MyPageHeaderDTO res = new MyPageHeaderDTO();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "SELECT c.customer_point,"+
@@ -71,8 +66,6 @@ public class MyPageDAO extends DAO{
 	//mypage 적립금 조회
 	public ArrayList<MyPageReserveDTO> getMypageReserve(int customer_no,String point_status) {
 		ArrayList<MyPageReserveDTO> res = new ArrayList<MyPageReserveDTO>();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select point_status,point_amount,product.product_name,orderproduct.order_no "+
@@ -103,8 +96,6 @@ public class MyPageDAO extends DAO{
 	//취소페이지 조회
 	public ArrayList<MyPageCancelDTO> getMypageCancel(int customer_no) {
 		ArrayList<MyPageCancelDTO> res = new ArrayList<MyPageCancelDTO>();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select product.product_imgurl,product.product_name,product.product_price,"+
@@ -136,8 +127,6 @@ public class MyPageDAO extends DAO{
 	
 	//주문 취소
 	public void cancelOrder(String order_no) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "update orderproduct set status=1 where order_no="+order_no;
@@ -152,8 +141,6 @@ public class MyPageDAO extends DAO{
 	
 	//상품문의 등록
 	public void insertProductInquiry(ProductInquiryDTO pidto) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "insert into product_inquiry(pi_title,pi_content,pi_date,order_no,category_no) "+
@@ -172,8 +159,6 @@ public class MyPageDAO extends DAO{
 	//1:1문의
 	public ArrayList<ProductInquiryDTO> getInquiryList(int customerNo) {
 		ArrayList<ProductInquiryDTO> res = new ArrayList<ProductInquiryDTO>();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select orderproduct.order_no,product_inquiry.pi_title,"+
@@ -204,8 +189,6 @@ public class MyPageDAO extends DAO{
 	//mypage 쿠폰 조회
 	public ArrayList<MyPageCouponDTO> getMypageCoupon(int customer_no) {
 		ArrayList<MyPageCouponDTO> res = new ArrayList<MyPageCouponDTO>();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 			try {
 			query = "select coupon.coupon_name,coupon.coupon_discount,coupon.coupon_limit,"+
@@ -234,8 +217,6 @@ public class MyPageDAO extends DAO{
 	//mypage 리뷰 조회
 	public ArrayList<MyPageReviewDTO> getMypageReview(int customer_no) {
 		ArrayList<MyPageReviewDTO> res = new ArrayList<MyPageReviewDTO>();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 			try {
 			query = "select product.product_imgurl,product.product_name,product.product_price,"+
@@ -271,8 +252,6 @@ public class MyPageDAO extends DAO{
 	//mypage 메인조회,주문배송 조회
 	public ArrayList<MyPageMainDTO> getMypageMain(int customer_no) {
 		ArrayList<MyPageMainDTO> res = new ArrayList<MyPageMainDTO>();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select product.product_imgurl,product.product_name,product.product_price,"+
@@ -302,8 +281,6 @@ public class MyPageDAO extends DAO{
 	
 	//리뷰 등록
 	public void insertProductReview(ReviewDTO rdto) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "insert into review(review_title,review_content,review_rating,review_date,order_no) "+

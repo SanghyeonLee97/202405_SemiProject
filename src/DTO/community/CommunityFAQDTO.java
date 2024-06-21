@@ -1,4 +1,4 @@
-package DTO;
+package DTO.community;
 
 public class CommunityFAQDTO {
 	private int faqNo;

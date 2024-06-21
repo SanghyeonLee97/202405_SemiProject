@@ -3,7 +3,7 @@ package controller.controller_module;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.CommunityQNADTO;
+import DTO.community.CommunityQNADTO;
 import model.CommandProsessor;
 import model.community.CommunityDelete;
 import model.community.FAQRead;

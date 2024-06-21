@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.CustomerDTO;
-import DTO.ProductInquiryDTO;
 import DTO.ReviewDTO;
+import DTO.mypage.ProductInquiryDTO;
 import model.CommandProsessor;
 import model.mypage.Cancelrefund;
 import model.mypage.MypageCoupon;

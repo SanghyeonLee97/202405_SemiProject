@@ -1,6 +1,5 @@
-package DTO;
+package DTO.mypage;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class ProductInquiryDTO {

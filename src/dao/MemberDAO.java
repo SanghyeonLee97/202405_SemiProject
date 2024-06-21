@@ -9,8 +9,6 @@ import DTO.CustomerDTO;
 public class MemberDAO extends DAO{
 	//회원가입
 	public void customerRegister(CustomerDTO cdto) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "insert into customer(customer_id,customer_pw,customer_name,customer_tel,"+
@@ -29,8 +27,6 @@ public class MemberDAO extends DAO{
 	
 	//회원탈퇴
 	public void quitCustomer(String id) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "update customer set quit_date=now() where customer_id='"+id+"';";
@@ -46,8 +42,6 @@ public class MemberDAO extends DAO{
 	
 	//존재하는 회원인지 체크
 	public boolean customerIdChk(String id) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select customer_id from customer where customer_id='"+id+"';";
@@ -68,8 +62,6 @@ public class MemberDAO extends DAO{
 	
 	//탈퇴회원 체크
 	public boolean customerQuitChk(String id) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select * from customer where customer_id='"+id+"' && quit_date is not null;";
@@ -90,8 +82,6 @@ public class MemberDAO extends DAO{
 	
 	//로그인체크
 	public boolean customerLoginChk(String id,String pw) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select * from customer where customer_id='"+id+"' && customer_pw='"+pw+"';";
@@ -112,8 +102,6 @@ public class MemberDAO extends DAO{
 	
 	//어드민체크
 	public boolean adminChk(String id) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select * from customer where customer_id='"+id+"' && admin=1;";

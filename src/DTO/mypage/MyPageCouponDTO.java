@@ -1,4 +1,4 @@
-package DTO;
+package DTO.mypage;
 
 import java.sql.Date;
 

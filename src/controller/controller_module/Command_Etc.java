@@ -3,8 +3,8 @@ package controller.controller_module;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.CommunityFAQDTO;
-import DTO.CommunityNoticeDTO;
+import DTO.community.CommunityFAQDTO;
+import DTO.community.CommunityNoticeDTO;
 import model.CommandProsessor;
 import model.community.FAQWrite;
 import model.community.NoticeWrite;

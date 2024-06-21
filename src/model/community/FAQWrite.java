@@ -3,7 +3,7 @@ package model.community;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.CommunityFAQDTO;
+import DTO.community.CommunityFAQDTO;
 
 public class FAQWrite extends Community{
 	

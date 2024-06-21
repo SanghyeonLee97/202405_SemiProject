@@ -3,7 +3,7 @@ package model.mypage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.ProductInquiryDTO;
+import DTO.mypage.ProductInquiryDTO;
 
 public class ProductInquiry extends MyPage{
 

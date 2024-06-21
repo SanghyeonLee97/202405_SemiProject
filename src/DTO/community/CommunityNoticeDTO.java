@@ -1,4 +1,4 @@
-package DTO;
+package DTO.community;
 
 import java.sql.Timestamp;
 

@@ -1,4 +1,4 @@
-<%@page import="DTO.MyPageHeaderDTO"%>
+<%@page import="DTO.mypage.MyPageHeaderDTO"%>
 <%@page import="dao.MyPageDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

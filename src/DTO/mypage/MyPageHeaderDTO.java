@@ -1,4 +1,4 @@
-package DTO;
+package DTO.mypage;
 
 public class MyPageHeaderDTO {
 	int customer_point;
