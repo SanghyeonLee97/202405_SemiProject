@@ -302,7 +302,7 @@ public class MyPageDAO extends DAO{
 		List<CartDTO> cartList = new ArrayList<CartDTO>();
 		try {
 			openConnection();
-			query = "select c.cart_no, c.customer_no, p.product_name, p.product_imgurl, p.product_price, c.product_quantity "
+			query = "select c.cart_no, c.customer_no, p.product_no, p.product_name, p.product_imgurl, p.product_price, c.product_quantity "
 					+ "from cart c join product p on c.product_no = p.product_no where c.customer_no = ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, customer_no);
@@ -313,6 +313,7 @@ public class MyPageDAO extends DAO{
 				cart.setCart_no(rs.getLong("cart_no"));
 				cart.setCustomer_no(rs.getInt("customer_no"));
 				cart.setProduct_name(rs.getString("product_name"));
+				cart.setProduct_no(rs.getLong("product_no"));
 				cart.setProduct_imgurl(rs.getString("product_imgurl"));
 				cart.setProduct_price(rs.getInt("product_price"));
 				cart.setProduct_quantity(rs.getLong("product_quantity"));
@@ -326,5 +327,28 @@ public class MyPageDAO extends DAO{
 		}
 		
 		return cartList;
+	}
+	
+	//장바구니 삭제
+	public boolean deleteCart(long cart_no) {
+		boolean isDeleted = false;
+		
+		try {
+			openConnection();
+			query = "delete from cart where cart_no = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setLong(1, cart_no);
+			
+			int result = pstmt.executeUpdate();
+			
+			if (result > 0) {
+				isDeleted = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return isDeleted;
 	}
 }

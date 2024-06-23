@@ -9,6 +9,7 @@ import DTO.mypage.ProductInquiryDTO;
 import model.CommandProsessor;
 import model.mypage.Cancelrefund;
 import model.mypage.CartList;
+import model.mypage.DeleteCart;
 import model.mypage.MypageCoupon;
 import model.mypage.MypageReserve;
 import model.mypage.MypageReviewList;
@@ -132,6 +133,9 @@ public class Command_MyPage extends Command_Parents{
 		
 		if(servletPath.equals("/mypage/cartList.do")) {
 			processor = new CartList();
+		}
+		if(servletPath.equals("/mypage/deleteCart.do")) {
+			processor = new DeleteCart();
 		}
 		return processor;
 	}
