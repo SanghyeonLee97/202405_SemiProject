@@ -131,13 +131,13 @@ main>section>section>article:nth-child(3) {
 	text-align: left;
 }
 
-.review-container {
-	width: 80%;
-	margin: 0 auto;
-	background-color: #f9f9f9;
-	padding: 20px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
+.review-container, .qna-container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .review-item {
@@ -215,11 +215,6 @@ main>section>section>article:nth-child(3) {
 	text-decoration: underline;
 }
 
-.qna-container {
-    width: 80%;
-    margin: 0 auto;
-}
-
 .qna-table {
     width: 100%;
     border-collapse: collapse;
@@ -238,8 +233,8 @@ main>section>section>article:nth-child(3) {
 }
 
 .pagination {
-	display: flex;
-	justify-content: center;
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
 }
 
@@ -247,4 +242,5 @@ main>section>section>article:nth-child(3) {
     margin: 0 5px;
     text-decoration: none;
     color: blue;
+    cursor: pointer;
 }

@@ -102,6 +102,11 @@
 									</div>
 								</c:forEach>
 							</div>
+							<div class="pagination">
+								<c:forEach begin="1" end="${pageCount }" var="pageNum">
+									<a href="javascript:void(0);" onclick="loadReviews(${pageNum})">${pageNum }</a>
+								</c:forEach>
+							</div>
 						</c:when>
 						<c:otherwise>
 							<p>리뷰가 없습니다</p>
@@ -146,8 +151,8 @@
 						</c:forEach>
 					</table>
 					<div class="pagination">
-						<c:forEach begin="1" end="${pageCount}" var="pageNum">
-							<a href="?pageNum=${pageNum}">${pageNum}</a>
+						<c:forEach begin="1" end="${pageCount }" var="pageNum">
+							<a href="javascript:void(0);" onclick="loadQna(${pageNum})">${pageNum }</a>
 						</c:forEach>
 					</div>
 				</div>

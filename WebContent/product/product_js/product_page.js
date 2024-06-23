@@ -18,6 +18,33 @@ function changeQuantity(delta) {
     updateTotalPrice();
 }
 
+
+function buyNow() {
+    let productNo = productNo;
+    let quantity = document.getElementById("quantity").value;
+    window.location.href = "orderPayment.do?product_no=" + productNo + "&product_quantity=" + quantity;
+}
+
+
+function showSection(sectionId) {
+    let sections = document.querySelectorAll(".detail-section > article");
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+    document.getElementById(sectionId).classList.add('active');
+}
+
+
+function toggleContent(index) {
+    let contentRow = document.getElementById('content-' + index);
+    if (contentRow.style.display === 'none') {
+        contentRow.style.display = 'table-row';
+    } else {
+        contentRow.style.display = 'none';
+    }
+}
+
+
 function addToCart() {
     let productNo = productNo;
     let quantity = document.getElementById("quantity").value;
@@ -33,25 +60,26 @@ function addToCart() {
     xhr.send("product_no=" + productNo + "&product_quantity=" + quantity);
 }
 
-function buyNow() {
-    let productNo = productNo;
-    let quantity = document.getElementById("quantity").value;
-    window.location.href = "orderPayment.do?product_no=" + productNo + "&product_quantity=" + quantity;
+
+function loadReviews(pageNum){
+	let xhr = new XMLHttpRequest();
+	xhr.open("get", "loadReviews.do?page=" + pageNum, true);
+	xhr.onreadystatechange = function (){
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			document.getElementById("review-content").innerHTML = xhr.responseText;
+		}
+	};
+	xhr.send();
 }
 
-function showSection(sectionId) {
-    let sections = document.querySelectorAll(".detail-section > article");
-    sections.forEach(section => {
-        section.classList.remove('active');
-    });
-    document.getElementById(sectionId).classList.add('active');
-}
 
-function toggleContent(index) {
-    let contentRow = document.getElementById('content-' + index);
-    if (contentRow.style.display === 'none') {
-        contentRow.style.display = 'table-row';
-    } else {
-        contentRow.style.display = 'none';
-    }
+function loadQna(pageNum){
+	let xhr = new XMLHttpRequest();
+	xhr.open("get", "loadQna.do?page=" + pageNum, true);
+	xhr.onreadystatechange = function (){
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			document.getElementById("qna-content").innerHTML = xhr.responseText;
+		}
+	};
+	xhr.send();
 }
