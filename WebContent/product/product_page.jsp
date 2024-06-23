@@ -9,6 +9,10 @@
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <link href="../css/product_css/product_page.css" rel="stylesheet" type="text/css">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
 
 </head>
 <body>
