@@ -8,6 +8,7 @@ import DTO.ReviewDTO;
 import DTO.mypage.ProductInquiryDTO;
 import model.CommandProsessor;
 import model.mypage.Cancelrefund;
+import model.mypage.CartList;
 import model.mypage.MypageCoupon;
 import model.mypage.MypageReserve;
 import model.mypage.MypageReviewList;
@@ -127,6 +128,10 @@ public class Command_MyPage extends Command_Parents{
 			}
 			//리뷰 작성 업캐스팅
 			processor = new MypageWriteReview();
+		}
+		
+		if(servletPath.equals("/mypage/cartList.do")) {
+			processor = new CartList();
 		}
 		return processor;
 	}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +9,23 @@
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <link href="../css/mypage.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	section>article{
-		height: 280px;
-	}
+.cart-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #ccc;
+	padding: 10px 0;
+}
+.cart-container img {
+	width: 100px;
+	height: 100px;
+}
+.cart-container div {
+	margin: 0 15px;
+}
+.cart-product-container {
+	width: 600px;
+}
 </style>
 </head>
 <body>
@@ -19,8 +34,28 @@
 		<section>
 			<%@ include file="./mypage_module/mypage_menu_list.jsp" %>
 			<section>
-				<header>section-section-header</header>
-				<article>section-section-article</article>
+				<header>장바구니</header>
+				<article>
+				<form>
+					<c:forEach var="cart" items="${cartList }">
+						<div class="cart-container">
+							<input type="checkbox" name="cart-item">
+							<div>
+								<img src="${cart.product_imgurl }" alt="상품이미지(product_imgurl)">
+							</div>
+							<div class="cart-product-container">
+								<p>상품명(product_name): ${cart.product_name }</p>
+								<p>상품가격(product_price): ${cart.product_price }</p>
+								<p>수량(product_quantity): ${cart.product_quantity }</p>
+							</div>
+							<div>
+								<button>담기 취소</button>&nbsp;&nbsp;
+								<button>바로 구매</button>
+							</div>
+						</div>
+					</c:forEach>
+				</form>
+				</article>
 			</section>
 			<div style="clear: both;"></div>
 		</section>

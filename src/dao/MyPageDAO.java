@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.Statement;
 
@@ -14,6 +15,7 @@ import DTO.mypage.MyPageMainDTO;
 import DTO.mypage.MyPageReserveDTO;
 import DTO.mypage.MyPageReviewDTO;
 import DTO.mypage.ProductInquiryDTO;
+import DTO.product.CartDTO;
 
 public class MyPageDAO extends DAO{
 	
@@ -295,4 +297,33 @@ public class MyPageDAO extends DAO{
 		}
 	}
 	
+	//장바구니 목록 불러오기
+	public List<CartDTO> getCartList(int customer_no) {
+		List<CartDTO> cartList = new ArrayList<CartDTO>();
+		try {
+			openConnection();
+			query = "select c.customer_no, p.product_name, p.product_imgurl, p.product_price, c.product_quantity "
+					+ "from cart c join product p on c.product_no = p.product_no where c.customer_no = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, customer_no);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				CartDTO cart = new CartDTO();
+				cart.setCustomer_no(rs.getInt("customer_no"));
+				cart.setProduct_name(rs.getString("product_name"));
+				cart.setProduct_imgurl(rs.getString("product_imgurl"));
+				cart.setProduct_price(rs.getInt("product_price"));
+				cart.setProduct_quantity(rs.getLong("product_quantity"));
+				
+				cartList.add(cart);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		
+		return cartList;
+	}
 }

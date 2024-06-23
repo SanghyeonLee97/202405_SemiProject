@@ -1,6 +1,8 @@
 package dao;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
@@ -12,6 +14,8 @@ public class DAO {
 	private String pass = "mysql";
 	protected Statement stmt = null;
 	protected String query = "";
+	protected PreparedStatement pstmt = null;
+	protected ResultSet rs = null;
 	
 	//연결 메소드
 	protected Connection openConnection() {
