@@ -162,7 +162,6 @@
 <script type="text/javascript">
 let productPrice = ${product.product_price};
 let productNo = ${product.product_no};
-
 </script>
 <script src="./product_js/product_page.js"></script>
 </body>
