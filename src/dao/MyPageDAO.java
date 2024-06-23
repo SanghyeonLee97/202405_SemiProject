@@ -302,7 +302,7 @@ public class MyPageDAO extends DAO{
 		List<CartDTO> cartList = new ArrayList<CartDTO>();
 		try {
 			openConnection();
-			query = "select c.customer_no, p.product_name, p.product_imgurl, p.product_price, c.product_quantity "
+			query = "select c.cart_no, c.customer_no, p.product_name, p.product_imgurl, p.product_price, c.product_quantity "
 					+ "from cart c join product p on c.product_no = p.product_no where c.customer_no = ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, customer_no);
@@ -310,6 +310,7 @@ public class MyPageDAO extends DAO{
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				CartDTO cart = new CartDTO();
+				cart.setCart_no(rs.getLong("cart_no"));
 				cart.setCustomer_no(rs.getInt("customer_no"));
 				cart.setProduct_name(rs.getString("product_name"));
 				cart.setProduct_imgurl(rs.getString("product_imgurl"));
