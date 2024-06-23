@@ -47,11 +47,15 @@
 							<p>수량(product_quantity): ${cart.product_quantity }</p>
 						</div>
 						<div>
-							<form action="/orderPayment.do">
-								
+							<form action="deleteCart.do" method="post" onsubmit="return confirm('정말로 장바구니에서 삭제하시겠습니까?')">
+								<input type="hidden" name="cart_no" value="${cart.cart_no }">
+								<button type="submit">담기 취소</button>
 							</form>
-							<button>담기 취소</button>&nbsp;&nbsp;
-							<button>바로 구매</button>
+							<form action="/projectdengdeng/product/orderPayment.do" method="post">
+								<input type="hidden" name="product_no" value="${cart.product_no }">
+								<input type="hidden" name="product_quantity" value="${cart.product_quantity }">
+								<button>바로 구매</button>
+							</form>
 						</div>
 					</div>
 				</c:forEach>
