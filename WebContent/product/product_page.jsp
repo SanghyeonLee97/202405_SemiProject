@@ -9,11 +9,7 @@
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <link href="../css/product_css/product_page.css" rel="stylesheet" type="text/css">
-<script type="text/javascript">
-	let productPrice = ${product.product_price};
-	let productNo = ${product.product_no};
-</script>
-<script src="./product_js/product_page.js"></script>
+
 </head>
 <body>
 	<main>
@@ -159,5 +155,11 @@
 			</article>
 		</section>
 	</main>
+<script type="text/javascript">
+let productPrice = ${product.product_price};
+let productNo = ${product.product_no};
+
+</script>
+<script src="./product_js/product_page.js"></script>
 </body>
 </html>

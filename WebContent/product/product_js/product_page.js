@@ -19,13 +19,6 @@ function changeQuantity(delta) {
 }
 
 
-function buyNow() {
-    let productNo = productNo;
-    let quantity = document.getElementById("quantity").value;
-    window.location.href = "orderPayment.do?product_no=" + productNo + "&product_quantity=" + quantity;
-}
-
-
 function showSection(sectionId) {
     let sections = document.querySelectorAll(".detail-section > article");
     sections.forEach(section => {
@@ -42,22 +35,6 @@ function toggleContent(index) {
     } else {
         contentRow.style.display = 'none';
     }
-}
-
-
-function addToCart() {
-    let productNo = productNo;
-    let quantity = document.getElementById("quantity").value;
-
-    let xhr = new XMLHttpRequest();
-    xhr.open("post", "insertCart.do", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            alert("장바구니에 추가되었습니다.");
-        }
-    };
-    xhr.send("product_no=" + productNo + "&product_quantity=" + quantity);
 }
 
 
@@ -82,4 +59,24 @@ function loadQna(pageNum){
 		}
 	};
 	xhr.send();
+}
+
+function buyNow() {
+    let quantity = document.getElementById("quantity").value;
+    console.log('buyNow - productNo:', productNo);
+    window.location.href = "orderPayment.do?product_no=" + productNo + "&product_quantity=" + quantity;
+}
+
+function addToCart() {
+    let quantity = document.getElementById("quantity").value;
+    console.log('addToCart - productNo:', productNo);
+    let xhr = new XMLHttpRequest();
+    xhr.open("post", "insertCart.do", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            alert("장바구니에 추가되었습니다.");
+        }
+    };
+    xhr.send("product_no=" + productNo + "&product_quantity=" + quantity);
 }
