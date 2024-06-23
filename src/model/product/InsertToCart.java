@@ -13,8 +13,8 @@ public class InsertToCart extends Product{
 		session = req.getSession();
 		String id = (String)session.getAttribute("id");
 		String customerNo = (String)session.getAttribute("no");
-		
 		if (id == null || customerNo == null) {
+			resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);	//401에러
 			return "/member/login.jsp";
 		}
 		
