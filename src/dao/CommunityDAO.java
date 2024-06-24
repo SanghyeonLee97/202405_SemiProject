@@ -3,19 +3,16 @@ package dao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
-import DTO.CommunityFAQDTO;
-import DTO.CommunityNoticeDTO;
-import DTO.CommunityQNADTO;
+import DTO.community.CommunityFAQDTO;
+import DTO.community.CommunityNoticeDTO;
+import DTO.community.CommunityQNADTO;
 
 public class CommunityDAO extends DAO{
 	
 	//notice 등록
 	public void noticeWrite(CommunityNoticeDTO cndto) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "insert into notice(notice_title,notice_content) "+
@@ -32,8 +29,6 @@ public class CommunityDAO extends DAO{
 	//notice 검색
 	public ArrayList<CommunityNoticeDTO> getNoticeList(String select,String search) {
 		ArrayList<CommunityNoticeDTO> res = new ArrayList<CommunityNoticeDTO>();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select * from notice where "+select+" like '%"+search+"%';";
@@ -59,8 +54,6 @@ public class CommunityDAO extends DAO{
 	//notice 특정글 검색
 	public CommunityNoticeDTO getNoticePost(String no) {
 		CommunityNoticeDTO res = new CommunityNoticeDTO();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select * from notice where notice_No="+no+";";
@@ -82,8 +75,6 @@ public class CommunityDAO extends DAO{
 	
 	//조회수 상승
 	public void communityIncreaseViews(String no) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "update notice set notice_views=notice_views+1 where notice_No="+no+";";
@@ -99,8 +90,6 @@ public class CommunityDAO extends DAO{
 	
 	//FAQ 등록
 	public void faqWrite(CommunityFAQDTO cfdto) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "insert into faq(faq_title,faq_content,iqc_no) "+
@@ -118,8 +107,6 @@ public class CommunityDAO extends DAO{
 	//FAQ검색
 	public ArrayList<CommunityFAQDTO> getFAQList(String select,String search) {
 		ArrayList<CommunityFAQDTO> res = new ArrayList<CommunityFAQDTO>();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select * from faq where "+select+" like '%"+search+"%';";
@@ -144,8 +131,6 @@ public class CommunityDAO extends DAO{
 	//FAQ 특정글 검색
 	public CommunityFAQDTO getFAQPost(String no) {
 		CommunityFAQDTO res = new CommunityFAQDTO();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select * from faq where faq_no="+no+";";
@@ -168,8 +153,6 @@ public class CommunityDAO extends DAO{
 	//QNA 검색
 	public ArrayList<CommunityQNADTO> getQNAList(String select,String search) {
 		ArrayList<CommunityQNADTO> res = new ArrayList<CommunityQNADTO>();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select qna.qna_no,qna.qna_title,qna.qna_date,qna.qna_answer,customer.customer_id,qna.iqc_no "+
@@ -198,8 +181,6 @@ public class CommunityDAO extends DAO{
 	//QNA 특정글 검색
 	public CommunityQNADTO getQNAPost(String no) {
 		CommunityQNADTO res = new CommunityQNADTO();
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select qna.qna_no,qna.qna_title,qna.qna_content,qna.qna_date,qna.qna_answer,customer.customer_id "+
@@ -226,8 +207,6 @@ public class CommunityDAO extends DAO{
 	
 	//QNA 답변 등록
 	public void qnaAnswerWrite(int no,String answer) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "update qna set qna_answer='"+answer+"' where qna_no="+no+";";
@@ -244,8 +223,6 @@ public class CommunityDAO extends DAO{
 	//고객id>no변환
 	public int getCustomerNo(String customerId) {
 		int customerNo=0;
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "select customer_no from customer where customer_id='"+customerId+"';";
@@ -265,8 +242,6 @@ public class CommunityDAO extends DAO{
 	
 	//QNA글 등록
 	public void QNAWrite(CommunityQNADTO cqdto) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "insert into qna(qna_title,qna_content,qna_fileurl,qna_imgurl,qna_date,customer_no,iqc_no) "+
@@ -284,8 +259,6 @@ public class CommunityDAO extends DAO{
 	
 	//글 삭제
 	public void communityDelete(String board,int QNANo) {
-		Statement stmt = null;
-		String query = "";
 		openConnection();
 		try {
 			query = "delete from "+board+" where "+board+"_no="+QNANo+";";

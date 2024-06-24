@@ -1,20 +1,21 @@
 package dao;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
-
-import DTO.CommunityNoticeDTO;
 
 public class DAO {
 	protected Connection conn = null;
 	private String url = "jdbc:mysql://localhost:3306/projectdb";
 	private String user = "root";
 	private String pass = "mysql";
+	protected Statement stmt = null;
+	protected String query = "";
+	protected PreparedStatement pstmt = null;
+	protected ResultSet rs = null;
 	
 	//연결 메소드
 	protected Connection openConnection() {

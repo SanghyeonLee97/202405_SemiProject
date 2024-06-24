@@ -1,4 +1,4 @@
-<%@page import="DTO.ProductInquiryDTO"%>
+<%@page import="DTO.mypage.ProductInquiryDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

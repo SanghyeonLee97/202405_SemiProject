@@ -1,28 +1,19 @@
 package model.mypage;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import DTO.ProductInquiryDTO;
-import dao.CommunityDAO;
-import dao.MyPageDAO;
-import model.CommandProsessor;
-
-public class ProductInquiryList implements CommandProsessor{
+public class ProductInquiryList extends MyPage{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-		MyPageDAO mdao = new MyPageDAO();
-		CommunityDAO cdao = new CommunityDAO();
-		HttpSession session = req.getSession();
-		int userNo = cdao.getCustomerNo((String)session.getAttribute("id"));
+		//세션을 생성하고 세션을 이용해 유저no를 받는다
+		session = req.getSession();
+		userNo = cdao.getCustomerNo((String)session.getAttribute("id"));
 		
-		ArrayList<ProductInquiryDTO> pidtoArr = mdao.getInquiryList(userNo);
-		req.setAttribute("pidtoArr", pidtoArr);
+		//유저no에 맞는 문의리스트를 pidtoArr attribute에 저장
+		req.setAttribute("pidtoArr", mdao.getInquiryList(userNo));
 		return "/mypage/mypage_product_inquiry.jsp";
 	}
-
+	
 }

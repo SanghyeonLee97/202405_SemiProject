@@ -1,30 +1,18 @@
 package model.mypage;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import DTO.MyPageCouponDTO;
-import dao.CommunityDAO;
-import dao.MyPageDAO;
-import model.CommandProsessor;
-
-public class MypageCoupon implements CommandProsessor{
+public class MypageCoupon extends MyPage{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-		CommunityDAO cdao = new CommunityDAO();
-		MyPageDAO mdao = new MyPageDAO();
-		HttpSession session = req.getSession();
-		String uId = (String)session.getAttribute("id");
-		int uNo = cdao.getCustomerNo(uId);
+		//세션을 생성하고 세션을 이용해 유저no를 받는다
+		session = req.getSession();
+		userNo = cdao.getCustomerNo((String)session.getAttribute("id"));
 		
-		ArrayList<MyPageCouponDTO> mcdtoArr = mdao.getMypageCoupon(uNo);
-		
-		req.setAttribute("mcdtoArr", mcdtoArr);
-		
+		//유저no에 해당하는 리스트를 받아와 mcdtoArr attribute에 저장
+		req.setAttribute("mcdtoArr", mdao.getMypageCoupon(userNo));
 		return "/mypage/mypage_coupon.jsp";
 	}
 

@@ -38,18 +38,31 @@
 	#myform input[type=radio]:checked ~ label{
 	    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 	}
+	#reviewTitles {
+		width: 400px;
+		box-sizing: border-box;
+		display:flex;
+		margin: 0 auto;
+		background: #F3F4F8;
+		border: 0;
+		border-radius: 10px;
+		height: 50px;
+		padding: 15px;
+		font-size: 13px;
+		font-family: sans-serif;
+	}
 	#reviewContents {
 	  width: 400px;
 	  box-sizing: border-box;
 	  display:flex;
-	  margin: 15px auto;
+	  margin: 0 auto;
 	  background: #F3F4F8;
 	  border: 0;
 	  border-radius: 10px;
 	  height: 100px;
 	  resize: none;
 	  padding: 15px;
-	  font-size: 13px;
+	  font-size: 16px;
 	  font-family: sans-serif;
 	}
 	.btn02 {
@@ -71,9 +84,10 @@
 </head>
 <body>
 	<h2>리뷰작성</h2>
-	<form class="mb-3" name="myform" id="myform" method="post">
+	<form class="mb-3" name="myform" id="myform" method="get" action="mypagewritereview.do">
 		<fieldset>
 			<span class="text-bold">별점을 선택해주세요</span>
+			<input type="hidden" name="order_no" value="<%=request.getAttribute("order_no")%>">
 			<input type="radio" name="reviewStar" value="5" id="rate1"><label
 				for="rate1">★</label>
 			<input type="radio" name="reviewStar" value="4" id="rate2"><label
@@ -85,7 +99,8 @@
 			<input type="radio" name="reviewStar" value="1" id="rate5" checked="checked"><label
 				for="rate5">★</label>
 		</fieldset>
-		<textarea type="text" id="reviewContents" placeholder="리뷰 내용을 작성해주세요." ></textarea>
+		<input type="text" id="reviewTitles" name="title" placeholder="리뷰 제목을 작성해주세요"><br>
+		<textarea type="text" id="reviewContents" name="content" placeholder="리뷰 내용을 작성해주세요." ></textarea>
 		<input type="submit" class="btn02" value="리뷰 등록"/>
 	</form>	
 </body>

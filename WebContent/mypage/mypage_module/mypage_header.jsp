@@ -1,4 +1,4 @@
-<%@page import="DTO.MyPageHeaderDTO"%>
+<%@page import="DTO.mypage.MyPageHeaderDTO"%>
 <%@page import="dao.MyPageDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -24,19 +24,22 @@ chk()
 	<%
 		String sessionid = (String)session.getAttribute("id");
 		String sessionno = (String)session.getAttribute("no");
-		System.out.print(sessionno);
 		MyPageDAO mdao = new MyPageDAO();
 		MyPageHeaderDTO mdto = mdao.getMyPageHeader(sessionno);
 	%>
 	<header>
         <h1><%=sessionid %>님</h1>
         <article>
-        	주문/배송<br>
-        	<%=mdto.getOrder_count() %>
+        	<a href="/projectdengdeng/mypage/mypage_main.jsp">
+	        	주문/배송<br>
+	        	<%=mdto.getOrder_count() %>
+        	</a>
         </article>
         <article>
-        	리뷰<br>
-        	<%=mdto.getReview_count() %>
+        	<a href="reviewlist.do">
+	        	리뷰<br>
+	        	<%=mdto.getReview_count() %>
+        	</a>
         </article>
         <article>
         	<a href="reserve.do">

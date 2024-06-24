@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.CategoryDTO;
-import DTO.ProductDTO;
+import DTO.product.ProductDTO;
 import dao.ProductDAO;
-import model.CommandProsessor;
 
-public class ProductList implements CommandProsessor{
+public class ProductList extends Product{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
@@ -23,7 +22,7 @@ public class ProductList implements CommandProsessor{
 		String pc_no = req.getParameter("pc_no");
 		
 		//상품 목록, 세부분류
-		ProductDAO productDAO = new ProductDAO();
+		productDAO = new ProductDAO();
 		List<ProductDTO> productList = null;
 		List<CategoryDTO> subCategoryList = null;
 		
@@ -61,13 +60,15 @@ public class ProductList implements CommandProsessor{
 						String cookieValue = URLDecoder.decode(cookie.getValue(), "utf-8");
 						for (String productInfo : cookieValue.split(",")) {
 							String[] productDetails = productInfo.split("\\|");
-							if (productDetails.length == 2) {
+							if (productDetails.length == 3) {
 								int productNo = Integer.parseInt(productDetails[0]);
                                 String productImgUrl = productDetails[1];
+                                String productName = productDetails[2];
 								
                                 ProductDTO product = new ProductDTO();
                                 product.setProduct_no(productNo);
                                 product.setProduct_imgurl(productImgUrl);
+                                product.setProduct_name(productName);
 								
                                 recentlyViewedProducts.add(product);
 							}

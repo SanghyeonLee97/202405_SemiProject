@@ -171,6 +171,7 @@ create table orderproduct(
     foreign key(coupon_no) references coupon(coupon_no)
 );
 insert into orderproduct(customer_no,product_no,coupon_no,order_quantity) values(1,1,1,2);
+insert into orderproduct(customer_no,product_no,coupon_no,order_quantity,status) values(1,1,1,2,2);
 
 create table point(
 	point_no int primary key auto_increment,
@@ -196,11 +197,11 @@ insert into product_inquiry(pi_title,pi_content,pi_date,order_no,category_no) va
 
 create table review(
 	review_no bigint primary key auto_increment,
-    purchase_date date not null,
     review_title varchar(100) not null,
     review_content text not null,
     review_rating int not null,
+    review_date timestamp not null,
     order_no bigint not null,
     foreign key(order_no) references orderproduct(order_no)
 );
-insert into review(purchase_date,review_title,review_content,review_rating,order_no) values('2000-01-01','제목테스트','내용테스트',4,1);
+insert into review(review_title,review_content,review_rating,review_date,order_no) values('제목테스트','내용테스트',4,now(),1);

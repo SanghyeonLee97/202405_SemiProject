@@ -1,4 +1,4 @@
-<%@page import="DTO.ProductDTO"%>
+<%@page import="DTO.product.ProductDTO"%>
 <%@page import="DTO.CategoryDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -23,7 +23,7 @@
 	}
 	main>section>aside{
 		width:16.6666%;
-		height: 600px;
+		height: 800px;
 		background-color: #ffffdd;
 		position: sticky;
 		top: 0;
@@ -144,9 +144,12 @@
                 		for (ProductDTO product : recentlyViewedProducts) {
                 %>
                 <div class="recent-product">
+                	<figure style="text-align: center;">
                     <a href="details.do?product_no=<%= product.getProduct_no() %>">
                         <img src="<%= product.getProduct_imgurl() %>" alt="Product Img" width="180px">
+                        <figcaption><%= product.getProduct_name() %></figcaption>
                     </a>
+                    </figure>
                 </div>
                 <%
                         }
