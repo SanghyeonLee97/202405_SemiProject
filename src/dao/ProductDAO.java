@@ -34,7 +34,8 @@ public class ProductDAO extends DAO{
 	private final String REVIEW_LIST =
 			"select r.review_title, r.review_content, r.review_rating, r.review_date, c.customer_name "
 			+ "from review r join orderproduct o on r.order_no = o.order_no "
-			+ "join customer c on o.customer_no = c.customer_no where o.product_no = ? limit ?, ?";
+			+ "join customer c on o.customer_no = c.customer_no where o.product_no = ? "
+			+ "order by r.review_date desc limit ?, ?";
 	private final String REVIEW_CNT =
 			"select count(*) from review r join orderproduct o "
 			+ "on r.order_no = o.order_no where product_no = ?";
@@ -52,7 +53,7 @@ public class ProductDAO extends DAO{
 			+ "from product_inquiry pi "
 			+ "join orderproduct o on pi.order_no = o.order_no "
 			+ "join customer c on o.customer_no = c.customer_no "
-			+ "where o.product_no = ? limit ?, ?";
+			+ "where o.product_no = ? order by pi.pi_date desc limit ?, ?";
 	private final String GET_QNA_CNT =
 			"select count(*) from product_inquiry pi join orderproduct o "
 			+ "on pi.order_no = o.order_no where o.product_no = ?";

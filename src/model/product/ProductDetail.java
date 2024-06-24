@@ -37,7 +37,7 @@ public class ProductDetail extends Product{
 		
 		//리뷰리스트 조회
 		int reviewPage = req.getParameter("reviewPage") != null ? Integer.parseInt(req.getParameter("reviewPage")) : 1;
-		int reviewPageSize = 10;
+		int reviewPageSize = 5;
 		int reviewStart = (reviewPage-1) *reviewPageSize;
 		List<ReviewDTO> reviewList = productDAO.getReviewList(product_no, reviewStart, reviewPageSize);
 		int reviewCount = productDAO.getReviewCount(product_no);
@@ -45,7 +45,7 @@ public class ProductDetail extends Product{
 		
 		//QNA 목록조회
 		int qnaPage = req.getParameter("qnaPage") != null ? Integer.parseInt(req.getParameter("qnaPage")) : 1;
-		int qnaPageSize = 10;
+		int qnaPageSize = 5;
 		int qnaStart = (qnaPage-1) * qnaPageSize;
 		List<ProductQnaDTO> qnaList = productDAO.getQNAList(product_no, qnaStart, qnaPageSize);
 		int qnaCount = productDAO.getQNACount(product_no);

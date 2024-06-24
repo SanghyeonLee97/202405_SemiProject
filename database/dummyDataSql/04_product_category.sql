@@ -1,14 +1,15 @@
+-- product_category 추가 전 세팅
 set foreign_key_checks=0;
 
 delete from product;
 alter table product auto_increment = 1;
 delete from product_category;
 alter table product_category auto_increment = 1;
+
 set foreign_key_checks=1;
 
-select * from product_category;
-select * from product;
 
+-- product_category 추가
 insert into product_category(pc_name,pc_level) values('사료',1);
 insert into product_category(pc_name,pc_level) values('간식',1);
 insert into product_category(pc_name,pc_level) values('장난감',1);
@@ -35,3 +36,6 @@ insert into product_category(pc_name,pc_level,pc_parent_no) values('구강위생
 insert into product_category(pc_name,pc_level,pc_parent_no) values('기저귀',2,5);
 insert into product_category(pc_name,pc_level,pc_parent_no) values('배변봉투',2,5);
 insert into product_category(pc_name,pc_level,pc_parent_no) values('배변패드',2,5);
+
+
+select * from product_category;
