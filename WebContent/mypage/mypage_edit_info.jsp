@@ -39,7 +39,7 @@
 	}
 	
 	#mypagetable{
-		border: 1px solid black;
+		
 		width: 500px;
 		height: 500px;
 		position: relative;
@@ -47,9 +47,7 @@
 		bottom:150px;
 	
 	}
-	tr td {
-	border: 1px solid black;
-	}
+	
 	#mypageupdateb{
 		width: 100px;
 		height: 40px;
@@ -73,23 +71,23 @@
 				<article>
 					<form action="updateInfo.do?id=<%=sessionid %>" method="post">
 						<table id="mypagetable">
-							<tr><td colspan="2">■ 표시는 필수 입력사항 입니다.</td></tr>
-							<tr><td width="30;"> 아이디:</td> <td><%=sessionid %></td></tr><br>
-							<tr><td >■ 비밀번호:</td> <td> <input id="updateInfoPwd" type="password" name="password" required="required">
+							<tr><td>■ 표시는 필수 입력사항 입니다.</td></tr>
+							<tr><td> 아이디:<%=sessionid %></td></tr><br>
+							<tr><td >■ 비밀번호:<input id="updateInfoPwd" type="password" name="password" required="required">
 										<button type="button" onclick="updateTextPwdToggle('updateInfoPwd')">test</button></td></tr><br>
-							<tr><td>■ 비밀번호 확인: </td> <td><input id="updateInfoPwdVerify" type="password" name="passwordVerify" required="required">
+							<tr><td>■ 비밀번호 확인:<input id="updateInfoPwdVerify" type="password" name="passwordVerify" required="required">
 										<button type="button" onclick="updateTextPwdToggle('updateInfoPwdVerify')">test</button></td></tr><br>
-							<tr><td>■ 이름:</td> <td> <input type="text" name="name" required="required"></td></tr><br>
-							<tr><td>전화번호:</td> <td> <input type="text" placeholder="-없이 입력하세요" name="tel"></td></tr><br>
+							<tr><td>■ 이름: <input type="text" name="name" required="required"></td></tr><br>
+							<tr><td>전화번호: <input type="text" placeholder="-없이 입력하세요" name="tel"></td></tr><br>
 							<!-- addressAPI.js호출해서 사용 -->
-							<tr><td colspan="2">■ 주소:
+							<tr><td>■ 주소:
 							<input type="text" id="addressPostcode" placeholder="우편번호" name="postcode" readonly="readonly" required="required">
 							<input type="button" onclick="addressExecDaumPostcode()" value="우편번호 찾기"></td></tr><br>
-							<tr><td colspan="2"><input type="text" id="addressRoadAddress" placeholder="도로명주소" 
+							<tr><td><input type="text" id="addressRoadAddress" placeholder="도로명주소" 
 									name="roadAddress" readonly="readonly"></td></tr>
-									<tr><td colspan="2"><input type="text" id="addressDetailAddress" placeholder="상세주소" 
+									<tr><td ><input type="text" id="addressDetailAddress" placeholder="상세주소" 
 									name="detailAddress" ></td></tr>
-							<tr><td colspan="2"><input type="hidden" id="addressJibunAddress" placeholder="지번주소" 
+							<tr><td><input type="hidden" id="addressJibunAddress" placeholder="지번주소" 
 									name="jibunAddress" readonly="readonly"></td></tr><br>
 							<tr><td ><span id="guide" style="color:#999;display:none"></span></td></tr>
 							<tr><td ><input type="hidden" id="addressExtraAddress" placeholder="참고항목" 
