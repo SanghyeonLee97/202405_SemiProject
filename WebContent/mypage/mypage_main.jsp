@@ -10,7 +10,36 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
-<link href="../css/mypage.css" rel="stylesheet" type="text/css">
+<link href="../css/mypage.css?after" rel="stylesheet" type="text/css">
+<style type="text/css">
+	
+	#mainbt{
+	
+		width: 50px;
+		height: 30px;
+		margin-right : 15px;
+		background: yellow;
+		border: none;
+		margin-top: 15px;
+	
+	}
+	#mypmain {
+		display: flex;
+		margin-left: 20px;
+		
+	
+	}
+
+	#mypdeliverybt{
+		width: 100px;
+		height: 40px;
+		position: relative;
+		left: 300px;
+		top: 15px;
+		background: yellow;
+		border: none;
+	}
+</style>
 </head>
 <body>
 	<main>
@@ -18,16 +47,26 @@
 		<section>
 			<%@ include file="./mypage_module/mypage_menu_list.jsp" %>
 			<section>
-				<header>주문/배송</header>
-				<nav>section-section-nav</nav>
-				<article>
+				<header><h3>주문/배송</h3></header>
+				<nav>
+					<button id="mainbt">최근</button>
+					<button id="mainbt">1개월</button>
+					<button id="mainbt">3개월</button>
+					<button id="mainbt">6개월</button>
+					<button id="mainbt">1년</button>
+					<input type="date" value="2024-06-01">
+					~
+					<input type="date" value="2024-07-30">
+					<input id="mainbt" type="button" value="조회">
+				</nav>
+				<article id="mypmain">
 					<%
 						CommunityDAO cdao = new CommunityDAO();
 						int userNo = cdao.getCustomerNo((String)session.getAttribute("id"));
 						ArrayList<MyPageMainDTO> mmdtoArr = mdao.getMypageMain(userNo);
 						for(int i=0;i<mmdtoArr.size();i++){
 					%>
-					<img alt="" src="<%=mmdtoArr.get(i).getProduct_imgurl() %>"><br>
+					<img alt="" src="<%=mmdtoArr.get(i).getProduct_imgurl() %>" width="120px;" height="120px;"><br>
 					<%=mmdtoArr.get(i).getProduct_name() %><br>
 					<%=mmdtoArr.get(i).getProduct_price()*mmdtoArr.get(i).getOrder_quantity() %>원<br>
 					수량: <%=mmdtoArr.get(i).getOrder_quantity() %><br>
@@ -36,7 +75,7 @@
 							switch(mmdtoArr.get(i).getStatus()){
 								case 0:
 					%>
-					<button type="button">배송조회</button>
+					<button type="button" id="mypdeliverybt">배송조회</button>
 					<%
 								break;
 								case 1:

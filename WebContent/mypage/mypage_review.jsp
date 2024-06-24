@@ -8,7 +8,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
-<link href="../css/mypage.css" rel="stylesheet" type="text/css">
+<link href="../css/mypage.css?after" rel="stylesheet" type="text/css">
+<style type="text/css">
+
+	#reviewbt{
+	
+		width: 50px;
+		height: 30px;
+		margin-right : 15px;
+		background: yellow;
+		border: none;
+		margin-top: 15px;
+	
+	}
+
+
+</style>
 </head>
 <body>
 	<main>
@@ -16,8 +31,18 @@
 		<section>
 			<%@ include file="./mypage_module/mypage_menu_list.jsp" %>
 			<section>
-				<header>리뷰</header>
-				<nav>section-section-nav</nav>
+				<header><h3>리뷰</h3></header>
+				<nav>
+					<button id="reviewbt">최근</button>
+					<button id="reviewbt">1개월</button>
+					<button id="reviewbt">3개월</button>
+					<button id="reviewbt">6개월</button>
+					<button id="reviewbt">1년</button>
+					<input type="date" value="2024-06-01">
+					~
+					<input type="date" value="2024-07-30">
+					<input id="reviewbt" type="button" value="조회">
+				</nav>
 				<article>
 					<%
 						ArrayList<MyPageReviewDTO> mrdtoArr = 

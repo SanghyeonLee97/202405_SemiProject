@@ -13,6 +13,12 @@
 		location.href="/projectdengdeng/index.jsp";
 	}
 </script>
+<style type="text/css">
+	#mypheader {
+		color: black;
+	}
+
+</style>
 </head>
 <body onload="
 	<%
@@ -29,26 +35,30 @@ chk()
 	%>
 	<header>
         <h1><%=sessionid %>님</h1>
-        <article>
-        	<a href="/projectdengdeng/mypage/mypage_main.jsp">
+        <article >
+        	<a href="/projectdengdeng/mypage/mypage_main.jsp" id="mypheader" >
+        	<img src="/projectdengdeng/imagefile/mypagedelivery.png" width="60px;" height="50px;">
 	        	주문/배송<br>
 	        	<%=mdto.getOrder_count() %>
         	</a>
         </article>
         <article>
-        	<a href="reviewlist.do">
+        	<a href="reviewlist.do" id="mypheader">
+        	<img src="/projectdengdeng/imagefile/mypagereview.png" width="60px;" height="50px;">
 	        	리뷰<br>
 	        	<%=mdto.getReview_count() %>
         	</a>
         </article>
         <article>
-        	<a href="reserve.do">
+        	<a href="reserve.do" id="mypheader">
+        	<img src="/projectdengdeng/imagefile/mypagereserve.png" width="60px;" height="50px;">
 	        	적립금<br>
 	        	<%=mdto.getCustomer_point() %>
         	</a>
         </article>
         <article>
-        	<a href="coupon.do">
+        	<a href="coupon.do" id="mypheader">
+        	<img src="/projectdengdeng/imagefile/mypagecoupon.png" width="60px;" height="50px;">
 	        	쿠폰<br>
 	        	<%=mdto.getCoupon_count() %>
         	</a>

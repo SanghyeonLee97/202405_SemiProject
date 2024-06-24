@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
-<link href="../css/mypage.css" rel="stylesheet" type="text/css">
+<link href="../css/mypage.css?after" rel="stylesheet" type="text/css">
 <style type="text/css">
 	table{
 		border: 1px solid black;
@@ -21,7 +21,10 @@
 	#inquirybt {
 		width: 50px;
 		height: 30px;
-		margin-left: 15px;
+		margin-right : 15px;
+		background: yellow;
+		border: none;
+		margin-top: 10px;
 	
 	}
 	
@@ -45,7 +48,7 @@
 					<input type="date" value="2024-06-01">
 					~
 					<input type="date" value="2024-07-30">
-					<input type="button" value="조회">
+					<input id="inquirybt" type="button" value="조회">
 				</nav>
 				<article>
 					<table>

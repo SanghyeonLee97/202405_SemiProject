@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="../js/jquery-3.7.1.js"></script>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
-<link href="../css/mypage.css" rel="stylesheet" type="text/css">
+<link href="../css/mypage.css?after" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	//input의 타입을 토글하는 함수 (password<-->text)
 	function updateTextPwdToggle(updateInfoPwdId) {
@@ -85,7 +85,7 @@
 							<tr><td><input type="text" id="addressRoadAddress" placeholder="도로명주소" 
 									name="roadAddress" readonly="readonly"></td></tr>
 									<tr><td ><input type="text" id="addressDetailAddress" placeholder="상세주소" 
-									name="detailAddress" ></td></tr>
+									name="detailAddress" width="300px;" ></td></tr>
 							<tr><td><input type="hidden" id="addressJibunAddress" placeholder="지번주소" 
 									name="jibunAddress" readonly="readonly"></td></tr><br>
 							<tr><td ><span id="guide" style="color:#999;display:none"></span></td></tr>
