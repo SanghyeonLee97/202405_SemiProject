@@ -36,18 +36,35 @@ public class ProductDetail extends Product{
 		float avgRating = productDAO.getProductRating(product_no);
 		
 		//리뷰리스트 조회
-		List<ReviewDTO> reviewList = productDAO.getReviewList(product_no);
+		int reviewPage = req.getParameter("reviewPage") != null ? Integer.parseInt(req.getParameter("reviewPage")) : 1;
+		int reviewPageSize = 10;
+		int reviewStart = (reviewPage-1) *reviewPageSize;
+		List<ReviewDTO> reviewList = productDAO.getReviewList(product_no, reviewStart, reviewPageSize);
+		int reviewCount = productDAO.getReviewCount(product_no);
+		int reviewPageCount = (int)Math.ceil((double)reviewCount / reviewPageSize);
 		
 		//QNA 목록조회
-		List<ProductQnaDTO> qnaList = productDAO.getQNAList(product_no);
+		int qnaPage = req.getParameter("qnaPage") != null ? Integer.parseInt(req.getParameter("qnaPage")) : 1;
+		int qnaPageSize = 10;
+		int qnaStart = (qnaPage-1) * qnaPageSize;
+		List<ProductQnaDTO> qnaList = productDAO.getQNAList(product_no, qnaStart, qnaPageSize);
+		int qnaCount = productDAO.getQNACount(product_no);
+		int qnaPageCount = (int)Math.ceil((double)qnaCount / qnaPageSize);
 		
 		//지금 클릭하여 조회하는 상품을 최근 본 상품에 추가해야함
 		saveProductToCookie(req, resp, cookieProduct);
 		
 		req.setAttribute("product", product);
 		req.setAttribute("avgRating", avgRating);
+		
 		req.setAttribute("reviewList", reviewList);
+		req.setAttribute("reviewPage", reviewPage);
+		req.setAttribute("reviewPageCount", reviewPageCount);
+		
 		req.setAttribute("qnaList", qnaList);
+		req.setAttribute("qnaPage", qnaPage);
+		req.setAttribute("qnaPageCount", qnaPageCount);
+		
 		return "/product/product_page.jsp";
 	}
 	
