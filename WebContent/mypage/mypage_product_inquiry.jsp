@@ -17,6 +17,16 @@
 	tr,td{
 		border: 1px solid black;
 	}
+	
+	#inquirybt {
+		width: 50px;
+		height: 30px;
+		margin-left: 15px;
+	
+	}
+	
+	
+	
 </style>
 </head>
 <body>
@@ -25,15 +35,25 @@
 		<section>
 			<%@ include file="./mypage_module/mypage_menu_list.jsp" %>
 			<section>
-				<header>1:1 문의</header>
-				<nav>section-section-nav</nav>
+				<header><h3>1:1 문의</h3></header>
+				<nav>
+					<button id="inquirybt">최근</button>
+					<button id="inquirybt">1개월</button>
+					<button id="inquirybt">3개월</button>
+					<button id="inquirybt">6개월</button>
+					<button id="inquirybt">1년</button>
+					<input type="date" value="2024-06-01">
+					~
+					<input type="date" value="2024-07-30">
+					<input type="button" value="조회">
+				</nav>
 				<article>
 					<table>
 						<tr>
-							<td>주문 번호</td>
-							<td>문의 제목</td>
-							<td>작성일</td>
-							<td>처리 상태</td>
+							<td width="200px;">주문 번호</td>
+							<td width="400px;">문의 제목</td>
+							<td width="200px;">작성일</td>
+							<td width="200px;">처리 상태</td>
 						</tr>
 						<%
 							ArrayList<ProductInquiryDTO> pidtoArr = 
