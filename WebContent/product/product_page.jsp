@@ -102,11 +102,23 @@
 									</div>
 								</c:forEach>
 							</div>
-							<div class="pagination">
-								<c:forEach begin="1" end="${pageCount }" var="pageNum">
-									<a href="javascript:void(0);" onclick="loadReviews(${pageNum})">${pageNum }</a>
-								</c:forEach>
-							</div>
+							<nav>
+								<ul class="pagination">
+									<c:if test="${reviewPage > 1 }">
+										<li><a href="?product_no=${product.product_no }&reviewPage=1#review">처음으로</a></li>
+										<li><a href="?product_no=${product.product_no}&reviewPage=${reviewPage - 1}#review">이전</a></li>
+									</c:if>
+									<c:forEach var="i" begin="1" end="${reviewPageCount }">
+										<li class="${i == reviewPage ? 'active' : '' }">
+											<a href="?product_no=${product.product_no }&reviewPage=${i}#review">${i }</a>
+										</li>
+									</c:forEach>
+									<c:if test="${reviewPage < reviewPageCount }">
+										<li><a href="?product_no=${product.product_no }&reviewPage=${reviewPage + 1 }#review">다음</a></li>
+										<li><a href="?product_no=${product.product_no}&reviewPage=${reviewPageCount}#review">마지막으로</a></li>
+									</c:if>
+								</ul>
+							</nav>
 						</c:when>
 						<c:otherwise>
 							<p>리뷰가 없습니다</p>
@@ -150,12 +162,24 @@
 							</tr>
 						</c:forEach>
 					</table>
-					<div class="pagination">
-						<c:forEach begin="1" end="${pageCount }" var="pageNum">
-							<a href="javascript:void(0);" onclick="loadQna(${pageNum})">${pageNum }</a>
-						</c:forEach>
-					</div>
 				</div>
+				<nav>
+					<ul class="pagination">
+						<c:if test="${qnaPage > 1}">
+							<li><a href="?product_no=${product.product_no}&qnaPage=1#qna">처음으로</a></li>
+							<li><a href="?product_no=${product.product_no}&qnaPage=${qnaPage - 1}#qna">이전</a></li>
+						</c:if>
+						<c:forEach var="i" begin="1" end="${qnaPageCount}">
+							<li class="${i == qnaPage ? 'active' : ''}">
+								<a href="?product_no=${product.product_no}&qnaPage=${i}#qna">${i}</a>
+							</li>
+						</c:forEach>
+						<c:if test="${qnaPage < qnaPageCount}">
+							<li><a href="?product_no=${product.product_no}&qnaPage=${qnaPage + 1}#qna">다음</a></li>
+							<li><a href="?product_no=${product.product_no}&qnaPage=${qnaPageCount}#qna">마지막으로</a></li>
+						</c:if>
+					</ul>
+				</nav>
 			</article>
 		</section>
 	</main>

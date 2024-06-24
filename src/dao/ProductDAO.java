@@ -34,7 +34,10 @@ public class ProductDAO extends DAO{
 	private final String REVIEW_LIST =
 			"select r.review_title, r.review_content, r.review_rating, r.review_date, c.customer_name "
 			+ "from review r join orderproduct o on r.order_no = o.order_no "
-			+ "join customer c on o.customer_no = c.customer_no where o.customer_no = ?";
+			+ "join customer c on o.customer_no = c.customer_no where o.product_no = ? limit ?, ?";
+	private final String REVIEW_CNT =
+			"select count(*) from review r join orderproduct o "
+			+ "on r.order_no = o.order_no where product_no = ?";
 	private final String INSERT_CART =
 			"insert into cart(customer_no, product_no, product_quantity) value(?, ?, ?)";
 	private final String GET_COUPON =
@@ -49,7 +52,10 @@ public class ProductDAO extends DAO{
 			+ "from product_inquiry pi "
 			+ "join orderproduct o on pi.order_no = o.order_no "
 			+ "join customer c on o.customer_no = c.customer_no "
-			+ "where o.product_no = ?";
+			+ "where o.product_no = ? limit ?, ?";
+	private final String GET_QNA_CNT =
+			"select count(*) from product_inquiry pi join orderproduct o "
+			+ "on pi.order_no = o.order_no where o.product_no = ?";
 	
 	//상품리스트 검색 by 부모번호
 	public List<ProductDTO> getProductListByParentNo(int pc_parent_no){
@@ -185,14 +191,16 @@ public class ProductDAO extends DAO{
 	
 	
 	//리뷰목록
-	public List<ReviewDTO> getReviewList(long product_no){
+	public List<ReviewDTO> getReviewList(long product_no, int start, int end){
 		List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
 		//"select r.review_title, r.review_content, r.review_rating, r.review_date, c.customer_name "
-		//+ "from review r join customer c on r.customer_no = c.customer_no where c.customer_no = ?;";
+		//+ "from review r join customer c on r.customer_no = c.customer_no where o.product_no = ? like ?, ?";
 		try {
 			openConnection();
 			pstmt = conn.prepareStatement(REVIEW_LIST);
 			pstmt.setLong(1, product_no);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -214,6 +222,26 @@ public class ProductDAO extends DAO{
 		return reviewList;
 	}
 	
+	//상품별 리뷰 갯수
+	public int getReviewCount(int productNo) {
+		int count = 0;
+		try {
+			openConnection();
+			//"select count(*) from review where product_no = ?";
+			pstmt = conn.prepareStatement(REVIEW_CNT);
+			pstmt.setInt(1, productNo);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return count;
+	}
 	//장바구니에 추가
 	public boolean addToCart(int customer_no, int product_no, int product_quantity) {
 		boolean isInserted = false;
@@ -294,7 +322,7 @@ public class ProductDAO extends DAO{
 	}
 	
 	//QNA목록 불러오기
-	public List<ProductQnaDTO> getQNAList(long product_no){
+	public List<ProductQnaDTO> getQNAList(long product_no, int start, int end){
 		List<ProductQnaDTO> qnaList = new ArrayList<ProductQnaDTO>();
 		
 		try {
@@ -302,6 +330,8 @@ public class ProductDAO extends DAO{
 			
 			pstmt = conn.prepareStatement(GET_QNA);
 			pstmt.setLong(1, product_no);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -322,5 +352,25 @@ public class ProductDAO extends DAO{
 			closeConnection();
 		}
 		return qnaList;
+	}
+	
+	//상품별 QNA 갯수
+	public int getQNACount(int product_no) {
+		int count = 0;
+		try {
+			openConnection();
+			pstmt = conn.prepareStatement(GET_QNA_CNT);
+			pstmt.setInt(1, product_no);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return count;
 	}
 }
