@@ -37,7 +37,8 @@ main>section{
 section>aside{
 		width: 200px; height: 400px;
 		float: left;
-		background-color: #ddddff;
+		/* background-color: #FFE4E1; */
+		 
 }
 section>section{
 		width: 960px;

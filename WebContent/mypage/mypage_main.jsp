@@ -25,7 +25,8 @@
 	}
 	#mypmain {
 		display: flex;
-		margin-left: 20px;
+		justify-content :space-between;
+		
 		
 	
 	}
@@ -34,11 +35,11 @@
 		width: 100px;
 		height: 40px;
 		position: relative;
-		left: 300px;
-		top: 15px;
-		background: yellow;
+		right: 100px;
+		top: 20px;
+		background: #FAFAD2;
 		border: none;
-	}
+	} 
 </style>
 </head>
 <body>
@@ -59,18 +60,20 @@
 					<input type="date" value="2024-07-30">
 					<input id="mainbt" type="button" value="조회">
 				</nav>
-				<article id="mypmain">
 					<%
 						CommunityDAO cdao = new CommunityDAO();
 						int userNo = cdao.getCustomerNo((String)session.getAttribute("id"));
 						ArrayList<MyPageMainDTO> mmdtoArr = mdao.getMypageMain(userNo);
 						for(int i=0;i<mmdtoArr.size();i++){
 					%>
-					<img alt="" src="<%=mmdtoArr.get(i).getProduct_imgurl() %>" width="120px;" height="120px;"><br>
-					<%=mmdtoArr.get(i).getProduct_name() %><br>
-					<%=mmdtoArr.get(i).getProduct_price()*mmdtoArr.get(i).getOrder_quantity() %>원<br>
-					수량: <%=mmdtoArr.get(i).getOrder_quantity() %><br>
-					주문번호: <%=mmdtoArr.get(i).getOrder_no() %><br>
+					<article id="mypmain">
+						<img alt="" src="<%=mmdtoArr.get(i).getProduct_imgurl() %>" width="120px;" height="120px;">
+						<div style="width: 700px;">
+						<%=mmdtoArr.get(i).getProduct_name() %><br>
+						<%=mmdtoArr.get(i).getProduct_price()*mmdtoArr.get(i).getOrder_quantity() %>원<br>
+						수량: <%=mmdtoArr.get(i).getOrder_quantity() %><br>
+						주문번호: <%=mmdtoArr.get(i).getOrder_no() %>
+						</div>
 					<%
 							switch(mmdtoArr.get(i).getStatus()){
 								case 0:
@@ -91,9 +94,9 @@
 								break;
 							}
 					%>
-					<br>
-					<%} %>
+					
 				</article>
+					<%} %>
 			</section>
 			<div style="clear: both;"></div>
 		</section>

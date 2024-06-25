@@ -9,6 +9,10 @@
 	.menu_list li {
 		margin-left: 40px;
 	}
+	li a{
+		color: black;
+	}
+	
 </style>
 </head>
 <body>

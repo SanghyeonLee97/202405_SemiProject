@@ -22,6 +22,9 @@
 	
 	}
 
+	#reviewlist{
+		display: flex;
+	}
 
 </style>
 </head>
@@ -43,13 +46,13 @@
 					<input type="date" value="2024-07-30">
 					<input id="reviewbt" type="button" value="조회">
 				</nav>
-				<article>
 					<%
 						ArrayList<MyPageReviewDTO> mrdtoArr = 
 						(ArrayList<MyPageReviewDTO>)request.getAttribute("mrdtoArr");
 						for(int i=0;i<mrdtoArr.size();i++){
 					%>
-					<img alt="" src="<%=mrdtoArr.get(i).getProduct_imgurl() %>"><br>
+				<article id="reviewlist">
+					<img alt="" src="<%=mrdtoArr.get(i).getProduct_imgurl() %>" width="200px;" height="240px;"><br>
 					주문번호 <%=mrdtoArr.get(i).getOrder_no() %><br>
 					<%=mrdtoArr.get(i).getProduct_name() %><br>
 					<%=mrdtoArr.get(i).getProduct_price()*mrdtoArr.get(i).getOrder_quantity() %>원<br>
@@ -59,10 +62,10 @@
 					<%=mrdtoArr.get(i).getReview_content()%><br>
 					<%=mrdtoArr.get(i).getReview_date()%><br>
 					<br>
+				</article>
 					<%
 						}
 					%>
-				</article>
 			</section>
 			<div style="clear: both;"></div>
 		</section>
