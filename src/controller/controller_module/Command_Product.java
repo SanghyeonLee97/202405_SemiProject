@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.CommandProsessor;
+import model.product.Dibs;
 import model.product.InsertToCart;
 import model.product.OrderPayment;
 import model.product.ProductDetail;
@@ -21,6 +22,8 @@ public class Command_Product extends Command_Parents{
 			processor = new OrderPayment();
 		}else if(servletPath.contains("/insertCart.do")){
 			processor = new InsertToCart();
+		}else if(servletPath.contains("/selectDibs.do")){
+			processor = new Dibs();
 		}else {
 			System.out.println("매칭되는 서블릿 없음");
 		}

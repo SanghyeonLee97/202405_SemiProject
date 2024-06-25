@@ -13,7 +13,7 @@ public class Dibs extends Product{
 		String customerNo = (String)session.getAttribute("no");
 		if (id == null || customerNo == null) {
 			resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);	//401에러
-			return "/member/login.jsp";
+			return "/projectdengdeng/member/login.jsp";
 		}
 		
 		long customer_no = Integer.parseInt(customerNo);

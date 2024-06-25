@@ -9,6 +9,10 @@
 <meta charset="UTF-8">
 <title>상품 리스트 페이지</title>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
 <style type="text/css">
 	body>main{
 		display: flex;
@@ -127,7 +131,12 @@
 					<a href="details.do?product_no=<%= product.getProduct_no() %>">
 						<img src="<%= product.getProduct_imgurl() %>">
 						<h5><%= product.getProduct_name() %></h5>
-						<p><%= product.getProduct_price() %>원</p>
+						<p>
+							<%= product.getProduct_price() %>원&nbsp;&nbsp;&nbsp;
+							<button class="dib-button" data-product-no="<%= product.getProduct_no() %>" data-checked="false">
+								찜하기
+							</button>
+						</p>
 					</a>
 				</div>
 					<%
@@ -199,5 +208,49 @@
 			});
 		});
 	</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".dib-button").on("click", function () {
+            let $button = $(this);
+            let productNo = $button.data("product-no");
+            let isChecked = $button.data("checked");
+            let customerNo = '<%= session.getAttribute("no") %>';
+            
+            $.ajax({
+                url: 'selectDibs.do',
+                method: 'POST',
+                data: {
+                    product_no: productNo,
+                    isChecked: isChecked
+                },
+                success: function(response) {
+                    // 토글 상태 변경
+                    isChecked = !isChecked;
+                    $button.data("checked", isChecked);
+                    if (isChecked) {
+                        $button.text('찜하기 취소');
+                    } else {
+                        $button.text('찜하기');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    if (xhr.status == 401) {
+                        alert('로그인이 필요합니다.');
+                        window.location.href = '/projectdengdeng/member/login.jsp';
+                    } else {
+                        alert('에러가 발생했습니다. 다시 시도해주세요.');
+                    }
+                }
+            });
+        });
+
+        // 예시: 이미 찜한 상품 초기 상태 설정 (서버에서 가져와야 함)
+        <% if (recentlyViewedProducts != null) { %>
+            <% for (ProductDTO product : recentlyViewedProducts) { %>
+                $(".dib-button[data-product-no='<%= product.getProduct_no() %>']").data("checked", true).text("찜하기 취소");
+            <% } %>
+        <% } %>
+    });
+</script>
 </body>
 </html>
