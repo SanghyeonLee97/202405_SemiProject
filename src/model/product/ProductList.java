@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.CategoryDTO;
+import DTO.product.CartDTO;
 import DTO.product.ProductDTO;
+import dao.DibsDAO;
 import dao.ProductDAO;
 
 public class ProductList extends Product{
@@ -20,7 +22,7 @@ public class ProductList extends Product{
 		System.out.println("ProductList.java 실행");
 		String pc_parent_no = req.getParameter("pc_parent_no");
 		String pc_no = req.getParameter("pc_no");
-		
+		session = req.getSession();
 		//상품 목록, 세부분류
 		productDAO = new ProductDAO();
 		List<ProductDTO> productList = null;
@@ -31,9 +33,15 @@ public class ProductList extends Product{
 			System.out.println("pc_parent_no 실행");
 			subCategoryList = productDAO.getSubCategoryList(Integer.parseInt(pc_parent_no));
 			productList = productDAO.getProductListByParentNo(Integer.parseInt(pc_parent_no));
+			
+			session.setAttribute("pc_parent_no", pc_parent_no);
+			session.removeAttribute("pc_no");
 		}else if(pc_no != null){
 			System.out.println(pc_no+"pc_no 실행");
 			productList = productDAO.getProductListbyPcNo(Integer.parseInt(pc_no));
+			
+			session.setAttribute("pc_no", pc_no);
+			session.removeAttribute("pc_parent_no");
 		}else {
 			System.out.println("pc_parent_no 값 없음!");
 		}
@@ -45,6 +53,15 @@ public class ProductList extends Product{
 		List<ProductDTO> recentlyViewedProducts = getRecentlyViewedProducts(req);
 		req.setAttribute("recentlyViewedProducts", recentlyViewedProducts);
 		
+		
+		// 로그인한 회원의 찜한 상품 정보 가져오는 로직
+		session = req.getSession();
+		String customerNo = (String) session.getAttribute("no");
+		if(customerNo != null) {
+			dibsDAO = new DibsDAO();
+			List<CartDTO> dibsList = dibsDAO.getCustomerDibs(Long.parseLong(customerNo));
+			req.setAttribute("dibsList", dibsList);
+		}
 		return "/product/product_list_page.jsp";
 	}
 

@@ -1,3 +1,4 @@
+<%@page import="DTO.product.CartDTO"%>
 <%@page import="DTO.product.ProductDTO"%>
 <%@page import="DTO.CategoryDTO"%>
 <%@page import="java.util.List"%>
@@ -115,6 +116,7 @@
 			<section>
 				<%
 					List<ProductDTO> productList = (List<ProductDTO>)request.getAttribute("productList");
+					List<CartDTO> dibsList = (List<CartDTO>)request.getAttribute("dibsList");
 					int maxProductsPerPage = 16;
 					int productCount = productList != null ? productList.size() : 0;
 					int currentPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
@@ -126,6 +128,15 @@
 					if(productList != null && !productList.isEmpty()){
 						for (int i=start; i<end; i++){
 							ProductDTO product = productList.get(i);
+							boolean isDibbed = false;
+							if (dibsList != null){
+								for(CartDTO dib : dibsList){
+									if(dib.getProduct_no() == product.getProduct_no()){
+										isDibbed = true;
+										break;
+									}
+								}
+							}
 					%>
 				<div class="product-card">
 					<a href="details.do?product_no=<%= product.getProduct_no() %>">
@@ -133,11 +144,15 @@
 						<h5><%= product.getProduct_name() %></h5>
 						<p>
 							<%= product.getProduct_price() %>원&nbsp;&nbsp;&nbsp;
-							<button class="dib-button" data-product-no="<%= product.getProduct_no() %>" data-checked="false">
-								찜하기
-							</button>
 						</p>
 					</a>
+					<form method="post" action="selectDibs.do">
+						<input type="hidden" name="product_no" value="<%= product.getProduct_no() %>">
+						<input type="hidden" name="isChecked" value="<%= isDibbed %>">
+						<button type="submit">
+							<%= isDibbed ? "찜하기 취소" : "찜하기" %>
+						</button>
+					</form>
 				</div>
 					<%
 							}
@@ -172,23 +187,23 @@
 		</section>
 	</main>
 	<nav>
-					<ul class="pagination">
-						<%
-							int totalPages = (int)Math.ceil((double)productCount / maxProductsPerPage);
-							for(int i=1; i<= totalPages; i++){	
-						%>
-						<li class="page-item <%=(i == currentPage) ? "active" : "" %>">
-							<a class="page-link" href="?page=<%=i %>
-							<% if (pcParentNo != null) { %>&pc_parent_no=<%= pcParentNo %><% } %>
-							<% if (pcNo != null) { %>&pc_no=<%= pcNo %><% } %>">
-							<%=i %>
-							</a>
-						</li>
-						<%
-							}
-						%>
-					</ul>
-				</nav>
+		<ul class="pagination">
+			<%
+				int totalPages = (int) Math.ceil((double) productCount / maxProductsPerPage);
+				for (int i = 1; i <= totalPages; i++) {
+			%>
+			<li class="page-item <%=(i == currentPage) ? "active" : ""%>">
+				<a class="page-link" href="?page=<%=i%>
+							<%if (pcParentNo != null) {%>&pc_parent_no=<%=pcParentNo%><%}%>
+							<%if (pcNo != null) {%>&pc_no=<%=pcNo%><%}%>">
+					<%=i%>
+				</a>
+			</li>
+			<%
+				}
+			%>
+		</ul>
+	</nav>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			let $window = $(window);
@@ -208,49 +223,5 @@
 			});
 		});
 	</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".dib-button").on("click", function () {
-            let $button = $(this);
-            let productNo = $button.data("product-no");
-            let isChecked = $button.data("checked");
-            let customerNo = '<%= session.getAttribute("no") %>';
-            
-            $.ajax({
-                url: 'selectDibs.do',
-                method: 'POST',
-                data: {
-                    product_no: productNo,
-                    isChecked: isChecked
-                },
-                success: function(response) {
-                    // 토글 상태 변경
-                    isChecked = !isChecked;
-                    $button.data("checked", isChecked);
-                    if (isChecked) {
-                        $button.text('찜하기 취소');
-                    } else {
-                        $button.text('찜하기');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    if (xhr.status == 401) {
-                        alert('로그인이 필요합니다.');
-                        window.location.href = '/projectdengdeng/member/login.jsp';
-                    } else {
-                        alert('에러가 발생했습니다. 다시 시도해주세요.');
-                    }
-                }
-            });
-        });
-
-        // 예시: 이미 찜한 상품 초기 상태 설정 (서버에서 가져와야 함)
-        <% if (recentlyViewedProducts != null) { %>
-            <% for (ProductDTO product : recentlyViewedProducts) { %>
-                $(".dib-button[data-product-no='<%= product.getProduct_no() %>']").data("checked", true).text("찜하기 취소");
-            <% } %>
-        <% } %>
-    });
-</script>
 </body>
 </html>
