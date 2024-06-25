@@ -67,6 +67,7 @@ public class DibsDAO extends DAO{
 	public List<CartDTO> getCustomerDibs(long customer_no){
 		List<CartDTO> dibsList = new ArrayList<CartDTO>();
 		try {
+			openConnection();
 			pstmt = conn.prepareStatement(GET_CUSTOMER_DIB);
 			pstmt.setLong(1, customer_no);
 			
