@@ -125,6 +125,8 @@
 					String pcParentNo = request.getParameter("pc_parent_no");
 					String pcNo = request.getParameter("pc_no");
 					
+					String customerNo = (String)session.getAttribute("no");
+					
 					if(productList != null && !productList.isEmpty()){
 						for (int i=start; i<end; i++){
 							ProductDTO product = productList.get(i);
@@ -146,6 +148,7 @@
 							<%= product.getProduct_price() %>원&nbsp;&nbsp;&nbsp;
 						</p>
 					</a>
+					<% if (customerNo != null && !customerNo.isEmpty()) {%>
 					<form method="post" action="selectDibs.do">
 						<input type="hidden" name="product_no" value="<%= product.getProduct_no() %>">
 						<input type="hidden" name="isChecked" value="<%= isDibbed %>">
@@ -153,6 +156,7 @@
 							<%= isDibbed ? "찜하기 취소" : "찜하기" %>
 						</button>
 					</form>
+					<% } %>
 				</div>
 					<%
 							}
