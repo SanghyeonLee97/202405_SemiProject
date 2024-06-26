@@ -18,7 +18,7 @@ public class Dibs extends Product{
 		String pc_no = (String) session.getAttribute("pc_no");
 		
 		if (id == null || customerNo == null) {
-			return "/projectdengdeng/member/login.jsp";
+			return "/member/login.jsp";
 		}
 		
 		try {
