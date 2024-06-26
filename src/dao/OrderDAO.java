@@ -15,12 +15,15 @@ public class OrderDAO extends DAO{
 			"select customer_point from customer where customer_no = ?";
 	private final String MAKE_ORDER =
 			"insert into orderproduct (customer_no, product_no, coupon_no, order_quantity, status, order_date) "
-			+ "values(?, ?, ?, ?, ?, ?);";
+			+ "values(?, ?, ?, ?, 0, date(now()));";
 	private final String NEW_POINT =
 			"insert into point (point_status, point_amount, order_no) "
 			+ "values (?, ?, ?);";
 	private final String UPDATE_CUSTOMER_POINT =
 			"update customer set customer_point = ? where customer_no = ?";
+	private final String ORDER_PRODUCT =
+			"insert into orderproduct (customer_no, product_no, coupon_no, order_quantity, order_date) "
+			+ "values (?, ?, ?, ?, date(now()))";
 	
 	//고객 적립금 불러오기
 	public int getCustomerPoint(int customerNo) {
@@ -47,18 +50,15 @@ public class OrderDAO extends DAO{
 	//주문하기
 	public boolean makeOrder(OrderDTO orderDTO) {
 		boolean isInserted = false;
-		OrderDTO order = new OrderDTO();
 		//"insert into orderproduct (customer_no, product_no, coupon_no, order_quantity, status, order_date) "
-		//+ "values(?, ?, ?, ?, ?, ?);";
+		//+ "values(?, ?, ?, ?, 0, date(now()))";
 		try {
 			openConnection();
 			pstmt = conn.prepareStatement(MAKE_ORDER);
-			pstmt.setLong(1, order.getCustomer_no());
-			pstmt.setLong(2, order.getProduct_no());
-			pstmt.setLong(3, order.getCoupon_no());
-			pstmt.setLong(4, order.getOrder_quantity());
-			pstmt.setInt(5, order.getStatus());
-			pstmt.setDate(6, (Date)order.getOrder_date());
+			pstmt.setLong(1, orderDTO.getCustomer_no());
+			pstmt.setLong(2, orderDTO.getProduct_no());
+			pstmt.setLong(3, orderDTO.getCoupon_no());
+			pstmt.setLong(4, orderDTO.getOrder_quantity());
 			
 			int result = pstmt.executeUpdate();
 			if (result > 0) {
@@ -120,5 +120,4 @@ public class OrderDAO extends DAO{
 		}
 		return isUpdated;
 	}
-	
 }

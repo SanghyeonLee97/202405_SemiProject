@@ -46,7 +46,7 @@ public class ProductDAO extends DAO{
 			+ "from customercoupon cc join coupon c on cc.coupon_no = c.coupon_no "
 			+ "where cc.customer_no= ? ;";
 	private final String GET_CUSTOMER = 
-			"select customer_name, customer_tel, postal_code, address_road, address_detail "
+			"select customer_no, customer_name, customer_tel, postal_code, address_road, address_detail "
 			+ "from customer where customer_no=?;";
 	private final String GET_QNA =
 			"select c.customer_name, pi.pi_title, pi.pi_content, pi.pi_date, pi.pi_answer, pi.category_no "
@@ -308,6 +308,7 @@ public class ProductDAO extends DAO{
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				customer = new CustomerDTO();
+				customer.setCustomer_no(rs.getInt("customer_no"));
 				customer.setCustomer_name(rs.getString("customer_name"));
 				customer.setCustomer_tel(rs.getString("customer_tel"));
 				customer.setPostal_code(rs.getString("postal_code"));

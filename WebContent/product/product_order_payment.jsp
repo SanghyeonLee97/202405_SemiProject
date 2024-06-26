@@ -81,12 +81,27 @@
                     <p>총 결제금액: <span id="totalPrice">${product.product_price * productQuantity - 8000}원</span></p>
                 </div>
                 <button onclick="window.history.back()">취소</button>
-                <button>결제</button>
+                <form action="makeOrder.do" method="post">
+                	<input type="hidden" name="product_no" value="${product.product_no }">
+                	<input type="hidden" name="coupon_no" id="couponNo" value="">
+                	<input type="hidden" name="order_quantity" value="${productQuantity}">
+                	<button type="submit">결제</button>
+                </form>
             </aside>
         </section>
     </main>
 <script>
-	var customerPoint = ${customerPoint};
+var customerPoint = ${customerPoint};
+
+document.addEventListener("DOMContentLoaded", function(){
+	const couponSelect = document.querySelector("select[name='couponName']");
+	const couponNoInput = document.getElementById("couponNo");
+	
+	couponSelect.addEventListener("change", function(){
+		const selectedCouponNo = couponSelect.value;
+		couponNoInput.value = selectedCouponNo;
+	})
+});
 </script>
 <script src="./product_js/product_order_payment.js"></script>
 </body>
