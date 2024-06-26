@@ -36,10 +36,12 @@
 		height: 40px;
 		position: relative;
 		right: 100px;
-		top: 20px;
+		top: 40px;
 		background: #FAFAD2;
 		border: none;
 	} 
+	
+	
 </style>
 </head>
 <body>
@@ -88,7 +90,8 @@
 								break;
 								case 2:
 					%>
-					<button type="button" onclick="location.href='mypagewritereview.do?order_no=<%=mmdtoArr.get(i).getOrder_no() %>'">
+					<button id="mypdeliverybt" type="button" onclick="location.href='mypagewritereview.do?order_no=<%=mmdtoArr.get(i).getOrder_no() %>'">
+					
 					리뷰작성</button>
 					<%
 								break;

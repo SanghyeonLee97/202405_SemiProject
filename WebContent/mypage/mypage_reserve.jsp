@@ -20,7 +20,7 @@
 	#reservebt{
 		width: 50px;
 		height: 30px;
-		margin-left: 20px;
+		margin-right: 20px;
 		background: yellow;
 		border: none;
 		margin-top: 15px;
