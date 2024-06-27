@@ -50,7 +50,12 @@
 		text-align: center;
 		border-bottom: 1px solid #ccc;
 	}
-
+button{
+	border: none;
+	margin : 10px;
+	width: 115px;
+	height: 30px;
+}
 </style>
 </head>
 <body>

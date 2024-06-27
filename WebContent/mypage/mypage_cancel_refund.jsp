@@ -16,6 +16,12 @@
 		text-align: center;
 		border-bottom: 1px solid #ccc;
 	}
+	button{
+		border: none;
+		margin : 10px;
+		width: 115px;
+		height: 30px;
+	}
 </style>
 <link href="../css/style2.css" rel="stylesheet" type="text/css">
 <link href="../css/mypage.css" rel="stylesheet" type="text/css">
