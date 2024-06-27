@@ -7,12 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../css/style2.css" rel="stylesheet" type="text/css">
+<link href="../css/style2.css?after" rel="stylesheet" type="text/css">
 <link href="../css/mypage.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	table{
 		border: 1px solid black;
 		border-collapse: collapse;
+		width: 100%;
 	}
 	tr,td{
 		border: 1px solid black;
@@ -25,7 +26,8 @@
 		<section>
 			<%@ include file="./mypage_module/mypage_menu_list.jsp" %>
 			<section>
-				<header>쿠폰</header>
+				<h3>보유 쿠폰 현황</h3>
+				<hr>
 				<article>
 					<table>
 						<tr>
@@ -42,7 +44,7 @@
 						<tr>
 							<td><%=mcdtoArr.get(i).getCoupon_name() %></td>
 							<td><%=mcdtoArr.get(i).getCoupon_discount() %></td>
-							<td><%=mcdtoArr.get(i).getCoupon_limit() %></td>
+							<td><%=mcdtoArr.get(i).getCoupon_limit() %></td>	
 							<td><%=mcdtoArr.get(i).getCoupon_duedate() %></td>
 						</tr>
 						<%} %>
