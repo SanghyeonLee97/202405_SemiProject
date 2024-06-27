@@ -10,8 +10,10 @@ import model.CommandProsessor;
 import model.mypage.Cancelrefund;
 import model.mypage.CartList;
 import model.mypage.DeleteCart;
+import model.mypage.DeleteDibs;
 import model.mypage.DibsList;
 import model.mypage.MypageCoupon;
+import model.mypage.MypageInsertCart;
 import model.mypage.MypageReserve;
 import model.mypage.MypageReviewList;
 import model.mypage.MypageWriteReview;
@@ -142,6 +144,14 @@ public class Command_MyPage extends Command_Parents{
 		//경로가 /mypage/deleteCart.do라면
 		if(servletPath.equals("/mypage/dibsList.do")) {
 			processor = new DibsList();
+		}
+		//경로가 /mypage/mypageInsertCart.do라면
+		if(servletPath.equals("/mypage/mypageInsertCart.do")) {
+			processor = new MypageInsertCart();
+		}
+		//경로가 /mypage/deleteDibs.do라면
+		if(servletPath.equals("/mypage/deleteDibs.do")) {
+			processor = new DeleteDibs();
 		}
 		return processor;
 	}
