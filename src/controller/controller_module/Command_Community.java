@@ -3,7 +3,7 @@ package controller.controller_module;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.community.CommunityQNADTO;
+import DTO.community.CommunityDTO;
 import model.CommandProsessor;
 import model.community.CommunityDelete;
 import model.community.FAQRead;
@@ -38,11 +38,11 @@ public class Command_Community extends Command_Parents{
 		//경로가 /community/QNAWrite.do라면
 		if(servletPath.equals("/community/QNAWrite.do")) {
 			//DTO생성 
-			CommunityQNADTO cqdto = new CommunityQNADTO();
+			CommunityDTO cqdto = new CommunityDTO();
 			//title parameter와 content parameter와 정수변환한 category parameter를 받아 cqdto에 넣는다
-			cqdto.setQna_title(req.getParameter("title"));
-			cqdto.setQna_content(req.getParameter("content"));
-			cqdto.setIqc_no(Integer.parseInt(req.getParameter("category")));
+			cqdto.setCommunityTitle(req.getParameter("title"));
+			cqdto.setCommunityContent(req.getParameter("content"));
+			cqdto.setIQCNo(Integer.parseInt(req.getParameter("category")));
 			//QNA작성 업캐스팅
 			processor = new QNAWrite(cqdto);
 		}

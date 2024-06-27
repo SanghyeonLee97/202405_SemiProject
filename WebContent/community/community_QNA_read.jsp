@@ -1,4 +1,4 @@
-<%@page import="DTO.community.CommunityQNADTO"%>
+<%@page import="DTO.community.CommunityDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
 </head>
 <body>
 <%
-	CommunityQNADTO cfdto = (CommunityQNADTO)request.getAttribute("read");
+	CommunityDTO cfdto = (CommunityDTO)request.getAttribute("read");
 	MemberDAO mdao = new MemberDAO();
 	String sid="";
 	if(session.getAttribute("id")!=null){
@@ -55,15 +55,15 @@
 					</tr>
 					<tr>
 						<td height="30px;">작성시간</td>
-						<td><%=cfdto.getQna_date() %></td>
+						<td><%=cfdto.getCommunityDate() %></td>
 					</tr>
 					<tr>
 						<td height="50px;">글제목</td>
-						<td><%=cfdto.getQna_title() %></td>
+						<td><%=cfdto.getCommunityTitle() %></td>
 					</tr>
 					<tr>
 						<td height="400px;">글내용</td>
-						<td><%=cfdto.getQna_content() %></td>
+						<td><%=cfdto.getCommunityContent() %></td>
 					</tr>
 				</table>
 			</article>
@@ -75,13 +75,13 @@
 					<tr>
 						<td height="150px;">
 						<%
-							if(cfdto.getQna_answer()==null){
+							if(cfdto.getCommunityanswer()==null){
 						%>
 							답변 존재X
 						<%
 							}else{
 						%>
-							<%=cfdto.getQna_answer() %>
+							<%=cfdto.getCommunityanswer() %>
 						<%} %>
 						</td>
 					</tr>
@@ -91,7 +91,7 @@
 				%>
 				<!-- 운영자 답변용 디자인X -->
 				<form action="QNAAnswer.do">
-					<input type="hidden" name="no" value="<%=cfdto.getQna_no()%>">
+					<input type="hidden" name="no" value="<%=cfdto.getCommunityNo()%>">
 					<textarea name="answer" rows="10" cols="100"></textarea><br>
 					<button type="submit">답변하기</button>
 				</form>
@@ -103,7 +103,7 @@
 				<%
 					if(sid.equals(cfdto.getCustomer_id())){
 				%>
-				<button onclick="location.href='QNADelete.do?board=qna&no=<%=cfdto.getQna_no() %>'">삭제하기</button>
+				<button onclick="location.href='QNADelete.do?board=qna&no=<%=cfdto.getCommunityNo() %>'">삭제하기</button>
 				<% } %>
 				
 			</nav>
