@@ -8,6 +8,7 @@ insert into inquiry_category values
 (1,'회원가입/로그인'), 
 (2,'주문/결제'), 
 (3,'배송문의'), 
-(4,'취소/교환/반품');
+(4,'취소/교환/반품'),
+(5, '기타문의');
 
 select * from inquiry_category;
