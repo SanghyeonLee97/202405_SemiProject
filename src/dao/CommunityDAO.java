@@ -105,6 +105,11 @@ public class CommunityDAO extends DAO{
 				res.setCommunityNo(rs.getInt(board+"_no"));
 				res.setCommunityTitle(rs.getString(board+"_title"));
 				res.setCommunityContent(rs.getString(board+"_content"));
+				if(board.equals("qna")) {
+					res.setCommunityDate(rs.getTimestamp("qna_date"));
+					res.setCustomer_id(getQNACustomerId(rs.getInt("qna_no")));
+					res.setCommunityanswer(rs.getString("qna_answer"));
+				}
 			}
 		}catch (Exception e) {
 			System.out.println("community 특정글 검색");
@@ -143,33 +148,6 @@ public class CommunityDAO extends DAO{
 		}finally {
 			closeConnection();
 		}
-	}
-	
-	//QNA 특정글 검색
-	public CommunityDTO getQNAPost(String no) {
-		CommunityDTO res = new CommunityDTO();
-		openConnection();
-		try {
-			query = "select qna.qna_no,qna.qna_title,qna.qna_content,qna.qna_date,qna.qna_answer,customer.customer_id "+
-					"from qna inner join customer on qna.customer_no=customer.customer_no "+
-					"where qna_no="+no+";";
-			stmt = (Statement) conn.createStatement();
-			ResultSet rs = stmt.executeQuery(query);
-					
-			while(rs.next()) {
-				res.setCommunityNo(rs.getInt("qna_no"));
-				res.setCommunityTitle(rs.getString("qna_title"));
-				res.setCommunityContent(rs.getString("qna_content"));
-				res.setCommunityDate(rs.getTimestamp("qna_date"));
-				res.setCustomer_id(rs.getString("customer_id"));
-				res.setCommunityanswer(rs.getString("qna_answer"));
-			}
-		}catch (Exception e) {
-			System.out.println("QNA 특정글 검색 오류발생");
-		}finally {
-			closeConnection();
-		}
-		return res;
 	}
 	
 	//QNA 답변 등록

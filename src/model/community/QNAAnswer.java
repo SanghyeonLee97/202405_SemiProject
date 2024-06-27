@@ -19,7 +19,7 @@ public class QNAAnswer extends Community{
 		//답변 작성
 		cdao.qnaAnswerWrite(QNANO, answer);
 		//이 메소드를 호출한 게시글 정보를 불러와 read 객체에 저장
-		req.setAttribute("read", cdao.getQNAPost(Integer.toString(QNANO)));
+		req.setAttribute("read", cdao.getCommunityPost("qna",Integer.toString(QNANO)));
 		return "/community/community_QNA_read.jsp";
 	}
 

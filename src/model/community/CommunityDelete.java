@@ -21,7 +21,7 @@ public class CommunityDelete extends Community{
 		//게시판 종류가 qna라면
 		if(board.equals("qna")) {
 			//qna로
-			return "/community/community_QNA.jsp";
+			return "/community/community_qna.jsp";
 		}else if(board.equals("faq")) {
 			return "/community/community_faq.jsp";
 		}else {

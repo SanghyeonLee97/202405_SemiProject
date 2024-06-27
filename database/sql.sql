@@ -1,5 +1,5 @@
 create table notice(
-	notice_No bigint primary key auto_increment,
+	notice_no bigint primary key auto_increment,
     notice_title varchar(100) not null,
     notice_content text not null,
     notice_views int not null default 0,

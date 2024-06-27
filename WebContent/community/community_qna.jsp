@@ -12,7 +12,6 @@
 <link href="../css/community.css?after" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>section>article{
-		height: 620px;
 		padding: 40px;
 	}
 	#title {

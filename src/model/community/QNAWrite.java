@@ -24,7 +24,7 @@ public class QNAWrite extends Community{
 		//정보객체에 담긴 정보를 이용해 notice작성
 		cdao.QNAWrite(cqdto);
 		
-		return "/community/community_QNA.jsp";
+		return "/community/community_qna.jsp";
 	}
 
 }
