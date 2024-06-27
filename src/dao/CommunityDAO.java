@@ -5,14 +5,13 @@ import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
 
-import DTO.community.CommunityFAQDTO;
-import DTO.community.CommunityNoticeDTO;
+import DTO.community.CommunityDTO;
 import DTO.community.CommunityQNADTO;
 
 public class CommunityDAO extends DAO{
 	
-	//notice 등록
-	public void noticeWrite(CommunityNoticeDTO cndto) {
+	//community 등록
+	public void noticeWrite(CommunityDTO cndto) {
 		openConnection();
 		try {
 			query = "insert into notice(notice_title,notice_content) "+
@@ -26,74 +25,87 @@ public class CommunityDAO extends DAO{
 		}
 	}
 	
-	//notice 검색
-	public ArrayList<CommunityNoticeDTO> getCommunityList(String board,String select,String search) {
-		ArrayList<CommunityNoticeDTO> res = new ArrayList<CommunityNoticeDTO>();
+	//community 등록
+	public void faqWrite(CommunityDTO cndto) {
+		openConnection();
+		try {
+			query = "insert into faq(faq_title,faq_content,iqc_no) "+
+					"values('"+cndto.getCommunityTitle()+"','"+cndto.getCommunityContent()+"','"+cndto.getIQCNo()+"');";
+			stmt = (Statement) conn.createStatement();
+			stmt.executeUpdate(query);
+		}catch (Exception e) {
+			System.out.println("notice 등록 오류발생");
+		}finally {
+			closeConnection();
+		}
+	}
+	
+	//community 검색
+	public ArrayList<CommunityDTO> getCommunityList(String board,String select,String search) {
+		ArrayList<CommunityDTO> res = new ArrayList<CommunityDTO>();
 		openConnection();
 		try {
 			query = "select * from "+board+" where "+select+" like '%"+search+"%';";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
+			System.out.println(query);
 			while(rs.next()) {
-				CommunityNoticeDTO ndto = new CommunityNoticeDTO();
+				CommunityDTO ndto = new CommunityDTO();
 				ndto.setCommunityNo(rs.getInt(board+"_no"));
 				ndto.setCommunityTitle(rs.getString(board+"_title"));
 				ndto.setCommunityContent(rs.getString(board+"_content"));
-				ndto.setCommunityViews(rs.getInt(board+"_views"));
-				ndto.setCommunityDate(rs.getTimestamp(board+"_date"));
+				if(board.equals("notice")) {
+					ndto.setCommunityViews(rs.getInt(board+"_views"));
+					ndto.setCommunityDate(rs.getTimestamp(board+"_date"));
+				}
+				if(board.equals("faq")) {
+					ndto.setIQCNo(rs.getInt("iqc_No"));
+				}
 				res.add(ndto);
 			}
 		}catch (Exception e) {
-			System.out.println("notice 검색 오류발생");
+			System.out.println("community 검색 오류발생");
 		}finally {
 			closeConnection();
 		}
 		return res;
 	}
-	//FAQ검색
-		public ArrayList<CommunityFAQDTO> getFAQList(String select,String search) {
-			ArrayList<CommunityFAQDTO> res = new ArrayList<CommunityFAQDTO>();
-			openConnection();
-			try {
-				query = "select * from faq where "+select+" like '%"+search+"%';";
-				stmt = (Statement) conn.createStatement();
-				ResultSet rs = stmt.executeQuery(query);
-				while(rs.next()) {
-					CommunityFAQDTO ndto = new CommunityFAQDTO();
-					ndto.setFaqNo((rs.getInt("faq_no")));
-					ndto.setFaqTitle(rs.getString("faq_title"));
-					ndto.setFaqContent(rs.getString("faq_content"));
-					ndto.setFaqIQCNo(rs.getInt("iqc_No"));
-					res.add(ndto);
-				}
-			}catch (Exception e) {
-				System.out.println("FAQ검색 오류발생");
-			}finally {
-				closeConnection();
-			}
-			return res;
-		}
 	
-	//notice 특정글 검색
-	public CommunityNoticeDTO getNoticePost(String no) {
-		CommunityNoticeDTO res = new CommunityNoticeDTO();
+	//community 특정글 검색
+	public CommunityDTO getCommunityPost(String board,String no) {
+		CommunityDTO res = new CommunityDTO();
 		openConnection();
 		try {
-			query = "select * from notice where notice_no="+no+";";
+			query = "select * from "+board+" where "+board+"_no="+no+";";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			
 			while(rs.next()) {
-				res.setCommunityNo(rs.getInt("notice_no"));
-				res.setCommunityTitle(rs.getString("notice_title"));
-				res.setCommunityContent(rs.getString("notice_content"));
+				res.setCommunityNo(rs.getInt(board+"_no"));
+				res.setCommunityTitle(rs.getString(board+"_title"));
+				res.setCommunityContent(rs.getString(board+"_content"));
 			}
 		}catch (Exception e) {
-			System.out.println("notice 특정글 검색 오류발생");
+			System.out.println("community 특정글 검색");
 		}finally {
 			closeConnection();
 		}
 		return res;
+	}
+	
+	//글 삭제
+	public void communityDelete(String board,int QNANo) {
+		openConnection();
+		try {
+			query = "delete from "+board+" where "+board+"_no="+QNANo+";";
+			System.out.println(query);
+			stmt = (Statement) conn.createStatement();
+			stmt.executeUpdate(query);
+		}catch (Exception e) {
+			System.out.println("글 삭제 오류발생");
+			e.printStackTrace();
+		}finally {
+			closeConnection();
+		}
 	}
 	
 	//조회수 상승
@@ -109,46 +121,6 @@ public class CommunityDAO extends DAO{
 		}finally {
 			closeConnection();
 		}
-	}
-	
-	//FAQ 등록
-	public void faqWrite(CommunityFAQDTO cfdto) {
-		openConnection();
-		try {
-			query = "insert into faq(faq_title,faq_content,iqc_no) "+
-					"values('"+cfdto.getFaqTitle()+"','"+cfdto.getFaqContent()+"',"+cfdto.getFaqIQCNo()+");";
-			System.out.println(query);
-			stmt = (Statement) conn.createStatement();
-			stmt.executeUpdate(query);
-		}catch (Exception e) {
-			System.out.println("faq 등록 오류발생");
-		}finally {
-			closeConnection();
-		}
-	}
-
-	
-	
-	//FAQ 특정글 검색
-	public CommunityFAQDTO getFAQPost(String no) {
-		CommunityFAQDTO res = new CommunityFAQDTO();
-		openConnection();
-		try {
-			query = "select * from faq where faq_no="+no+";";
-			stmt = (Statement) conn.createStatement();
-			ResultSet rs = stmt.executeQuery(query);
-				
-			while(rs.next()) {
-				res.setFaqNo(rs.getInt("faq_no"));
-				res.setFaqTitle(rs.getString("faq_title"));
-				res.setFaqContent(rs.getString("faq_content"));
-			}
-		}catch (Exception e) {
-			System.out.println("FAQ 특정글 검색 오류발생");
-		}finally {
-			closeConnection();
-		}
-		return res;
 	}
 	
 	//QNA 검색
@@ -258,21 +230,7 @@ public class CommunityDAO extends DAO{
 		}
 	}
 	
-	//글 삭제
-	public void communityDelete(String board,int QNANo) {
-		openConnection();
-		try {
-			query = "delete from "+board+" where "+board+"_no="+QNANo+";";
-			System.out.println(query);
-			stmt = (Statement) conn.createStatement();
-			stmt.executeUpdate(query);
-		}catch (Exception e) {
-			System.out.println("글 삭제 오류발생");
-			e.printStackTrace();
-		}finally {
-			closeConnection();
-		}
-	}
+	
 	
 	
 }

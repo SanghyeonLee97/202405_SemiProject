@@ -3,8 +3,7 @@ package controller.controller_module;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.community.CommunityFAQDTO;
-import DTO.community.CommunityNoticeDTO;
+import DTO.community.CommunityDTO;
 import model.CommandProsessor;
 import model.community.FAQWrite;
 import model.community.NoticeWrite;
@@ -18,7 +17,7 @@ public class Command_Etc extends Command_Parents{
 		//경로가 /noticeWrite.do라면
 		if(servletPath.equals("/noticeWrite.do")) {
 			//DTO생성 
-			CommunityNoticeDTO cndto = new CommunityNoticeDTO();
+			CommunityDTO cndto = new CommunityDTO();
 			//noticeTitle parameter와 noticeContent parameter를 받아 cndto에 넣는다
 			cndto.setCommunityTitle(req.getParameter("noticeTitle"));
 			cndto.setCommunityContent(req.getParameter("noticeContent"));
@@ -29,11 +28,11 @@ public class Command_Etc extends Command_Parents{
 		//경로가 /faqWrite.do라면
 		if(servletPath.equals("/faqWrite.do")) {
 			//DTO생성 
-			CommunityFAQDTO cfdto = new CommunityFAQDTO();
+			CommunityDTO cfdto = new CommunityDTO();
 			//title parameter와 content parameter와 정수변환한 category cndto parameter를 받아 cfdto에 넣는다
-			cfdto.setFaqTitle(req.getParameter("title"));
-			cfdto.setFaqContent(req.getParameter("content"));
-			cfdto.setFaqIQCNo(Integer.parseInt(req.getParameter("category")));
+			cfdto.setCommunityTitle(req.getParameter("title"));
+			cfdto.setCommunityContent(req.getParameter("content"));
+			cfdto.setIQCNo(Integer.parseInt(req.getParameter("category")));
 			//faq작성 업캐스팅
 			processor = new FAQWrite(cfdto);
 		}

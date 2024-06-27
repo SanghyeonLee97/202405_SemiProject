@@ -19,7 +19,7 @@
 <body>
 	<nav>
 		<button id=buttons onclick="location.href='/projectdengdeng/community/community_notice.jsp'"><h5>notice</h5></button>
-		<button id=buttons onclick="location.href='/projectdengdeng/community/community_FAQ.jsp'"><h5>FAQ</h5></button>
+		<button id=buttons onclick="location.href='/projectdengdeng/community/community_faq.jsp'"><h5>FAQ</h5></button>
 		<button id=buttons onclick="location.href='/projectdengdeng/community/community_QNA.jsp'"><h5>QNA</h5></button>
 		<button id=buttons onclick="location.href='/projectdengdeng/community/community_event_participate.jsp'"><h5>이벤트참여</h5></button>
 	</nav>

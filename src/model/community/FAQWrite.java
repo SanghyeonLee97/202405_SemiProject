@@ -3,14 +3,14 @@ package model.community;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.community.CommunityFAQDTO;
+import DTO.community.CommunityDTO;
 
 public class FAQWrite extends Community{
 	
-	CommunityFAQDTO cfdto = new CommunityFAQDTO();
+	CommunityDTO cfdto = new CommunityDTO();
 	
 	//faq에 입력할 정보객체를 불러오는 생성자
-	public FAQWrite(CommunityFAQDTO cfdto) {
+	public FAQWrite(CommunityDTO cfdto) {
 		this.cfdto = cfdto;
 	}
 

@@ -37,7 +37,7 @@
 				<option  value="<%=communityBoard %>_category">카테고리</option>
 				<option  value="<%=communityBoard %>_id">글쓴이</option>
 				<%
-					}else if(communityBoard.equals("FAQ")){
+					}else if(communityBoard.equals("faq")){
 				%>
 				<option  value="<%=communityBoard %>_category">카테고리</option>
 				<% } %>

@@ -2,7 +2,7 @@ package DTO.community;
 
 import java.sql.Timestamp;
 
-public class CommunityNoticeDTO {
+public class CommunityDTO {
 	private int communityNo;
 	private String communityTitle;
 	private String communityContent;

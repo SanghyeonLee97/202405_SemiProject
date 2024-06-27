@@ -16,7 +16,7 @@ public class NoticeRead extends Community{
 		//읽을 게시글 번호의 조회수상승
 		cdao.communityIncreaseViews(communityNoticeNo);
 		//읽을 게시글 번호의 게시글 정보를 불러와 read 객체에 저장
-		req.setAttribute("read", cdao.getNoticePost(communityNoticeNo));
+		req.setAttribute("read", cdao.getCommunityPost("notice",communityNoticeNo));
 		return "/community/community_notice_read.jsp";
 	}
 

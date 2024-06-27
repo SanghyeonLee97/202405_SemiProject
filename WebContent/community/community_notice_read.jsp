@@ -1,4 +1,4 @@
-<%@page import="DTO.community.CommunityNoticeDTO"%>
+<%@page import="DTO.community.CommunityDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
 </head>
 <body>
 <%
-	CommunityNoticeDTO ndto = (CommunityNoticeDTO)request.getAttribute("read");
+	CommunityDTO ndto = (CommunityDTO)request.getAttribute("read");
 %>
 	<main>
 		<%@ include file="main_nav.jsp" %>
