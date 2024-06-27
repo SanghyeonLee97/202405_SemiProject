@@ -3,14 +3,14 @@ package model.community;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.community.CommunityQNADTO;
+import DTO.community.CommunityDTO;
 
 public class QNAWrite extends Community{
 	
-	CommunityQNADTO cqdto = new CommunityQNADTO();
+	CommunityDTO cqdto = new CommunityDTO();
 	
 	//QNA에 입력할 정보객체를 불러오는 생성자
-	public QNAWrite(CommunityQNADTO cqdto) {
+	public QNAWrite(CommunityDTO cqdto) {
 		this.cqdto = cqdto;
 	}
 

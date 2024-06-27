@@ -32,14 +32,14 @@
 				<option  value="<%=communityBoard %>_title">제목</option>
 				<option  value="<%=communityBoard %>_content">내용</option>
 				<%
-					if(communityBoard.equals("QNA")){
+					if(communityBoard.equals("qna")){
 				%>
-				<option  value="<%=communityBoard %>_category">카테고리</option>
+				<option  value="iqc_no">카테고리</option>
 				<option  value="<%=communityBoard %>_id">글쓴이</option>
 				<%
 					}else if(communityBoard.equals("faq")){
 				%>
-				<option  value="<%=communityBoard %>_category">카테고리</option>
+				<option  value="iqc_no">카테고리</option>
 				<% } %>
 			</select>
 			<input type="text" name="search" value="">

@@ -9,6 +9,12 @@ public class CommunityDTO {
 	private int communityViews;
 	private Timestamp communityDate;
 	private int IQCNo;
+	private String customer_id;
+	private int customer_no;
+	private String communityfileurl;
+	private String communityimgurl;
+	private String communityanswer;
+	
 	public int getCommunityNo() {
 		return communityNo;
 	}
@@ -44,5 +50,35 @@ public class CommunityDTO {
 	}
 	public void setIQCNo(int iQCNo) {
 		IQCNo = iQCNo;
+	}
+	public String getCustomer_id() {
+		return customer_id;
+	}
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
+	}
+	public int getCustomer_no() {
+		return customer_no;
+	}
+	public void setCustomer_no(int customer_no) {
+		this.customer_no = customer_no;
+	}
+	public String getCommunityfileurl() {
+		return communityfileurl;
+	}
+	public void setCommunityfileurl(String communityfileurl) {
+		this.communityfileurl = communityfileurl;
+	}
+	public String getCommunityimgurl() {
+		return communityimgurl;
+	}
+	public void setCommunityimgurl(String communityimgurl) {
+		this.communityimgurl = communityimgurl;
+	}
+	public String getCommunityanswer() {
+		return communityanswer;
+	}
+	public void setCommunityanswer(String communityanswer) {
+		this.communityanswer = communityanswer;
 	}
 }

@@ -89,7 +89,7 @@
 		    <a class="nav-link" href="/projectdengdeng/community/community_event.jsp" style="color: black;">이벤트</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="/projectdengdeng/community/community_QNA.jsp" style="color: black;">고객문의</a>
+		    <a class="nav-link" href="/projectdengdeng/community/community_qna.jsp" style="color: black;">고객문의</a>
 		  </li>
 		</ul>
 	</article>		
