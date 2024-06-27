@@ -1,4 +1,4 @@
-<%@page import="DTO.community.CommunityNoticeDTO"%>
+<%@page import="DTO.community.CommunityDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
 </head>
 <body>
 <%
-	CommunityNoticeDTO ndto = (CommunityNoticeDTO)request.getAttribute("read");
+	CommunityDTO ndto = (CommunityDTO)request.getAttribute("read");
 %>
 	<main>
 		<%@ include file="main_nav.jsp" %>
@@ -45,15 +45,15 @@
 			<article>
 				<table border="1">
 					<tr>
-						<td id="notitle">제목</td><td><%=ndto.getNoticeTitle() %></td>
+						<td id="notitle">제목</td><td><%=ndto.getCommunityTitle() %></td>
 					</tr>
 					<tr>
 						<td id="nowriter">작성자</td><td>댕댕</td>
-						<%=ndto.getNoticeNo() %>
+						<%=ndto.getCommunityNo() %>
 					</tr>
 						</article>
 						<article>
-							<tr><td colspan="2"><p><%=ndto.getNoticeContent() %></p></td></tr>
+							<tr><td colspan="2"><p><%=ndto.getCommunityContent() %></p></td></tr>
 						</article>
 				</table>
 			<nav>
@@ -62,7 +62,7 @@
 					MemberDAO mdao = new MemberDAO();
 					if(mdao.adminChk((String)session.getAttribute("id"))){
 				%>
-				<button onclick="location.href='QNADelete.do?board=notice&no=<%=ndto.getNoticeNo() %>'">삭제하기</button>
+				<button onclick="location.href='QNADelete.do?board=notice&no=<%=ndto.getCommunityNo() %>'">삭제하기</button>
 				<% } %>
 			</nav>
 		</section>

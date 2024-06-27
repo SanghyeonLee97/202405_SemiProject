@@ -1,4 +1,4 @@
-<%@page import="DTO.community.CommunityFAQDTO"%>
+<%@page import="DTO.community.CommunityDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,17 +33,17 @@
 </head>
 <body>
 <%
-	CommunityFAQDTO cfdto = (CommunityFAQDTO)request.getAttribute("read");
+	CommunityDTO cfdto = (CommunityDTO)request.getAttribute("read");
 %>
 	<main>
 		<%@ include file="main_nav.jsp" %>
 		<section>
 			<table border="1">
 				<article>
-					<tr><td height="100px;"><%=cfdto.getFaqTitle() %></td></tr>
+					<tr><td height="100px;"><%=cfdto.getCommunityTitle() %></td></tr>
 				</article>
 				<article>
-					<tr><td><%=cfdto.getFaqContent() %></td></tr>
+					<tr><td><%=cfdto.getCommunityContent() %></td></tr>
 				</article>
 			</table>
 			<nav>
@@ -52,7 +52,7 @@
 					MemberDAO mdao = new MemberDAO();
 					if(mdao.adminChk((String)session.getAttribute("id"))){
 				%>
-				<button onclick="location.href='QNADelete.do?board=faq&no=<%=cfdto.getFaqNo() %>'">삭제하기</button>
+				<button onclick="location.href='QNADelete.do?board=faq&no=<%=cfdto.getCommunityNo() %>'">삭제하기</button>
 				<% } %>
 			</nav>
 		</section>
