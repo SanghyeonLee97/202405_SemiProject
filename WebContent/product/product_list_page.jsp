@@ -173,17 +173,11 @@ main>section>section {
 													<input type="hidden" name="product_no" value="<%= product.getProduct_no() %>">
 													<input type="hidden" name="isChecked" value="<%= isDibbed %>">
 													<button type="submit">
-														<%
-															if (isDibbed) {
-														%>
+														<% if (isDibbed) { %>
 																찜하기 취소
-														<%
-															} else {
-														%>
+														<% } else { %>
 																찜하기
-														<%
-															}
-														%>
+														<% } %>
 													</button>
 												</form>
 									<%

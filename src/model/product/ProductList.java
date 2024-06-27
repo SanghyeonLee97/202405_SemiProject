@@ -66,9 +66,9 @@ public class ProductList extends Product{
 	}
 
 	
-	private List<ProductDTO> getRecentlyViewedProducts(HttpServletRequest req){
+	private List<ProductDTO> getRecentlyViewedProducts(HttpServletRequest req) {
 		List<ProductDTO> recentlyViewedProducts = new ArrayList<ProductDTO>();
-		Cookie [] cookies = req.getCookies();
+		Cookie[] cookies = req.getCookies();
 		
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {

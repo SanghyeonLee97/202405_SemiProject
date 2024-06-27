@@ -3,9 +3,9 @@ package model.product;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -72,13 +72,13 @@ public class ProductDetail extends Product{
 		String cookieName = "recentlyViewedProducts";
 		String productInfo = product.getProduct_no() + "|" + product.getProduct_imgurl() + "|" + product.getProduct_name();
 		System.out.println("상품의정보확인: "+productInfo);
-		Queue<String> productQueue = new LinkedList<>();
+		Deque<String> productQueue = new LinkedList<>();
 		
 		//기존의 쿠키 읽기
 		Cookie[] cookies = req.getCookies();
-		if(cookies != null) {
-			for(Cookie cookie : cookies) {
-				if(cookieName.equals(cookie.getName())) {
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookieName.equals(cookie.getName())) {
 					try {
 						String cookieValue = URLDecoder.decode(cookie.getValue(), "utf-8");
 						for (String item : cookieValue.split(",")) {
@@ -92,11 +92,9 @@ public class ProductDetail extends Product{
 		}
 		
 		//Queue에 새로운 상품(쿠키) 추가
-		if(!productQueue.contains(productInfo)) {
-			if(productQueue.size() >= 3) {
-				productQueue.poll();
-			}
-			productQueue.add(productInfo);
+		productQueue.addFirst(productInfo);
+		if (productQueue.size() > 3) {
+			productQueue.removeLast();
 		}
 		
 		//Queue를 쿠키에 저장
