@@ -115,7 +115,7 @@ main>section>section {
 						for (CategoryDTO category : subCategoryList) {
 				%>
 							<div>
-								<a href="list.do?pc_no=<%= category.getPc_no() %>"><%= category.getPc_name() %></a>
+								<a href="list.do?pc_parent_no=<%=category.getPc_parent_no() %>&pc_no=<%= category.getPc_no() %>"><%= category.getPc_name() %></a>
 							</div>
 				<%
 						}

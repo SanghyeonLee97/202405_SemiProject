@@ -28,20 +28,23 @@ public class ProductList extends Product{
 		List<ProductDTO> productList = null;
 		List<CategoryDTO> subCategoryList = null;
 		
-		
-		if(pc_parent_no != null) {
+		//대분류 검색
+		if(pc_parent_no != null && pc_no != null) {
+			System.out.println(pc_no+"pc_no 실행");
+			productList = productDAO.getProductListbyPcNo(Integer.parseInt(pc_no));
+			subCategoryList = productDAO.getSubCategoryList(Integer.parseInt(pc_parent_no));
+			
+			session.setAttribute("pc_no", pc_no);
+			session.removeAttribute("pc_parent_no");
+			
+		//소분류 검색
+		} else if(pc_parent_no != null){
 			System.out.println("pc_parent_no 실행");
 			subCategoryList = productDAO.getSubCategoryList(Integer.parseInt(pc_parent_no));
 			productList = productDAO.getProductListByParentNo(Integer.parseInt(pc_parent_no));
 			
 			session.setAttribute("pc_parent_no", pc_parent_no);
 			session.removeAttribute("pc_no");
-		}else if(pc_no != null){
-			System.out.println(pc_no+"pc_no 실행");
-			productList = productDAO.getProductListbyPcNo(Integer.parseInt(pc_no));
-			
-			session.setAttribute("pc_no", pc_no);
-			session.removeAttribute("pc_parent_no");
 		}else {
 			System.out.println("pc_parent_no 값 없음!");
 		}

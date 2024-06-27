@@ -19,7 +19,7 @@ public class ProductDAO extends DAO{
 	
 	//sql쿼리문
 	private final String SUBCATEGORY_LIST =
-			"select pc_no, pc_name from product_category where pc_parent_no = ?";
+			"select pc_parent_no, pc_no, pc_name from product_category where pc_parent_no = ?";
 	private final String PARENT_NO_LIST =
 			"select p.product_no, p.product_imgurl, p.product_name, p.product_price from product p join product_category c on "
 			+ "p.pc_no = c.pc_no where c.pc_parent_no = ?";
@@ -123,6 +123,7 @@ public class ProductDAO extends DAO{
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				CategoryDTO category = new CategoryDTO();
+				category.setPc_parent_no(rs.getInt("pc_parent_no"));
 				category.setPc_no(rs.getInt("pc_no"));
 				category.setPc_name(rs.getString("pc_name"));
 				subCategoryList.add(category);
