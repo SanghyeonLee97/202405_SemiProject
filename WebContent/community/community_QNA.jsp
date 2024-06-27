@@ -68,7 +68,7 @@
 		ArrayList<CommunityQNADTO> QNAArr = new ArrayList();
 			
 		//게시판 종류 변수
-		String Communityboard="QNA";	//현재 qna게시판
+		String communityBoard="QNA";	//현재 qna게시판
 			
 		//검색 테이블속성 변수
 		String communitySelect="qna_title";	//기본속성은 title

@@ -42,21 +42,20 @@
 </style>
 </head>
 <body>
+	<%@ include file="body_before.jsp" %>
 	<%
-		CommunityDAO ndao = new CommunityDAO();
 		ArrayList<CommunityFAQDTO> FAQArr = new ArrayList();
 			
 		//게시판 종류 변수
-		String Communityboard="FAQ";	//현재 FAQ게시판
+		communityBoard="FAQ";	//현재 FAQ게시판
 			
-		//검색 테이블속성 변수
-		String communitySelect="faq_title";	//기본속성은 title
+		communitySelect="faq_title";	//기본속성은 title
+	%>
+	<%
 		if(request.getParameter("select")!=null){	//select파라미터가 있을시
 			communitySelect=request.getParameter("select");	//검색 테이블속성 변수를 select파라미터로
 		}
-			
-		//검색어 변수
-		String communitySearch="";	//기본 검색어는 없음
+		
 		if(request.getParameter("search")!=null){	//search파라미터가 있을시
 			communitySearch=request.getParameter("search");	//검색어 변수를 search파라미터로
 		}

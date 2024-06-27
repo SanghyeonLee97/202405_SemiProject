@@ -3,39 +3,46 @@ package DTO.community;
 import java.sql.Timestamp;
 
 public class CommunityNoticeDTO {
-	private int noticeNo;
-	private String noticeTitle;
-	private String noticeContent;
-	private int noticeViews;
-	private Timestamp noticeDate;
-	public int getNoticeNo() {
-		return noticeNo;
+	private int communityNo;
+	private String communityTitle;
+	private String communityContent;
+	private int communityViews;
+	private Timestamp communityDate;
+	private int IQCNo;
+	public int getCommunityNo() {
+		return communityNo;
 	}
-	public void setNoticeNo(int noticeNo) {
-		this.noticeNo = noticeNo;
+	public void setCommunityNo(int communityNo) {
+		this.communityNo = communityNo;
 	}
-	public String getNoticeTitle() {
-		return noticeTitle;
+	public String getCommunityTitle() {
+		return communityTitle;
 	}
-	public void setNoticeTitle(String noticeTitle) {
-		this.noticeTitle = noticeTitle;
+	public void setCommunityTitle(String communityTitle) {
+		this.communityTitle = communityTitle;
 	}
-	public String getNoticeContent() {
-		return noticeContent;
+	public String getCommunityContent() {
+		return communityContent;
 	}
-	public void setNoticeContent(String noticeContent) {
-		this.noticeContent = noticeContent;
+	public void setCommunityContent(String communityContent) {
+		this.communityContent = communityContent;
 	}
-	public int getNoticeViews() {
-		return noticeViews;
+	public int getCommunityViews() {
+		return communityViews;
 	}
-	public void setNoticeViews(int noticeViews) {
-		this.noticeViews = noticeViews;
+	public void setCommunityViews(int communityViews) {
+		this.communityViews = communityViews;
 	}
-	public Timestamp getNoticeDate() {
-		return noticeDate;
+	public Timestamp getCommunityDate() {
+		return communityDate;
 	}
-	public void setNoticeDate(Timestamp noticeDate) {
-		this.noticeDate = noticeDate;
+	public void setCommunityDate(Timestamp communityDate) {
+		this.communityDate = communityDate;
+	}
+	public int getIQCNo() {
+		return IQCNo;
+	}
+	public void setIQCNo(int iQCNo) {
+		IQCNo = iQCNo;
 	}
 }

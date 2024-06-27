@@ -16,7 +16,7 @@ public class CommunityDAO extends DAO{
 		openConnection();
 		try {
 			query = "insert into notice(notice_title,notice_content) "+
-					"values('"+cndto.getNoticeTitle()+"','"+cndto.getNoticeContent()+"');";
+					"values('"+cndto.getCommunityTitle()+"','"+cndto.getCommunityContent()+"');";
 			stmt = (Statement) conn.createStatement();
 			stmt.executeUpdate(query);
 		}catch (Exception e) {
@@ -27,20 +27,20 @@ public class CommunityDAO extends DAO{
 	}
 	
 	//notice 검색
-	public ArrayList<CommunityNoticeDTO> getNoticeList(String select,String search) {
+	public ArrayList<CommunityNoticeDTO> getCommunityList(String board,String select,String search) {
 		ArrayList<CommunityNoticeDTO> res = new ArrayList<CommunityNoticeDTO>();
 		openConnection();
 		try {
-			query = "select * from notice where "+select+" like '%"+search+"%';";
+			query = "select * from "+board+" where "+select+" like '%"+search+"%';";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				CommunityNoticeDTO ndto = new CommunityNoticeDTO();
-				ndto.setNoticeNo((rs.getInt("notice_No")));
-				ndto.setNoticeTitle(rs.getString("notice_title"));
-				ndto.setNoticeContent(rs.getString("notice_content"));
-				ndto.setNoticeViews(rs.getInt("notice_views"));
-				ndto.setNoticeDate(rs.getTimestamp("notice_date"));
+				ndto.setCommunityNo(rs.getInt(board+"_no"));
+				ndto.setCommunityTitle(rs.getString(board+"_title"));
+				ndto.setCommunityContent(rs.getString(board+"_content"));
+				ndto.setCommunityViews(rs.getInt(board+"_views"));
+				ndto.setCommunityDate(rs.getTimestamp(board+"_date"));
 				res.add(ndto);
 			}
 		}catch (Exception e) {
@@ -50,20 +50,43 @@ public class CommunityDAO extends DAO{
 		}
 		return res;
 	}
+	//FAQ검색
+		public ArrayList<CommunityFAQDTO> getFAQList(String select,String search) {
+			ArrayList<CommunityFAQDTO> res = new ArrayList<CommunityFAQDTO>();
+			openConnection();
+			try {
+				query = "select * from faq where "+select+" like '%"+search+"%';";
+				stmt = (Statement) conn.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
+				while(rs.next()) {
+					CommunityFAQDTO ndto = new CommunityFAQDTO();
+					ndto.setFaqNo((rs.getInt("faq_no")));
+					ndto.setFaqTitle(rs.getString("faq_title"));
+					ndto.setFaqContent(rs.getString("faq_content"));
+					ndto.setFaqIQCNo(rs.getInt("iqc_No"));
+					res.add(ndto);
+				}
+			}catch (Exception e) {
+				System.out.println("FAQ검색 오류발생");
+			}finally {
+				closeConnection();
+			}
+			return res;
+		}
 	
 	//notice 특정글 검색
 	public CommunityNoticeDTO getNoticePost(String no) {
 		CommunityNoticeDTO res = new CommunityNoticeDTO();
 		openConnection();
 		try {
-			query = "select * from notice where notice_No="+no+";";
+			query = "select * from notice where notice_no="+no+";";
 			stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			
 			while(rs.next()) {
-				res.setNoticeNo(rs.getInt("notice_No"));
-				res.setNoticeTitle(rs.getString("notice_title"));
-				res.setNoticeContent(rs.getString("notice_content"));
+				res.setCommunityNo(rs.getInt("notice_no"));
+				res.setCommunityTitle(rs.getString("notice_title"));
+				res.setCommunityContent(rs.getString("notice_content"));
 			}
 		}catch (Exception e) {
 			System.out.println("notice 특정글 검색 오류발생");
@@ -77,7 +100,7 @@ public class CommunityDAO extends DAO{
 	public void communityIncreaseViews(String no) {
 		openConnection();
 		try {
-			query = "update notice set notice_views=notice_views+1 where notice_No="+no+";";
+			query = "update notice set notice_views=notice_views+1 where notice_no="+no+";";
 			stmt = (Statement) conn.createStatement();
 			stmt.executeUpdate(query);
 			
@@ -104,29 +127,7 @@ public class CommunityDAO extends DAO{
 		}
 	}
 
-	//FAQ검색
-	public ArrayList<CommunityFAQDTO> getFAQList(String select,String search) {
-		ArrayList<CommunityFAQDTO> res = new ArrayList<CommunityFAQDTO>();
-		openConnection();
-		try {
-			query = "select * from faq where "+select+" like '%"+search+"%';";
-			stmt = (Statement) conn.createStatement();
-			ResultSet rs = stmt.executeQuery(query);
-			while(rs.next()) {
-				CommunityFAQDTO ndto = new CommunityFAQDTO();
-				ndto.setFaqNo((rs.getInt("faq_no")));
-				ndto.setFaqTitle(rs.getString("faq_title"));
-				ndto.setFaqContent(rs.getString("faq_content"));
-				ndto.setFaqIQCNo(rs.getInt("iqc_No"));
-				res.add(ndto);
-			}
-		}catch (Exception e) {
-			System.out.println("FAQ검색 오류발생");
-		}finally {
-			closeConnection();
-		}
-		return res;
-	}
+	
 	
 	//FAQ 특정글 검색
 	public CommunityFAQDTO getFAQPost(String no) {

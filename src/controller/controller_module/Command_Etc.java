@@ -20,8 +20,8 @@ public class Command_Etc extends Command_Parents{
 			//DTO생성 
 			CommunityNoticeDTO cndto = new CommunityNoticeDTO();
 			//noticeTitle parameter와 noticeContent parameter를 받아 cndto에 넣는다
-			cndto.setNoticeTitle(req.getParameter("noticeTitle"));
-			cndto.setNoticeContent(req.getParameter("noticeContent"));
+			cndto.setCommunityTitle(req.getParameter("noticeTitle"));
+			cndto.setCommunityContent(req.getParameter("noticeContent"));
 			//notice작성 업캐스팅
 			processor = new NoticeWrite(cndto);
 		}

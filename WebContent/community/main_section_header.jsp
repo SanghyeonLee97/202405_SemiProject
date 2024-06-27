@@ -27,19 +27,19 @@
 </head>
 <body>
 	<header>
-		<form action="/projectdengdeng/community/community_<%=Communityboard %>.jsp">
+		<form action="/projectdengdeng/community/community_<%=communityBoard %>.jsp">
 			<select name="select">
-				<option  value="<%=Communityboard %>_title">제목</option>
-				<option  value="<%=Communityboard %>_content">내용</option>
+				<option  value="<%=communityBoard %>_title">제목</option>
+				<option  value="<%=communityBoard %>_content">내용</option>
 				<%
-					if(Communityboard.equals("QNA")){
+					if(communityBoard.equals("QNA")){
 				%>
-				<option  value="<%=Communityboard %>_category">카테고리</option>
-				<option  value="<%=Communityboard %>_id">글쓴이</option>
+				<option  value="<%=communityBoard %>_category">카테고리</option>
+				<option  value="<%=communityBoard %>_id">글쓴이</option>
 				<%
-					}else if(Communityboard.equals("FAQ")){
+					}else if(communityBoard.equals("FAQ")){
 				%>
-				<option  value="<%=Communityboard %>_category">카테고리</option>
+				<option  value="<%=communityBoard %>_category">카테고리</option>
 				<% } %>
 			</select>
 			<input type="text" name="search" value="">
