@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 <link href="../css/mypage.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	section>article{
-		height: 160px;
+		height: auto;
 	}
 </style>
 </head>
@@ -19,8 +20,15 @@
 		<section>
 			<%@ include file="./mypage_module/mypage_menu_list.jsp" %>
 			<section>
-				<header>section-section-header</header>
-				<article>section-section-article</article>
+				<header>찜한 상품 목록</header>
+				<article>
+					<c:forEach var="dibsList" items="${dibsList }">
+						<img src="${dibsList.product_imgurl }" width="100px;">
+						<p>${dibsList.product_name }</p>
+						<p>${dibsList.product_price }</p>
+					</c:forEach>
+					
+				</article>
 			</section>
 			<div style="clear: both;"></div>
 		</section>

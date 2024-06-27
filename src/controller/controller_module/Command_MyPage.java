@@ -10,6 +10,7 @@ import model.CommandProsessor;
 import model.mypage.Cancelrefund;
 import model.mypage.CartList;
 import model.mypage.DeleteCart;
+import model.mypage.DibsList;
 import model.mypage.MypageCoupon;
 import model.mypage.MypageReserve;
 import model.mypage.MypageReviewList;
@@ -130,12 +131,17 @@ public class Command_MyPage extends Command_Parents{
 			//리뷰 작성 업캐스팅
 			processor = new MypageWriteReview();
 		}
-		
+		//경로가 /mypage/cartList.do라면
 		if(servletPath.equals("/mypage/cartList.do")) {
 			processor = new CartList();
 		}
+		//경로가 /mypage/deleteCart.do라면
 		if(servletPath.equals("/mypage/deleteCart.do")) {
 			processor = new DeleteCart();
+		}
+		//경로가 /mypage/deleteCart.do라면
+		if(servletPath.equals("/mypage/dibsList.do")) {
+			processor = new DibsList();
 		}
 		return processor;
 	}
