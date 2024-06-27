@@ -13,13 +13,13 @@ import model.mypage.DeleteCart;
 import model.mypage.DeleteDibs;
 import model.mypage.DibsList;
 import model.mypage.MypageCoupon;
-import model.mypage.MypageInsertCart;
 import model.mypage.MypageReserve;
 import model.mypage.MypageReviewList;
 import model.mypage.MypageWriteReview;
 import model.mypage.ProductInquiry;
 import model.mypage.ProductInquiryList;
 import model.mypage.UpdateInfo;
+import model.product.InsertToCart;
 
 //mypage 경로를 처리
 public class Command_MyPage extends Command_Parents{
@@ -145,9 +145,9 @@ public class Command_MyPage extends Command_Parents{
 		if(servletPath.equals("/mypage/dibsList.do")) {
 			processor = new DibsList();
 		}
-		//경로가 /mypage/mypageInsertCart.do라면
-		if(servletPath.equals("/mypage/mypageInsertCart.do")) {
-			processor = new MypageInsertCart();
+		//경로가 /mypage/insertCart.do라면
+		if(servletPath.equals("/mypage/insertCart.do")) {
+			processor = new InsertToCart();
 		}
 		//경로가 /mypage/deleteDibs.do라면
 		if(servletPath.equals("/mypage/deleteDibs.do")) {

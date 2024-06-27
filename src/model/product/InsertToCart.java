@@ -13,24 +13,34 @@ public class InsertToCart extends Product{
 		session = req.getSession();
 		String id = (String)session.getAttribute("id");
 		String customerNo = (String)session.getAttribute("no");
+		int productQuantity = 0;
+		boolean isSuccess = false;
+		String returnURL = null;
 		if (id == null || customerNo == null) {
 			resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);	//401에러
 			return "/member/login.jsp";
 		}
 		
-		//파라미터 가져오기
-		int productNo = Integer.parseInt(req.getParameter("product_no"));
-		int productQuantity = Integer.parseInt(req.getParameter("product_quantity"));
-		
-		//장바구니에 추가
-		productDAO = new ProductDAO();
-		boolean isSuccess = productDAO.addToCart(Integer.parseInt(customerNo), productNo, productQuantity);
-		
-		if(isSuccess) {
-			return "details.do?product_no="+productNo;
-		}else {
-			System.out.println("장바구니에 추가 실패");
-			return null;
+		//예외처리 (mypage에서 오는경우 수량을 받아오지 못해 NullPointerException 발생)
+		try {
+			//product_page에서 요청된 경우
+			int productNo = Integer.parseInt(req.getParameter("product_no"));
+			productQuantity = Integer.parseInt(req.getParameter("product_quantity"));
+			if(productQuantity >= 1) {
+				isSuccess = productDAO.addToCart(Integer.parseInt(customerNo), productNo, productQuantity);
+				if(isSuccess) {
+					returnURL = "details.do?product_no="+productNo;
+				}
+			}
+		} catch (Exception e) {
+			int productNo = Integer.parseInt(req.getParameter("product_no"));
+			//mypage 찜하기에서 오는 요청일 경우(수량 없음)
+			productQuantity = 1;
+			isSuccess = productDAO.addToCart(Integer.parseInt(customerNo), productNo, productQuantity);
+			if(isSuccess) {
+				returnURL = "/mypage/dibsList.do";
+			}
 		}
+		return returnURL;
 	}
 }

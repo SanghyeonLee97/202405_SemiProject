@@ -56,7 +56,7 @@ button[type=submit]{
 											<input type="hidden" name="product_no" value="${dibsList.product_no }">
 											<button type="submit">하트 취소</button>
 										</form>
-										<form action="mypageInsertCart.do" method="post" onsubmit="return confirm('장바구니에 추가하시겠습니까?')">
+										<form action="insertCart.do" method="post" onsubmit="return confirm('장바구니에 추가하시겠습니까?')">
 											<input type="hidden" name="product_no" value="${dibsList.product_no }">
 											<button type="submit">장바구니 담기</button>
 										</form>
