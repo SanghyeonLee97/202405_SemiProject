@@ -1,3 +1,6 @@
+<%@page import="DTO.product.ProductDTO"%>
+<%@page import="DTO.product.CartDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,8 +16,9 @@
   src="https://code.jquery.com/jquery-3.7.1.js"
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
-
+<script src="./product_js/product_page.js"></script>
 </head>
+
 <body>
 	<main>
 		<section>
@@ -44,8 +48,16 @@
 					</div>
 				</article>
 				<article>
-					<button id="productbtb" onclick="addToCart()">장바구니 추가</button>
-					<button id="productbtb" onclick="buyNow()">구매하기</button>
+					<c:set var="isInCart" value="false" />
+					<c:if test="${not empty cartList}">
+						<c:forEach var="item" items="${cartList}">
+							<c:if test="${item.product_no == product.product_no}">
+								<c:set var="isInCart" value="true" />
+							</c:if>
+						</c:forEach>
+					</c:if>
+					<button id="cartbtb" onclick="addToCart()">장바구니 추가</button>
+					<button id="buynowbtb" onclick="buyNow()">구매하기</button>
 				</article>
 			</section>
 			<div style="clear: both;"></div>
@@ -183,10 +195,63 @@
 			</article>
 		</section>
 	</main>
-<script type="text/javascript">
-let productPrice = ${product.product_price};
-let productNo = ${product.product_no};
-</script>
-<script src="./product_js/product_page.js"></script>
+	<script type="text/javascript">
+	let isInCart = ${isInCart};
+	$(document).ready(function(){
+		if(isInCart){
+			$('#cartbtb').text("장바구니 삭제");
+			$('#cartbtb').attr("onclick", "removeFromCart()");
+		}
+	});
+	</script>
+	<script type="text/javascript">
+	let productPrice = ${product.product_price};
+	let productNo = ${product.product_no};
+	
+	function addToCart() {
+		let quantity = $("#quantity").val();
+	    $.ajax({
+	        type: "POST",
+	        url: "insertCart.do",
+	        data: {
+	            product_no: productNo,
+	            product_quantity: quantity
+	        },
+	        success: function(response) {
+	            alert("장바구니에 추가되었습니다.");
+	            $("#cartbtb").text("장바구니 삭제");
+	            $("#cartbtb").attr("onclick", "removeFromCart()");
+	        },
+	        error: function(xhr, status, error) {
+	        	if (xhr.status === 401){
+	        		alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+	        		window.location.href = "/projectdengdeng/member/login.jsp";
+	        	}else{
+	        		console.error("AJAX 호출 오류 발생", status, error);
+	        	}
+	            
+	        }
+	    });
+	}
+	
+	function removeFromCart() {
+	    $.ajax({
+	        type: "POST",
+	        url: "/projectdengdeng/mypage/deleteCart.do",
+	        data: {
+	            product_no: productNo
+	        },
+	        success: function(response) {
+	            alert("장바구니에서 삭제되었습니다.");
+	            $("#cartbtb").text("장바구니 추가");
+	            $("#cartbtb").attr("onclick", "addToCart()");
+	        },
+	        error: function(xhr, status, error) {
+	            console.error("AJAX 호출 오류 발생", status, error);
+	        }
+	    });
+	}
+	</script>
+	
 </body>
 </html>

@@ -1,3 +1,7 @@
+<%@page import="java.util.Random"%>
+<%@page import="DTO.product.ProductDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.Temp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,18 +13,18 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 <link href="/projectdengdeng/css/style2.css?after" rel="stylesheet" type="text/css">
 <style type="text/css">
-	main>section{
-		
+	body{
+		overflow-x: hidden;
 	}
 	main>section:first-child{
-		width: 100%; height: 360px;
+		margin-left: calc(-50vw + 50%);
+		width: 100vw;
+		height: 360px;
 	}
 	main>section:last-child{
 		margin-top: 20px;
 	}
 	main>section>article{
-	
-	
 		width: 100%; height: 250px;
 		margin-top: 20px;
 		padding : 0px;
@@ -44,6 +48,11 @@
 </head>
 <body>
 	<%
+		int count = 4;
+		Temp temp = new Temp();
+		ArrayList<ProductDTO> pcArr1 = new ArrayList();
+		int a[] = new int[count];
+		Random r = new Random();
 		MemberDAO mdao = new MemberDAO();
 		if(session.getAttribute("id")!=null){
 			String id = (String)session.getAttribute("id");
@@ -94,11 +103,27 @@
 		</section>
 		<section>
 			<article>
-			<h4>사료추천</h4>
-					<div><img src="/projectdengdeng/imagefile/image1.png" width="150px" height="150px" ><a href="">프리미엄사료<br>50900원</a></div>
-					<div><img src="/projectdengdeng/imagefile/image3.png" width="150px" height="150px"><a href="">어덜트사료<br>32000원</a></div>
-					<div><img src="/projectdengdeng/imagefile/image4.png" width="150px" height="150px"><a href="">소프트사료<br>20900원</a></div>
-					<div style="margin-right: 0"><img src="/projectdengdeng/imagefile/image5.png" width="150px" height="150px"><a href="">소프트사료<br>20900원</a></div>
+				<h4>사료추천</h4>
+				<%
+					pcArr1 = temp.getMypageMain(1);
+					for(int i=0; i<count; i++){
+						a[i] = r.nextInt(pcArr1.size());
+						for(int j=0; j<i; j++){
+							if(a[i] == a[j]){
+								i--;
+							}
+						}
+					}
+					for(int i=0; i<count; i++){
+				%>
+				<div>
+					<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" width="150px" height="150px" >
+					<a href=""><%=pcArr1.get(a[i]).getProduct_name() %><br><%=pcArr1.get(a[i]).getProduct_price() %>원</a>
+				</div>
+				<%
+					}
+				
+				%>
 			</article>
 			<article>
 			<h4>간식추천</h4>

@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../css/style2.css" rel="stylesheet" type="text/css">
-<link href="../css/mypage.css?after" rel="stylesheet" type="text/css">
+<link href="../css/style2.css?after" rel="stylesheet" type="text/css">
+<link href="../css/mypage.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	main>section{
 		font-weight: bolder;

@@ -3,23 +3,31 @@ package model.product;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.ReviewDTO;
+import DTO.product.CartDTO;
 import DTO.product.ProductDTO;
 import DTO.product.ProductQnaDTO;
+import dao.MyPageDAO;
 import dao.ProductDAO;
 
 public class ProductDetail extends Product{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
+		//세션확인
+		session = req.getSession();
+		String id = (String)session.getAttribute("id");
+		String customerNo = (String)session.getAttribute("no");
+		
+		
 		int product_no = Integer.parseInt(req.getParameter("product_no"));
 		
 		//상품정보 조회
@@ -51,11 +59,21 @@ public class ProductDetail extends Product{
 		int qnaCount = productDAO.getQNACount(product_no);
 		int qnaPageCount = (int)Math.ceil((double)qnaCount / qnaPageSize);
 		
+		//장바구니 확인
+		MyPageDAO mypageDAO = new MyPageDAO();
+		if(customerNo != null) {
+			List<CartDTO> cartList = mypageDAO.getCartList(Integer.parseInt(customerNo));
+			req.setAttribute("cartList", cartList);
+		}
+		
+
+		
 		//지금 클릭하여 조회하는 상품을 최근 본 상품에 추가해야함
 		saveProductToCookie(req, resp, cookieProduct);
 		
 		req.setAttribute("product", product);
 		req.setAttribute("avgRating", avgRating);
+		
 		
 		req.setAttribute("reviewList", reviewList);
 		req.setAttribute("reviewPage", reviewPage);
@@ -72,13 +90,14 @@ public class ProductDetail extends Product{
 		String cookieName = "recentlyViewedProducts";
 		String productInfo = product.getProduct_no() + "|" + product.getProduct_imgurl() + "|" + product.getProduct_name();
 		System.out.println("상품의정보확인: "+productInfo);
-		Queue<String> productQueue = new LinkedList<>();
+		
+		Deque<String> productQueue = new LinkedList<>();
 		
 		//기존의 쿠키 읽기
 		Cookie[] cookies = req.getCookies();
-		if(cookies != null) {
-			for(Cookie cookie : cookies) {
-				if(cookieName.equals(cookie.getName())) {
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookieName.equals(cookie.getName())) {
 					try {
 						String cookieValue = URLDecoder.decode(cookie.getValue(), "utf-8");
 						for (String item : cookieValue.split(",")) {
@@ -91,12 +110,15 @@ public class ProductDetail extends Product{
 			}
 		}
 		
+		
+		//Queue에 상품이 중복되는 경우 제거
+		productQueue.remove(productInfo);
 		//Queue에 새로운 상품(쿠키) 추가
-		if(!productQueue.contains(productInfo)) {
-			if(productQueue.size() >= 3) {
-				productQueue.poll();
-			}
-			productQueue.add(productInfo);
+		productQueue.addFirst(productInfo);
+		
+		// 크기 제한을 초과할 경우 마지막 항목 제거
+		if (productQueue.size() > 3) {
+			productQueue.removeLast();
 		}
 		
 		//Queue를 쿠키에 저장

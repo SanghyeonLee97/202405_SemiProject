@@ -18,7 +18,7 @@
 		width: 50px;
 		height: 30px;
 		margin-right : 15px;
-		background: yellow;
+		background: #FAFAD2;
 		border: none;
 		margin-top: 15px;
 	

@@ -19,7 +19,7 @@
 	<aside>
 		<h5>My쇼핑</h5>
 		<ul class="menu_list">
-			<li><a href="#">하트</a></li>
+			<li><a href="dibsList.do">하트</a></li>
 			<li><a href="cartList.do">장바구니</a></li>
 			<li><a href="cancelrefund.do">주문 취소</a></li>
 			<li><a href="productinquirylist.do">1:1문의</a></li>

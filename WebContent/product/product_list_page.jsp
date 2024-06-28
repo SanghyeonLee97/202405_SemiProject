@@ -2,9 +2,6 @@
 <%@page import="DTO.product.ProductDTO"%>
 <%@page import="DTO.CategoryDTO"%>
 <%@page import="java.util.List"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -112,89 +109,139 @@ main>section>section {
 		<section>
 			<aside>
 				<header>상품분류</header>
-				<c:if test="${not empty subCategoryList }">
-					<c:forEach var="category" items="${subCategoryList }">
-						<div>
-							<a href="list.do?pc_no=${category.pc_no }">${category.pc_name }</a>
-						</div>
-					</c:forEach>
-				</c:if>
-				<c:if test="${empty subCategoryList }">
-					<p>상품리스트 없음</p>
-				</c:if>
+				<%
+					List<CategoryDTO> subCategoryList = (List<CategoryDTO>) request.getAttribute("subCategoryList");
+					if (subCategoryList != null && !subCategoryList.isEmpty()) {
+						for (CategoryDTO category : subCategoryList) {
+				%>
+							<div>
+								<a href="list.do?pc_parent_no=<%=category.getPc_parent_no() %>&pc_no=<%= category.getPc_no() %>"><%= category.getPc_name() %></a>
+							</div>
+				<%
+						}
+					} else {
+				%>
+						<p>상품리스트 없음</p>
+				<%
+					}
+				%>
 			</aside>
 			<section>
-				<c:if test="${not empty productList }">
-					<c:set var="maxProductsPerPage" value="16" />
-					<c:set var="productCount" value="${fn:length(productList)}"/>
-					<c:set var="currentPage" value="${param.page != null ? param.page : 1}"/>
-					<c:set var="start" value="${(currentPage - 1) * maxProductsPerPage}"/>
-					<c:set var="end" value="${start + maxProductsPerPage < productCount ? start + maxProductsPerPage : productCount}"/>
-					<c:forEach var="product" begin="${start}" end="${end - 1}" items="${productList}">
-						<c:set var="isDibbed" value="false"/>
-						<c:if test="${not empty dibsList}">
-							<c:forEach var="dib" items="${dibsList}">
-								<c:if test="${dib.product_no == product.product_no}">
-									<c:set var="isDibbed" value="true"/>
-								</c:if>
-							</c:forEach>
-						</c:if>	
-						<div class="product-card">
-							<a href="details.do?product_no=${product.product_no}">
-								<img src="${product.product_imgurl}">
-								<h5>${product.product_name}</h5>
-								<p>
-									${product.product_price}원&nbsp;&nbsp;&nbsp;
-								</p>
-							</a>
-							<c:if test="${not empty sessionScope.no }">
-								<form method="post" action="selectDibs.do">
-									<input type="hidden" name="product_no" value="${product.product_no}">
-									<input type="hidden" name="isChecked" value="${isDibbed}">
-									<button type="submit">
-										<c:choose>
-											<c:when test="${isDibbed }">찜하기 취소</c:when>
-											<c:otherwise>찜하기</c:otherwise>
-										</c:choose>
-									</button>
-								</form>
-							</c:if>
-						</div>
-					</c:forEach>
-				</c:if>
+				<%
+					List<ProductDTO> productList = (List<ProductDTO>) request.getAttribute("productList");
+					if (productList != null && !productList.isEmpty()) {
+						int maxProductsPerPage = 16;
+						int productCount = productList.size();
+						int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
+						if (currentPage < 1) {
+							currentPage = 1;
+						}
+						int start = (currentPage - 1) * maxProductsPerPage;
+						if (start < 0) {
+							start = 0;
+						}
+						int end = Math.min(start + maxProductsPerPage, productCount);
+				%>
+						<%
+							for (int i = start; i < end; i++) {
+								ProductDTO product = productList.get(i);
+								boolean isDibbed = false;
+								List<CartDTO> dibsList = (List<CartDTO>) request.getAttribute("dibsList");
+								if (dibsList != null) {
+									for (CartDTO dib : dibsList) {
+										if (dib.getProduct_no() == product.getProduct_no()) {
+											isDibbed = true;
+											break;
+										}
+									}
+								}
+						%>
+								<div class="product-card">
+									<a href="details.do?product_no=<%= product.getProduct_no() %>">
+										<img src="<%= product.getProduct_imgurl() %>">
+										<h5><%= product.getProduct_name() %></h5>
+										<p>
+											<%= product.getProduct_price() %>원&nbsp;&nbsp;&nbsp;
+										</p>
+									</a>
+									<%
+										String customerNo = (String) session.getAttribute("no");
+										if (customerNo != null) {
+											// Form for selecting dibs
+									%>
+												<form method="post" action="selectDibs.do">
+													<input type="hidden" name="product_no" value="<%= product.getProduct_no() %>">
+													<input type="hidden" name="isChecked" value="<%= isDibbed %>">
+													<button type="submit">
+														<% if (isDibbed) { %>
+																찜하기 취소
+														<% } else { %>
+																찜하기
+														<% } %>
+													</button>
+												</form>
+									<%
+										}
+									%>
+								</div>
+						<%
+							}
+						%>
+				<%
+					} else {
+				%>
+						<p>상품이 없습니다.</p>
+				<%
+					}
+				%>
 			</section>
 			<aside>
                 <h4>최근 본 상품</h4>
-                <c:if test="${not empty recentlyViewedProducts }">
-                	<c:forEach var="product" items="${recentlyViewedProducts }">
-                		<div class="recent-product">
-		                	<figure style="text-align: center;">
-		                    <a href="details.do?product_no=${product.product_no}">
-		                        <img src="${product.product_imgurl}" alt="Product Img" width="180px">
-		                        <figcaption>${product.product_name}</figcaption>
-		                    </a>
-		                    </figure>
-		                </div>
-                	</c:forEach>
-                </c:if>
-				<c:if test="${empty recentlyViewedProducts}">
-					<p>최근 본 상품이 없습니다.</p>
-				</c:if>
+                <%
+                	List<ProductDTO> recentlyViewedProducts = (List<ProductDTO>) request.getAttribute("recentlyViewedProducts");
+                	if (recentlyViewedProducts != null && !recentlyViewedProducts.isEmpty()) {
+                		for (ProductDTO product : recentlyViewedProducts) {
+                %>
+                			<div class="recent-product">
+			                	<figure style="text-align: center;">
+			                    <a href="details.do?product_no=<%= product.getProduct_no() %>">
+			                        <img src="<%= product.getProduct_imgurl() %>" alt="Product Img" width="180px">
+			                        <figcaption><%= product.getProduct_name() %></figcaption>
+			                    </a>
+			                    </figure>
+			                </div>
+                <%
+                		}
+                	} else {
+                %>
+                		<p>최근 본 상품이 없습니다.</p>
+                <%
+                	}
+                %>
             </aside>
 		</section>
 	</main>
 	<nav>
+		<%
+			int maxProductsPerPage = 16;
+			int productCount = (productList != null) ? productList.size() : 0;
+			int totalPages = (productCount + maxProductsPerPage - 1) / maxProductsPerPage;
+			int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
+		%>
 		<ul class="pagination">
-			<c:set var="totalPages" value="${(productCount + maxProductsPerPage - 1) / maxProductsPerPage}"/>
-			<c:forEach var="i" begin="1" end="${totalPages}">
-				<li class="page-item ${i == currentPage ? 'active' : ''}">
-					<a class="page-link" href="?page=${i}
-							<c:if test="${not empty param.pc_parent_no}">&pc_parent_no=${param.pc_parent_no}</c:if>
-							<c:if test="${not empty param.pc_no}">&pc_no=${param.pc_no}</c:if>">
-						${i}
-					</a>
-				</li>
-			</c:forEach>
+			<%
+				for (int i = 1; i <= totalPages; i++) {
+			%>
+					<li class="page-item <%= (i == currentPage) ? "active" : "" %>">
+						<a class="page-link" href="?page=<%= i %>
+								<%= (request.getParameter("pc_parent_no") != null) ? "&pc_parent_no=" + request.getParameter("pc_parent_no") : "" %>
+								<%= (request.getParameter("pc_no") != null) ? "&pc_no=" + request.getParameter("pc_no") : "" %>">
+							<%= i %>
+						</a>
+					</li>
+			<%
+				}
+			%>
 		</ul>
 	</nav>
 	<script type="text/javascript">

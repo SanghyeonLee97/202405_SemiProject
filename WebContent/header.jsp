@@ -15,7 +15,9 @@
 		position: relative;
 	}
 	body>article{
-		background-color: #ffEB5A;
+		border-top: 1px solid #e7e7e7;
+		border-bottom: 1px solid #e7e7e7;
+		font-weight: bolder;
 		
 	}
 	header>section{
@@ -52,7 +54,7 @@
 			
 			<div>
 				<%=session.getAttribute("id") %>님 환영함
-				<a href="/projectdengdeng/mypage/mypage_main.jsp" style="color: black;">
+				<a href="/projectdengdeng/mypage/mypage_main.jsp">
 					<img src="/projectdengdeng/imagefile/login2.png">마이페이지
 				</a>
 				<a href="logout.do" >로그아웃</a>
@@ -89,7 +91,7 @@
 		    <a class="nav-link" href="/projectdengdeng/community/community_event.jsp" style="color: black;">이벤트</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="/projectdengdeng/community/community_QNA.jsp" style="color: black;">고객문의</a>
+		    <a class="nav-link" href="/projectdengdeng/community/community_qna.jsp" style="color: black;">고객문의</a>
 		  </li>
 		</ul>
 	</article>		

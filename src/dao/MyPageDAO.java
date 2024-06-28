@@ -351,4 +351,28 @@ public class MyPageDAO extends DAO{
 		}
 		return isDeleted;
 	}
+	
+	//상품번호와 회원번호로 해당하는 cart_no 불러오기
+	public long getCartNo(long product_no, long customer_no) {
+		long cart_no = 0;
+		
+		try {
+			openConnection();
+			query = "select cart_no from cart where customer_no = ? and product_no = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setLong(1, customer_no);
+			pstmt.setLong(2, product_no);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				cart_no = rs.getLong(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return cart_no;
+	}
 }

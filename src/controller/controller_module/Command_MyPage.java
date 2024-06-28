@@ -10,6 +10,8 @@ import model.CommandProsessor;
 import model.mypage.Cancelrefund;
 import model.mypage.CartList;
 import model.mypage.DeleteCart;
+import model.mypage.DeleteDibs;
+import model.mypage.DibsList;
 import model.mypage.MypageCoupon;
 import model.mypage.MypageReserve;
 import model.mypage.MypageReviewList;
@@ -17,6 +19,7 @@ import model.mypage.MypageWriteReview;
 import model.mypage.ProductInquiry;
 import model.mypage.ProductInquiryList;
 import model.mypage.UpdateInfo;
+import model.product.InsertToCart;
 
 //mypage 경로를 처리
 public class Command_MyPage extends Command_Parents{
@@ -130,12 +133,25 @@ public class Command_MyPage extends Command_Parents{
 			//리뷰 작성 업캐스팅
 			processor = new MypageWriteReview();
 		}
-		
+		//경로가 /mypage/cartList.do라면
 		if(servletPath.equals("/mypage/cartList.do")) {
 			processor = new CartList();
 		}
+		//경로가 /mypage/deleteCart.do라면
 		if(servletPath.equals("/mypage/deleteCart.do")) {
 			processor = new DeleteCart();
+		}
+		//경로가 /mypage/deleteCart.do라면
+		if(servletPath.equals("/mypage/dibsList.do")) {
+			processor = new DibsList();
+		}
+		//경로가 /mypage/insertCart.do라면
+		if(servletPath.equals("/mypage/insertCart.do")) {
+			processor = new InsertToCart();
+		}
+		//경로가 /mypage/deleteDibs.do라면
+		if(servletPath.equals("/mypage/deleteDibs.do")) {
+			processor = new DeleteDibs();
 		}
 		return processor;
 	}
