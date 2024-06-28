@@ -306,4 +306,38 @@ insert into product
 ('하나로 속기저귀(리필기저귀)30매 중형 X12개(1박스)', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0106.png', 59800, 100, 'details', 'size', 'color', '와우한빛', null,
  '대한민국', null, 18);
 
+-- 배변봉투
+insert into product
+(product_name,product_imgurl,product_price,product_stock,product_detail,product_size,product_color,maker,product_mfd,product_poo,product_epd,pc_no)
+ values
+('똥츄 리필X20개', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0201.png', 41000, 100, 'details', 'size', 'color', '펫더맨', null,
+ '중국', null, 19),
+('댕댕이 펫티켓 리필용 배변봉투 18롤 세트 (그린)', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0202.png', 24400, 100, 'details', 'size', 'color', '(주)Tree', null,
+ '중국', null, 19),
+('댕댕이 펫티켓 리필용 배변봉투 케이스세트 18롤 (그린)', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0203.png', 23000, 100, 'details', 'size', 'color', '(주)Tree', null,
+ '중국', null, 19),
+('댕댕이 캡슐케이스 펫티켓 리필용 배변봉투 24롤 (블루)', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0204.png', 25700, 100, 'details', 'size', 'color', '(주)Tree', null,
+ '중국', null, 19),
+('쿠퍼 애완동물 배변집게 봉투세트 (레드)', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0205.png', 27600, 100, 'details', 'size', 'color', '(주)Tree', null,
+ '중국', null, 19),
+('쿠퍼 애완동물 배변집게 봉투세트 (블루)', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0206.png', 27600, 100, 'details', 'size', 'color', '(주)Tree', null,
+ '중국', null, 19);
+
+-- 배변패드
+insert into product
+(product_name,product_imgurl,product_price,product_stock,product_detail,product_size,product_color,maker,product_mfd,product_poo,product_epd,pc_no)
+ values
+('향균바이오패드 50매(사이즈42x52) 1박스(4개입)', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0301.png', 58600, 100, 'details', '42x52(cm)', 'color', '자연애', null,
+ '대한민국', null, 20),
+('탈취바이오패드 50매(사이즈42x52) 1박스(4개입)', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0302.png', 58600, 100, 'details', '42x52(cm)', 'color', '자연애', null,
+ '대한민국', null, 20),
+('웰니스 프리미엄패드 50매X6개', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0303.png', 70000, 100, 'details', '45x55(cm)', 'color', '웰니스', null,
+ '대한민국', null, 20),
+('웰니스 울트라빅패드 50매X6개', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0304.png', 70000, 100, 'details', '60x76(cm)', 'color', '웰니스', null,
+ '대한민국', null, 20),
+('모모펫 논슬립 실리콘 배변매트 (대형, 아이보리)', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0305.png', 32100, 100, 'details', '78x62(cm)', 'color', '모모펫', null,
+ '중국', null, 20),
+('모모펫 논슬립 실리콘 배변매트 (대형, 베이비핑크)', '/projectdengdeng/imagefile/product_img/hygiene/hygiene0306.png', 32100, 100, 'details', '78x62(cm)', 'color', '모모펫', null,
+ '중국', null, 20);
+
 select * from product;
