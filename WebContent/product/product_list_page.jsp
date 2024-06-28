@@ -74,7 +74,7 @@ main>section>section {
 }
 
 .product-card h5, .product-card p {
-	margin: 10px 0;
+	margin: 10px 0;		/* 여기 마진 바꿔볼예정 */
 	flex-shrink: 0;
 }
 

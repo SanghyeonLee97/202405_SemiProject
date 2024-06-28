@@ -119,4 +119,27 @@ public class MemberDAO extends DAO{
 		}
 		return false;
 	}
+	//비밀번호 찾기
+	public String findPW(String id) {
+		String password = null;
+		openConnection();
+		try {
+			query = "select customer_pw from customer where customer_id='"+id+"';";
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			if(rs.next()) {
+				password=rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return password;
+	}
+	
+	
+	
+	
+	
 }

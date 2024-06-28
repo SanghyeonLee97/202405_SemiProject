@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import DTO.CustomerDTO;
 import model.CommandProsessor;
 import model.member.IdChk;
+import model.member.Password2;
 import model.member.Register;
 
 //member 경로를 처리
@@ -35,7 +36,10 @@ public class Command_Member extends Command_Parents{
 			//회원가입 업캐스팅
 			processor = new Register(customer);
 		}
-		
+		//경로가 /member/password.do라면
+		if(servletPath.equals("/member/password.do")) {
+		processor = new Password2();
+		}
 		return processor;
 	}
 }

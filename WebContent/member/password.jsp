@@ -71,7 +71,7 @@
 				<div><h2>비밀번호 찾기</h2></div>
 			</header>
 			<article>
-				<form id="passwordForm" action="password.jsp">
+				<form id="passwordForm" action="password.do">
 				
 											<!-- 아이디를 입력하고 -->
 					<input type="text" name="id" placeholder="아이디를 입력해주세요" required="required">
@@ -80,8 +80,9 @@
 											<!-- 아이디와 일치하는 비밀번호가 출력
 												(출력은 여기다 해도 상관 없고 새로운 페이지를 만들어도 상관X)
 											 -->
-					
+											 
 				</form>
+					고객님의 비밀번호는<%=request.getAttribute("password") %>입니다
 			</article>
 			<nav>
 				<button id="button2"><a href="login.jsp" style="color: black;"><h4>로그인하러 가기</h4></a></button><br><br>
