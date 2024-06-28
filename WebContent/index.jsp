@@ -108,7 +108,6 @@
 					pcArr1 = temp.getMypageMain(1);
 					for(int i=0; i<count; i++){
 						a[i] = r.nextInt(pcArr1.size());
-						System.out.println(a[i]);
 						for(int j=0; j<i; j++){
 							if(a[i] == a[j]){
 								i--;
