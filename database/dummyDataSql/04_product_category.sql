@@ -25,12 +25,11 @@ insert into product_category(pc_name,pc_level,pc_parent_no) values('육포',2,2)
 
 insert into product_category(pc_name,pc_level,pc_parent_no) values('공/원반',2,3);
 insert into product_category(pc_name,pc_level,pc_parent_no) values('인형',2,3);
-insert into product_category(pc_name,pc_level,pc_parent_no) values('훈련용품',2,3);
 
 insert into product_category(pc_name,pc_level,pc_parent_no) values('발톱관리용품',2,4);
 insert into product_category(pc_name,pc_level,pc_parent_no) values('드라이기',2,4);
 insert into product_category(pc_name,pc_level,pc_parent_no) values('브러쉬',2,4);
-insert into product_category(pc_name,pc_level,pc_parent_no) values('샴푸',2,4);
+insert into product_category(pc_name,pc_level,pc_parent_no) values('샴푸/린스',2,4);
 
 insert into product_category(pc_name,pc_level,pc_parent_no) values('구강위생용품',2,5);
 insert into product_category(pc_name,pc_level,pc_parent_no) values('기저귀',2,5);
