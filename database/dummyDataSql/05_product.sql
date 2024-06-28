@@ -90,6 +90,53 @@ insert into product
  '대한민국', null, 7),
  ('건강백서 2kg 시츄 전용 사료', '/projectdengdeng/imagefile/product_img/food/food0041.png', 26000, 100, 'details', 'size', 'color', 'Nutrena', null,
  '대한민국', null, 7);
- 
+
+-- 강아지껌
+insert into product
+(product_name,product_imgurl,product_price,product_stock,product_detail,product_size,product_color,maker,product_mfd,product_poo,product_epd,pc_no)
+ values
+('내품애 실속형(1kg/오리말이껌 4.5인치)', '/projectdengdeng/imagefile/product_img/snack/snanck0001.png', 28500, 100, 'details', 'size', 'color', '내품애', null,
+ '중국', null, 8),
+('내품애 실속형(1kg/치킨말이껌 2.5인치)', '/projectdengdeng/imagefile/product_img/snack/snanck0002.png', 27600, 100, 'details', 'size', 'color', '내품애', null,
+ '중국', null, 8),
+('내품애 실속형(1kg/우유껌 치킨말이스틱)', '/projectdengdeng/imagefile/product_img/snack/snanck0003.png', 20300, 100, 'details', 'size', 'color', '내품애', null,
+ '중국', null, 8),
+('내품애 실속형(1kg/치킨말이껌 4.5인치)', '/projectdengdeng/imagefile/product_img/snack/snanck0004.png', 27600, 100, 'details', 'size', 'color', '내품애', null,
+ '중국', null, 8),
+('내품애 실속형(1kg/우유껌 오리말이스틱)', '/projectdengdeng/imagefile/product_img/snack/snanck0005.png', 22400, 100, 'details', 'size', 'color', '내품애', null,
+ '중국', null, 8),
+('내품애 실속형(1kg/오리말이껌 2.5인치)', '/projectdengdeng/imagefile/product_img/snack/snanck0006.png', 28500, 100, 'details', 'size', 'color', '내품애', null,
+ '중국', null, 8),
+('뽀부장의 간식생활 치킨연어포 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0007.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 치킨우유껌 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0008.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 치킨윙사시미 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0009.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 치킨비스켓 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0010.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 치킨혼합 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0011.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 오리고구마 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0012.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 오리쌀스틱 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0013.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 오리우유껌 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0014.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 건식꽈배기 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0015.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 닭갈비 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0016.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 미니닭갈비 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0017.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 젤리꽈배기 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0018.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 치킨고구마 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0019.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8),
+('뽀부장의 간식생활 치킨덤벨 300gX50개', '/projectdengdeng/imagefile/product_img/food/snanck0020.png', 126000, 100, 'details', 'size', 'color', '헤세드요셉', null, 
+'중국', null, 8);
+
+-- 수제간식
+
  
 select * from product;
