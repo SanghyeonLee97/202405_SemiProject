@@ -90,6 +90,7 @@ public class ProductDetail extends Product{
 		String cookieName = "recentlyViewedProducts";
 		String productInfo = product.getProduct_no() + "|" + product.getProduct_imgurl() + "|" + product.getProduct_name();
 		System.out.println("상품의정보확인: "+productInfo);
+		
 		Deque<String> productQueue = new LinkedList<>();
 		
 		//기존의 쿠키 읽기
@@ -109,8 +110,13 @@ public class ProductDetail extends Product{
 			}
 		}
 		
+		
+		//Queue에 상품이 중복되는 경우 제거
+		productQueue.remove(productInfo);
 		//Queue에 새로운 상품(쿠키) 추가
 		productQueue.addFirst(productInfo);
+		
+		// 크기 제한을 초과할 경우 마지막 항목 제거
 		if (productQueue.size() > 3) {
 			productQueue.removeLast();
 		}
