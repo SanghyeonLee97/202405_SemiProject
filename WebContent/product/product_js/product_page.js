@@ -72,27 +72,3 @@ function buyNow() {
 	let quantity = $("#quantity").val();
     window.location.href = "orderPayment.do?product_no=" + productNo + "&product_quantity=" + quantity;
 }
-
-function addToCart() {
-	let quantity = $("#quantity").val();
-    $.ajax({
-        type: "POST",
-        url: "insertCart.do",
-        data: {
-            product_no: productNo,
-            product_quantity: quantity
-        },
-        success: function(response) {
-            alert("장바구니에 추가되었습니다.");
-        },
-        error: function(xhr, status, error) {
-        	if (xhr.status === 401){
-        		alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
-        		window.location.href = "/projectdengdeng/member/login.jsp";
-        	}else{
-        		console.error("AJAX 호출 오류 발생", status, error);
-        	}
-            
-        }
-    });
-}

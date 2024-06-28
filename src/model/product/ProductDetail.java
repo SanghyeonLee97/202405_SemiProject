@@ -12,14 +12,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.ReviewDTO;
+import DTO.product.CartDTO;
 import DTO.product.ProductDTO;
 import DTO.product.ProductQnaDTO;
+import dao.MyPageDAO;
 import dao.ProductDAO;
 
 public class ProductDetail extends Product{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
+		//세션확인
+		session = req.getSession();
+		String id = (String)session.getAttribute("id");
+		String customerNo = (String)session.getAttribute("no");
+		
+		
 		int product_no = Integer.parseInt(req.getParameter("product_no"));
 		
 		//상품정보 조회
@@ -51,11 +59,21 @@ public class ProductDetail extends Product{
 		int qnaCount = productDAO.getQNACount(product_no);
 		int qnaPageCount = (int)Math.ceil((double)qnaCount / qnaPageSize);
 		
+		//장바구니 확인
+		MyPageDAO mypageDAO = new MyPageDAO();
+		if(customerNo != null) {
+			List<CartDTO> cartList = mypageDAO.getCartList(Integer.parseInt(customerNo));
+			req.setAttribute("cartList", cartList);
+		}
+		
+
+		
 		//지금 클릭하여 조회하는 상품을 최근 본 상품에 추가해야함
 		saveProductToCookie(req, resp, cookieProduct);
 		
 		req.setAttribute("product", product);
 		req.setAttribute("avgRating", avgRating);
+		
 		
 		req.setAttribute("reviewList", reviewList);
 		req.setAttribute("reviewPage", reviewPage);

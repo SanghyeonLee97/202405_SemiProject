@@ -7,17 +7,32 @@ public class DeleteCart extends MyPage{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
+		//세션확인
 		session = req.getSession();
+		String id = (String)session.getAttribute("id");
+		String customerNo = (String)session.getAttribute("no");
+		long cartNo = 0;
+		boolean isSuccess = false;
+		String returnURL = null;
 		
-		
-		long cart_no = Integer.parseInt(req.getParameter("cart_no"));
-		boolean isSuccess =  mdao.deleteCart(cart_no);
-		System.out.println("장바구니 번호: "+cart_no);
-		if (isSuccess) {
-			return "cartList.do";
-		}else {
-			System.out.println("장바구니 삭제 실패!");
-			return null;
+		//예외처리(product_page에서 넘어오는 경우 cart_no 없음)
+		try {
+			//mypage에서 넘어오는 경우
+			cartNo = Integer.parseInt(req.getParameter("cart_no"));
+			isSuccess =  mdao.deleteCart(cartNo);
+			System.out.println("장바구니 번호: "+cartNo);
+			if (isSuccess) {
+				returnURL = "cartList.do";
+			}
+		} catch (Exception e) {
+			//product_page에서 넘어오는 경우
+			long productNo = Long.parseLong(req.getParameter("product_no"));
+			cartNo = mdao.getCartNo(productNo, Long.parseLong(customerNo));
+			isSuccess = mdao.deleteCart(cartNo);
+			if(isSuccess) {
+				returnURL = "/product/details.do";
+			}
 		}
+		return returnURL;
 	}
 }
