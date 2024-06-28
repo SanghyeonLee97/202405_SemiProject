@@ -107,7 +107,8 @@
 				<%
 					pcArr1 = temp.getMypageMain(1);
 					for(int i=0; i<count; i++){
-						a[i] = r.nextInt(pcArr1.size()) + 1; 
+						a[i] = r.nextInt(pcArr1.size());
+						System.out.println(a[i]);
 						for(int j=0; j<i; j++){
 							if(a[i] == a[j]){
 								i--;
@@ -117,8 +118,8 @@
 					for(int i=0; i<count; i++){
 				%>
 				<div>
-					<img src="<%=pcArr1.get(i).getProduct_imgurl() %>" width="150px" height="150px" >
-					<a href=""><%=pcArr1.get(i).getProduct_name() %><br><%=pcArr1.get(i).getProduct_price() %>원</a>
+					<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" width="150px" height="150px" >
+					<a href=""><%=pcArr1.get(a[i]).getProduct_name() %><br><%=pcArr1.get(a[i]).getProduct_price() %>원</a>
 				</div>
 				<%
 					}
