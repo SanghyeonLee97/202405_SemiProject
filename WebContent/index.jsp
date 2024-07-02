@@ -74,17 +74,17 @@
 			      </div>
 			      <div class="carousel-inner">
 			        <div class="carousel-item active">
-			          <img src="/projectdengdeng/imagefile/배너1.jpg" class="d-block w-100" height="330px" width="100%">
+			          <img src="/projectdengdeng/imagefile/banner1.png" class="d-block w-100" height="330px" width="100%">
 			          <div class="carousel-caption d-none d-md-block">
 			          </div>
 			        </div>
 			        <div class="carousel-item">
-			         <img src="/projectdengdeng/imagefile/배너2.jpg" class="d-block w-100" height="330px" width="100%" >
+			         <img src="/projectdengdeng/imagefile/banner2.png" class="d-block w-100" height="330px" width="100%" >
 			          <div class="carousel-caption d-none d-md-block">
 			          </div>
 			        </div>
 			        <div class="carousel-item">
-			         <img src="/projectdengdeng/imagefile/배너3.jpg" class="d-block w-100" height="330px" width="100%" >
+			         <img src="/projectdengdeng/imagefile/banner3.png" class="d-block w-100" height="330px" width="100%" >
 			          <div class="carousel-caption d-none d-md-block">
 			          </div>
 			        </div>
