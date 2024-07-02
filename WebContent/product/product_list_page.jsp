@@ -53,6 +53,7 @@ main>section>section {
 	gap: 20px;
 }
 
+/* product-card 속성 설정 */
 .product-card {
 	background-color: white;
 	border: 1px solid #ddd;
@@ -62,6 +63,13 @@ main>section>section {
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .product-card img {
@@ -76,9 +84,35 @@ main>section>section {
 }
 
 .product-card h5 {
-	font-size: 18px;
+	font-size: 16px;
 }
 
+.product-card p{
+	font-size: 12px;
+}
+
+.product-card-priceDiv{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.product-card button {
+	background-color: #fff8dc;
+	color: black;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 5px 5px;
+	cursor: pointer;
+	border-radius: 3px;
+	font-size: 14px;
+	transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.product-card button:hover {
+	background-color: #f0e68c;
+	border-color: rgba(0, 0, 0, 0.2);
+}
+/* pagination 속성 설정 */
 .pagination {
 	display: flex;
 	justify-content: center;
@@ -101,6 +135,21 @@ main>section>section {
 	background-color: #007bff;
 	color: white;
 	border-color: #007bff;
+}
+
+/* <a> 태그의 속성 설정 */
+a{
+	color: black;
+	text-decoration: none;
+}
+
+a:hover{
+	color: gray;
+	text-decoration: underline;
+}
+
+a:visited{
+	color: black;
 }
 </style>
 </head>
@@ -158,13 +207,16 @@ main>section>section {
 						%>
 								<div class="product-card">
 									<a href="details.do?product_no=<%= product.getProduct_no() %>">
-										<img src="<%= product.getProduct_imgurl() %>">
-										<h5><%= product.getProduct_name() %></h5>
-										<p>
-											<%= product.getProduct_price() %>원&nbsp;&nbsp;&nbsp;
-										</p>
+										<div>
+											<img src="<%= product.getProduct_imgurl() %>">
+										</div>
+										<div style="height: 60px;">
+											<h5><%= product.getProduct_name() %></h5>
+										</div>
 									</a>
-									<%
+									<div class="product-card-priceDiv">
+										<%= product.getProduct_price() %>원
+										<%
 										String customerNo = (String) session.getAttribute("no");
 										if (customerNo != null) {
 											// Form for selecting dibs
@@ -183,6 +235,8 @@ main>section>section {
 									<%
 										}
 									%>
+									</div>
+									
 								</div>
 						<%
 							}
@@ -206,7 +260,7 @@ main>section>section {
 			                	<figure style="text-align: center;">
 			                    <a href="details.do?product_no=<%= product.getProduct_no() %>">
 			                        <img src="<%= product.getProduct_imgurl() %>" alt="Product Img" width="180px">
-			                        <figcaption><%= product.getProduct_name() %></figcaption>
+			                        <figcaption style="font-size: 12px;"><%= product.getProduct_name() %></figcaption>
 			                    </a>
 			                    </figure>
 			                </div>
