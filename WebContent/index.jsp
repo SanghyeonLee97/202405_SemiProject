@@ -25,22 +25,33 @@
 		margin-top: 20px;
 	}
 	main>section>article{
-		width: 100%; height: 250px;
+		width: 100%; height: 350px;
 		margin-top: 20px;
 		padding : 0px;
 		position: relative;
 		text-align: center;
-		
+		display: inline-block;
 	}
 	main>section>article:first-child{
 		margin-top: 0px;
 	}
 	main>section>article>div{
-		width:150px; height: 150px; 
+		width:150px; height: 250px; 
 		display:inline-block;
 		position: relative;
 		margin-right:100px;
-		left: 0;
+		left:50px;
+		margin-top: 20px;
+		top:50px;
+		overflow: hidden;
+		margin-bottom: 70px;
+
+		
+	}
+	.indeximg img{
+		height: 150px;
+		width: 150px;
+		
 		
 	}
 	
@@ -112,8 +123,8 @@
 					}
 					for(int i=0; i<count; i++){
 				%>
-				<div>
-					<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" width="150px" height="150px" >
+				<div class="indeximg">
+					<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" >
 					<a href="product/details.do?product_no=<%=pcArr1.get(a[i]).getProduct_no()%>">
 					<%=pcArr1.get(a[i]).getProduct_name() %><br>
 					<%=pcArr1.get(a[i]).getProduct_price() %>원</a>
@@ -136,8 +147,8 @@
 					}
 					for(int i=0; i<count; i++){
 				%>
-				<div>
-					<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" width="150px" height="150px" >
+				<div class="indeximg">
+					<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>"  >
 					<a href="product/details.do?product_no=<%=pcArr1.get(a[i]).getProduct_no()%>">
 					<%=pcArr1.get(a[i]).getProduct_name() %><br>
 					<%=pcArr1.get(a[i]).getProduct_price() %>원</a>
@@ -160,9 +171,9 @@
 					}
 					for(int i=0; i<count; i++){
 				%>
-				<div>
-					<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" width="150px" height="150px" >
-					<a href="product/details.do?product_no=<%=pcArr1.get(a[i]).getProduct_no()%>">
+				<div class="indeximg">
+					<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" >
+					<a  href="product/details.do?product_no=<%=pcArr1.get(a[i]).getProduct_no()%>">
 					<%=pcArr1.get(a[i]).getProduct_name() %><br>
 					<%=pcArr1.get(a[i]).getProduct_price() %>원</a>
 				</div>

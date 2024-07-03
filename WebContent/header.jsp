@@ -22,7 +22,7 @@
 	}
 	header>section{
 		position: absolute;
-		left : 500px;
+		left : 535px;
 		top : 0px;
 		
 	}
