@@ -83,7 +83,7 @@ button{
 						<td>${cart.product_price }원</td>
 						<td>
 							<input type='button' onclick='count("plus")' value='+'>
-							<input type="hidden" id='result'>${cart.product_quantity }
+							<input type="text" id='result' value='${cart.product_quantity }' readonly>
 							<input type='button' onclick='count("minus")' value='-'>
 						</td>
 						<td>

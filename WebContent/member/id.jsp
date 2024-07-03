@@ -16,21 +16,17 @@
 	}
 	main>section>header{
 		width:100%; height: 160px;
-		
 	}
 	main>section>article{
 		width: 100%; height:400px;
 		margin-left: 150px;
-		
 	}
 	main>section>nav{
 		width: 100%; height:140px;
 		margin-left: 260px;
-		
 	}
 
 	header>div {
-	
 		position: absolute;
 		top:30px;
 		text-align: center;
@@ -54,30 +50,29 @@
 		background-color:#ffEB5A; 
 		border-color: yellow; 
 		border-collapse: collapse;
-	
-	
 	}
 	input {
 		width: 300px;
 		height:40px; 
-		
 }
 	
 
 </style>
 </head>
 <body>
+<%=request.getAttribute("id") %>
 	<main>
 		<section>
 			<header>
 				<div><h2>아이디 찾기</h2></div>
 			</header>
 			<article>
-				<form id="idForm" action="id.jsp">
-				<!--  -->
-					<input type="text" name="id" placeholder="이메일을 입력해주세요" required="required">
+				<form id="idForm" action="id.do">
+					<p class="findEmail">이메일 : <input type="text" name="member_email" placeholder="이메일 입력" size="30" required></p>
+					<!-- <p>전화번호 : <input type="text"  name="member_call" placeholder="휴대폰번호를 '-'없이 입력" onKeyup = "addHypen(this);" required></p> -->
+					
 					<br><br>
-					<input type="submit" name="returnId" readonly="readonly">
+					<input type="submit" name="returnId" readonly="readonly" value="찾기">
 				</form>
 			</article>
 			<nav>
