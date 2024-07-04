@@ -13,48 +13,69 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 <link href="/projectdengdeng/css/style2.css?after" rel="stylesheet" type="text/css">
 <style type="text/css">
-	body{
-		overflow-x: hidden;
-	}
-	main>section:first-child{
-		margin-left: calc(-50vw + 50%);
-		width: 100vw;
-		height: 360px;
-	}
-	main>section:last-child{
-		margin-top: 20px;
-	}
-	main>section>article{
-		width: 100%; height: 350px;
-		margin-top: 20px;
-		padding : 0px;
-		position: relative;
-		text-align: center;
-		display: inline-block;
-	}
-	main>section>article:first-child{
-		margin-top: 0px;
-	}
-	main>section>article>div{
-		width:150px; height: 250px; 
-		display:inline-block;
-		position: relative;
-		margin-right:100px;
-		left:50px;
-		margin-top: 20px;
-		top:50px;
-		overflow: hidden;
-		margin-bottom: 70px;
+body {
+	overflow-x: hidden;
+}
 
-		
-	}
-	.indeximg img{
-		height: 150px;
-		width: 150px;
-		
-		
-	}
-	
+main>section:first-child {
+	margin-left: calc(-50vw + 50%);
+	width: 100vw;
+	height: 360px;
+}
+
+main>section:last-child {
+	margin-top: 20px;
+}
+
+main>section>article {
+	width: 100%;
+	height: 350px;
+	margin-top: 20px;
+	padding: 0px;
+	position: relative;
+	text-align: center;
+	display: inline-block;
+}
+
+main>section>article:first-child {
+	margin-top: 0px;
+}
+
+main>section>article>div {
+	width: 150px;
+	height: 250px;
+	display: inline-block;
+	position: relative;
+	margin-right: 100px;
+	left: 50px;
+	margin-top: 20px;
+	top: 50px;
+	overflow: hidden;
+	margin-bottom: 70px;
+}
+
+.indeximg img {
+	height: 150px;
+	width: 150px;
+}
+.indeximg a {
+	text-decoration: none;
+	color: #222;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.indeximg a:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+.index-name {
+	height: 70px;
+	font-size: 15px;
+	border-bottom: 1px solid #a2e3c4;
+}
 </style>
 </head>
 <body>
@@ -124,10 +145,17 @@
 					for(int i=0; i<count; i++){
 				%>
 				<div class="indeximg">
-					<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" >
 					<a href="product/details.do?product_no=<%=pcArr1.get(a[i]).getProduct_no()%>">
-					<%=pcArr1.get(a[i]).getProduct_name() %><br>
-					<%=pcArr1.get(a[i]).getProduct_price() %>원</a>
+						<div>
+							<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" >
+						</div>
+						<div class="index-name">
+							<%=pcArr1.get(a[i]).getProduct_name() %>
+						</div>
+						<div class="index-price">
+							<%=pcArr1.get(a[i]).getProduct_price() %>원
+						</div>
+					</a>
 				</div>
 				<%
 					}
@@ -148,10 +176,17 @@
 					for(int i=0; i<count; i++){
 				%>
 				<div class="indeximg">
-					<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>"  >
 					<a href="product/details.do?product_no=<%=pcArr1.get(a[i]).getProduct_no()%>">
-					<%=pcArr1.get(a[i]).getProduct_name() %><br>
-					<%=pcArr1.get(a[i]).getProduct_price() %>원</a>
+						<div>
+							<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" >
+						</div>
+						<div class="index-name">
+							<%=pcArr1.get(a[i]).getProduct_name() %>
+						</div>
+						<div class="index-price">
+							<%=pcArr1.get(a[i]).getProduct_price() %>원
+						</div>
+					</a>
 				</div>
 				<%
 					}
@@ -172,10 +207,17 @@
 					for(int i=0; i<count; i++){
 				%>
 				<div class="indeximg">
-					<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" >
-					<a  href="product/details.do?product_no=<%=pcArr1.get(a[i]).getProduct_no()%>">
-					<%=pcArr1.get(a[i]).getProduct_name() %><br>
-					<%=pcArr1.get(a[i]).getProduct_price() %>원</a>
+					<a href="product/details.do?product_no=<%=pcArr1.get(a[i]).getProduct_no()%>">
+						<div>
+							<img src="<%=pcArr1.get(a[i]).getProduct_imgurl() %>" >
+						</div>
+						<div class="index-name">
+							<%=pcArr1.get(a[i]).getProduct_name() %>
+						</div>
+						<div class="index-price">
+							<%=pcArr1.get(a[i]).getProduct_price() %>원
+						</div>
+					</a>
 				</div>
 				<%
 					}
