@@ -137,7 +137,24 @@ public class MemberDAO extends DAO{
 		}
 		return password;
 	}
-	
+	//아이디 찾기
+	public String findId(String email) {
+		String id = null;
+		openConnection();
+		try {
+			query = "select customer_id from customer where customer_email = '"+email+"';";
+			stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			if(rs.next()) {
+				id=rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return id;
+	}
 	
 	
 	
