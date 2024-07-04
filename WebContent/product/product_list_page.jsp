@@ -139,7 +139,7 @@ main>section>section {
 
 /* <a> 태그의 속성 설정 */
 a{
-	color: black;
+	color: #222;
 	text-decoration: none;
 }
 

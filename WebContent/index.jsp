@@ -76,6 +76,9 @@ main>section>article>div {
 	font-size: 15px;
 	border-bottom: 1px solid #a2e3c4;
 }
+.index-price {
+	font-size: 14px;
+}
 </style>
 </head>
 <body>
