@@ -60,7 +60,7 @@
 </style>
 </head>
 <body>
-<%=request.getAttribute("id") %>
+
 	<main>
 		<section>
 			<header>
@@ -74,6 +74,13 @@
 					<br><br>
 					<input type="submit" name="returnId" readonly="readonly" value="찾기">
 				</form>
+				<%
+					if(request.getAttribute("id")!=null){
+				%>
+				<h4>회원님의 아이디는 <%=request.getAttribute("id") %> 입니다.</h4>
+				<%}else{ %>
+				<h4>존재하지 않는 아이디입니다.</h4>
+				<%} %>
 			</article>
 			<nav>
 				<button id="button2"><a href="login.jsp" style="color: black;"><h4>로그인하러 가기</h4></a></button><br><br>
