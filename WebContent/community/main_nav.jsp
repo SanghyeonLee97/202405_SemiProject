@@ -9,15 +9,19 @@
 	#buttons {
 		width: 120px;
 		height: 40px;
-		margin-left: 5px;
+		margin: 0 20px;
 		background: #ffEB5A;
 }
  
+.community-nav{
+ 	display: flex;
+ 	justify-content: center;
+ }
 
 </style>
 </head>
 <body>
-	<nav>
+	<nav class="community-nav">
 		<button id=buttons onclick="location.href='/projectdengdeng/community/community_notice.jsp'"><h5>notice</h5></button>
 		<button id=buttons onclick="location.href='/projectdengdeng/community/community_faq.jsp'"><h5>FAQ</h5></button>
 		<button id=buttons onclick="location.href='/projectdengdeng/community/community_qna.jsp'"><h5>QNA</h5></button>
