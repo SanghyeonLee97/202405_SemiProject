@@ -75,6 +75,7 @@
 					<input type="submit" name="returnId" readonly="readonly" value="찾기">
 				</form>
 				<%
+
 					if(request.getAttribute("id")!=null){
 				%>
 				<h4>회원님의 아이디는 <%=request.getAttribute("id") %> 입니다.</h4>
