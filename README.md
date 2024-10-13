@@ -1,39 +1,39 @@
-## 댕댕쇼핑몰
-#### 기간: 2024.05.13. ~ 2024.07.05.
+# 댕댕쇼핑몰
+**프로젝트 기간**: 2024.05.13. ~ 2024.07.05.
 
-### 개요
+
+## 프로젝트 개요
 - MVC2 모델을 적용한 자바 기반 반려견 쇼핑몰 구현
 
-### 기술 스택
-<div style="padding-left: 20px;">
-  <h4>프론트엔드</h4>
-  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-  <img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white">
-</div>
-<div style="padding-left: 20px;">
-  <h4>백엔드</h4>
-  <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
-  <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black">
-</div>
-<div style="padding-left: 20px;">
-  <h4>데이터베이스</h4>
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
-</div>
-<div style="padding-left: 20px;">
-  <h4>툴</h4>
-  <img src="https://img.shields.io/badge/eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white">
-  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-</div>
 
-### Software Architecture
-![image](https://github.com/user-attachments/assets/8b762f5e-f4a9-4707-ab6e-e5557fab1402)
+## 사용된 기술 스택
 
-### ER Diagram
+### Front-End:
+- **Markup**: HTML5
+- **Styling**: CSS
+- **Scripting**: JavaScript, jQuery
+
+### Back-End:
+- **Language**: Java
+- **Web Application Server (WAS)**: Apache Tomcat
+
+### Database:
+- **Database**: MySQL
+
+### Tools:
+- **Development**: Eclipse
+- **Version Control**: GitHub
+
+
+## ER Diagram
 ![image](https://github.com/user-attachments/assets/76a381e6-9978-48da-86de-af7a65e3b7fd)
 
-### 주요기능 및 UI
+## Software Architecture
+![image](https://github.com/user-attachments/assets/8b762f5e-f4a9-4707-ab6e-e5557fab1402)
+
+
+
+## 주요기능 및 UI
 1. 회원가입
 ![image](https://github.com/user-attachments/assets/4f881960-586e-43d4-ba93-8790753d5db8)
 
